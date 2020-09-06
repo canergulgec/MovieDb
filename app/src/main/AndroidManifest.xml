@@ -7,13 +7,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.android.moviedb.RestApp"
+        android:name="com.android.moviedb.MovieDbApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove"
+            android:exported="false" />
 
         <activity
             android:name="com.android.moviedb.ui.main.MainActivity"

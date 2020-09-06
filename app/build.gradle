@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.android.restapp"
+        applicationId "com.android.moviedb"
         minSdkVersion 21
         targetSdkVersion 30
         multiDexEnabled true
@@ -128,6 +128,10 @@ dependencies {
 
     //Shimmer
     implementation "com.facebook.shimmer:shimmer:$shimmer"
+
+    // Hilt WorkManager
+    implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
     //Test
     testImplementation 'junit:junit:4.13'

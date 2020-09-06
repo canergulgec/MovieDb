@@ -8,4 +8,5 @@ object Constants {
     const val page = "page"
     const val NOW_PLAYING_MOVIES = 1
     const val UPCOMING_MOVIES = 2
+    const val WORKER_KEY = "WORKER_KEY"
 }
