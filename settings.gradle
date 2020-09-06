@@ -1,0 +1,6 @@
+include ':presentation'
+rootProject.name='MovieDb'
+include ':app'
+include ':base'
+include ':data'
+include ':domain'

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieDb</string>
+    <string name="nearby">Yakındakiler</string>
+    <string name="best_rated">En İyiler</string>
+</resources>

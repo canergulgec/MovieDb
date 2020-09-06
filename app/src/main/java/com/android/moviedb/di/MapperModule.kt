@@ -1,0 +1,25 @@
+package com.android.moviedb.di
+
+import com.android.base.Mapper
+import com.android.data.mapper.MovieDetailMapper
+import com.android.data.mapper.MovieMapper
+import com.android.data.model.MovieDetailModel
+import com.android.data.model.MovieModel
+import com.android.data.model.remote.MovieDetailResponse
+import com.android.data.model.remote.MoviesResponse
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class MapperModule {
+
+    @Binds
+    abstract fun bindsMovieMapper(mapper: MovieMapper): Mapper<MoviesResponse, MovieModel>
+
+    @Binds
+    abstract fun bindsMovieDetailMapper(mapper: MovieDetailMapper): Mapper<MovieDetailResponse, MovieDetailModel>
+
+}
