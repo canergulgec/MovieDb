@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="256dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/notificationLargeTitleTv"
+        style="@style/TextAppearance.Compat.Notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        tools:text="This is a custom notification" />
+
+    <TextView
+        android:id="@+id/notificationLargeOverviewTv"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        tools:text="Overview of the movie" />
+
+    <ImageView
+        android:id="@+id/notificationTv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/notification_image"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

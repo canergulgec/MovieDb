@@ -6,6 +6,9 @@ import android.os.Looper
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.android.base.BaseFragment
 import com.android.base.NetworkState
 import com.android.base.ext.*
@@ -15,6 +18,7 @@ import com.android.presentation.adapter.paging.MoviesPagingAdapter
 import com.android.presentation.utils.VerticalSpaceItemDecoration
 import com.android.presentation.vm.MovieViewModel
 import com.android.moviedb.R
+import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
 import javax.inject.Inject
@@ -83,7 +87,18 @@ class MovieFragment : BaseFragment() {
     private fun recyclerItemClicked(movie: Movie?) {
         val bundle = bundleOf(Constants.MOVIE_ID to (movie?.movieId ?: 0))
         navController.navigate(R.id.movieDetailFragment, bundle)
+        startWorker(movie?.title, movie?.overview)
     }
+
+    private fun startWorker(title: String?, overview: String?) {
+        val inputs = Data.Builder().putString(Constants.MOVIE_TITLE, title)
+            .putString(Constants.MOVIE_OVERVIEW, overview).build()
+        val request = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
+            .setInputData(inputs)
+            .build()
+        context?.let { WorkManager.getInstance(it).enqueue(request) }
+    }
+
 
     override fun onResume() {
         super.onResume()

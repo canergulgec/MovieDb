@@ -3,13 +3,8 @@ package com.android.moviedb.ui.main
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import com.android.moviedb.R
 import com.android.base.BaseActivity
-import com.android.data.Constants
-import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -37,15 +32,6 @@ class MainActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         setupViews()
-        initWorker()
-    }
-
-    private fun initWorker() {
-        val inputs = Data.Builder().putString(Constants.WORKER_KEY, "hop").build()
-        val request = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-            .setInputData(inputs)
-            .build()
-        WorkManager.getInstance(this).enqueue(request)
     }
 
     private fun setupViews() {
