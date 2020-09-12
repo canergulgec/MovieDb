@@ -21,8 +21,8 @@ abstract class BaseFragment : Fragment() {
         initView(savedInstanceState)
     }
 
-    fun setProgressStatus(show: Boolean) =
-        with(activity) { if (this is BaseActivity) setProgressStatus(show) }
+    fun setLoadingStatus(isVisible: Boolean) =
+        with(activity) { if (this is BaseActivity) setLoadingStatus(isVisible) }
 
     abstract fun initView(savedInstanceState: Bundle?)
 

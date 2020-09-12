@@ -20,8 +20,8 @@ abstract class BaseActivity : AppCompatActivity() {
         initView(savedInstanceState)
     }
 
-    fun setProgressStatus(show: Boolean) {
-        when (show) {
+    fun setLoadingStatus(isVisible: Boolean) {
+        when (isVisible) {
             true -> if (!progressDialog.isShowing) progressDialog.show()
             false -> if (progressDialog.isShowing) progressDialog.dismiss()
         }

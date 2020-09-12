@@ -44,11 +44,11 @@ class MovieDetailFragment : BaseFragment() {
 
     private fun initObservers() {
         viewModel.getLoadingStatus()?.observeWith(viewLifecycleOwner) {
-            setProgressStatus(it)
+            setLoadingStatus(it)
         }
 
         viewModel.getError()?.observeWith(viewLifecycleOwner) {
-            setProgressStatus(false)
+            setLoadingStatus(false)
             toast("error happened ${it.code} ${it.message}")
         }
 
