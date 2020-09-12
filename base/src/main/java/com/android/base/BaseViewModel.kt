@@ -5,20 +5,20 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val networkStatus: SingleLiveEvent<NetworkState>?
+    private val loadingStatus: SingleLiveEvent<Boolean>?
     private val error: SingleLiveEvent<ApiError>?
 
     init {
-        networkStatus = SingleLiveEvent()
+        loadingStatus = SingleLiveEvent()
         error = SingleLiveEvent()
     }
 
-    fun getNetworkStatus(): LiveData<NetworkState>? {
-        return networkStatus
+    fun getLoadingStatus(): LiveData<Boolean>? {
+        return loadingStatus
     }
 
-    fun setNetworkStatus(networkState: NetworkState) {
-        networkStatus?.value = networkState
+    fun setLoadingStatus(networkState: Boolean) {
+        loadingStatus?.value = networkState
     }
 
     fun getError(): LiveData<ApiError>? {

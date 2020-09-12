@@ -1,8 +1,6 @@
 package com.android.moviedb.ui.explore
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +9,6 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.android.base.BaseFragment
-import com.android.base.NetworkState
 import com.android.base.ext.*
 import com.android.data.Constants
 import com.android.data.model.Movie
@@ -22,7 +19,6 @@ import com.android.moviedb.R
 import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -67,12 +63,6 @@ class MovieFragment : BaseFragment() {
     }
 
     private fun initObservers() {
-        viewModel.getError()?.observeWith(viewLifecycleOwner) {
-            setProgressStatus(NetworkState.Failed)
-            stopShimmer()
-            toast("error happened ${it.code} ${it.message}")
-        }
-
         lifecycleScope.launch {
             viewModel.moviePagingFlow.collectLatest { pagingData ->
                 movieAdapter.submitData(lifecycle, pagingData)

@@ -20,10 +20,10 @@ abstract class BaseActivity : AppCompatActivity() {
         initView(savedInstanceState)
     }
 
-    fun setProgressStatus(state: NetworkState) {
-        when (state) {
-            NetworkState.Loading -> if (!progressDialog.isShowing) progressDialog.show()
-            NetworkState.Success, NetworkState.Failed -> if (progressDialog.isShowing) progressDialog.dismiss()
+    fun setProgressStatus(show: Boolean) {
+        when (show) {
+            true -> if (!progressDialog.isShowing) progressDialog.show()
+            false -> if (progressDialog.isShowing) progressDialog.dismiss()
         }
     }
 

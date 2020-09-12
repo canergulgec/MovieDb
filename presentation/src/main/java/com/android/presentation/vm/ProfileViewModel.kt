@@ -20,14 +20,12 @@ class ProfileViewModel @ViewModelInject constructor(
     val newSessionLiveData: LiveData<NewSessionResponse> get() = _newSessionLiveData
 
     fun createNewSession() {
-        setNetworkStatus(NetworkState.Loading)
-
         viewModelScope.launch {
             newSessionUseCase.execute(addBody()).collect {
                 when (it) {
-                    is Resource.Loading -> setNetworkStatus(NetworkState.Loading)
+                    is Resource.Loading -> setLoadingStatus(true)
                     is Resource.Success -> {
-                        setNetworkStatus(NetworkState.Success)
+                        setLoadingStatus(false)
                         _newSessionLiveData.value = it.data
                     }
                     is Resource.Error -> setError(it.apiError)

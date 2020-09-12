@@ -4,7 +4,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.base.NetworkState
 import com.android.base.Resource
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.BackdropItem
@@ -26,14 +25,12 @@ class MovieDetailViewModel @ViewModelInject constructor(
     val movieVideoListLiveData: MutableLiveData<List<VideoItem>> = MutableLiveData()
 
     fun getMovieDetail(movieId: Int?) {
-        setNetworkStatus(NetworkState.Loading)
-
         viewModelScope.launch {
             movieDetailUseCase.execute(movieId).collect {
                 when (it) {
-                    is Resource.Loading -> setNetworkStatus(NetworkState.Loading)
+                    is Resource.Loading -> setLoadingStatus(true)
                     is Resource.Success -> {
-                        setNetworkStatus(NetworkState.Success)
+                        setLoadingStatus(false)
                         movieDetailLiveData.value = it.data
                     }
                     is Resource.Error -> setError(it.apiError)
@@ -43,14 +40,12 @@ class MovieDetailViewModel @ViewModelInject constructor(
     }
 
     fun getMovieGallery(movieId: Int?) {
-        setNetworkStatus(NetworkState.Loading)
-
         viewModelScope.launch {
             movieGalleryUseCase.execute(movieId).collect {
                 when (it) {
-                    is Resource.Loading -> setNetworkStatus(NetworkState.Loading)
+                    is Resource.Loading -> setLoadingStatus(true)
                     is Resource.Success -> {
-                        setNetworkStatus(NetworkState.Success)
+                        setLoadingStatus(false)
                         apartMovieGalleryList(it.data)
                     }
                     is Resource.Error -> setError(it.apiError)

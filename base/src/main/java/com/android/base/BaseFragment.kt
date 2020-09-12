@@ -21,8 +21,8 @@ abstract class BaseFragment : Fragment() {
         initView(savedInstanceState)
     }
 
-    fun setProgressStatus(viewStatus: NetworkState) =
-        with(activity) { if (this is BaseActivity) setProgressStatus(viewStatus) }
+    fun setProgressStatus(show: Boolean) =
+        with(activity) { if (this is BaseActivity) setProgressStatus(show) }
 
     abstract fun initView(savedInstanceState: Bundle?)
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.android.base.BaseFragment
-import com.android.base.NetworkState
 import com.android.base.ext.*
 import com.android.data.Constants
 import com.android.presentation.utils.HorizontalSpaceItemDecoration
@@ -44,12 +43,12 @@ class MovieDetailFragment : BaseFragment() {
     }
 
     private fun initObservers() {
-        viewModel.getNetworkStatus()?.observeWith(viewLifecycleOwner) {
+        viewModel.getLoadingStatus()?.observeWith(viewLifecycleOwner) {
             setProgressStatus(it)
         }
 
         viewModel.getError()?.observeWith(viewLifecycleOwner) {
-            setProgressStatus(NetworkState.Failed)
+            setProgressStatus(false)
             toast("error happened ${it.code} ${it.message}")
         }
 
