@@ -90,22 +90,18 @@ dependencies {
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
-    // Rx
-    implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
-    implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttp}"
 
     // Material Dialog
     implementation "com.afollestad.material-dialogs:core:$materialDialog"
-
-    //RxBinding
-    implementation "com.jakewharton.rxbinding4:rxbinding:$rxBinding"
 
     //Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navGraph"
@@ -116,8 +112,6 @@ dependencies {
 
     //Paging 3
     implementation "androidx.paging:paging-runtime:$paging_version"
-    // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:$paging_version"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"

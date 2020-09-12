@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
@@ -21,6 +22,10 @@ import com.android.moviedb.R
 import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -55,10 +60,10 @@ class MovieFragment : BaseFragment() {
 
     override fun initView(savedInstanceState: Bundle?) {
         val movieType = arguments?.getInt(MOVIE_TYPE, 1) ?: 1
+        viewModel.setMovieType(movieType)
         initObservers()
 
         moviesRv.init(movieAdapter, listOf(VerticalSpaceItemDecoration(8.dp2px())))
-        viewModel.getMovies(movieType)
     }
 
     private fun initObservers() {
@@ -68,13 +73,12 @@ class MovieFragment : BaseFragment() {
             toast("error happened ${it.code} ${it.message}")
         }
 
-        viewModel.moviePagingLiveData.observeWith(viewLifecycleOwner) {
-            movieAdapter.submitData(lifecycle, it)
-            Looper.myLooper()?.let { looper ->
-                Handler(looper).postDelayed({
-                    stopShimmer()
-                    moviesRv.show()
-                }, 2000)
+        lifecycleScope.launch {
+            viewModel.moviePagingFlow.collectLatest { pagingData ->
+                movieAdapter.submitData(lifecycle, pagingData)
+                delay(2000)
+                stopShimmer()
+                moviesRv.show()
             }
         }
     }
@@ -98,7 +102,6 @@ class MovieFragment : BaseFragment() {
             .build()
         context?.let { WorkManager.getInstance(it).enqueue(request) }
     }
-
 
     override fun onResume() {
         super.onResume()

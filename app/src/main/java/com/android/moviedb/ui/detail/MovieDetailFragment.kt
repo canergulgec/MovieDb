@@ -31,11 +31,13 @@ class MovieDetailFragment : BaseFragment() {
     private val movieGenresAdapter = MovieGenresAdapter()
     private val movieImagesAdapter = MovieImagesAdapter()
     private val movieVideosAdapter = MovieVideosAdapter()
+    private val adapter = ConcatAdapter(movieVideosAdapter, movieImagesAdapter)
 
     override fun initView(savedInstanceState: Bundle?) {
         initObservers()
         setMovieGenres()
 
+        movieGalleryRv.initPagerSnapHelper(adapter)
         val movieId = arguments?.getInt(Constants.MOVIE_ID)
         viewModel.getMovieDetail(movieId)
         viewModel.getMovieGallery(movieId)
@@ -57,12 +59,12 @@ class MovieDetailFragment : BaseFragment() {
             movieGenresAdapter.submitList(it.genres)
         }
 
-        viewModel.movieGalleryLiveData.observeWith(viewLifecycleOwner) {
-            movieImagesAdapter.submitList(viewModel.movieImageList)
-            movieVideosAdapter.submitList(viewModel.movieVideoList)
+        viewModel.movieImageListLiveData.observeWith(viewLifecycleOwner) {
+            movieImagesAdapter.submitList(it)
+        }
 
-            val adapter = ConcatAdapter(movieVideosAdapter, movieImagesAdapter)
-            movieGalleryRv.initPagerSnapHelper(adapter)
+        viewModel.movieVideoListLiveData.observeWith(viewLifecycleOwner) {
+            movieVideosAdapter.submitList(it)
         }
     }
 

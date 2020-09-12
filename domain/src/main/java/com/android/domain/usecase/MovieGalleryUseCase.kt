@@ -1,26 +1,22 @@
 package com.android.domain.usecase
 
+import com.android.base.Resource
 import com.android.base.UseCase
-import com.android.domain.repository.MovieImagesRepository
-import com.android.domain.repository.MovieVideosRepository
-import io.reactivex.Single
+import com.android.domain.di.IoDispatcher
+import com.android.domain.repository.MovieGalleryRepository
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class MovieGalleryUseCase @Inject constructor(
-    private val imagesRepository: MovieImagesRepository,
-    private val videosRepository: MovieVideosRepository
+    private val galleryRepository: MovieGalleryRepository,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) :
-    UseCase<ArrayList<Any>, Int>() {
+    UseCase<Any, Int>() {
 
-    override fun buildUseCaseObservable(params: Int?): Single<ArrayList<Any>> {
-        val movieGalleryList = arrayListOf<Any>()
-
-        return imagesRepository.getMovieImages(params).flatMap {
-            movieGalleryList.addAll(it.backdrops)
-            videosRepository.getMovieVideos(params).flatMap { videoResponse ->
-                movieGalleryList.addAll(videoResponse.results)
-                Single.just(movieGalleryList)
-            }
-        }
+    override suspend fun buildRequest(params: Int?): Flow<Resource<Any>> {
+        return galleryRepository.getMovieGallery(params)
+            .flowOn(dispatcher)
     }
 }

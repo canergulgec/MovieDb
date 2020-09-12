@@ -1,8 +1,10 @@
 package com.android.domain.repository
 
+import com.android.base.Resource
+import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface MovieDetailRepository {
-    fun getMovieDetail(movieId: Int?): Single<MovieDetailResponse>
+    fun getMovieDetail(movieId: Int?): Flow<Resource<MovieDetailModel>>
 }

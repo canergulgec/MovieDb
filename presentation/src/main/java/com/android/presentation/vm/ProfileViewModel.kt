@@ -3,14 +3,13 @@ package com.android.presentation.vm
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.base.ApiError
-import com.android.base.BaseViewModel
-import com.android.base.NetworkState
-import com.android.base.SharedPreferencesUtils
+import androidx.lifecycle.viewModelScope
+import com.android.base.*
 import com.android.data.Constants
 import com.android.data.model.remote.NewSessionResponse
 import com.android.domain.usecase.NewSessionUseCase
-import io.reactivex.observers.DisposableSingleObserver
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class ProfileViewModel @ViewModelInject constructor(
     private val newSessionUseCase: NewSessionUseCase,
@@ -23,25 +22,24 @@ class ProfileViewModel @ViewModelInject constructor(
     fun createNewSession() {
         setNetworkStatus(NetworkState.Loading)
 
-        add(
-            newSessionUseCase.execute(addBody())
-                .subscribeWith(object : DisposableSingleObserver<NewSessionResponse>() {
-                    override fun onSuccess(t: NewSessionResponse) {
+        viewModelScope.launch {
+            newSessionUseCase.execute(addBody()).collect {
+                when (it) {
+                    is Resource.Loading -> setNetworkStatus(NetworkState.Loading)
+                    is Resource.Success -> {
                         setNetworkStatus(NetworkState.Success)
-                        _newSessionLiveData.value = t
+                        _newSessionLiveData.value = it.data
                     }
-
-                    override fun onError(e: Throwable){
-                        //setError(e as ApiError)
-                    }
-                })
-        )
+                    is Resource.Error -> setError(it.apiError)
+                }
+            }
+        }
     }
 
     private fun addBody(): HashMap<String, Any>? {
         return object : LinkedHashMap<String, Any>() {
             init {
-                 put("request_token", preferencesUtils.getData(Constants.ACCESS_TOKEN, ""))
+                put("request_token", preferencesUtils.getData(Constants.ACCESS_TOKEN, ""))
             }
         }
     }

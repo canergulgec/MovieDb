@@ -1,27 +1,30 @@
 package com.android.base.ext
 
 import com.android.base.ApiError
-import io.reactivex.Single
+import com.android.base.Mapper
+import com.android.base.Resource
 import retrofit2.Response
 
-fun <T : Any> Single<Response<T>>.filterResponse(): Single<T> {
-    return this.flatMap {
-        when (it.code()) {
-            401 -> Single.never()
-            in 400..501 -> Single.error<T>(ApiError(it.code(), it.message()))
-            200 -> {
-                if (it.isSuccessful) {
-                    it.body()?.let { body ->
-                        Single.just(body)
-                    } ?: run {
-                        Single.error<T>(ApiError(it.code(), "Response body is null"))
-                    }
-                } else {
-                    Single.just(it.body())
-                }
-            }
-
-            else -> throw  NotImplementedError()
+fun <M : Any> Response<M>.filterResponse(): Resource<M> {
+    return when (this.isSuccessful) {
+        true -> {
+            this.body()?.let {
+                return Resource.Success(it)
+            } ?: return Resource.Error(ApiError(2, "Response body is null"))
         }
+
+        false -> Resource.Error(ApiError(1, "Response is not successful"))
+    }
+}
+
+fun <A, B> Response<A>.filterMapperResponse(mapper: Mapper<A, B>): Resource<B> {
+    return when (this.isSuccessful) {
+        true -> {
+            this.body()?.let {
+                return Resource.Success(mapper.to(it))
+            } ?: return Resource.Error(ApiError(2, "Response body is null"))
+        }
+
+        false -> Resource.Error(ApiError(1, "Response is not successful"))
     }
 }

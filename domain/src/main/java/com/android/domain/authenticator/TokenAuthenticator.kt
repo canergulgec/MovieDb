@@ -1,11 +1,12 @@
 package com.android.domain.authenticator
 
-
+import com.android.base.Resource
 import com.android.base.SharedPreferencesUtils
 import com.android.data.Constants
 import com.android.domain.usecase.NewTokenUseCase
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.runBlocking
 import okhttp3.*
-
 
 class TokenAuthenticator constructor(
     private val prefUtils: SharedPreferencesUtils,
@@ -26,12 +27,22 @@ class TokenAuthenticator constructor(
     }
 
     private fun getNewToken(): String {
-        val newToken: String
-        useCase.executeInAuthenticator().blockingGet().apply {
-            newToken = this.requestToken
-            prefUtils.putData(Constants.ACCESS_TOKEN, newToken)
+        var newToken = ""
+        runBlocking {
+            val accessToken = useCase.execute()
+            accessToken.collect {
+                when (it) {
+                    is Resource.Success -> {
+                        newToken = it.data.requestToken
+                        prefUtils.putData(Constants.ACCESS_TOKEN, newToken)
+                    }
+                    is Resource.Error -> {
+                    }
+                }
+            }
         }
 
         return newToken
     }
 }
+

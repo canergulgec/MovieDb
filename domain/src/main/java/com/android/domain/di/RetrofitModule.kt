@@ -16,7 +16,6 @@ import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -39,11 +38,6 @@ class RetrofitModule {
     @Provides
     fun provideConverterFactory(builder: GsonBuilder): Converter.Factory {
         return GsonConverterFactory.create(builder.create())
-    }
-
-    @Provides
-    fun provideRxConverterFactory(): RxJava2CallAdapterFactory {
-        return RxJava2CallAdapterFactory.create()
     }
 
     @Provides
@@ -104,13 +98,11 @@ class RetrofitModule {
     fun provideRetrofitAuth(
         @Named("BASE_URL") baseUrl: String,
         @AuthApi okHttpClient: OkHttpClient,
-        rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         gsonConverterFactory: Converter.Factory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
@@ -146,13 +138,11 @@ class RetrofitModule {
     fun provideRetrofit(
         @Named("BASE_URL") baseUrl: String,
         okHttpClient: OkHttpClient,
-        rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         gsonConverterFactory: Converter.Factory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .addConverterFactory(gsonConverterFactory)
             .build()
     }

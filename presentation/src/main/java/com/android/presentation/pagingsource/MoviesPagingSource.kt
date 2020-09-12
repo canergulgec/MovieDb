@@ -1,44 +1,45 @@
 package com.android.presentation.pagingsource
 
-import androidx.paging.rxjava2.RxPagingSource
+import androidx.paging.PagingSource
 import com.android.data.Constants
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.Movie
-import com.android.data.model.MovieModel
-import com.android.domain.usecase.NowPlayingMoviesUseCase
-import com.android.domain.usecase.UpcomingMoviesUseCase
-import io.reactivex.Single
+import com.android.domain.repository.NowPlayingMoviesRepository
+import com.android.domain.repository.UpcomingMoviesRepository
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
-    private val nowPlayingMoviesUseCase: NowPlayingMoviesUseCase,
-    private val upcomingMoviesUseCase: UpcomingMoviesUseCase,
+    private val nowPlayingMoviesRepository: NowPlayingMoviesRepository,
+    private val upcomingMoviesRepository: UpcomingMoviesRepository,
     private val movieMapper: MovieMapper,
-) : RxPagingSource<Int, Movie>() {
+) : PagingSource<Int, Movie>() {
 
     private var movieType = Constants.NOW_PLAYING_MOVIES
 
-    override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Movie>> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: 1
 
-        val useCase = if (movieType == Constants.NOW_PLAYING_MOVIES) {
-            nowPlayingMoviesUseCase
+        val repository = if (movieType == Constants.NOW_PLAYING_MOVIES) {
+            nowPlayingMoviesRepository
         } else {
-            upcomingMoviesUseCase
+            upcomingMoviesRepository
         }
 
-        return useCase.execute(getParams(page))
-            .map { movieMapper.to(it) }
-            .map { toLoadResult(it, page) }
-            .onErrorReturn { LoadResult.Error(it) }
-    }
+        return try {
+            repository.getMovies(
+                getParams(page)
+            ).run {
+                val data = movieMapper.to(this)
 
-    private fun toLoadResult(data: MovieModel, page: Int): LoadResult<Int, Movie> {
-        return LoadResult.Page(
-            data = data.movies,
-            prevKey = if (page == 1) null else page - 1,
-            nextKey = if (page == data.total) null else page + 1
-        )
+                LoadResult.Page(
+                    data = data.movies,
+                    prevKey = null,
+                    nextKey = if (page == this.total) null else page + 1
+                )
+            }
+        } catch (e: Exception) {
+            return LoadResult.Error(e)
+        }
     }
 
     fun setCurrentMovieType(movieType: Int) {

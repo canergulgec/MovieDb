@@ -1,8 +1,9 @@
 package com.android.domain.repository
 
+import com.android.base.Resource
 import com.android.data.model.remote.NewSessionResponse
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface NewSessionRepository {
-    fun getNewSession(body: HashMap<String, Any>?): Single<NewSessionResponse>
+    fun getNewSession(body: HashMap<String, Any>?): Flow<Resource<NewSessionResponse>>
 }
