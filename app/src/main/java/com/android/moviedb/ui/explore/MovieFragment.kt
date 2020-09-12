@@ -57,12 +57,12 @@ class MovieFragment : BaseFragment() {
     override fun initView(savedInstanceState: Bundle?) {
         val movieType = arguments?.getInt(MOVIE_TYPE, 1) ?: 1
         viewModel.setMovieType(movieType)
-        initObservers()
+        initPagingFlow()
 
         moviesRv.init(movieAdapter, listOf(VerticalSpaceItemDecoration(8.dp2px())))
     }
 
-    private fun initObservers() {
+    private fun initPagingFlow() {
         lifecycleScope.launch {
             viewModel.moviePagingFlow.collectLatest { pagingData ->
                 movieAdapter.submitData(lifecycle, pagingData)
