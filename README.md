@@ -18,6 +18,7 @@ The goal of this project is showing a modern approach with using the latest tech
 
 - Repository
 - Observer
+- UseCase
 - Adapter
 
 ### Technology Stack
