@@ -1,5 +1,7 @@
 # MovieDb
 
+The goal of this project is showing a modern approach with using the latest technology stack of Android
+
 ### Layers
 
 - App module
@@ -30,6 +32,12 @@
 - Retrofit Authenticator
 - Navigation Component
 - DataBinding
+- Coil
 - ConcatAdapter
 - FlexBox
 - Shimmer
+
+#### Roadmap
+
+- [ ] Test module will be added
+- [ ] Search and Profile screen will be added 
