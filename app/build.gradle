@@ -126,9 +126,4 @@ dependencies {
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
-
-    //Test
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

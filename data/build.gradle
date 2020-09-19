@@ -46,5 +46,6 @@ dependencies {
     // Service Manager
     implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
 
+    //Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
 }
