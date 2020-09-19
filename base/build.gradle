@@ -65,12 +65,16 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
 
+    //Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
 
+    //Coil
     implementation "io.coil-kt:coil:${coil}"
 
+    //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Paging 3
