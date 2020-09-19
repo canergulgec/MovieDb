@@ -9,6 +9,7 @@ The goal of this project is showing a modern approach with using the latest tech
 - Data module
 - Domain module
 - Presentation module
+- Test module
 
 ### Architecture
 
@@ -32,6 +33,7 @@ The goal of this project is showing a modern approach with using the latest tech
 - Retrofit 2
 - Retrofit Authenticator
 - Navigation Component
+- Mockito
 - DataBinding
 - Coil
 - ConcatAdapter
