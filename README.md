@@ -42,5 +42,5 @@ The goal of this project is showing a modern approach with using the latest tech
 
 #### Roadmap
 
-- [ ] Test module will be added
+- [x] Test module will be added
 - [ ] Search and Profile screen will be added 
