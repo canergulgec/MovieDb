@@ -16,6 +16,7 @@ import com.android.presentation.adapter.paging.MoviesPagingAdapter
 import com.android.presentation.utils.VerticalSpaceItemDecoration
 import com.android.presentation.vm.MovieViewModel
 import com.android.moviedb.R
+import com.android.presentation.adapter.paging.MovieLoadStateAdapter
 import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -59,7 +60,16 @@ class MovieFragment : BaseFragment() {
         viewModel.setMovieType(movieType)
         initPagingFlow()
 
-        moviesRv.init(movieAdapter, listOf(VerticalSpaceItemDecoration(8.dp2px())))
+        /**
+         * Span count should be 1 when loader state is visible //TODO
+         */
+        moviesRv.apply {
+            addItemDecoration(VerticalSpaceItemDecoration(8.dp2px()))
+            setHasFixedSize(true)
+            adapter = movieAdapter.withLoadStateFooter(
+                footer = MovieLoadStateAdapter { movieAdapter.retry() }
+            )
+        }
     }
 
     private fun initPagingFlow() {
