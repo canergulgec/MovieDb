@@ -17,10 +17,9 @@ The goal of this project is showing a modern approach with using the latest tech
 
 ### Patterns
 
-- Repository
-- Observer
-- UseCase
-- Adapter
+- [Repository](https://developer.android.com/jetpack/guide)
+- [Observer](https://medium.com/better-programming/everything-to-should-understand-about-livedata-507dd83adea7)
+- [UseCase](https://caminao.blog/how-to-implement-symbolic-representations/patterns/functional-patterns/use-case-patterns/)
 
 ### Technology Stack
 
@@ -37,6 +36,7 @@ The goal of this project is showing a modern approach with using the latest tech
 - [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
 - [FlexBox](https://github.com/google/flexbox-layout)
 - [Shimmer](https://github.com/facebook/shimmer-android)
+- [Mockito](https://site.mockito.org)
 
 #### Roadmap
 
