@@ -24,7 +24,7 @@ The goal of this project is showing a modern approach with using the latest tech
 
 ### Technology Stack
 
-- Kotlin
+- [Kotlin](https://kotlinlang.org)
 - Coroutines Flow
 - RxJava 2
 - Dagger Hilt
