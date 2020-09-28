@@ -1,5 +1,8 @@
 # MovieDb
 
+Inline-style: 
+![alt text](https://cdn-images-1.medium.com/max/1200/1*vIR7iO-1GnY2xYxL6NiYkw.png "Logo Title Text 1")
+
 The goal of this project is showing a modern approach with using the latest technology stack of Android
 
 ### Layers
