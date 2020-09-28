@@ -25,7 +25,7 @@ The goal of this project is showing a modern approach with using the latest tech
 ### Technology Stack
 
 - [Kotlin](https://kotlinlang.org)
-- Coroutines Flow
+- [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
 - RxJava 2
 - Dagger Hilt
 - Viewpager 2
