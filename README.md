@@ -1,6 +1,6 @@
 The goal of this project is showing a modern approach with using the latest technology stack of Android
 
-:dizzy: Powered by [MovieDb](https://www.themoviedb.org)
+:dizzy: Powered by [TheMovieDb](https://www.themoviedb.org)
  
 ![alt text](https://cdn-images-1.medium.com/max/1200/1*vIR7iO-1GnY2xYxL6NiYkw.png)
 
