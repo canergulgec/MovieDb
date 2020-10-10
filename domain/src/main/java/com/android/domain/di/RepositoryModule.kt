@@ -21,9 +21,6 @@ abstract class RepositoryModule {
     abstract fun provideNewTokenRepositoryImp(repositoryImp: NewTokenRepositoryImp): NewTokenRepository
 
     @Binds
-    abstract fun provideNewSessionRepositoryImp(repositoryImp: NewSessionRepositoryImp): NewSessionRepository
-
-    @Binds
     abstract fun provideMovieDetailRepositoryImp(repositoryImp: MovieDetailRepositoryImp): MovieDetailRepository
 
     @ExperimentalCoroutinesApi

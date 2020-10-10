@@ -63,4 +63,7 @@ dependencies {
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStore"
 }

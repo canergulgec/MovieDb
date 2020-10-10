@@ -6,27 +6,29 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.*
 import com.android.data.Constants
-import com.android.data.model.remote.NewSessionResponse
-import com.android.domain.usecase.NewSessionUseCase
+import com.android.data.utils.DataStoreUtils
+import com.android.data.utils.SharedPreferencesUtils
+import com.android.domain.usecase.NewTokenUseCase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class ProfileViewModel @ViewModelInject constructor(
-    private val newSessionUseCase: NewSessionUseCase,
-    private val preferencesUtils: SharedPreferencesUtils
+    private val newTokenUseCase: NewTokenUseCase,
+    private val preferencesUtils: SharedPreferencesUtils,
+    private val prefUtils: DataStoreUtils
 ) : BaseViewModel() {
 
-    private val _newSessionLiveData: MutableLiveData<NewSessionResponse> = MutableLiveData()
-    val newSessionLiveData: LiveData<NewSessionResponse> get() = _newSessionLiveData
+    private val _newSessionLiveData: MutableLiveData<String> = MutableLiveData()
+    val newSessionLiveData: LiveData<String> get() = _newSessionLiveData
 
-    fun createNewSession() {
+    fun getNewToken() {
         viewModelScope.launch {
-            newSessionUseCase.execute(addBody()).collect {
+            newTokenUseCase.execute().collect {
                 when (it) {
                     is Resource.Loading -> setLoadingStatus(true)
                     is Resource.Success -> {
                         setLoadingStatus(false)
-                        _newSessionLiveData.value = it.data
+                        _newSessionLiveData.value = it.data.requestToken
                     }
                     is Resource.Error -> setError(it.apiError)
                 }
@@ -34,10 +36,20 @@ class ProfileViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun addBody(): HashMap<String, Any>? {
-        return object : LinkedHashMap<String, Any>() {
-            init {
-                put("request_token", preferencesUtils.getData(Constants.ACCESS_TOKEN, ""))
+    fun getNewTokenWithDataStore() {
+        viewModelScope.launch {
+            prefUtils.getData(Constants.ACCESS_TOKEN_DATA_STORE).collect { _ ->
+                newTokenUseCase.execute()
+                    .collect {
+                        when (it) {
+                            is Resource.Loading -> setLoadingStatus(true)
+                            is Resource.Success -> {
+                                setLoadingStatus(false)
+                                _newSessionLiveData.value = it.data.requestToken
+                            }
+                            is Resource.Error -> setError(it.apiError)
+                        }
+                    }
             }
         }
     }

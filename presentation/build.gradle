@@ -84,4 +84,7 @@ dependencies {
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStore"
 }

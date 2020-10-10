@@ -1,7 +1,8 @@
 package com.android.domain.di
 
-import com.android.base.SharedPreferencesUtils
+import com.android.data.utils.SharedPreferencesUtils
 import com.android.data.Constants
+import com.android.data.utils.DataStoreUtils
 import com.android.domain.BuildConfig
 import com.android.domain.authenticator.TokenAuthenticator
 import com.android.domain.di.qualifier.AuthApi
@@ -110,9 +111,10 @@ class RetrofitModule {
     @Provides
     fun provideTokenAuthenticator(
         prefUtils: SharedPreferencesUtils,
-        tokenUseCase: NewTokenUseCase
+        tokenUseCase: NewTokenUseCase,
+        dataStore: DataStoreUtils
     ): Authenticator {
-        return TokenAuthenticator(prefUtils, tokenUseCase)
+        return TokenAuthenticator(prefUtils, tokenUseCase, dataStore)
     }
 
     @Provides

@@ -28,11 +28,6 @@ class ApiModule {
     }
 
     @Provides
-    fun provideNewSessionApiService(retrofit: Retrofit): NewSessionApi {
-        return retrofit.create(NewSessionApi::class.java)
-    }
-
-    @Provides
     fun provideMovieDetailApiService(retrofit: Retrofit): MovieDetailApi {
         return retrofit.create(MovieDetailApi::class.java)
     }

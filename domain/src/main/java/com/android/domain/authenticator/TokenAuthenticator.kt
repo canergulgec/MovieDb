@@ -1,7 +1,8 @@
 package com.android.domain.authenticator
 
+import com.android.data.utils.DataStoreUtils
 import com.android.base.Resource
-import com.android.base.SharedPreferencesUtils
+import com.android.data.utils.SharedPreferencesUtils
 import com.android.data.Constants
 import com.android.domain.usecase.NewTokenUseCase
 import kotlinx.coroutines.flow.collect
@@ -10,7 +11,8 @@ import okhttp3.*
 
 class TokenAuthenticator constructor(
     private val prefUtils: SharedPreferencesUtils,
-    private val useCase: NewTokenUseCase
+    private val useCase: NewTokenUseCase,
+    private val storeUtils: DataStoreUtils
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
@@ -35,6 +37,8 @@ class TokenAuthenticator constructor(
                     is Resource.Success -> {
                         newToken = it.data.requestToken
                         prefUtils.putData(Constants.ACCESS_TOKEN, newToken)
+                        //dataStore
+                        storeUtils.saveData(Constants.ACCESS_TOKEN_DATA_STORE, newToken)
                     }
                     is Resource.Error -> {
                     }

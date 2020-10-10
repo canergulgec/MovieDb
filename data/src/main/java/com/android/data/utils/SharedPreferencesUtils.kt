@@ -1,4 +1,4 @@
-package com.android.base
+package com.android.data.utils
 
 import android.content.SharedPreferences
 import javax.inject.Inject
