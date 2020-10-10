@@ -35,6 +35,7 @@ The goal of this project is showing a modern approach with using the latest tech
 - [Retrofit Authenticator](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-authenticator/)
 - [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Coil](https://github.com/coil-kt/coil)
+- [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 - [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
 - [FlexBox](https://github.com/google/flexbox-layout)
 - [Shimmer](https://github.com/facebook/shimmer-android)
