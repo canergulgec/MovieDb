@@ -12,11 +12,10 @@ abstract class UseCase<M, Params> {
 
     abstract suspend fun buildRequest(params: Params?): Flow<Resource<M>>
 
-    suspend fun execute(params: Params? = null): Flow<Resource<M>> {
-        return try {
+    suspend fun execute(params: Params? = null) =
+        try {
             buildRequest(params)
         } catch (exception: Exception) {
             flow { emit(Resource.Error(ApiError(1, exception.message))) }
         }
-    }
 }
