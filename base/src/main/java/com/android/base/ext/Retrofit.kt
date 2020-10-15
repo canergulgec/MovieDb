@@ -10,10 +10,10 @@ fun <M : Any> Response<M>.filterResponse(): Resource<M> {
         true -> {
             this.body()?.let {
                 return Resource.Success(it)
-            } ?: return Resource.Error(ApiError(2, "Response body is null"))
+            } ?: return Resource.Error(ApiError(code(), "Response body is null"))
         }
 
-        false -> Resource.Error(ApiError(1, "Response is not successful"))
+        false -> Resource.Error(ApiError(code(), "Response is not successful"))
     }
 }
 
@@ -22,9 +22,9 @@ fun <A, B> Response<A>.filterMapperResponse(mapper: Mapper<A, B>): Resource<B> {
         true -> {
             this.body()?.let {
                 return Resource.Success(mapper.to(it))
-            } ?: return Resource.Error(ApiError(2, "Response body is null"))
+            } ?: return Resource.Error(ApiError(code(), "Response body is null"))
         }
 
-        false -> Resource.Error(ApiError(1, "Response is not successful"))
+        false -> Resource.Error(ApiError(code(), "Response is not successful"))
     }
 }
