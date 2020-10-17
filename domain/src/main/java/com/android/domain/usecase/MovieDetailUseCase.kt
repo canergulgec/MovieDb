@@ -12,8 +12,7 @@ import javax.inject.Inject
 class MovieDetailUseCase @Inject constructor(
     private val apiRepository: MovieDetailRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
-) :
-    UseCase<MovieDetailModel, Int?>() {
+) : UseCase<MovieDetailModel, Int?>() {
 
     override suspend fun buildRequest(params: Int?): Flow<Resource<MovieDetailModel>> {
         return apiRepository.getMovieDetail(params)

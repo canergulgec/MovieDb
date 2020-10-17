@@ -1,7 +1,6 @@
 package com.android.domain.repository
 
 import com.android.base.Mapper
-import com.android.base.Resource
 import com.android.base.ext.filterMapperResponse
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
@@ -15,7 +14,6 @@ class MovieDetailRepositoryImp @Inject constructor(
 ) : MovieDetailRepository {
 
     override fun getMovieDetail(movieId: Int?) = flow {
-        emit(Resource.Loading)
         val data = apiService.getMovieDetail(movieId)
         emit(data.filterMapperResponse(movieDetailMapper))
     }

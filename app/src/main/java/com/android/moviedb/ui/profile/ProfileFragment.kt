@@ -10,11 +10,13 @@ import com.android.data.Constants
 import com.android.data.utils.DataStoreUtils
 import com.android.presentation.vm.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class ProfileFragment : BaseFragment() {
 
     @Inject

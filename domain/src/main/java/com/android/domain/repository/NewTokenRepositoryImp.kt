@@ -1,6 +1,5 @@
 package com.android.domain.repository
 
-import com.android.base.Resource
 import com.android.base.ext.filterResponse
 import com.android.domain.api.NewTokenApi
 import kotlinx.coroutines.flow.flow
@@ -11,7 +10,6 @@ class NewTokenRepositoryImp @Inject constructor(
 ) : NewTokenRepository {
 
     override fun getNewToken() = flow {
-        emit(Resource.Loading)
         val data = apiService.getNewToken()
         emit(data.filterResponse())
     }

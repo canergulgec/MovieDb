@@ -13,8 +13,7 @@ import javax.inject.Inject
 class NewTokenUseCase @Inject constructor(
     private val apiRepository: NewTokenRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
-) :
-    UseCase<TokenResponse, HashMap<String, Any>>() {
+) : UseCase<TokenResponse, HashMap<String, Any>>() {
 
     override suspend fun buildRequest(params: HashMap<String, Any>?): Flow<Resource<TokenResponse>> {
         return apiRepository.getNewToken()

@@ -9,9 +9,11 @@ import com.android.data.Constants
 import com.android.data.utils.DataStoreUtils
 import com.android.data.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class ProfileViewModel @ViewModelInject constructor(
     private val newTokenUseCase: NewTokenUseCase,
     private val preferencesUtils: SharedPreferencesUtils,

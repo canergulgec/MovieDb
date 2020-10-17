@@ -12,8 +12,7 @@ import javax.inject.Inject
 class MovieGalleryUseCase @Inject constructor(
     private val galleryRepository: MovieGalleryRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
-) :
-    UseCase<Any, Int>() {
+) : UseCase<Any, Int>() {
 
     override suspend fun buildRequest(params: Int?): Flow<Resource<Any>> {
         return galleryRepository.getMovieGallery(params)

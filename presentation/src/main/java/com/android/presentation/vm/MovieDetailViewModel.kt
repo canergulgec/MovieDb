@@ -12,9 +12,11 @@ import com.android.data.model.remote.MovieVideosResponse
 import com.android.data.model.remote.VideoItem
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.domain.usecase.MovieGalleryUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class MovieDetailViewModel @ViewModelInject constructor(
     private val movieDetailUseCase: MovieDetailUseCase,
     private val movieGalleryUseCase: MovieGalleryUseCase
