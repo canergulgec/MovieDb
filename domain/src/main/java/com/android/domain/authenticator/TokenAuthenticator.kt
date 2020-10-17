@@ -5,10 +5,12 @@ import com.android.base.Resource
 import com.android.data.utils.SharedPreferencesUtils
 import com.android.data.Constants
 import com.android.domain.usecase.NewTokenUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import okhttp3.*
 
+@ExperimentalCoroutinesApi
 class TokenAuthenticator constructor(
     private val prefUtils: SharedPreferencesUtils,
     private val useCase: NewTokenUseCase,

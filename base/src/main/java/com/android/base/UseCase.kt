@@ -2,7 +2,7 @@ package com.android.base
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 
 /**
@@ -16,11 +16,9 @@ abstract class UseCase<M, Params> {
 
     @ExperimentalCoroutinesApi
     suspend fun execute(params: Params? = null) =
-        try {
-            buildRequest(params).onStart {
-                emit(Resource.Loading)
-            }
-        } catch (exception: Exception) {
-            flow { emit(Resource.Error(ApiError(1, exception.message))) }
+        buildRequest(params).onStart {
+            emit(Resource.Loading)
+        }.catch {
+            emit(Resource.Error(ApiError(1)))
         }
 }

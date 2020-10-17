@@ -13,6 +13,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -108,6 +109,7 @@ class RetrofitModule {
             .build()
     }
 
+    @ExperimentalCoroutinesApi
     @Provides
     fun provideTokenAuthenticator(
         prefUtils: SharedPreferencesUtils,
