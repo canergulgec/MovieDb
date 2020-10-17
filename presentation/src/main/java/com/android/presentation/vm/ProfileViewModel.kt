@@ -11,6 +11,8 @@ import com.android.data.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
@@ -24,18 +26,16 @@ class ProfileViewModel @ViewModelInject constructor(
     val newSessionLiveData: LiveData<String> get() = _newSessionLiveData
 
     fun getNewToken() {
-        viewModelScope.launch {
-            newTokenUseCase.execute().collect {
-                when (it) {
-                    is Resource.Loading -> setLoadingStatus(true)
-                    is Resource.Success -> {
-                        setLoadingStatus(false)
-                        _newSessionLiveData.value = it.data.requestToken
-                    }
-                    is Resource.Error -> setError(it.apiError)
+        newTokenUseCase.execute().onEach {
+            when (it) {
+                is Resource.Loading -> setLoadingStatus(true)
+                is Resource.Success -> {
+                    setLoadingStatus(false)
+                    _newSessionLiveData.value = it.data.requestToken
                 }
+                is Resource.Error -> setError(it.apiError)
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     fun getNewTokenWithDataStore() {

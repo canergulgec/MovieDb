@@ -15,7 +15,7 @@ class NewTokenUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : UseCase<TokenResponse, HashMap<String, Any>>() {
 
-    override suspend fun buildRequest(params: HashMap<String, Any>?): Flow<Resource<TokenResponse>> {
+    override fun buildRequest(params: HashMap<String, Any>?): Flow<Resource<TokenResponse>> {
         return apiRepository.getNewToken()
             .flowOn(dispatcher)
     }

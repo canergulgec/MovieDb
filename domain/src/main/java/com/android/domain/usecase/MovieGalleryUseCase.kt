@@ -14,7 +14,7 @@ class MovieGalleryUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : UseCase<Any, Int>() {
 
-    override suspend fun buildRequest(params: Int?): Flow<Resource<Any>> {
+    override  fun buildRequest(params: Int?): Flow<Resource<Any>> {
         return galleryRepository.getMovieGallery(params)
             .flowOn(dispatcher)
     }

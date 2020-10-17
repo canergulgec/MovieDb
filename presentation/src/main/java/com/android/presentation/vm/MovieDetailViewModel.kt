@@ -13,8 +13,8 @@ import com.android.data.model.remote.VideoItem
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.domain.usecase.MovieGalleryUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @ExperimentalCoroutinesApi
 class MovieDetailViewModel @ViewModelInject constructor(
@@ -27,33 +27,29 @@ class MovieDetailViewModel @ViewModelInject constructor(
     val movieVideoListLiveData: MutableLiveData<List<VideoItem>> = MutableLiveData()
 
     fun getMovieDetail(movieId: Int?) {
-        viewModelScope.launch {
-            movieDetailUseCase.execute(movieId).collect {
-                when (it) {
-                    is Resource.Loading -> setLoadingStatus(true)
-                    is Resource.Success -> {
-                        setLoadingStatus(false)
-                        movieDetailLiveData.value = it.data
-                    }
-                    is Resource.Error -> setError(it.apiError)
+        movieDetailUseCase.execute(movieId).onEach {
+            when (it) {
+                is Resource.Loading -> setLoadingStatus(true)
+                is Resource.Success -> {
+                    setLoadingStatus(false)
+                    movieDetailLiveData.value = it.data
                 }
+                is Resource.Error -> setError(it.apiError)
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     fun getMovieGallery(movieId: Int?) {
-        viewModelScope.launch {
-            movieGalleryUseCase.execute(movieId).collect {
-                when (it) {
-                    is Resource.Loading -> setLoadingStatus(true)
-                    is Resource.Success -> {
-                        setLoadingStatus(false)
-                        apartMovieGalleryList(it.data)
-                    }
-                    is Resource.Error -> setError(it.apiError)
+        movieGalleryUseCase.execute(movieId).onEach {
+            when (it) {
+                is Resource.Loading -> setLoadingStatus(true)
+                is Resource.Success -> {
+                    setLoadingStatus(false)
+                    apartMovieGalleryList(it.data)
                 }
+                is Resource.Error -> setError(it.apiError)
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     private fun apartMovieGalleryList(movieGalleryItem: Any) {

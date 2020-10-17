@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.onStart
  */
 abstract class UseCase<M, Params> {
 
-    abstract suspend fun buildRequest(params: Params?): Flow<Resource<M>>
+    abstract fun buildRequest(params: Params?): Flow<Resource<M>>
 
     @ExperimentalCoroutinesApi
-    suspend fun execute(params: Params? = null) =
+    fun execute(params: Params? = null) =
         buildRequest(params).onStart {
             emit(Resource.Loading)
         }.catch {
