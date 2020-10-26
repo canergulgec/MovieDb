@@ -2,6 +2,7 @@ package com.android.base
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 
 /**
@@ -17,5 +18,7 @@ abstract class UseCase<M, Params> {
     fun execute(params: Params? = null) =
         buildRequest(params).onStart {
             emit(Resource.Loading)
+        }.catch {
+            emit(Resource.Error(ApiError(4)))
         }
 }
