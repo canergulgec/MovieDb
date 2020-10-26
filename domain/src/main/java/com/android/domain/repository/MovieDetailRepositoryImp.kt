@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class MovieDetailRepositoryImp @Inject constructor(
     private val apiService: MovieDetailApi,
-    private val movieDetailMapper: Mapper<MovieDetailResponse,MovieDetailModel>,
+    private val movieDetailMapper: Mapper<MovieDetailResponse, MovieDetailModel>,
 ) : MovieDetailRepository {
 
     override fun getMovieDetail(movieId: Int?) = flow {
