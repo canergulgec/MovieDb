@@ -1,6 +1,6 @@
 package com.android.data
 
-import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.preferences.core.preferencesKey
 
 object Constants {
     const val API_KEY = "e10ca2c86a2aa68b44a0feb7a5f33b89"

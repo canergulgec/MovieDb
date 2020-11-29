@@ -61,7 +61,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -111,7 +111,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber"
 
     //Paging 3
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
