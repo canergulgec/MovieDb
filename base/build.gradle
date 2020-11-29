@@ -50,7 +50,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -74,5 +74,5 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Paging 3
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }

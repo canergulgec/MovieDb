@@ -61,7 +61,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -115,9 +115,9 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber"
 
     //Paging 3
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
@@ -134,7 +134,7 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
     //Test
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

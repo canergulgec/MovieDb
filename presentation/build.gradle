@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
 
     //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -75,9 +75,9 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
 
     //Paging 3
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
 
     //Viewpager 2
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
