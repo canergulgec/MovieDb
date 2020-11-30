@@ -37,16 +37,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
-
-    //
-    testImplementation "org.mockito:mockito-inline:$mockito"
-    implementation "org.mockito:mockito-core:$mockito"
-    testImplementation "androidx.arch.core:core-testing:$arch"
-    //
-
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
+    testImplementation "org.mockito:mockito-inline:$mockito"
+    implementation "org.mockito:mockito-core:$mockito"
+    testImplementation "androidx.arch.core:core-testing:$arch"
+
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
 }
