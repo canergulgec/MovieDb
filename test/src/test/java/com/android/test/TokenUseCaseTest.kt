@@ -5,6 +5,7 @@ import com.android.base.Resource
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
+import com.android.test.util.MainCoroutineScopeRule
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi

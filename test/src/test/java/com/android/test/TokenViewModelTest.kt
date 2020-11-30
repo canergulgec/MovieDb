@@ -9,6 +9,8 @@ import com.android.data.utils.SharedPreferencesUtils
 import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
+import com.android.test.util.MainCoroutineScopeRule
+import com.android.test.util.getOrAwaitValue
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
