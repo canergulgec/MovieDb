@@ -19,11 +19,13 @@ class MovieGalleryRepositoryImp @Inject constructor(
     override fun getMovieGallery(movieId: Int?): Flow<Resource<Any>> {
         val images = flow {
             val data = imageApiService.getMovieImages(movieId)
+            emit(Resource.Loading)
             emit(data.filterResponse())
         }
 
         val videos = flow {
             val data = videoApiService.getMovieVideos(movieId)
+            emit(Resource.Loading)
             emit(data.filterResponse())
         }
 
