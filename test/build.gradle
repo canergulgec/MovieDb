@@ -45,4 +45,8 @@ dependencies {
     implementation "org.mockito:mockito-core:$mockito"
     testImplementation "androidx.arch.core:core-testing:$arch"
     //
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.core:core-ktx:$core_ktx"
 }
