@@ -17,7 +17,7 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -52,7 +52,7 @@ class TokenViewModelTest {
     }
 
     @Test
-    fun `new token flow emits successfully with argument captor`() = runBlockingTest {
+    fun `new token flow emits successfully with argument captor`() = runBlocking {
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading)
@@ -70,7 +70,7 @@ class TokenViewModelTest {
     }
 
     @Test
-    fun `new token flow emits successfully with liveData util`() = runBlockingTest {
+    fun `new token flow emits successfully with liveData util`() = runBlocking {
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading)
