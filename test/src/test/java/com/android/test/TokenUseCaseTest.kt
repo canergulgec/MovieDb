@@ -11,7 +11,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -35,7 +35,7 @@ class TokenUseCaseTest {
     }
 
     @Test
-    fun `new token flow emits successfully`() = runBlocking {
+    fun `new token flow emits successfully`() = runBlockingTest {
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading)
