@@ -1,14 +1,12 @@
 package com.caner.common.ext
 
 import android.widget.ImageView
-import coil.api.load
+import coil.load
 import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
 
 fun ImageView.loadImage(path: String?) {
-    load(path) {
-        crossfade(true)
-    }
+    load(path)
 }
 
 fun ImageView.loadRoundedCornerImage(path: String?, radius: Float) {
