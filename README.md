@@ -16,6 +16,7 @@ The goal of this project is showing a modern approach with using the latest tech
 ### Architecture
 
 - MVVM
+- Single activity architecture
 
 ### Patterns
 
