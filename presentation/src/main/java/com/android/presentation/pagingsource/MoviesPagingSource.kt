@@ -26,11 +26,8 @@ class MoviesPagingSource @Inject constructor(
         }
 
         return try {
-            repository.getMovies(
-                getParams(page)
-            ).run {
+            repository.getMovies(getParams(page)).run {
                 val data = movieMapper.to(this)
-
                 LoadResult.Page(
                     data = data.movies,
                     prevKey = null,
@@ -46,7 +43,7 @@ class MoviesPagingSource @Inject constructor(
         this.movieType = movieType
     }
 
-    private fun getParams(page: Int): HashMap<String, Any>? {
+    private fun getParams(page: Int): HashMap<String, Any> {
         return object : LinkedHashMap<String, Any>() {
             init {
                 put(Constants.page, page)

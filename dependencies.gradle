@@ -9,15 +9,15 @@ ext {
     multiDex = '1.0.3'
     retrofit = '2.9.0'
     gsonConverter = '2.9.0'
-    okhttp = '4.8.0'
+    okhttp = '4.9.0'
     materialDialog = '3.3.0'
-    navGraph = '2.3.1'
-    recyclerview = '1.2.0-alpha06'
+    navGraph = '2.3.2'
+    recyclerview = '1.2.0-beta01'
     coil = '0.11.0'
     timber = '4.7.1'
     hilt_jetpack_version = '1.0.0-alpha02'
     viewpager2 = '1.0.0'
-    paging_version = '3.0.0-alpha09'
+    paging_version = '3.0.0-alpha10'
     stethoVersion = '1.5.1'
     flexBox = '2.0.1'
     shimmer = '0.5.0'
@@ -27,5 +27,5 @@ ext {
     mockito = "3.3.3"
     arch = "2.1.0"
     junit = "4.13.1"
-    dataStore = "1.0.0-alpha04"
+    dataStore = "1.0.0-alpha05"
 }
