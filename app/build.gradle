@@ -122,9 +122,6 @@ dependencies {
     //FlexBox
     implementation "com.google.android:flexbox:$flexBox"
 
-    //Shimmer
-    implementation "com.facebook.shimmer:shimmer:$shimmer"
-
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"

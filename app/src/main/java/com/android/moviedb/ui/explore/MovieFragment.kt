@@ -20,7 +20,6 @@ import com.android.presentation.adapter.paging.MovieLoadStateAdapter
 import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -57,9 +56,10 @@ class MovieFragment : BaseFragment() {
          */
         moviesRv.apply {
             addItemDecoration(VerticalSpaceItemDecoration(8.dp2px()))
-            setHasFixedSize(true)
-            adapter = movieAdapter.withLoadStateFooter(
-                footer = MovieLoadStateAdapter { movieAdapter.retry() }
+            adapter = movieAdapter.withLoadStateAll(
+                refresh = MovieLoadStateAdapter(movieAdapter::refresh),
+                header = MovieLoadStateAdapter(movieAdapter::retry),
+                footer = MovieLoadStateAdapter(movieAdapter::retry)
             )
         }
     }
@@ -68,16 +68,8 @@ class MovieFragment : BaseFragment() {
         lifecycleScope.launch {
             viewModel.moviePagingFlow.collectLatest { pagingData ->
                 movieAdapter.submitData(lifecycle, pagingData)
-                delay(2000)
-                stopShimmer()
-                moviesRv.show()
             }
         }
-    }
-
-    private fun stopShimmer() {
-        shimmerFrameLayout.stopShimmer()
-        shimmerFrameLayout.hide()
     }
 
     private fun recyclerItemClicked(movie: Movie?) {
@@ -93,15 +85,5 @@ class MovieFragment : BaseFragment() {
             .setInputData(inputs)
             .build()
         context?.let { WorkManager.getInstance(it).enqueue(request) }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        shimmerFrameLayout.startShimmer()
-    }
-
-    override fun onPause() {
-        shimmerFrameLayout.stopShimmer()
-        super.onPause()
     }
 }

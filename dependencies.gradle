@@ -20,7 +20,6 @@ ext {
     paging_version = '3.0.0-alpha10'
     stethoVersion = '1.5.1'
     flexBox = '2.0.1'
-    shimmer = '0.5.0'
     coroutines = "1.3.9"
     coroutines_test = "1.3.4"
     mockito_kotlin2 = "2.2.0"
