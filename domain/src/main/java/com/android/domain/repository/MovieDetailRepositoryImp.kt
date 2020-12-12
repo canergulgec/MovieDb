@@ -2,7 +2,7 @@ package com.android.domain.repository
 
 import com.caner.common.Mapper
 import com.caner.common.Resource
-import com.android.base.ext.filterMapperResponse
+import com.caner.common.ext.filterMapperResponse
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
 import com.android.domain.api.MovieDetailApi

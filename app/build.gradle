@@ -6,7 +6,7 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "com.android.moviedb"
@@ -58,7 +58,6 @@ dependencies {
     implementation project(":domain")
     implementation project(":presentation")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle

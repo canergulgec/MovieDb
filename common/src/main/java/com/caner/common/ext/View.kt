@@ -1,4 +1,4 @@
-package com.android.base.ext
+package com.caner.common.ext
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.View
@@ -6,9 +6,6 @@ import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import coil.api.load
-import coil.transform.RoundedCornersTransformation
 
 inline var View.isVisible: Boolean
     get() = visibility == VISIBLE

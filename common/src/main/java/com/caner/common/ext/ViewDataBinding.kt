@@ -1,4 +1,4 @@
-package com.android.base.ext
+package com.caner.common.ext
 
 import androidx.databinding.ViewDataBinding
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.android.base.BaseFragment
-import com.android.base.ext.*
+import com.caner.common.ext.*
 import com.android.data.Constants
 import com.android.presentation.utils.HorizontalSpaceItemDecoration
 import com.android.presentation.utils.VerticalSpaceItemDecoration

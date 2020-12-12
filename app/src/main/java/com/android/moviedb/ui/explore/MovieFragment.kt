@@ -9,7 +9,7 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.android.base.BaseFragment
-import com.android.base.ext.*
+import com.caner.common.ext.*
 import com.android.data.Constants
 import com.android.data.model.Movie
 import com.android.presentation.adapter.paging.MoviesPagingAdapter

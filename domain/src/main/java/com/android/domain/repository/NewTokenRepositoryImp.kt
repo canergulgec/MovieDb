@@ -1,7 +1,7 @@
 package com.android.domain.repository
 
 import com.caner.common.Resource
-import com.android.base.ext.filterResponse
+import com.caner.common.ext.filterResponse
 import com.android.domain.api.NewTokenApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow

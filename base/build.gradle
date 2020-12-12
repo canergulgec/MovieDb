@@ -1,8 +1,10 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion 30
@@ -33,10 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 kapt {
@@ -48,7 +46,6 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
@@ -66,15 +63,6 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
-
-    //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
-
-    //Recyclerview
-    implementation "androidx.recyclerview:recyclerview:$recyclerview"
-
-    //Coil
-    implementation "io.coil-kt:coil:${coil}"
 
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'

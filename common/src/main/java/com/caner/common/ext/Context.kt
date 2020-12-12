@@ -1,4 +1,4 @@
-package com.android.base.ext
+package com.caner.common.ext
 
 import android.content.Context
 import android.net.ConnectivityManager

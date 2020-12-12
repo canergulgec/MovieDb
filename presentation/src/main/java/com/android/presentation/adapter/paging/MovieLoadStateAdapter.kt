@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.android.base.ext.isVisible
+import com.caner.common.ext.isVisible
 import com.android.presentation.R
 import kotlinx.android.synthetic.main.load_state_view.view.*
 
