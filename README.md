@@ -8,6 +8,7 @@ The goal of this project is showing a modern approach with using the latest tech
 
 - App module
 - Base module
+- Common module
 - Data module
 - Domain module
 - Presentation module
