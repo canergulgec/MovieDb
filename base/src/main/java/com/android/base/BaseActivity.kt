@@ -3,7 +3,7 @@ package com.android.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import com.android.base.widget.CustomProgressDialog
+import com.caner.common.widget.CustomProgressDialog
 
 abstract class BaseActivity : AppCompatActivity() {
 
