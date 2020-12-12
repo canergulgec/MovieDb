@@ -1,5 +1,7 @@
 package com.android.base
 
+import com.caner.common.ApiError
+import com.caner.common.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -9,7 +11,7 @@ import kotlinx.coroutines.flow.catch
  * [M] -> Response Model Object
  * [Params] -> Request Parameters
  */
-abstract class UseCase<M, Params> {
+abstract class BaseUseCase<M, Params> {
 
     abstract fun buildRequest(params: Params?): Flow<Resource<M>>
 

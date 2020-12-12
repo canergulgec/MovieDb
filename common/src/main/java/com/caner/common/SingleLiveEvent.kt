@@ -1,4 +1,4 @@
-package com.android.base
+package com.caner.common
 
 import android.util.Log
 import androidx.annotation.MainThread

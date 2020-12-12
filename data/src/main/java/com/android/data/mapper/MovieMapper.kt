@@ -1,6 +1,6 @@
 package com.android.data.mapper
 
-import com.android.base.Mapper
+import com.caner.common.Mapper
 import com.android.data.model.*
 import com.android.data.model.remote.MovieResponseItem
 import com.android.data.model.remote.MoviesResponse
@@ -29,7 +29,7 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
                         it.voteAverage,
                         it.overview,
                         it.releaseDate?.let { date ->
-                            SimpleDateFormat("YYYY-mm-dd", Locale.getDefault()).format(
+                            SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).format(
                                 date
                             )
 
@@ -60,7 +60,7 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
                         it.overview,
                         it.releaseDate?.let { date ->
                             if (date.isNotEmpty()) {
-                                SimpleDateFormat("YYYY-mm-dd", Locale.getDefault()).parse(
+                                SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(
                                     date
                                 )
                             } else {

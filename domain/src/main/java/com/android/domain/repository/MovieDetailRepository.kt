@@ -1,6 +1,6 @@
 package com.android.domain.repository
 
-import com.android.base.Resource
+import com.caner.common.Resource
 import com.android.data.model.MovieDetailModel
 import kotlinx.coroutines.flow.Flow
 

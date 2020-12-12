@@ -1,7 +1,7 @@
 package com.android.domain.authenticator
 
 import com.android.data.utils.DataStoreUtils
-import com.android.base.Resource
+import com.caner.common.Resource
 import com.android.data.utils.SharedPreferencesUtils
 import com.android.data.Constants
 import com.android.domain.usecase.NewTokenUseCase
@@ -35,15 +35,11 @@ class TokenAuthenticator constructor(
         runBlocking {
             val accessToken = useCase.execute()
             accessToken.collect {
-                when (it) {
-                    is Resource.Success -> {
-                        newToken = it.data.requestToken
-                        prefUtils.putData(Constants.ACCESS_TOKEN, newToken)
-                        //dataStore
-                        storeUtils.saveData(Constants.ACCESS_TOKEN_DATA_STORE, newToken)
-                    }
-                    is Resource.Error -> {
-                    }
+                if (it is Resource.Success) {
+                    newToken = it.data.requestToken
+                    prefUtils.putData(Constants.ACCESS_TOKEN, newToken)
+                    //dataStore
+                    storeUtils.saveData(Constants.ACCESS_TOKEN_DATA_STORE, newToken)
                 }
             }
         }

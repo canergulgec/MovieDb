@@ -2,6 +2,8 @@ package com.android.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.caner.common.ApiError
+import com.caner.common.SingleLiveEvent
 
 abstract class BaseViewModel : ViewModel() {
 

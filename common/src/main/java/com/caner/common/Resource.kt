@@ -1,4 +1,4 @@
-package com.android.base
+package com.caner.common
 
 sealed class Resource<out T> {
     class Success<T>(val data: T) : Resource<T>()

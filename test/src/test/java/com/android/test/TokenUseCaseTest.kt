@@ -1,6 +1,6 @@
 package com.android.test
 
-import com.android.base.Resource
+import com.caner.common.Resource
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
@@ -23,17 +23,9 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Provider
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment() {
-
-    @Inject
-    lateinit var navControllerProvider: Provider<NavController>
-
-    private val navController: NavController
-        get() = navControllerProvider.get()
 
     override val layoutId = R.layout.fragment_movies
 
@@ -90,7 +82,7 @@ class MovieFragment : BaseFragment() {
 
     private fun recyclerItemClicked(movie: Movie?) {
         val bundle = bundleOf(Constants.MOVIE_ID to (movie?.movieId ?: 0))
-        navController.navigate(R.id.movieDetailFragment, bundle)
+        findNavController().navigate(R.id.movieDetailFragment, bundle)
         startWorker(movie?.title, movie?.overview)
     }
 

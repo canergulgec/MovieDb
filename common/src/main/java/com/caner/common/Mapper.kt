@@ -1,4 +1,4 @@
-package com.android.base
+package com.caner.common
 
 interface Mapper<T, E> {
 

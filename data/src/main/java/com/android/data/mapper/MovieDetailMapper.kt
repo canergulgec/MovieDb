@@ -1,6 +1,6 @@
 package com.android.data.mapper
 
-import com.android.base.Mapper
+import com.caner.common.Mapper
 import com.android.data.model.Image
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
@@ -8,7 +8,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class MovieDetailMapper @Inject constructor() : Mapper<MovieDetailResponse, MovieDetailModel> {
+class MovieDetailMapper @Inject constructor() :
+    Mapper<MovieDetailResponse, MovieDetailModel> {
 
     override fun from(e: MovieDetailModel): MovieDetailResponse {
         return with(e) {
@@ -27,7 +28,7 @@ class MovieDetailMapper @Inject constructor() : Mapper<MovieDetailResponse, Movi
                 voteAverage,
                 voteCount,
                 releaseDate?.let { date ->
-                    SimpleDateFormat("YYYY-mm-dd", Locale.getDefault()).format(date)
+                    SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).format(date)
                 })
 
         }
@@ -51,7 +52,7 @@ class MovieDetailMapper @Inject constructor() : Mapper<MovieDetailResponse, Movi
                 vote_count,
                 release_date?.let { date ->
                     if (date.isNotEmpty()) {
-                        SimpleDateFormat("YYYY-mm-dd", Locale.getDefault()).parse(
+                        SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(
                             date
                         )
                     } else {

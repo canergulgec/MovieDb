@@ -1,8 +1,8 @@
 package com.android.base.ext
 
-import com.android.base.ApiError
-import com.android.base.Mapper
-import com.android.base.Resource
+import com.caner.common.ApiError
+import com.caner.common.Mapper
+import com.caner.common.Resource
 import retrofit2.Response
 
 fun <M : Any> Response<M>.filterResponse(): Resource<M> {

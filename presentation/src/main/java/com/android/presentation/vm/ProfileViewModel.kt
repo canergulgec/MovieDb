@@ -4,11 +4,12 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.android.base.*
+import com.android.base.BaseViewModel
 import com.android.data.Constants
 import com.android.data.utils.DataStoreUtils
 import com.android.data.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
+import com.caner.common.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn

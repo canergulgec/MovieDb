@@ -1,4 +1,4 @@
-package com.android.base
+package com.caner.common
 
 data class ApiError(
     val code: Int,

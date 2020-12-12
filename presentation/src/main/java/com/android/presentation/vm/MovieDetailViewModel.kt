@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.base.Resource
+import com.caner.common.Resource
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.BackdropItem
 import com.android.data.model.remote.MovieImagesResponse

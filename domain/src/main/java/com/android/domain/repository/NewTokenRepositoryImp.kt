@@ -1,6 +1,6 @@
 package com.android.domain.repository
 
-import com.android.base.Resource
+import com.caner.common.Resource
 import com.android.base.ext.filterResponse
 import com.android.domain.api.NewTokenApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi

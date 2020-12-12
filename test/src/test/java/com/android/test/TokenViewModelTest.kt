@@ -2,7 +2,6 @@ package com.android.test
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.android.base.Resource
 import com.android.data.model.remote.TokenResponse
 import com.android.data.utils.DataStoreUtils
 import com.android.data.utils.SharedPreferencesUtils
@@ -11,6 +10,7 @@ import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
 import com.android.test.util.MainCoroutineScopeRule
 import com.android.test.util.getOrAwaitValue
+import com.caner.common.Resource
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
