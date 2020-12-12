@@ -6,15 +6,14 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.android.base.BaseViewModel
-import com.android.presentation.pagingsource.MoviesPagingSource
+import com.android.domain.paginginterface.MoviesPagingSource
 
 class MovieViewModel @ViewModelInject constructor(
-    private val pagingSource: MoviesPagingSource,
+    private val pagingSource: MoviesPagingSource
 ) : BaseViewModel() {
 
     val moviePagingFlow = Pager(config = PagingConfig(
-        pageSize = 20, enablePlaceholders = true,
-        maxSize = 30, prefetchDistance = 5, initialLoadSize = 40
+        pageSize = 20, enablePlaceholders = false
     ), pagingSourceFactory = { pagingSource }
     ).flow.cachedIn(viewModelScope)
 
