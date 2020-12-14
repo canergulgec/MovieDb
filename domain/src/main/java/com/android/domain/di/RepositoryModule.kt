@@ -5,7 +5,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -23,7 +22,6 @@ abstract class RepositoryModule {
     @Binds
     abstract fun provideMovieDetailRepositoryImp(repositoryImp: MovieDetailRepositoryImp): MovieDetailRepository
 
-    @ExperimentalCoroutinesApi
     @Binds
     abstract fun provideMovieImagesRepositoryImp(repositoryImp: MovieGalleryRepositoryImp): MovieGalleryRepository
 }
