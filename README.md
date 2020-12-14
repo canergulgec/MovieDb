@@ -40,7 +40,6 @@ The goal of this project is showing a modern approach with using the latest tech
 - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 - [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
 - [FlexBox](https://github.com/google/flexbox-layout)
-- [Shimmer](https://github.com/facebook/shimmer-android)
 - [Mockito](https://site.mockito.org)
 
 #### Roadmap
