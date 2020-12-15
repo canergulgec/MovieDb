@@ -1,7 +1,7 @@
 package com.android.domain.usecase
 
 import com.android.base.BaseUseCase
-import com.android.domain.di.IoDispatcher
+import com.android.domain.qualifier.IoDispatcher
 import com.android.domain.repository.MovieGalleryRepository
 import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher

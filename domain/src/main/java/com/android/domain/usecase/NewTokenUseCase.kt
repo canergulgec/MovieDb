@@ -2,7 +2,7 @@ package com.android.domain.usecase
 
 import com.android.base.BaseUseCase
 import com.android.data.model.remote.TokenResponse
-import com.android.domain.di.IoDispatcher
+import com.android.domain.qualifier.IoDispatcher
 import com.android.domain.repository.NewTokenRepository
 import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher

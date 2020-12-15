@@ -1,16 +1,18 @@
 package com.android.domain.di
 
+import com.android.domain.qualifier.DefaultDispatcher
+import com.android.domain.qualifier.IoDispatcher
+import com.android.domain.qualifier.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Qualifier
 
 @InstallIn(SingletonComponent::class)
 @Module
-object CoroutinesModule {
+object DispatcherModule {
 
     @DefaultDispatcher
     @Provides
@@ -24,15 +26,3 @@ object CoroutinesModule {
     @Provides
     internal fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 }
-
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class DefaultDispatcher
-
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class IoDispatcher
-
-@Retention(AnnotationRetention.BINARY)
-@Qualifier
-annotation class MainDispatcher

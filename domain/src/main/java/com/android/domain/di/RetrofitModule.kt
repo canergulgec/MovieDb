@@ -5,7 +5,7 @@ import com.android.data.Constants
 import com.android.data.utils.DataStoreUtils
 import com.android.domain.BuildConfig
 import com.android.domain.authenticator.TokenAuthenticator
-import com.android.domain.di.qualifier.AuthApi
+import com.android.domain.qualifier.AuthApi
 import com.android.domain.usecase.NewTokenUseCase
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder

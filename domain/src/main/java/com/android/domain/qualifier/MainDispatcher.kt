@@ -1,7 +1,7 @@
-package com.android.domain.di.qualifier
+package com.android.domain.qualifier
 
 import javax.inject.Qualifier
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier
-annotation class AuthApi
+annotation class MainDispatcher

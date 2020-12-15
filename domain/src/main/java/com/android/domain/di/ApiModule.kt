@@ -1,7 +1,7 @@
 package com.android.domain.di
 
 import com.android.domain.api.*
-import com.android.domain.di.qualifier.AuthApi
+import com.android.domain.qualifier.AuthApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
