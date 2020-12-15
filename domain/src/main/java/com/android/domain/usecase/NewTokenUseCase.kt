@@ -8,6 +8,7 @@ import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class NewTokenUseCase @Inject constructor(
@@ -17,6 +18,7 @@ class NewTokenUseCase @Inject constructor(
 
     override fun buildRequest(params: HashMap<String, Any>?): Flow<Resource<TokenResponse>> {
         return apiRepository.getNewToken()
+            .onStart { emit(Resource.Loading) }
             .flowOn(dispatcher)
     }
 }

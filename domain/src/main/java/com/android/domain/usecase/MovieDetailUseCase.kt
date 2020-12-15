@@ -16,6 +16,7 @@ class MovieDetailUseCase @Inject constructor(
 
     override fun buildRequest(params: Int?): Flow<Resource<MovieDetailModel>> {
         return apiRepository.getMovieDetail(params)
+            .onStart { emit(Resource.Loading) }
             .flowOn(dispatcher)
     }
 }

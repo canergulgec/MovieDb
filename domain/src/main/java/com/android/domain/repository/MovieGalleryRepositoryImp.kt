@@ -1,6 +1,5 @@
 package com.android.domain.repository
 
-import com.caner.common.Resource
 import com.caner.common.ext.filterResponse
 import com.android.domain.api.MovieImagesApi
 import com.android.domain.api.MovieVideosApi
@@ -13,7 +12,6 @@ class MovieGalleryRepositoryImp @Inject constructor(
 ) : MovieGalleryRepository {
 
     override fun getMovieGallery(movieId: Int?) = flow {
-        emit(Resource.Loading)
         val imageData = imageApiService.getMovieImages(movieId)
         val videoData = videoApiService.getMovieVideos(movieId)
 
