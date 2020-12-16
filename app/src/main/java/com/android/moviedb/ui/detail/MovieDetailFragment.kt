@@ -21,7 +21,8 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -48,7 +49,7 @@ class MovieDetailFragment : BaseFragment() {
 
     private fun initObservers() {
         lifecycleScope.launchWhenResumed {
-            viewModel.movieDetailState.collect { resource ->
+            viewModel.movieDetailState.onEach { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         resource.data.apply {
@@ -59,39 +60,31 @@ class MovieDetailFragment : BaseFragment() {
                     }
                     else -> Timber.v("Initial Empty state")
                 }
-            }
-        }
+            }.launchIn(this)
 
-        lifecycleScope.launchWhenResumed {
-            viewModel.movieBackdropState.collect { resource ->
+            viewModel.movieBackdropState.onEach { resource ->
                 when (resource) {
                     is Resource.Success -> movieImagesAdapter.submitList(resource.data)
                     else -> Timber.v("Initial Empty state")
                 }
-            }
-        }
+            }.launchIn(this)
 
-        lifecycleScope.launchWhenResumed {
-            viewModel.movieVideoState.collect { resource ->
+            viewModel.movieVideoState.onEach { resource ->
                 when (resource) {
                     is Resource.Success -> movieVideosAdapter.submitList(resource.data)
                     else -> Timber.v("Initial Empty state")
                 }
-            }
-        }
+            }.launchIn(this)
 
-        lifecycleScope.launchWhenResumed {
-            viewModel.getLoadingStatus().collect {
+            viewModel.getLoadingStatus().onEach {
                 setLoadingStatus(it)
-            }
-        }
+            }.launchIn(this)
 
-        lifecycleScope.launchWhenResumed {
-            viewModel.getError().collect {
+            viewModel.getError().onEach {
                 if (it.code != -1) {
                     toast("error happened ${it.code} ${it.message}")
                 }
-            }
+            }.launchIn(this)
         }
     }
 
