@@ -1,9 +1,9 @@
 package com.android.presentation.vm
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
+import com.android.data.Constants
 import com.caner.common.Resource
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.BackdropItem
@@ -12,50 +12,55 @@ import com.android.data.model.remote.MovieVideosResponse
 import com.android.data.model.remote.VideoItem
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.domain.usecase.MovieGalleryUseCase
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
-@ExperimentalCoroutinesApi
 class MovieDetailViewModel @ViewModelInject constructor(
     private val movieDetailUseCase: MovieDetailUseCase,
     private val movieGalleryUseCase: MovieGalleryUseCase
 ) : BaseViewModel() {
 
-    val movieDetailLiveData: MutableLiveData<MovieDetailModel> = MutableLiveData()
-    val movieImageListLiveData: MutableLiveData<List<BackdropItem>> = MutableLiveData()
-    val movieVideoListLiveData: MutableLiveData<List<VideoItem>> = MutableLiveData()
+    private val _movieDetailState = MutableStateFlow<Resource<MovieDetailModel>>(Resource.Empty)
+    val movieDetailState: StateFlow<Resource<MovieDetailModel>> get() = _movieDetailState
+
+    private val _movieBackdropState = MutableStateFlow<Resource<List<BackdropItem>>>(Resource.Empty)
+    val movieBackdropState: StateFlow<Resource<List<BackdropItem>>> get() = _movieBackdropState
+
+    private val _movieVideoState = MutableStateFlow<Resource<List<VideoItem>>>(Resource.Empty)
+    val movieVideoState: StateFlow<Resource<List<VideoItem>>> get() = _movieVideoState
 
     fun getMovieDetail(movieId: Int?) {
-        movieDetailUseCase.execute(movieId).onEach {
-            when (it) {
-                is Resource.Loading -> setLoadingStatus(true)
-                is Resource.Success -> {
-                    setLoadingStatus(false)
-                    movieDetailLiveData.value = it.data
+        viewModelScope.launch {
+            movieDetailUseCase.execute(movieId).collect {
+                when (it) {
+                    is Resource.Loading -> setLoadingStatus(it.status)
+                    is Resource.Success -> _movieDetailState.value = it
+                    is Resource.Error -> setError(it.apiError)
+                    is Resource.Empty -> Constants.pass
                 }
-                is Resource.Error -> setError(it.apiError)
             }
-        }.launchIn(viewModelScope)
+        }
     }
 
     fun getMovieGallery(movieId: Int?) {
-        movieGalleryUseCase.execute(movieId).onEach {
-            when (it) {
-                is Resource.Loading -> setLoadingStatus(true)
-                is Resource.Success -> {
-                    setLoadingStatus(false)
-                    apartMovieGalleryList(it.data)
+        viewModelScope.launch {
+            movieGalleryUseCase.execute(movieId).collect {
+                when (it) {
+                    is Resource.Loading -> setLoadingStatus(it.status)
+                    is Resource.Success -> apartMovieGalleryList(it.data)
+                    is Resource.Error -> setError(it.apiError)
+                    is Resource.Empty -> Constants.pass
                 }
-                is Resource.Error -> setError(it.apiError)
             }
-        }.launchIn(viewModelScope)
+        }
     }
 
     private fun apartMovieGalleryList(movieGalleryItem: Any) {
         when (movieGalleryItem) {
-            is MovieImagesResponse -> movieImageListLiveData.value = movieGalleryItem.backdrops
-            is MovieVideosResponse -> movieVideoListLiveData.value = movieGalleryItem.results
+            is MovieImagesResponse -> _movieBackdropState.value =
+                Resource.Success(movieGalleryItem.backdrops)
+            is MovieVideosResponse -> _movieVideoState.value =
+                Resource.Success(movieGalleryItem.results)
         }
     }
 }

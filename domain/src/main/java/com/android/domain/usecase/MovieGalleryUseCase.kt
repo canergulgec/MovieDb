@@ -7,6 +7,7 @@ import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
@@ -17,7 +18,8 @@ class MovieGalleryUseCase @Inject constructor(
 
     override fun buildRequest(params: Int?): Flow<Resource<Any>> {
         return galleryRepository.getMovieGallery(params)
-            .onStart { emit(Resource.Loading) }
+            .onStart { emit(Resource.Loading(true)) }
+            .onCompletion { emit(Resource.Loading(false)) }
             .flowOn(dispatcher)
     }
 }

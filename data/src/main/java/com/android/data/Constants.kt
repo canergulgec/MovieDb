@@ -15,4 +15,5 @@ object Constants {
     const val CHANNEL_ID = "NotificationChannelId"
     const val PREFERENCE_NAME = "profile"
     val ACCESS_TOKEN_DATA_STORE = preferencesKey<String>("access_token")
+    val pass = Unit
 }

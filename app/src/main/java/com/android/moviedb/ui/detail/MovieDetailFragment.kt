@@ -2,6 +2,7 @@ package com.android.moviedb.ui.detail
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.android.base.BaseFragment
 import com.caner.common.ext.*
@@ -13,15 +14,16 @@ import com.android.moviedb.R
 import com.android.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.android.presentation.adapter.recyclerview.MovieImagesAdapter
 import com.android.presentation.adapter.recyclerview.MovieVideosAdapter
+import com.caner.common.Resource
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import timber.log.Timber
 
-@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MovieDetailFragment : BaseFragment() {
 
@@ -45,27 +47,51 @@ class MovieDetailFragment : BaseFragment() {
     }
 
     private fun initObservers() {
-        viewModel.getLoadingStatus()?.observeWith(viewLifecycleOwner) {
-            setLoadingStatus(it)
+        lifecycleScope.launchWhenResumed {
+            viewModel.movieDetailState.collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        resource.data.apply {
+                            movieTitleTv.text = title
+                            moviePosterIv.loadImage(poster?.original)
+                            movieGenresAdapter.submitList(genres)
+                        }
+                    }
+                    else -> Timber.v("Initial Empty state")
+                }
+            }
         }
 
-        viewModel.getError()?.observeWith(viewLifecycleOwner) {
-            setLoadingStatus(false)
-            toast("error happened ${it.code} ${it.message}")
+        lifecycleScope.launchWhenResumed {
+            viewModel.movieBackdropState.collect { resource ->
+                when (resource) {
+                    is Resource.Success -> movieImagesAdapter.submitList(resource.data)
+                    else -> Timber.v("Initial Empty state")
+                }
+            }
         }
 
-        viewModel.movieDetailLiveData.observeWith(viewLifecycleOwner) {
-            movieTitleTv.text = it.title
-            moviePosterIv.loadImage(it.poster?.original)
-            movieGenresAdapter.submitList(it.genres)
+        lifecycleScope.launchWhenResumed {
+            viewModel.movieVideoState.collect { resource ->
+                when (resource) {
+                    is Resource.Success -> movieVideosAdapter.submitList(resource.data)
+                    else -> Timber.v("Initial Empty state")
+                }
+            }
         }
 
-        viewModel.movieImageListLiveData.observeWith(viewLifecycleOwner) {
-            movieImagesAdapter.submitList(it)
+        lifecycleScope.launchWhenResumed {
+            viewModel.getLoadingStatus().collect {
+                setLoadingStatus(it)
+            }
         }
 
-        viewModel.movieVideoListLiveData.observeWith(viewLifecycleOwner) {
-            movieVideosAdapter.submitList(it)
+        lifecycleScope.launchWhenResumed {
+            viewModel.getError().collect {
+                if (it.code != -1) {
+                    toast("error happened ${it.code} ${it.message}")
+                }
+            }
         }
     }
 

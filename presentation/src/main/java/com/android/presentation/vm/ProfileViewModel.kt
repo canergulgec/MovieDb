@@ -35,6 +35,7 @@ class ProfileViewModel @ViewModelInject constructor(
                     _newSessionLiveData.value = it.data.requestToken
                 }
                 is Resource.Error -> setError(it.apiError)
+                is Resource.Empty -> Constants.pass
             }
         }.launchIn(viewModelScope)
     }
@@ -51,6 +52,7 @@ class ProfileViewModel @ViewModelInject constructor(
                                 _newSessionLiveData.value = it.data.requestToken
                             }
                             is Resource.Error -> setError(it.apiError)
+                            is Resource.Empty -> Constants.pass
                         }
                     }
             }

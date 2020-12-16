@@ -21,7 +21,6 @@ import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment() {
@@ -65,7 +64,7 @@ class MovieFragment : BaseFragment() {
     }
 
     private fun initPagingFlow() {
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenResumed {
             viewModel.moviePagingFlow.collectLatest { pagingData ->
                 movieAdapter.submitData(lifecycle, pagingData)
             }
