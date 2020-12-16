@@ -29,6 +29,7 @@ The goal of this project is showing a modern approach with using the latest tech
 
 - [Kotlin](https://kotlinlang.org)
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
+- [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
 - [RxJava](https://github.com/ReactiveX/RxJava)
 - [Dagger Hilt](https://dagger.dev/hilt/)
 - [Viewpager 2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
