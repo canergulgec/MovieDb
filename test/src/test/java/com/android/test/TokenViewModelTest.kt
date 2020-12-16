@@ -53,16 +53,19 @@ class TokenViewModelTest {
 
     @Test
     fun `new token flow emits successfully with argument captor`() = runBlocking {
+        //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
-            emit(Resource.Loading)
+            emit(Resource.Loading(true))
             emit(Resource.Success(userDetails))
         }
 
+        //When
         whenever(usecase.execute()).thenReturn(flow)
         val captor = argumentCaptor<String>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
 
+        //Then
         viewModel.getNewToken()
 
         verify(newSessionObserver, times(1)).onChanged(captor.capture())
@@ -71,13 +74,17 @@ class TokenViewModelTest {
 
     @Test
     fun `new token flow emits successfully with liveData util`() = runBlocking {
+        //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
-            emit(Resource.Loading)
+            emit(Resource.Loading(true))
             emit(Resource.Success(userDetails))
         }
 
+        //When
         whenever(usecase.execute()).thenReturn(flow)
+
+        //Then
         viewModel.getNewToken()
 
         assertEquals(userDetails.requestToken, viewModel.newSessionLiveData.getOrAwaitValue())
