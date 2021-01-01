@@ -1,8 +1,8 @@
-package com.android.domain.di
+package com.android.moviedb.di
 
-import com.android.data.utils.SharedPreferencesUtils
-import com.android.data.Constants
-import com.android.data.utils.DataStoreUtils
+import com.caner.common.utils.SharedPreferencesUtils
+import com.caner.common.Constants
+import com.caner.common.utils.DataStoreUtils
 import com.android.domain.BuildConfig
 import com.android.domain.authenticator.TokenAuthenticator
 import com.android.domain.qualifier.AuthApi

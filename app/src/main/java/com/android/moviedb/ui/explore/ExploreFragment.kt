@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.moviedb.R
 import com.android.base.BaseFragment
-import com.android.data.Constants
+import com.caner.common.Constants
 import com.android.moviedb.databinding.FragmentExploreBinding
 import com.android.presentation.adapter.viewpager.MoviePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator

@@ -7,8 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.android.base.BaseFragment
 import com.caner.common.ext.observeWith
-import com.android.data.Constants
-import com.android.data.utils.DataStoreUtils
+import com.caner.common.Constants
+import com.caner.common.utils.DataStoreUtils
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.android.data.utils
+package com.caner.common.utils
 
 import android.content.SharedPreferences
 import javax.inject.Inject

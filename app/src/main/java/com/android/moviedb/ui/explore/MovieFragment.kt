@@ -12,7 +12,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.android.base.BaseFragment
 import com.caner.common.ext.*
-import com.android.data.Constants
+import com.caner.common.Constants
 import com.android.data.model.Movie
 import com.android.presentation.adapter.paging.MoviesPagingAdapter
 import com.caner.common.utils.VerticalSpaceItemDecoration

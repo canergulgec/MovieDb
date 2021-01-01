@@ -3,8 +3,8 @@ package com.android.test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
-import com.android.data.utils.DataStoreUtils
-import com.android.data.utils.SharedPreferencesUtils
+import com.caner.common.utils.DataStoreUtils
+import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel

@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.android.base.BaseFragment
 import com.caner.common.ext.*
-import com.android.data.Constants
+import com.caner.common.Constants
 import com.caner.common.utils.HorizontalSpaceItemDecoration
 import com.caner.common.utils.VerticalSpaceItemDecoration
 import com.android.presentation.vm.MovieDetailViewModel

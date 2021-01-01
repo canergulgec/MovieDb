@@ -17,7 +17,6 @@ class MovieLoadStateAdapter(
 ) : LoadStateAdapter<MovieLoadStateAdapter.LoadStateViewHolder>() {
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
-
         val progress: ProgressBar = holder.itemView.findViewById(R.id.loadStateProgress)
         val btnRetry: Button = holder.itemView.findViewById(R.id.loadStateRetry)
         val txtErrorMessage: TextView = holder.itemView.findViewById(R.id.loadStateErrorMessage)

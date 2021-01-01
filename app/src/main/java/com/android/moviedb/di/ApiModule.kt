@@ -1,4 +1,4 @@
-package com.android.domain.di
+package com.android.moviedb.di
 
 import com.android.domain.api.*
 import com.android.domain.qualifier.AuthApi

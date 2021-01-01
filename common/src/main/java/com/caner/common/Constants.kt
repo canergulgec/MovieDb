@@ -1,4 +1,4 @@
-package com.android.data
+package com.caner.common
 
 import androidx.datastore.preferences.core.preferencesKey
 

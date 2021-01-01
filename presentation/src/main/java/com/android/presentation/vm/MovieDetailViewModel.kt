@@ -3,7 +3,7 @@ package com.android.presentation.vm
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.data.Constants
+import com.caner.common.Constants
 import com.caner.common.Resource
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.BackdropItem

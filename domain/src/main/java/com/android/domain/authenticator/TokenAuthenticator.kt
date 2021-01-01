@@ -1,9 +1,9 @@
 package com.android.domain.authenticator
 
-import com.android.data.utils.DataStoreUtils
+import com.caner.common.utils.DataStoreUtils
 import com.caner.common.Resource
-import com.android.data.utils.SharedPreferencesUtils
-import com.android.data.Constants
+import com.caner.common.utils.SharedPreferencesUtils
+import com.caner.common.Constants
 import com.android.domain.usecase.NewTokenUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -17,7 +17,7 @@ class TokenAuthenticator constructor(
     private val storeUtils: DataStoreUtils
 ) : Authenticator {
 
-    override fun authenticate(route: Route?, response: Response): Request? {
+    override fun authenticate(route: Route?, response: Response): Request {
         // This is a synchronous call
         val updatedToken = getNewToken()
         val formBody: RequestBody = FormBody.Builder()

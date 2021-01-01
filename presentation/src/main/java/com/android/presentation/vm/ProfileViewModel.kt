@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.data.Constants
-import com.android.data.utils.DataStoreUtils
-import com.android.data.utils.SharedPreferencesUtils
+import com.caner.common.Constants
+import com.caner.common.utils.DataStoreUtils
+import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
 import com.caner.common.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
