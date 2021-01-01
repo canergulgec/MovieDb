@@ -1,7 +1,6 @@
 package com.android.presentation.adapter.viewholder
 
 import com.android.base.BaseViewHolder
-import com.caner.common.ext.loadImage
 import com.caner.common.ext.use
 import com.android.data.model.Image
 import com.android.data.model.remote.BackdropItem
@@ -14,8 +13,7 @@ class MovieImagesViewHolder constructor(
     override fun bind() {
         getRowItem()?.apply {
             imageBinding.use {
-                val path = Image(getRowItem()?.file_path)
-                movieBackdropIv.loadImage(path.original)
+                image = Image(getRowItem()?.file_path)
             }
         }
     }

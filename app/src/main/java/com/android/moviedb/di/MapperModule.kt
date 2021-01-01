@@ -1,7 +1,7 @@
 package com.android.moviedb.di
 
-import com.caner.common.Mapper
 import com.android.data.mapper.MovieDetailMapper
+import com.caner.common.Mapper
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.MovieModel

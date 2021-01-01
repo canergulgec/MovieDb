@@ -52,8 +52,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
                 when (resource) {
                     is Resource.Success -> {
                         resource.data.apply {
-                            binding.movieTitleTv.text = title
-                            binding.moviePosterIv.loadImage(poster?.original)
+                            binding.item = this
                             movieGenresAdapter.submitList(genres)
                         }
                     }
