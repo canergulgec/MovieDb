@@ -1,13 +1,15 @@
 package com.android.moviedb.ui.profile
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.android.moviedb.R
 import com.android.base.BaseFragment
 import com.caner.common.ext.observeWith
 import com.android.data.Constants
 import com.android.data.utils.DataStoreUtils
+import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,19 +19,16 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     @Inject
     lateinit var storeUtils: DataStoreUtils
-
-    override val layoutId = R.layout.fragment_profile
 
     private val viewModel: ProfileViewModel by viewModels()
 
     override fun initView(savedInstanceState: Bundle?) {
         initObservers()
 
-        //viewModel.getNewToken()
         lifecycleScope.launch {
             storeUtils.getData(Constants.ACCESS_TOKEN_DATA_STORE).collect { sessionId ->
                 if (sessionId == null) {
@@ -46,4 +45,7 @@ class ProfileFragment : BaseFragment() {
             }
         }
     }
+
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentProfileBinding
+        get() = FragmentProfileBinding::inflate
 }

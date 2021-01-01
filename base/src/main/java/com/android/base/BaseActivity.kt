@@ -1,17 +1,25 @@
 package com.android.base
 
 import android.os.Bundle
-import androidx.annotation.LayoutRes
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewbinding.ViewBinding
 import com.caner.common.widget.CustomProgressDialog
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding>  : AppCompatActivity() {
+    private var _binding: ViewBinding? = null
+    abstract val bindLayout: (LayoutInflater) -> VB
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding: VB
+        get() = _binding as VB
 
     private lateinit var progressDialog: CustomProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutId)
+        _binding = bindLayout.invoke(layoutInflater)
+        setContentView(requireNotNull(_binding).root)
         progressDialog = CustomProgressDialog(
             this,
             R.style.ProgressDialogStyle
@@ -29,6 +37,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun initView(savedInstanceState: Bundle?)
 
-    @get:LayoutRes
-    abstract val layoutId: Int
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

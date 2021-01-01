@@ -1,4 +1,4 @@
-package com.android.data.diff
+package com.android.presentation.diff
 
 import androidx.recyclerview.widget.DiffUtil
 import com.android.data.model.remote.MovieGenre

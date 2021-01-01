@@ -3,7 +3,7 @@ package com.android.presentation.adapter.recyclerview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.base.BaseRecyclerAdapter
-import com.android.data.diff.MovieGenreItemDiffUtil
+import com.android.presentation.diff.MovieGenreItemDiffUtil
 import com.android.data.model.remote.MovieGenre
 import com.android.presentation.adapter.viewholder.MovieGenresViewHolder
 import com.android.presentation.databinding.RecyclerviewGenreBinding

@@ -1,6 +1,8 @@
 package com.android.moviedb.ui.explore
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,19 +15,17 @@ import com.caner.common.ext.*
 import com.android.data.Constants
 import com.android.data.model.Movie
 import com.android.presentation.adapter.paging.MoviesPagingAdapter
-import com.android.presentation.utils.VerticalSpaceItemDecoration
+import com.caner.common.utils.VerticalSpaceItemDecoration
 import com.android.presentation.vm.MovieViewModel
 import com.android.moviedb.R
+import com.android.moviedb.databinding.FragmentMoviesBinding
 import com.android.presentation.adapter.paging.MovieLoadStateAdapter
 import com.android.presentation.worker.NotificationWorker
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class MovieFragment : BaseFragment() {
-
-    override val layoutId = R.layout.fragment_movies
+class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private val viewModel: MovieViewModel by viewModels()
 
@@ -53,7 +53,7 @@ class MovieFragment : BaseFragment() {
         /**
          * Span count should be 1 when loader state is visible //TODO
          */
-        moviesRv.apply {
+        binding.moviesRv.apply {
             addItemDecoration(VerticalSpaceItemDecoration(8.dp2px()))
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
@@ -85,4 +85,7 @@ class MovieFragment : BaseFragment() {
             .build()
         context?.let { WorkManager.getInstance(it).enqueue(request) }
     }
+
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMoviesBinding
+        get() = FragmentMoviesBinding::inflate
 }

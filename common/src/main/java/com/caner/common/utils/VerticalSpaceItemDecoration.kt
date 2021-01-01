@@ -1,4 +1,4 @@
-package com.android.presentation.utils
+package com.caner.common.utils
 
 import android.graphics.Rect
 import android.view.View

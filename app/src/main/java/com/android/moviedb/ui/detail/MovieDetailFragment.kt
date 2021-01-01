@@ -1,16 +1,18 @@
 package com.android.moviedb.ui.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.android.base.BaseFragment
 import com.caner.common.ext.*
 import com.android.data.Constants
-import com.android.presentation.utils.HorizontalSpaceItemDecoration
-import com.android.presentation.utils.VerticalSpaceItemDecoration
+import com.caner.common.utils.HorizontalSpaceItemDecoration
+import com.caner.common.utils.VerticalSpaceItemDecoration
 import com.android.presentation.vm.MovieDetailViewModel
-import com.android.moviedb.R
+import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.android.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.android.presentation.adapter.recyclerview.MovieImagesAdapter
 import com.android.presentation.adapter.recyclerview.MovieVideosAdapter
@@ -20,15 +22,12 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
 
 @AndroidEntryPoint
-class MovieDetailFragment : BaseFragment() {
-
-    override val layoutId = R.layout.fragment_movie_detail
+class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
 
     private val viewModel: MovieDetailViewModel by viewModels()
 
@@ -41,7 +40,7 @@ class MovieDetailFragment : BaseFragment() {
         initObservers()
         setMovieGenres()
 
-        movieGalleryRv.initPagerSnapHelper(adapter)
+        binding.movieGalleryRv.initPagerSnapHelper(adapter)
         val movieId = arguments?.getInt(Constants.MOVIE_ID)
         viewModel.getMovieDetail(movieId)
         viewModel.getMovieGallery(movieId)
@@ -53,8 +52,8 @@ class MovieDetailFragment : BaseFragment() {
                 when (resource) {
                     is Resource.Success -> {
                         resource.data.apply {
-                            movieTitleTv.text = title
-                            moviePosterIv.loadImage(poster?.original)
+                            binding.movieTitleTv.text = title
+                            binding.moviePosterIv.loadImage(poster?.original)
                             movieGenresAdapter.submitList(genres)
                         }
                     }
@@ -95,7 +94,7 @@ class MovieDetailFragment : BaseFragment() {
             alignItems = AlignItems.STRETCH
         }
 
-        movieGenresRv.init(
+        binding.movieGenresRv.init(
             movieGenresAdapter, listOf(
                 HorizontalSpaceItemDecoration(4.dp2px()),
                 VerticalSpaceItemDecoration(4.dp2px())
@@ -103,4 +102,7 @@ class MovieDetailFragment : BaseFragment() {
             flexBoxLayoutManager
         )
     }
+
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMovieDetailBinding
+        get() = FragmentMovieDetailBinding::inflate
 }

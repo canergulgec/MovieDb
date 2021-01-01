@@ -1,25 +1,27 @@
 package com.android.moviedb.ui.main
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.android.moviedb.R
 import com.android.base.BaseActivity
+import com.android.moviedb.R
+import com.android.moviedb.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val navController by lazy { findNavController(R.id.mainNavHostFragment) }
-
-    override val layoutId = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
         setupViews()
     }
 
     private fun setupViews() {
-        bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigation.setupWithNavController(navController)
     }
+
+    override val bindLayout: (LayoutInflater) -> ActivityMainBinding
+        get() = ActivityMainBinding::inflate
 }

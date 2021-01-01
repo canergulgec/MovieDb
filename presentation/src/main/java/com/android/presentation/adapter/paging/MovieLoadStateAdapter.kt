@@ -3,12 +3,14 @@ package com.android.presentation.adapter.paging
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.caner.common.ext.isVisible
 import com.android.presentation.R
-import kotlinx.android.synthetic.main.load_state_view.view.*
 
 class MovieLoadStateAdapter(
     private val retry: () -> Unit
@@ -16,9 +18,9 @@ class MovieLoadStateAdapter(
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
 
-        val progress = holder.itemView.loadStateProgress
-        val btnRetry = holder.itemView.loadStateRetry
-        val txtErrorMessage = holder.itemView.loadStateErrorMessage
+        val progress: ProgressBar = holder.itemView.findViewById(R.id.loadStateProgress)
+        val btnRetry: Button = holder.itemView.findViewById(R.id.loadStateRetry)
+        val txtErrorMessage: TextView = holder.itemView.findViewById(R.id.loadStateErrorMessage)
 
         btnRetry.isVisible = loadState !is LoadState.Loading
         txtErrorMessage.isVisible = loadState !is LoadState.Loading
