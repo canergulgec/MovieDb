@@ -19,7 +19,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -39,20 +38,19 @@ class TokenViewModelTest {
 
     private val dataStoreUtils: DataStoreUtils = mock()
 
-    private lateinit var usecase: NewTokenUseCase
+    private val tokenUseCase by lazy {
+        NewTokenUseCase(
+            newTokenRepository,
+            coroutineScope.dispatcher
+        )
+    }
 
-    private lateinit var viewModel: ProfileViewModel
+    private val viewModel by lazy { ProfileViewModel(tokenUseCase, sharedPref, dataStoreUtils) }
 
     private val newSessionObserver: Observer<String> = mock()
 
-    @Before
-    fun setup() {
-        usecase = NewTokenUseCase(newTokenRepository, coroutineScope.dispatcher)
-        viewModel = ProfileViewModel(usecase, sharedPref, dataStoreUtils)
-    }
-
     @Test
-    fun `new token flow emits successfully with argument captor`() = runBlocking {
+    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlocking {
         //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
@@ -61,7 +59,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(usecase.execute()).thenReturn(flow)
+        whenever(tokenUseCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<String>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
 
@@ -73,7 +71,7 @@ class TokenViewModelTest {
     }
 
     @Test
-    fun `new token flow emits successfully with liveData util`() = runBlocking {
+    fun newTokenFlowEmitsSuccessfullyWithLiveDataUtil() = runBlocking {
         //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
@@ -82,7 +80,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(usecase.execute()).thenReturn(flow)
+        whenever(tokenUseCase.execute()).thenReturn(flow)
 
         //Then
         viewModel.getNewToken()
