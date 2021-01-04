@@ -59,7 +59,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(tokenUseCase.execute()).thenReturn(flow)
+        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
         val captor = argumentCaptor<String>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
 
@@ -80,7 +80,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(tokenUseCase.execute()).thenReturn(flow)
+        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
 
         //Then
         viewModel.getNewToken()
