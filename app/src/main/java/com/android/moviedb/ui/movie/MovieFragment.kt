@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.explore
+package com.android.moviedb.ui.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,8 +29,10 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private val viewModel: MovieViewModel by viewModels()
 
-    private var movieAdapter = MoviesPagingAdapter { movie: Movie? ->
-        recyclerItemClicked(movie)
+    private val movieAdapter by lazy {
+        MoviesPagingAdapter { movie: Movie? ->
+            movieClicked(movie)
+        }
     }
 
     companion object {
@@ -71,7 +73,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         }
     }
 
-    private fun recyclerItemClicked(movie: Movie?) {
+    private fun movieClicked(movie: Movie?) {
         val bundle = bundleOf(Constants.MOVIE_ID to (movie?.movieId ?: 0))
         findNavController().navigate(R.id.movieDetailFragment, bundle)
         startWorker(movie?.title, movie?.overview)

@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.profile
+package com.android.moviedb.ui.main.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater

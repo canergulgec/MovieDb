@@ -25,16 +25,11 @@ inline var View.isInvisible: Boolean
         visibility = if (value) INVISIBLE else VISIBLE
     }
 
-fun View.show() {
-    visibility = VISIBLE
-}
-
-fun View.invisible() {
-    visibility = INVISIBLE
-}
-
-fun View.hide() {
-    visibility = GONE
+fun View.visible(isShowing: Boolean) {
+    visibility = when(isShowing){
+        true -> VISIBLE
+        false -> GONE
+    }
 }
 
 fun View.hideKeyBoard() {

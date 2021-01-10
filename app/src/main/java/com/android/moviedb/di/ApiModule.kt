@@ -1,7 +1,6 @@
 package com.android.moviedb.di
 
 import com.android.domain.api.*
-import com.android.domain.qualifier.AuthApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +22,7 @@ class ApiModule {
     }
 
     @Provides
-    fun provideNewTokenApiService(@AuthApi retrofit: Retrofit): NewTokenApi {
+    fun provideNewTokenApiService(retrofit: Retrofit): NewTokenApi {
         return retrofit.create(NewTokenApi::class.java)
     }
 
@@ -40,5 +39,10 @@ class ApiModule {
     @Provides
     fun provideMovieVideosApiService(retrofit: Retrofit): MovieVideosApi {
         return retrofit.create(MovieVideosApi::class.java)
+    }
+
+    @Provides
+    fun provideSearchApiService(retrofit: Retrofit): SearchApi {
+        return retrofit.create(SearchApi::class.java)
     }
 }

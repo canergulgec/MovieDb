@@ -2,4 +2,6 @@
     <string name="app_name">MovieDb</string>
     <string name="nearby">Yakındakiler</string>
     <string name="best_rated">En İyiler</string>
+    <string name="search">Search</string>
+    <string name="empty_view">Empty View</string>
 </resources>

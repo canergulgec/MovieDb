@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.detail
+package com.android.moviedb.ui.movie.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,7 +34,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     private val movieGenresAdapter = MovieGenresAdapter()
     private val movieImagesAdapter = MovieImagesAdapter()
     private val movieVideosAdapter = MovieVideosAdapter()
-    private val adapter = ConcatAdapter(movieVideosAdapter, movieImagesAdapter)
+    private val adapter = ConcatAdapter(movieImagesAdapter, movieVideosAdapter)
 
     override fun initView(savedInstanceState: Bundle?) {
         initObservers()

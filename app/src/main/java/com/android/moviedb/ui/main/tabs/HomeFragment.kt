@@ -1,23 +1,24 @@
-package com.android.moviedb.ui.explore
+package com.android.moviedb.ui.main.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.moviedb.R
 import com.android.base.BaseFragment
+import com.android.moviedb.databinding.FragmentHomeBinding
 import com.caner.common.Constants
-import com.android.moviedb.databinding.FragmentExploreBinding
+import com.android.moviedb.ui.movie.MovieFragment
 import com.android.presentation.adapter.viewpager.MoviePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExploreFragment : BaseFragment<FragmentExploreBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.moviePager.apply {
             adapter = MoviePagerAdapter(
-                this@ExploreFragment,
+                this@HomeFragment,
                 MovieFragment.newInstance(Constants.NOW_PLAYING_MOVIES),
                 MovieFragment.newInstance(Constants.UPCOMING_MOVIES)
             )
@@ -29,6 +30,6 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding>() {
         }
     }
 
-    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentExploreBinding
-        get() = FragmentExploreBinding::inflate
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
+        get() = FragmentHomeBinding::inflate
 }

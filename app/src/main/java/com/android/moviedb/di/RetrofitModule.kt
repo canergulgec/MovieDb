@@ -1,19 +1,13 @@
 package com.android.moviedb.di
 
-import com.caner.common.utils.SharedPreferencesUtils
 import com.caner.common.Constants
-import com.caner.common.utils.DataStoreUtils
 import com.android.domain.BuildConfig
-import com.android.domain.authenticator.TokenAuthenticator
-import com.android.domain.qualifier.AuthApi
-import com.android.domain.usecase.NewTokenUseCase
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -78,7 +72,6 @@ class RetrofitModule {
     }
 
     @Provides
-    @AuthApi
     fun provideOkHttpAuth(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @Named("AuthInterceptor") authInterceptor: Interceptor,
@@ -91,49 +84,6 @@ class RetrofitModule {
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(authInterceptor)
             .addNetworkInterceptor(stethoInterceptor)
-            .retryOnConnectionFailure(true)
-            .build()
-    }
-
-    @Provides
-    @AuthApi
-    fun provideRetrofitAuth(
-        @Named("BASE_URL") baseUrl: String,
-        @AuthApi okHttpClient: OkHttpClient,
-        gsonConverterFactory: Converter.Factory
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .client(okHttpClient)
-            .addConverterFactory(gsonConverterFactory)
-            .build()
-    }
-
-    @ExperimentalCoroutinesApi
-    @Provides
-    fun provideTokenAuthenticator(
-        prefUtils: SharedPreferencesUtils,
-        tokenUseCase: NewTokenUseCase,
-        dataStore: DataStoreUtils
-    ): Authenticator {
-        return TokenAuthenticator(prefUtils, tokenUseCase, dataStore)
-    }
-
-    @Provides
-    fun provideOkHttp(
-        httpLoggingInterceptor: HttpLoggingInterceptor,
-        @Named("AuthInterceptor") authInterceptor: Interceptor,
-        stethoInterceptor: StethoInterceptor,
-        authAuthenticator: Authenticator
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .writeTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .readTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(authInterceptor)
-            .addNetworkInterceptor(stethoInterceptor)
-            .authenticator(authAuthenticator)
             .retryOnConnectionFailure(true)
             .build()
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,12 +19,12 @@
 
         <ImageView
             android:id="@+id/movieBackdropIv"
-            app:path="@{image.original}"
-            app:radius="@{4f}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            app:path='@{image.original ?? ""}'
+            app:radius="@{4f}"
             tools:ignore="ContentDescription"
             tools:srcCompat="@color/colorPrimary" />
 

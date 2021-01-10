@@ -1,0 +1,39 @@
+package com.android.domain.usecase
+
+import com.android.base.BaseUseCase
+import com.android.data.model.MovieModel
+import com.android.domain.qualifier.IoDispatcher
+import com.android.domain.repository.SearchRepository
+import com.caner.common.Resource
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
+import javax.inject.Inject
+
+@FlowPreview
+class SearchMovieUseCase @Inject constructor(
+    private val apiRepository: SearchRepository,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
+) : BaseUseCase<MovieModel, String?>() {
+
+    override fun buildRequest(params: String?): Flow<Resource<MovieModel>> {
+        return apiRepository.searchMovie(params)
+            .onStart { emit(Resource.Loading(true)) }
+            .onCompletion { emit(Resource.Loading(false)) }
+            .flatMapConcat { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        if (resource.data.movies.isEmpty()) {
+                            flow { emit(Resource.Empty) }
+                        } else {
+                            flow { emit(resource) }
+                        }
+                    }
+                    else -> {
+                        flow { emit(resource) }
+                    }
+                }
+            }
+            .flowOn(dispatcher)
+    }
+}

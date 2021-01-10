@@ -1,13 +1,27 @@
 package com.android.presentation.vm
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.android.base.BaseViewModel
+import com.android.domain.usecase.SearchMovieUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
 
-class SearchViewModel @ViewModelInject constructor() : BaseViewModel() {
+@FlowPreview
+class SearchViewModel @ViewModelInject constructor(
+    private val searchUseCase: SearchMovieUseCase
+) : BaseViewModel() {
 
-    private val _postListLiveData: MutableLiveData<String> = MutableLiveData()
-    val postListLiveData: LiveData<String> get() = _postListLiveData
+    val searchQuery = MutableStateFlow("")
 
+    @ExperimentalCoroutinesApi
+    val searchFlow = searchQuery
+        .debounce(400)
+        .distinctUntilChanged()
+        .filter { query ->
+            return@filter query.length > 2
+        }
+        .flatMapLatest {
+            searchUseCase.execute(it)
+        }
 }
