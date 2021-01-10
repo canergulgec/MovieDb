@@ -53,7 +53,6 @@ Modules are the collection of source files and build settings that allow you to 
 - [Dagger Hilt](https://dagger.dev/hilt/)
 - [Viewpager 2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 - [Retrofit](https://square.github.io/retrofit/)
-- [Retrofit Authenticator](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-authenticator/)
 - [Coil](https://github.com/coil-kt/coil)
 - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 - [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
@@ -65,7 +64,3 @@ Modules are the collection of source files and build settings that allow you to 
 - [Model-View-ViewModel](https://en.wikipedia.org/wiki/Model–view–viewmodel)(MVVM) pattern helps to completely separate the business and presentation logic from the UI
 - `Modular app architecture` enables separate functionality into independent, interchangeable modules
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles intended to make software designs more understandable, flexible, and maintainable
-
-#### Roadmap
-
-- [ ] Search and Profile screen will be added 
