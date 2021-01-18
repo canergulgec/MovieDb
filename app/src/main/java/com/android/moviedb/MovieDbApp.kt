@@ -9,7 +9,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltAndroidApp
-class MovieDbApp : Application(), Configuration.Provider {
+open class MovieDbApp : Application(), Configuration.Provider {
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
@@ -34,4 +34,6 @@ class MovieDbApp : Application(), Configuration.Provider {
         Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
+
+    open fun getBaseUrl() = BuildConfig.BASE_URL
 }

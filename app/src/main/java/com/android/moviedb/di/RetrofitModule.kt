@@ -1,12 +1,15 @@
 package com.android.moviedb.di
 
+import android.content.Context
+import com.android.moviedb.BuildConfig
+import com.android.moviedb.MovieDbApp
 import com.caner.common.Constants
-import com.android.domain.BuildConfig
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,9 +25,15 @@ class RetrofitModule {
 
     @Provides
     @Named("BASE_URL")
+    fun provideBaseUrl(@ApplicationContext appContext: Context): String {
+        return (appContext as MovieDbApp).getBaseUrl()
+    }
+
+/*    @Provides
+    @Named("BASE_URL")
     fun provideBaseUrl(): String {
         return BuildConfig.BASE_URL
-    }
+    }*/
 
     @Provides
     fun provideGsonBuilder(): GsonBuilder {
