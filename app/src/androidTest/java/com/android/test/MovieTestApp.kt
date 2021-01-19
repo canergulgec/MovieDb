@@ -10,9 +10,9 @@ import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
 
 class MovieTestApp : MovieDbApp() {
-    private val mockWebServer = MockWebServer()
+   // private val mockWebServer = MockWebServer()
 
-    override fun onCreate() {
+/*    override fun onCreate() {
         super.onCreate()
 
         mockWebServer.start(8080)
@@ -26,13 +26,13 @@ class MovieTestApp : MovieDbApp() {
             }
         }
 
-        mockWebServer.setDispatcher(dispatcher)
-    }
+        mockWebServer.dispatcher = dispatcher
+    }*/
 
     override fun getBaseUrl() = "http://localhost:8080"
 
-    override fun onTerminate() {
+/*    override fun onTerminate() {
         super.onTerminate()
         mockWebServer.shutdown()
-    }
+    }*/
 }

@@ -18,7 +18,7 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "com.android.test.MockTestRunner"
+        testInstrumentationRunner "com.android.test.utils.MockTestRunner"
 
         buildConfigField("Integer", "TIMEOUT", "60")
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
@@ -149,5 +149,5 @@ dependencies {
     androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
 
     //MockServer
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:3.10.0"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.4.0"
 }
