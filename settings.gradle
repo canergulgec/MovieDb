@@ -1,5 +1,4 @@
 include ':common'
-include ':test'
 include ':presentation'
 rootProject.name='MovieDb'
 include ':app'

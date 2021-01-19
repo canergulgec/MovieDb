@@ -5,21 +5,19 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.filters.LargeTest
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.ui.main.MainActivity
-import com.android.test.utils.FileReader
 import com.android.test.utils.OkHttpProvider
 import com.android.test.screen.MovieScreen
+import com.android.test.utils.dispatcher
+import com.android.test.utils.dispatcherWithCustomBody
 import com.jakewharton.espresso.OkHttp3IdlingResource
-import okhttp3.mockwebserver.Dispatcher
-import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import okhttp3.mockwebserver.RecordedRequest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
 
 @LargeTest
-class MovieUITest {
+class MovieFragmentTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>
     private val mockWebServer = MockWebServer()
 
@@ -30,20 +28,14 @@ class MovieUITest {
             OkHttp3IdlingResource.create(
                 "okhttp",
                 OkHttpProvider.getOkHttpClient()
-            ))
+            )
+        )
         activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
     fun recyclerview_second_item_should_be_visible() {
-        mockWebServer.dispatcher = object : Dispatcher() {
-            override fun dispatch(request: RecordedRequest): MockResponse {
-                return MockResponse()
-                    .setResponseCode(200)
-                    .setBody(FileReader.readTestResourceFile("movie_success_response.json"))
-            }
-        }
-
+        mockWebServer.dispatcher = dispatcher()
         onScreen<MovieScreen> {
             recycler {
                 childAt<MovieScreen.Item>(2) {
@@ -54,12 +46,12 @@ class MovieUITest {
     }
 
     @Test
-    fun recyclerview_second_item_click_should_open_detail_page() {
+    fun recyclerview_should_scroll_to_fifth_item_then_click_on_it() {
+        mockWebServer.dispatcher = dispatcherWithCustomBody()
         onScreen<MovieScreen> {
             recycler {
-                Thread.sleep(4000)
-                scrollTo(10)
-                childAt<MovieScreen.Item>(10){
+                scrollTo(5)
+                childAt<MovieScreen.Item>(5) {
                     click()
                 }
             }
