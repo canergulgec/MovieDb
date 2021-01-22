@@ -32,10 +32,6 @@ Modules are the collection of source files and build settings that allow you to 
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
 
-- **Test Module**
-
-  `:test` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains test utilities that can be used by different modules
-
 ### Dependencies
 
 - [Kotlin](https://kotlinlang.org)
@@ -58,6 +54,8 @@ Modules are the collection of source files and build settings that allow you to 
 - [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
 - [FlexBox](https://github.com/google/flexbox-layout)
 - [Mockito](https://site.mockito.org)
+- [Kakao](https://github.com/agoda-com/Kakao)
+- [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 
 ### Architecture
 
