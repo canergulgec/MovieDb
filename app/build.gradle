@@ -134,9 +134,7 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:$dataStore"
 
     //UI Test
-    androidTestImplementation "androidx.test:core:$test_core"
     androidTestImplementation "androidx.test:core-ktx:$test_core"
-    androidTestImplementation "androidx.test.ext:junit:$test_ext"
     androidTestImplementation "androidx.test.ext:junit-ktx:$test_ext"
     androidTestImplementation "androidx.test:rules:$test_rules"
     androidTestImplementation "androidx.test:runner:$test_runner"
