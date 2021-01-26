@@ -22,6 +22,7 @@ android {
 
         buildConfigField("Integer", "TIMEOUT", "60")
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", API_KEY)
     }
 
     buildTypes {

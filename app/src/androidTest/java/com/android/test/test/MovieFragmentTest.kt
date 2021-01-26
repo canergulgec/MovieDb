@@ -5,6 +5,7 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.filters.LargeTest
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.ui.main.MainActivity
+import com.android.test.MovieTestApp.Companion.port
 import com.android.test.utils.OkHttpProvider
 import com.android.test.screen.MovieScreen
 import com.android.test.utils.dispatcher
@@ -23,7 +24,7 @@ class MovieFragmentTest {
 
     @Before
     fun setup() {
-        mockWebServer.start(8080)
+        mockWebServer.start(port)
         IdlingRegistry.getInstance().register(
             OkHttp3IdlingResource.create(
                 "okhttp",

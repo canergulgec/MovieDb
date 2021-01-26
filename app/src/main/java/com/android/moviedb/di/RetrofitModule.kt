@@ -3,7 +3,6 @@ package com.android.moviedb.di
 import android.content.Context
 import com.android.moviedb.BuildConfig
 import com.android.moviedb.MovieDbApp
-import com.caner.common.Constants
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -69,7 +68,7 @@ class RetrofitModule {
             val originalHttpUrl: HttpUrl = original.url
 
             val url: HttpUrl = originalHttpUrl.newBuilder()
-                .addQueryParameter("api_key", Constants.API_KEY)
+                .addQueryParameter("api_key", BuildConfig.API_KEY)
                 .build()
 
             val requestBuilder: Request.Builder = original.newBuilder()
