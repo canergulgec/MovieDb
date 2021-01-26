@@ -3,7 +3,7 @@ package com.android.presentation.adapter.recyclerview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.base.BaseRecyclerAdapter
-import com.android.data.diff.MovieVideosDiffUtil
+import com.android.presentation.diff.MovieVideosDiffUtil
 import com.android.data.model.remote.VideoItem
 import com.android.presentation.adapter.viewholder.MovieVideosViewHolder
 import com.android.presentation.databinding.RecyclerviewMovieVideoBinding

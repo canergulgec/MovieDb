@@ -1,8 +1,7 @@
 package com.android.presentation.adapter.viewholder
 
 import com.android.base.BaseViewHolder
-import com.android.base.ext.loadRoundedCornerImage
-import com.android.base.ext.use
+import com.caner.common.ext.use
 import com.android.data.model.Movie
 import com.android.presentation.databinding.RecyclerviewMovieBinding
 
@@ -21,8 +20,6 @@ class MovieViewHolder constructor(
         getRowItem()?.apply {
             movieBinding.use {
                 movie = getRowItem()
-                movieRatingBar.rating = (voteAverage / 2).toFloat()
-                poster?.medium?.let { movieIv.loadRoundedCornerImage(it, 12f) }
             }
         }
     }

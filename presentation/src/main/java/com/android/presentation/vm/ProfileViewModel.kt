@@ -3,45 +3,58 @@ package com.android.presentation.vm
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.base.ApiError
+import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.base.NetworkState
-import com.android.base.SharedPreferencesUtils
-import com.android.data.Constants
-import com.android.data.model.remote.NewSessionResponse
-import com.android.domain.usecase.NewSessionUseCase
-import io.reactivex.observers.DisposableSingleObserver
+import com.caner.common.Constants
+import com.caner.common.utils.DataStoreUtils
+import com.caner.common.utils.SharedPreferencesUtils
+import com.android.domain.usecase.NewTokenUseCase
+import com.caner.common.Resource
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class ProfileViewModel @ViewModelInject constructor(
-    private val newSessionUseCase: NewSessionUseCase,
-    private val preferencesUtils: SharedPreferencesUtils
+    private val newTokenUseCase: NewTokenUseCase,
+    private val preferencesUtils: SharedPreferencesUtils,
+    private val prefUtils: DataStoreUtils
 ) : BaseViewModel() {
 
-    private val _newSessionLiveData: MutableLiveData<NewSessionResponse> = MutableLiveData()
-    val newSessionLiveData: LiveData<NewSessionResponse> get() = _newSessionLiveData
+    private val _newSessionLiveData: MutableLiveData<String> = MutableLiveData()
+    val newSessionLiveData: LiveData<String> get() = _newSessionLiveData
 
-    fun createNewSession() {
-        setNetworkStatus(NetworkState.Loading)
-
-        add(
-            newSessionUseCase.execute(addBody())
-                .subscribeWith(object : DisposableSingleObserver<NewSessionResponse>() {
-                    override fun onSuccess(t: NewSessionResponse) {
-                        setNetworkStatus(NetworkState.Success)
-                        _newSessionLiveData.value = t
-                    }
-
-                    override fun onError(e: Throwable){
-                        //setError(e as ApiError)
-                    }
-                })
-        )
+    fun getNewToken() {
+        newTokenUseCase.execute().onEach {
+            when (it) {
+                is Resource.Loading -> setLoadingStatus(true)
+                is Resource.Success -> {
+                    setLoadingStatus(false)
+                    _newSessionLiveData.value = it.data.requestToken
+                }
+                is Resource.Error -> setError(it.apiError)
+                is Resource.Empty -> Constants.pass
+            }
+        }.launchIn(viewModelScope)
     }
 
-    private fun addBody(): HashMap<String, Any>? {
-        return object : LinkedHashMap<String, Any>() {
-            init {
-                 put("request_token", preferencesUtils.getData(Constants.ACCESS_TOKEN, ""))
+    fun getNewTokenWithDataStore() {
+        viewModelScope.launch {
+            prefUtils.getData(Constants.ACCESS_TOKEN_DATA_STORE).collect { _ ->
+                newTokenUseCase.execute()
+                    .collect {
+                        when (it) {
+                            is Resource.Loading -> setLoadingStatus(true)
+                            is Resource.Success -> {
+                                setLoadingStatus(false)
+                                _newSessionLiveData.value = it.data.requestToken
+                            }
+                            is Resource.Error -> setError(it.apiError)
+                            is Resource.Empty -> Constants.pass
+                        }
+                    }
             }
         }
     }

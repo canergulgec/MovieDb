@@ -1,12 +1,13 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "com.android.moviedb"
@@ -16,7 +17,17 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+       // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.android.test.utils.MockTestRunner"
+
+        def secureProps = new Properties()
+        if (file("../secure.properties").exists()) {
+            file("../secure.properties")?.withInputStream { secureProps.load(it) }
+        }
+
+        buildConfigField("Integer", "TIMEOUT", "60")
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", (secureProps.getProperty("MOVIE_API_KEY") ?: ""))
     }
 
     buildTypes {
@@ -40,8 +51,9 @@ android {
     }
 
     // Open data binding
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -53,11 +65,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(":base")
+    implementation project(":common")
     implementation project(":data")
     implementation project(":domain")
     implementation project(":presentation")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
@@ -90,22 +102,18 @@ dependencies {
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
-    // Rx
-    implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
-    implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttp}"
 
     // Material Dialog
     implementation "com.afollestad.material-dialogs:core:$materialDialog"
-
-    //RxBinding
-    implementation "com.jakewharton.rxbinding4:rxbinding:$rxBinding"
 
     //Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navGraph"
@@ -116,8 +124,6 @@ dependencies {
 
     //Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
@@ -126,15 +132,37 @@ dependencies {
     //FlexBox
     implementation "com.google.android:flexbox:$flexBox"
 
-    //Shimmer
-    implementation "com.facebook.shimmer:shimmer:$shimmer"
-
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
-    //Test
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStore"
+
+    //UI Test
+    androidTestImplementation "androidx.test:core-ktx:$test_core"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$test_ext"
+    androidTestImplementation "androidx.test:rules:$test_rules"
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
+
+    //Kakao
+    androidTestImplementation "com.agoda.kakao:kakao:$kakao"
+
+    //OkHttp Idling Resource
+    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$idling"
+
+    //MockServer
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockServer"
+    //
+
+    //Unit Test
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
+    testImplementation "org.mockito:mockito-inline:$mockito"
+    implementation "org.mockito:mockito-core:$mockito"
+    testImplementation "androidx.arch.core:core-testing:$arch"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
+    //
 }

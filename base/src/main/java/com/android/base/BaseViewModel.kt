@@ -1,44 +1,28 @@
 package com.android.base
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import com.caner.common.ApiError
+import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val compositeDisposable: CompositeDisposable
-    private val networkStatus: SingleLiveEvent<NetworkState>?
-    private val error: SingleLiveEvent<ApiError>?
+    private val loadingStatus: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val error: MutableStateFlow<ApiError> = MutableStateFlow(ApiError(-1))
 
-    init {
-        networkStatus = SingleLiveEvent()
-        error = SingleLiveEvent()
-        compositeDisposable = CompositeDisposable()
+    fun getLoadingStatus(): MutableStateFlow<Boolean> {
+        return loadingStatus
     }
 
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
+    fun setLoadingStatus(networkState: Boolean) {
+        loadingStatus.value = networkState
     }
 
-    fun getNetworkStatus(): LiveData<NetworkState>? {
-        return networkStatus
-    }
-
-    fun setNetworkStatus(networkState: NetworkState) {
-        networkStatus?.value = networkState
-    }
-
-    fun getError(): LiveData<ApiError>? {
+    fun getError(): MutableStateFlow<ApiError> {
         return error
     }
 
     fun setError(apiException: ApiError) {
-        error?.value = apiException
-    }
-
-    fun add(disposable: Disposable) {
-        compositeDisposable.add(disposable)
+        error.value = apiException
+        loadingStatus.value = false
     }
 }

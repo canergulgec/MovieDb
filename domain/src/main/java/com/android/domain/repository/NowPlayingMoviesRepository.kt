@@ -1,8 +1,8 @@
 package com.android.domain.repository
 
 import com.android.data.model.remote.MoviesResponse
-import io.reactivex.Single
+import com.android.domain.paginginterface.MoviePagingRepository
 
-interface NowPlayingMoviesRepository {
-    fun getNowPlayingMovies(params: HashMap<String, Any>?): Single<MoviesResponse>
+interface NowPlayingMoviesRepository : MoviePagingRepository {
+    override suspend fun getMovies(params: HashMap<String, Any>?): MoviesResponse
 }

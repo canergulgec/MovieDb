@@ -1,8 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion 30
@@ -49,8 +50,8 @@ dependencies {
     implementation project(":domain")
     implementation project(":data")
     implementation project(":base")
+    implementation project(":common")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //ConstraintLayout
@@ -72,12 +73,9 @@ dependencies {
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
 
     //Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
 
     //Viewpager 2
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
@@ -85,4 +83,7 @@ dependencies {
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStore"
 }

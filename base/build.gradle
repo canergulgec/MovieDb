@@ -1,12 +1,13 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    buildToolsVersion '30.0.1'
 
     defaultConfig {
         minSdkVersion 21
@@ -33,10 +34,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 kapt {
@@ -44,9 +41,10 @@ kapt {
 }
 
 dependencies {
+    implementation project(":common")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
@@ -61,16 +59,11 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:${lifecycle}"
 
-    // Rx
-    implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
-    implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
-    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
-
-    implementation "androidx.recyclerview:recyclerview:$recyclerview"
-
-    implementation "io.coil-kt:coil:${coil}"
-
+    //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Paging 3

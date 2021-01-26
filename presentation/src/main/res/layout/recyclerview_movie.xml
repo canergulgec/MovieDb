@@ -25,6 +25,8 @@
             android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:path='@{movie.poster.medium ?? ""}'
+            app:radius="@{12f}"
             tools:ignore="ContentDescription"
             tools:srcCompat="@color/colorPrimary" />
 
@@ -45,7 +47,8 @@
             android:id="@+id/movieRatingBar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:rating="@{Float.parseFloat(String.valueOf(movie.voteAverage/2))}" />
 
     </LinearLayout>
 

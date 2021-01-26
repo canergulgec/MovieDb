@@ -12,7 +12,7 @@ import androidx.hilt.Assisted
 import androidx.hilt.work.WorkerInject
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.android.data.Constants
+import com.caner.common.Constants
 import com.android.presentation.R
 
 

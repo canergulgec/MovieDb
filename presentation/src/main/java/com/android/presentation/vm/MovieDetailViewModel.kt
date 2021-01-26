@@ -1,66 +1,66 @@
 package com.android.presentation.vm
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.android.base.ApiError
+import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
-import com.android.base.NetworkState
+import com.caner.common.Constants
+import com.caner.common.Resource
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.BackdropItem
+import com.android.data.model.remote.MovieImagesResponse
+import com.android.data.model.remote.MovieVideosResponse
 import com.android.data.model.remote.VideoItem
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.domain.usecase.MovieGalleryUseCase
-import io.reactivex.observers.DisposableSingleObserver
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 class MovieDetailViewModel @ViewModelInject constructor(
     private val movieDetailUseCase: MovieDetailUseCase,
     private val movieGalleryUseCase: MovieGalleryUseCase
 ) : BaseViewModel() {
 
-    val movieDetailLiveData: MutableLiveData<MovieDetailModel> = MutableLiveData()
-    val movieGalleryLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    private val _movieDetailState = MutableStateFlow<Resource<MovieDetailModel>>(Resource.Empty)
+    val movieDetailState: StateFlow<Resource<MovieDetailModel>> get() = _movieDetailState
 
-    val movieImageList = arrayListOf<BackdropItem>()
-    val movieVideoList = arrayListOf<VideoItem>()
+    private val _movieBackdropState = MutableStateFlow<Resource<List<BackdropItem>>>(Resource.Empty)
+    val movieBackdropState: StateFlow<Resource<List<BackdropItem>>> get() = _movieBackdropState
+
+    private val _movieVideoState = MutableStateFlow<Resource<List<VideoItem>>>(Resource.Empty)
+    val movieVideoState: StateFlow<Resource<List<VideoItem>>> get() = _movieVideoState
 
     fun getMovieDetail(movieId: Int?) {
-        setNetworkStatus(NetworkState.Loading)
-
-        add(
-            movieDetailUseCase.execute(movieId)
-                .subscribeWith(object : DisposableSingleObserver<MovieDetailModel>() {
-                    override fun onSuccess(t: MovieDetailModel) {
-                        setNetworkStatus(NetworkState.Success)
-                        movieDetailLiveData.value = t
-                    }
-
-                    override fun onError(e: Throwable) = setError(e as ApiError)
-                })
-        )
+        viewModelScope.launch {
+            movieDetailUseCase.execute(movieId).collect {
+                when (it) {
+                    is Resource.Loading -> setLoadingStatus(it.status)
+                    is Resource.Success -> _movieDetailState.value = it
+                    is Resource.Error -> setError(it.apiError)
+                    is Resource.Empty -> Constants.pass
+                }
+            }
+        }
     }
 
     fun getMovieGallery(movieId: Int?) {
-        setNetworkStatus(NetworkState.Loading)
-
-        add(
-            movieGalleryUseCase.execute(movieId)
-                .subscribeWith(object : DisposableSingleObserver<ArrayList<Any>>() {
-                    override fun onSuccess(t: ArrayList<Any>) {
-                        setNetworkStatus(NetworkState.Success)
-                        apartMovieGalleryList(t)
-                        movieGalleryLiveData.value = true
-                    }
-
-                    override fun onError(e: Throwable) = setError(e as ApiError)
-                })
-        )
+        viewModelScope.launch {
+            movieGalleryUseCase.execute(movieId).collect {
+                when (it) {
+                    is Resource.Loading -> setLoadingStatus(it.status)
+                    is Resource.Success -> apartMovieGalleryList(it.data)
+                    is Resource.Error -> setError(it.apiError)
+                    is Resource.Empty -> Constants.pass
+                }
+            }
+        }
     }
 
-    private fun apartMovieGalleryList(movieGalleryList: ArrayList<Any>) {
-        movieGalleryList.forEachIndexed { index, item ->
-            if (item is BackdropItem) movieImageList.add(item)
-            else if (item is VideoItem) movieVideoList.add(item)
+    private fun apartMovieGalleryList(movieGalleryItem: Any) {
+        when (movieGalleryItem) {
+            is MovieImagesResponse -> _movieBackdropState.value =
+                Resource.Success(movieGalleryItem.backdrops)
+            is MovieVideosResponse -> _movieVideoState.value =
+                Resource.Success(movieGalleryItem.results)
         }
     }
 }

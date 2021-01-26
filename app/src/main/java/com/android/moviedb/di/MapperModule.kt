@@ -1,7 +1,7 @@
 package com.android.moviedb.di
 
-import com.android.base.Mapper
 import com.android.data.mapper.MovieDetailMapper
+import com.caner.common.Mapper
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.MovieModel
@@ -10,10 +10,10 @@ import com.android.data.model.remote.MoviesResponse
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class MapperModule {
 
     @Binds

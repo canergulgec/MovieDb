@@ -6,7 +6,7 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    buildToolsVersion '30.0.1'
 
     defaultConfig {
         minSdkVersion 21
@@ -15,9 +15,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
-        buildConfigField("Integer", "TIMEOUT", "60")
-        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
     }
 
     buildTypes {
@@ -41,9 +38,8 @@ dependencies {
 
     implementation project(":data")
     implementation project(":base")
+    implementation project(":common")
 
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
@@ -54,7 +50,6 @@ dependencies {
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttp}"
 
@@ -65,4 +60,10 @@ dependencies {
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStore"
+
+    //Paging 3
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }

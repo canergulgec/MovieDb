@@ -8,25 +8,19 @@
 
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.android.moviedb.ui.explore.ExploreFragment"
+        android:name="com.android.moviedb.ui.main.tabs.HomeFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.android.moviedb.ui.search.SearchFragment"
+        android:name="com.android.moviedb.ui.main.tabs.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.android.moviedb.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.android.moviedb.ui.detail.MovieDetailFragment"
+        android:name="com.android.moviedb.ui.movie.detail.MovieDetailFragment"
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail" />
 
