@@ -4,6 +4,13 @@ The goal of this project is showing a modern approach with using the latest tech
  
 ![alt text](https://cdn-images-1.medium.com/max/1200/1*vIR7iO-1GnY2xYxL6NiYkw.png)
 
+### Configuration
+
+In order to use MovieDB:
+- You need to get API KEY from TMDb. You can do that by clicking [here](https://www.themoviedb.org/signup).
+- Once you obtain key, create `secure.properties` which should be on the same level with build.gradle(Project:MovieDb)
+- Add your key into secure.properties `MOVIE_API_KEY = "xxx" `
+
 ### Modules
 
 Modules are the collection of source files and build settings that allow you to divide your project into discrete units of functionality.
