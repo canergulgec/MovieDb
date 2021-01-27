@@ -1,6 +1,6 @@
 package com.caner.common
 
-import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 
 object Constants {
     const val SHARED_PREF_KEY = "SHARED_PREF_KEY"
@@ -13,6 +13,6 @@ object Constants {
     const val MOVIE_OVERVIEW = "MOVIE_OVERVIEW"
     const val CHANNEL_ID = "NotificationChannelId"
     const val PREFERENCE_NAME = "profile"
-    val ACCESS_TOKEN_DATA_STORE = preferencesKey<String>("access_token")
+    val ACCESS_TOKEN_DATA_STORE = stringPreferencesKey("access_token")
     val pass = Unit
 }
