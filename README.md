@@ -52,7 +52,6 @@ Modules are the collection of source files and build settings that allow you to 
     * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
   - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
-- [RxJava](https://github.com/ReactiveX/RxJava)
 - [Dagger Hilt](https://dagger.dev/hilt/)
 - [Viewpager 2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 - [Retrofit](https://square.github.io/retrofit/)
