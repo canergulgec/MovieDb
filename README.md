@@ -48,6 +48,7 @@ Modules are the collection of source files and build settings that allow you to 
       - [Binding Adapter](https://developer.android.com/topic/libraries/data-binding/binding-adapters)
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
     * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
+    * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
     * [View Binding](https://developer.android.com/topic/libraries/view-binding)
     * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
@@ -68,3 +69,7 @@ Modules are the collection of source files and build settings that allow you to 
 - [Model-View-ViewModel](https://en.wikipedia.org/wiki/Model–view–viewmodel)(MVVM) pattern helps to completely separate the business and presentation logic from the UI
 - `Modular app architecture` enables separate functionality into independent, interchangeable modules
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles intended to make software designs more understandable, flexible, and maintainable
+
+### Screenshots
+
+<img src="/art/home_screen.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail.png" width="300" />
