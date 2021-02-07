@@ -8,15 +8,16 @@ import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.hilt.Assisted
-import androidx.hilt.work.WorkerInject
+import androidx.hilt.work.HiltWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.caner.common.Constants
 import com.android.presentation.R
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 
-
-class NotificationWorker @WorkerInject constructor(
+@HiltWorker
+class NotificationWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
 ) : Worker(context, workerParams) {

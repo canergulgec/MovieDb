@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/exploreFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/exploreFragment"
+        android:id="@+id/homeFragment"
         android:name="com.android.moviedb.ui.main.tabs.HomeFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_home" />

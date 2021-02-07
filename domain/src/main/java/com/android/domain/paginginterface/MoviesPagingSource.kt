@@ -1,6 +1,7 @@
 package com.android.domain.paginginterface
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.android.data.mapper.MovieMapper
 import com.caner.common.Constants
 import com.android.data.model.Movie
@@ -49,5 +50,9 @@ class MoviesPagingSource @Inject constructor(
                 put(Constants.page, page)
             }
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+        return state.anchorPosition
     }
 }

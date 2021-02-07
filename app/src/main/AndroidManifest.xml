@@ -17,12 +17,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="${applicationId}.workmanager-init"
-            tools:node="remove"
-            android:exported="false" />
-
         <activity
             android:name="com.android.moviedb.ui.main.MainActivity"
             android:screenOrientation="portrait">
@@ -32,6 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove"
+            android:exported="false" />
     </application>
 
 </manifest>
