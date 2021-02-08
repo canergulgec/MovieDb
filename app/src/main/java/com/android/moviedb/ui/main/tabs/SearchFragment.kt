@@ -64,7 +64,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun setList(showEmptyView: Boolean, list: List<Movie>) {
         binding.emptyViewTv.visible(showEmptyView)
-        searchAdapter.submitList(list)
+        searchAdapter.submitList(list.sortedByDescending { it.voteAverage })
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding
