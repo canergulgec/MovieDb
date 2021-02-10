@@ -1,6 +1,5 @@
 package com.android.presentation.vm
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
 import com.caner.common.Constants
@@ -12,10 +11,13 @@ import com.android.data.model.remote.MovieVideosResponse
 import com.android.data.model.remote.VideoItem
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.domain.usecase.MovieGalleryUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MovieDetailViewModel @Inject constructor(
     private val movieDetailUseCase: MovieDetailUseCase,
     private val movieGalleryUseCase: MovieGalleryUseCase
 ) : BaseViewModel() {

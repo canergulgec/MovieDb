@@ -1,6 +1,5 @@
 package com.android.presentation.vm
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,14 +9,17 @@ import com.caner.common.utils.DataStoreUtils
 import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
 import com.caner.common.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class ProfileViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ProfileViewModel @Inject constructor(
     private val newTokenUseCase: NewTokenUseCase,
     private val preferencesUtils: SharedPreferencesUtils,
     private val prefUtils: DataStoreUtils
