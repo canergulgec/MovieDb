@@ -6,6 +6,7 @@ import com.android.domain.qualifier.IoDispatcher
 import com.android.domain.repository.MovieDetailRepository
 import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 

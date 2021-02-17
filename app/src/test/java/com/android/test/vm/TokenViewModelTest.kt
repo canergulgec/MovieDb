@@ -1,15 +1,15 @@
-package com.android.test
+package com.android.test.vm
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
-import com.caner.common.utils.DataStoreUtils
+import com.caner.common.utils.PrefStore
 import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
-import com.android.test.util.MainCoroutineScopeRule
-import com.android.test.util.getOrAwaitValue
+import com.android.test.utils.MainCoroutineScopeRule
+import com.android.test.utils.getOrAwaitValue
 import com.caner.common.Resource
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
@@ -36,7 +36,7 @@ class TokenViewModelTest {
 
     private val sharedPref: SharedPreferencesUtils = mock()
 
-    private val dataStoreUtils: DataStoreUtils = mock()
+    private val dataStoreUtils: PrefStore = mock()
 
     private val tokenUseCase by lazy {
         NewTokenUseCase(

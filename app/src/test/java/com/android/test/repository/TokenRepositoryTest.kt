@@ -1,9 +1,9 @@
-package com.android.test
+package com.android.test.repository
 
 import com.caner.common.Resource
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
-import com.android.test.util.MainCoroutineScopeRule
+import com.android.test.utils.MainCoroutineScopeRule
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.android.test.util
+package com.android.test.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

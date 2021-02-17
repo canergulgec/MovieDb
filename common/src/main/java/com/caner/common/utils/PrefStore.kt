@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class DataStoreUtils @Inject constructor(@ApplicationContext val context: Context) {
+class PrefStore @Inject constructor(@ApplicationContext val context: Context) {
 
     private var dataStore: DataStore<Preferences> =
         context.createDataStore(name = Constants.PREFERENCE_NAME)

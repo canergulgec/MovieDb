@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.android.base.BaseFragment
 import com.caner.common.ext.observeWith
 import com.caner.common.Constants
-import com.caner.common.utils.DataStoreUtils
+import com.caner.common.utils.PrefStore
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     @Inject
-    lateinit var storeUtils: DataStoreUtils
+    lateinit var prefStore: PrefStore
 
     private val viewModel: ProfileViewModel by viewModels()
 
@@ -30,7 +30,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         initObservers()
 
         lifecycleScope.launch {
-            storeUtils.getData(Constants.ACCESS_TOKEN_DATA_STORE).collect { sessionId ->
+            prefStore.getData(Constants.ACCESS_TOKEN_DATA_STORE).collect { sessionId ->
                 if (sessionId == null) {
                     viewModel.getNewTokenWithDataStore()
                 }
@@ -41,7 +41,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private fun initObservers() {
         viewModel.newSessionLiveData.observeWith(viewLifecycleOwner) {
             lifecycleScope.launch {
-                storeUtils.saveData(Constants.ACCESS_TOKEN_DATA_STORE, it)
+                prefStore.saveData(Constants.ACCESS_TOKEN_DATA_STORE, it)
             }
         }
     }
