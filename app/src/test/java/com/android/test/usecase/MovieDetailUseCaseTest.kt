@@ -41,7 +41,12 @@ class MovieDetailUseCaseTest {
         val getNewToken = detailUseCase.execute(13)
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
-            if (index == 1) assert(value is Resource.Success)
+            if (index == 1){
+                assert(value is Resource.Success)
+                if (value is Resource.Success) {
+                    assert(value.data == detailModel)
+                }
+            }
             if (index == 2) assert(value is Resource.Loading)
         }
     }

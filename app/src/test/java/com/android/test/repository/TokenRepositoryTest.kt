@@ -37,7 +37,13 @@ class TokenRepositoryTest {
         val getNewToken = repository.getNewToken()
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
-            if (index == 1) assert(value is Resource.Success)
+            if (index == 1) {
+                assert(value is Resource.Success)
+                if (value is Resource.Success) {
+                    assert(value.data == userDetails)
+                    assert(value.data.requestToken == userDetails.requestToken)
+                }
+            }
         }
     }
 }
