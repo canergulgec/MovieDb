@@ -36,16 +36,16 @@ class TokenViewModelTest {
 
     private val sharedPref: SharedPreferencesUtils = mock()
 
-    private val dataStoreUtils: PrefStore = mock()
+    private val prefStore: PrefStore = mock()
 
-    private val tokenUseCase by lazy {
+    private val useCase by lazy {
         NewTokenUseCase(
             newTokenRepository,
             coroutineScope.dispatcher
         )
     }
 
-    private val viewModel by lazy { ProfileViewModel(tokenUseCase, sharedPref, dataStoreUtils) }
+    private val viewModel by lazy { ProfileViewModel(useCase, sharedPref, prefStore) }
 
     private val newSessionObserver: Observer<String> = mock()
 
@@ -59,7 +59,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
+        whenever(useCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<String>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
 
@@ -80,7 +80,7 @@ class TokenViewModelTest {
         }
 
         //When
-        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
+        whenever(useCase.execute()).thenReturn(flow)
 
         //Then
         viewModel.getNewToken()

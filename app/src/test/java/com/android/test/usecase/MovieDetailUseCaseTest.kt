@@ -5,6 +5,7 @@ import com.android.domain.repository.MovieDetailRepository
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.test.utils.MainCoroutineScopeRule
 import com.caner.common.Resource
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,19 +30,19 @@ class MovieDetailUseCaseTest {
     @Test
     fun movieDetailFlowMustReturnSuccess() = coroutineScope.dispatcher.runBlockingTest {
         //Given
-        val detailModel: MovieDetailModel = mock()
+        val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Success(detailModel))
         }
 
         //When
-        whenever(detailUseCase.execute(13)).thenReturn(flow)
+        whenever(detailUseCase.execute(any())).thenReturn(flow)
 
         //Then
-        val getNewToken = detailUseCase.execute(13)
+        val getNewToken = detailUseCase.execute(any())
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
-            if (index == 1){
+            if (index == 1) {
                 assert(value is Resource.Success)
                 if (value is Resource.Success) {
                     assert(value.data == detailModel)
