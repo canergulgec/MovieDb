@@ -26,7 +26,7 @@ ext {
     mockito_kotlin2 = "2.2.0"
     mockito = "3.3.3"
     arch = "2.1.0"
-    junit = "4.13.1"
+    junit = "4.13.2"
     dataStore = "1.0.0-alpha06"
     kakao = "2.4.0"
     idling = "1.0.0"
