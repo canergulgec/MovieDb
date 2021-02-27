@@ -7,8 +7,11 @@ import com.android.test.MovieTestApp
 
 class MockTestRunner : AndroidJUnitRunner() {
 
-    override fun newApplication(cl: ClassLoader?, className: String?,
-                                context: Context?): Application {
+    override fun newApplication(
+        cl: ClassLoader?,
+        className: String?,
+        context: Context?
+    ): Application {
         return super.newApplication(cl, MovieTestApp::class.java.name, context)
     }
 }

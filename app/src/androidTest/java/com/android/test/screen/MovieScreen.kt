@@ -11,9 +11,12 @@ import com.android.moviedb.R
 import org.hamcrest.Matcher
 
 class MovieScreen : Screen<MovieScreen>() {
-    val recycler = KRecyclerView({ withId(R.id.moviesRv) }, itemTypeBuilder = {
-        itemType(MovieScreen::Item)
-    })
+    val recycler = KRecyclerView(
+        { withId(R.id.moviesRv) },
+        itemTypeBuilder = {
+            itemType(MovieScreen::Item)
+        }
+    )
 
     class Item(parent: Matcher<View>) : KRecyclerItem<Item>(parent) {
         val image: KImageView = KImageView(parent) { withId(R.id.movieIv) }

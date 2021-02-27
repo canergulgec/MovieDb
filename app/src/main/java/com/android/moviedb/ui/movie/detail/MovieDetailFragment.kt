@@ -94,7 +94,8 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         }
 
         binding.movieGenresRv.init(
-            movieGenresAdapter, listOf(
+            movieGenresAdapter,
+            listOf(
                 HorizontalSpaceItemDecoration(4.dp2px()),
                 VerticalSpaceItemDecoration(4.dp2px())
             ),

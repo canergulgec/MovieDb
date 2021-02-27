@@ -7,6 +7,7 @@ plugins {
 
 android {
     compileSdkVersion 30
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         minSdkVersion 21
@@ -34,9 +35,8 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    // Open data binding
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding true
     }
 }
 
