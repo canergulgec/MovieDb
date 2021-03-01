@@ -70,6 +70,14 @@ Modules are the collection of source files and build settings that allow you to 
 - `Modular app architecture` enables separate functionality into independent, interchangeable modules
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles intended to make software designs more understandable, flexible, and maintainable
 
+### Code style
+
+To maintain the style and quality of the code
+
+| Tool                                                   |    Check command             | Fix command               
+|---------------------------------------------------------|---------------------------|--------------------------- |
+| [ktlint](https://github.com/pinterest/ktlint)           |  `./gradlew ktlint`        | `./gradlew ktlintFormat`  |
+
 ### Screenshots
 
 <img src="/art/home_screen.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_search.png" width="300" />
