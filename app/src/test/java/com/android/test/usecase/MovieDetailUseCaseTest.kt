@@ -4,6 +4,7 @@ import com.android.data.model.MovieDetailModel
 import com.android.domain.repository.MovieDetailRepository
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.test.utils.MainCoroutineScopeRule
+import com.caner.common.ApiError
 import com.caner.common.Resource
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
@@ -36,7 +37,7 @@ class MovieDetailUseCaseTest {
         }
 
         //When
-        whenever(detailUseCase.execute(any())).thenReturn(flow)
+        whenever(detailRepository.getMovieDetail(any())).thenReturn(flow)
 
         //Then
         val getNewToken = detailUseCase.execute(any())
@@ -47,6 +48,32 @@ class MovieDetailUseCaseTest {
                 if (value is Resource.Success) {
                     assert(value.data == detailModel)
                 }
+            }
+            if (index == 2) assert(value is Resource.Loading)
+        }
+    }
+
+    @Test
+    fun movieDetailFlowErrorCase() = coroutineScope.dispatcher.runBlockingTest {
+        //Given
+        val error = ApiError(code = 1)
+        val flow = flow {
+            emit(Resource.Error(error))
+        }
+
+        //When
+        whenever(detailRepository.getMovieDetail(any())).thenReturn(flow)
+
+        //Then
+        val getNewToken = detailUseCase.execute(any())
+        getNewToken.collectIndexed { index, value ->
+            if (index == 0) assert(value is Resource.Loading)
+            if (index == 1) {
+                assert(value is Resource.Error)
+                if (value is Resource.Error) {
+                    assert(value.apiError.code == error.code)
+                }
+
             }
             if (index == 2) assert(value is Resource.Loading)
         }
