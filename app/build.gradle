@@ -71,7 +71,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
 
     //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -101,8 +101,8 @@ dependencies {
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android"
 
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"

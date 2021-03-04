@@ -5,13 +5,11 @@ import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class TokenRepositoryTest {
 
     private val repository: NewTokenRepository = mock()
