@@ -48,7 +48,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         lifecycleScope.launchWhenResumed {
             viewModel.searchFlow.onEach { resource ->
                 when (resource) {
-                    is Resource.Loading -> setLoadingStatus(resource.status)
+                    is Resource.Loading -> showLoading(resource.status)
                     is Resource.Success -> setList(false, resource.data.movies)
                     is Resource.Empty -> setList(true, emptyList())
                     is Resource.Error -> toast(resource.apiError.message)

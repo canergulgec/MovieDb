@@ -37,8 +37,8 @@ class MovieDetailViewModel @Inject constructor(
                 when (it) {
                     is Resource.Loading -> setLoadingStatus(it.status)
                     is Resource.Success -> _movieDetailState.value = it
-                    is Resource.Error -> setError(it.apiError)
-                    is Resource.Empty -> Constants.pass
+                    is Resource.Error -> setErrorStatus(it.apiError)
+                    is Resource.Empty -> Constants.PASS
                 }
             }
         }
@@ -50,8 +50,8 @@ class MovieDetailViewModel @Inject constructor(
                 when (it) {
                     is Resource.Loading -> setLoadingStatus(it.status)
                     is Resource.Success -> apartMovieGalleryList(it.data)
-                    is Resource.Error -> setError(it.apiError)
-                    is Resource.Empty -> Constants.pass
+                    is Resource.Error -> setErrorStatus(it.apiError)
+                    is Resource.Empty -> Constants.PASS
                 }
             }
         }

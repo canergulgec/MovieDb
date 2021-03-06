@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.base.BaseViewModel
+import com.android.data.model.remote.TokenResponse
 import com.caner.common.Constants
 import com.caner.common.utils.PrefStore
 import com.caner.common.utils.SharedPreferencesUtils
@@ -25,19 +26,14 @@ class ProfileViewModel @Inject constructor(
     private val prefStore: PrefStore
 ) : BaseViewModel() {
 
-    private val _newSessionLiveData: MutableLiveData<String> = MutableLiveData()
-    val newSessionLiveData: LiveData<String> get() = _newSessionLiveData
+    private val _newSessionLiveData: MutableLiveData<Resource<TokenResponse>> = MutableLiveData()
+    val newSessionLiveData: LiveData<Resource<TokenResponse>> get() = _newSessionLiveData
 
     fun getNewToken() {
         newTokenUseCase.execute().onEach {
             when (it) {
-                is Resource.Loading -> setLoadingStatus(true)
-                is Resource.Success -> {
-                    setLoadingStatus(false)
-                    _newSessionLiveData.value = it.data.requestToken
-                }
-                is Resource.Error -> setError(it.apiError)
-                is Resource.Empty -> Constants.pass
+                is Resource.Empty -> Constants.PASS
+                else -> _newSessionLiveData.value = it
             }
         }.launchIn(viewModelScope)
     }
@@ -48,13 +44,8 @@ class ProfileViewModel @Inject constructor(
                 newTokenUseCase.execute()
                     .collect {
                         when (it) {
-                            is Resource.Loading -> setLoadingStatus(true)
-                            is Resource.Success -> {
-                                setLoadingStatus(false)
-                                _newSessionLiveData.value = it.data.requestToken
-                            }
-                            is Resource.Error -> setError(it.apiError)
-                            is Resource.Empty -> Constants.pass
+                            is Resource.Empty -> Constants.PASS
+                            else -> _newSessionLiveData.value = it
                         }
                     }
             }

@@ -74,11 +74,11 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
                 }
             }.launchIn(this)
 
-            viewModel.getLoadingStatus().onEach {
-                setLoadingStatus(it)
+            viewModel.loadingStatus.onEach {
+                showLoading(it)
             }.launchIn(this)
 
-            viewModel.getError().onEach {
+            viewModel.errorStatus.onEach {
                 if (it.code != -1) {
                     toast("error happened ${it.code} ${it.message}")
                 }

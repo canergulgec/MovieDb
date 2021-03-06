@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.caner.common.widget.CustomProgressDialog
 
-abstract class BaseActivity<VB : ViewBinding>  : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     private var _binding: ViewBinding? = null
     abstract val bindLayout: (LayoutInflater) -> VB
 
@@ -28,7 +28,7 @@ abstract class BaseActivity<VB : ViewBinding>  : AppCompatActivity() {
         initView(savedInstanceState)
     }
 
-    fun setLoadingStatus(isVisible: Boolean) {
+    fun showLoading(isVisible: Boolean) {
         when (isVisible) {
             true -> if (!progressDialog.isShowing) progressDialog.show()
             false -> if (progressDialog.isShowing) progressDialog.dismiss()

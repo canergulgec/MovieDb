@@ -29,7 +29,7 @@ class MovieDetailUseCaseTest {
     }
 
     @Test
-    fun movieDetailFlowMustReturnSuccess() = coroutineScope.dispatcher.runBlockingTest {
+    fun movieDetailFlowMustReturnSuccess() = coroutineScope.runBlockingTest {
         //Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
@@ -54,7 +54,7 @@ class MovieDetailUseCaseTest {
     }
 
     @Test
-    fun movieDetailFlowErrorCase() = coroutineScope.dispatcher.runBlockingTest {
+    fun movieDetailFlowErrorCase() = coroutineScope.runBlockingTest {
         //Given
         val error = ApiError(code = 1)
         val flow = flow {

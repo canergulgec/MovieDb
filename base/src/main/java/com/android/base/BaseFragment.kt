@@ -30,8 +30,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         initView(savedInstanceState)
     }
 
-    fun setLoadingStatus(isVisible: Boolean) =
-        with(activity) { if (this is BaseActivity<*>) setLoadingStatus(isVisible) }
+    fun showLoading(isVisible: Boolean) =
+        with(activity) { if (this is BaseActivity<*>) showLoading(isVisible) }
 
     abstract fun initView(savedInstanceState: Bundle?)
 

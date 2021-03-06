@@ -11,10 +11,13 @@ import com.caner.common.Constants
 import com.caner.common.utils.PrefStore
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
+import com.caner.common.Resource
+import com.caner.common.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -39,9 +42,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun initObservers() {
-        viewModel.newSessionLiveData.observeWith(viewLifecycleOwner) {
+        viewModel.newSessionLiveData.observeWith(viewLifecycleOwner) { resource ->
             lifecycleScope.launch {
-                prefStore.saveData(Constants.ACCESS_TOKEN_DATA_STORE, it)
+                when (resource) {
+                    is Resource.Loading -> showLoading(resource.status)
+                    is Resource.Success -> prefStore.saveData(Constants.ACCESS_TOKEN_DATA_STORE, resource.data.requestToken)
+                    is Resource.Error -> toast(resource.apiError.message)
+                    is Resource.Empty -> Timber.v("Initial Empty state")
+                }
             }
         }
     }

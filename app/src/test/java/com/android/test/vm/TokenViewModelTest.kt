@@ -9,7 +9,7 @@ import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
-import com.android.test.utils.getOrAwaitValue
+import com.caner.common.ApiError
 import com.caner.common.Resource
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
@@ -17,7 +17,7 @@ import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -47,44 +47,51 @@ class TokenViewModelTest {
 
     private val viewModel by lazy { ProfileViewModel(useCase, sharedPref, prefStore) }
 
-    private val newSessionObserver: Observer<String> = mock()
+    private val newSessionObserver: Observer<Resource<TokenResponse>> = mock()
 
     @Test
-    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlocking {
+    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = coroutineScope.runBlockingTest {
         //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
-            emit(Resource.Loading(true))
             emit(Resource.Success(userDetails))
         }
 
         //When
         whenever(newTokenRepository.getNewToken()).thenReturn(flow)
-        val captor = argumentCaptor<String>()
-        viewModel.newSessionLiveData.observeForever(newSessionObserver)
+        val captor = argumentCaptor<Resource<TokenResponse>>()
+        viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
 
         //Then
         viewModel.getNewToken()
 
-        verify(newSessionObserver, times(1)).onChanged(captor.capture())
-        assertEquals(userDetails.requestToken, captor.firstValue)
+        verify(newSessionObserver, times(3)).onChanged(captor.capture())
+
+        assertEquals(true, (captor.firstValue as Resource.Loading).status)
+        assertEquals(userDetails.requestToken, (captor.secondValue as Resource.Success).data.requestToken)
+        assertEquals(false, (captor.thirdValue as Resource.Loading).status)
     }
 
     @Test
-    fun newTokenFlowEmitsSuccessfullyWithLiveDataUtil() = runBlocking {
+    fun newTokenFlowEmitsError() = coroutineScope.runBlockingTest {
         //Given
-        val userDetails = TokenResponse(true, "1234567")
+        val error = ApiError(code = 404)
         val flow = flow {
-            emit(Resource.Loading(true))
-            emit(Resource.Success(userDetails))
+            emit(Resource.Error(error))
         }
 
         //When
         whenever(newTokenRepository.getNewToken()).thenReturn(flow)
+        val captor = argumentCaptor<Resource<TokenResponse>>()
+        viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
 
         //Then
         viewModel.getNewToken()
 
-        assertEquals(userDetails.requestToken, viewModel.newSessionLiveData.getOrAwaitValue())
+        verify(newSessionObserver, times(3)).onChanged(captor.capture())
+
+        assertEquals(true, (captor.firstValue as Resource.Loading).status)
+        assertEquals(error.code, (captor.secondValue as Resource.Error).apiError.code)
+        assertEquals(false, (captor.thirdValue as Resource.Loading).status)
     }
 }
