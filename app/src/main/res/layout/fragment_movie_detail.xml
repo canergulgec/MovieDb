@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <data>
+
+        <import type="android.view.View" />
 
         <variable
             name="item"
@@ -16,16 +19,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/movieGalleryRv"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/movieBackdropIv"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:image="@{item.backdrop.original}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/recyclerview_movie_image" />
+            tools:background="@color/red" />
 
         <ImageView
             android:id="@+id/moviePosterIv"
@@ -35,9 +39,9 @@
             android:layout_marginStart="16dp"
             android:scaleType="centerCrop"
             app:image="@{item.poster.original}"
-            app:layout_constraintBottom_toBottomOf="@+id/movieGalleryRv"
+            app:layout_constraintBottom_toBottomOf="@+id/movieBackdropIv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieGalleryRv"
+            app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
             tools:ignore="ContentDescription"
             tools:srcCompat="@color/colorAccent" />
 
@@ -52,7 +56,7 @@
             android:text="@{item.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/moviePosterIv"
-            app:layout_constraintTop_toBottomOf="@+id/movieGalleryRv"
+            app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
             tools:text="Movie Title" />
 
         <RatingBar
@@ -61,9 +65,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:rating="4"
+            android:rating="@{Float.parseFloat(String.valueOf(item.voteAverage/2))}"
+            android:visibility="@{item.voteAverage != null ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="@+id/movieTitleTv"
-            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv" />
+            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
+            tools:rating="4" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieGenresRv"

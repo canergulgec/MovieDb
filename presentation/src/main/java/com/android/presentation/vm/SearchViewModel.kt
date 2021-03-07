@@ -1,6 +1,6 @@
 package com.android.presentation.vm
 
-import com.android.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.android.domain.usecase.SearchMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val searchUseCase: SearchMovieUseCase
-) : BaseViewModel() {
+) : ViewModel() {
 
     val searchQuery = MutableStateFlow("")
 

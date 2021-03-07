@@ -162,5 +162,6 @@ dependencies {
     implementation "org.mockito:mockito-core:$mockito"
     testImplementation "androidx.arch.core:core-testing:$arch"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
+    testImplementation "app.cash.turbine:turbine:$turbine"
     //
 }

@@ -23,8 +23,5 @@ abstract class RepositoryModule {
     abstract fun provideMovieDetailRepositoryImp(repositoryImp: MovieDetailRepositoryImp): MovieDetailRepository
 
     @Binds
-    abstract fun provideMovieImagesRepositoryImp(repositoryImp: MovieGalleryRepositoryImp): MovieGalleryRepository
-
-    @Binds
     abstract fun provideSearchRepositoryImp(repositoryImp: SearchRepositoryImp): SearchRepository
 }

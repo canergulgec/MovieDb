@@ -21,6 +21,7 @@ class TokenRepositoryTest {
         val flow = flow {
             emit(Resource.Loading(true))
             emit(Resource.Success(userDetails))
+            emit(Resource.Loading(false))
         }
 
         //When
@@ -37,6 +38,7 @@ class TokenRepositoryTest {
                     assert(value.data.requestToken == userDetails.requestToken)
                 }
             }
+            if (index == 2) assert(value is Resource.Loading)
         }
     }
 }

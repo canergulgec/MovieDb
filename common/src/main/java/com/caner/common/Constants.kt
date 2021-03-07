@@ -4,7 +4,6 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 
 object Constants {
     const val SHARED_PREF_KEY = "SHARED_PREF_KEY"
-    const val ACCESS_TOKEN = "ACCESS_TOKEN"
     const val MOVIE_ID = "MOVIE_ID"
     const val page = "page"
     const val NOW_PLAYING_MOVIES = 1
@@ -14,5 +13,4 @@ object Constants {
     const val CHANNEL_ID = "NotificationChannelId"
     const val PREFERENCE_NAME = "profile"
     val ACCESS_TOKEN_DATA_STORE = stringPreferencesKey("access_token")
-    val PASS = Unit
 }

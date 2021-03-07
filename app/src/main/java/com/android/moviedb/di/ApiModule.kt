@@ -32,16 +32,6 @@ class ApiModule {
     }
 
     @Provides
-    fun provideMovieImagesApiService(retrofit: Retrofit): MovieImagesApi {
-        return retrofit.create(MovieImagesApi::class.java)
-    }
-
-    @Provides
-    fun provideMovieVideosApiService(retrofit: Retrofit): MovieVideosApi {
-        return retrofit.create(MovieVideosApi::class.java)
-    }
-
-    @Provides
     fun provideSearchApiService(retrofit: Retrofit): SearchApi {
         return retrofit.create(SearchApi::class.java)
     }
