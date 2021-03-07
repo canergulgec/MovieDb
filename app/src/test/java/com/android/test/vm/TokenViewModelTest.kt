@@ -5,7 +5,6 @@ import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
 import com.caner.common.utils.PrefStore
 import com.caner.common.utils.SharedPreferencesUtils
-import com.android.domain.repository.NewTokenRepository
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
@@ -32,33 +31,28 @@ class TokenViewModelTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    private val newTokenRepository: NewTokenRepository = mock()
-
     private val sharedPref: SharedPreferencesUtils = mock()
 
     private val prefStore: PrefStore = mock()
 
-    private val useCase by lazy {
-        NewTokenUseCase(
-            newTokenRepository,
-            coroutineScope.dispatcher
-        )
-    }
+    private val useCase: NewTokenUseCase = mock()
 
     private val viewModel by lazy { ProfileViewModel(useCase, sharedPref, prefStore) }
 
     private val newSessionObserver: Observer<Resource<TokenResponse>> = mock()
 
     @Test
-    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = coroutineScope.runBlockingTest {
+    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlockingTest {
         //Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
+            emit(Resource.Loading(true))
             emit(Resource.Success(userDetails))
+            emit(Resource.Loading(false))
         }
 
         //When
-        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
+        whenever(useCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<Resource<TokenResponse>>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
 
@@ -68,7 +62,10 @@ class TokenViewModelTest {
         verify(newSessionObserver, times(3)).onChanged(captor.capture())
 
         assertEquals(true, (captor.firstValue as Resource.Loading).status)
-        assertEquals(userDetails.requestToken, (captor.secondValue as Resource.Success).data.requestToken)
+        assertEquals(
+            userDetails.requestToken,
+            (captor.secondValue as Resource.Success).data.requestToken
+        )
         assertEquals(false, (captor.thirdValue as Resource.Loading).status)
     }
 
@@ -77,11 +74,13 @@ class TokenViewModelTest {
         //Given
         val error = ApiError(code = 404)
         val flow = flow {
+            emit(Resource.Loading(true))
             emit(Resource.Error(error))
+            emit(Resource.Loading(false))
         }
 
         //When
-        whenever(newTokenRepository.getNewToken()).thenReturn(flow)
+        whenever(useCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<Resource<TokenResponse>>()
         viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
 
