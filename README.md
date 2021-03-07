@@ -58,7 +58,6 @@ Modules are the collection of source files and build settings that allow you to 
 - [Viewpager 2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 - [Retrofit](https://square.github.io/retrofit/)
 - [Coil](https://github.com/coil-kt/coil)
-- [ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
 - [FlexBox](https://github.com/google/flexbox-layout)
 - [Mockito](https://site.mockito.org)
 - [Kakao](https://github.com/agoda-com/Kakao)
