@@ -8,7 +8,7 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="exploreFragment">
+                  <entry key="homeFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -21,18 +21,6 @@
                     </value>
                   </entry>
                   <entry key="movieDetailFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="profileFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
