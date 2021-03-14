@@ -15,7 +15,7 @@ class MovieViewModel @Inject constructor(
 ) : ViewModel() {
 
     val moviePagingFlow = Pager(config = PagingConfig(
-        pageSize = 20, enablePlaceholders = false
+        pageSize = 20
     ), pagingSourceFactory = { pagingSource }
     ).flow.cachedIn(viewModelScope)
 
