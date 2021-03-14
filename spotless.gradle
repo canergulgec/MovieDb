@@ -7,26 +7,23 @@ spotless {
         removeUnusedImports()
         trimTrailingWhitespace()
         indentWithSpaces()
-        endWithNewline()
     }
     kotlin {
         target '**/*.kt'
         ktlint()
+        removeUnusedImports()
         trimTrailingWhitespace()
         indentWithSpaces()
-        endWithNewline()
     }
     format 'misc', {
         target '**/*.gradle', '**/*.md', '**/.gitignore'
         indentWithSpaces()
         trimTrailingWhitespace()
-        endWithNewline()
     }
 
     format 'xml', {
         target '**/*.xml'
         indentWithSpaces()
         trimTrailingWhitespace()
-        endWithNewline()
     }
 }
