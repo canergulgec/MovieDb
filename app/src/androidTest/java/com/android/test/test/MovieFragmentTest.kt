@@ -16,7 +16,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-
 @LargeTest
 class MovieFragmentTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>

@@ -12,7 +12,7 @@ fun dispatcher() = object : Dispatcher() {
     }
 }
 
- fun dispatcherWithCustomBody() = object : Dispatcher() {
+fun dispatcherWithCustomBody() = object : Dispatcher() {
     override fun dispatch(request: RecordedRequest): MockResponse {
         with(request.path) {
             val response = MockResponse().setResponseCode(200)

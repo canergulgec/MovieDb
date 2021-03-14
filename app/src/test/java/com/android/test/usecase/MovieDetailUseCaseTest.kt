@@ -73,7 +73,6 @@ class MovieDetailUseCaseTest {
                 if (value is Resource.Error) {
                     assert(value.apiError.code == error.code)
                 }
-
             }
             if (index == 2) assert(value is Resource.Loading)
         }

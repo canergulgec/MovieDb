@@ -22,8 +22,9 @@ open class MovieDbApp : Application(), Configuration.Provider {
     }
 
     private fun initTimber() {
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initStetho() {

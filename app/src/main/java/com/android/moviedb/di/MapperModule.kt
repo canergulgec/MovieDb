@@ -21,5 +21,4 @@ abstract class MapperModule {
 
     @Binds
     abstract fun bindsMovieDetailMapper(mapper: MovieDetailMapper): Mapper<MovieDetailResponse, MovieDetailModel>
-
 }
