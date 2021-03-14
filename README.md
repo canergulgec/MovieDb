@@ -73,9 +73,9 @@ Modules are the collection of source files and build settings that allow you to 
 
 To maintain the style and quality of the code
 
-| Tool                                                   |    Check command             | Fix command               
-|---------------------------------------------------------|---------------------------|--------------------------- |
-| [ktlint](https://github.com/pinterest/ktlint)           |  `./gradlew ktlint`        | `./gradlew ktlintFormat`  |
+| Tool                                                   |    Check command          |     Fix command               
+|--------------------------------------------------------|---------------------------|--------------------------- |
+| [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
 
 ### Screenshots
 
