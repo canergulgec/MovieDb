@@ -164,4 +164,9 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
     testImplementation "app.cash.turbine:turbine:$turbine"
     //
+
+    //Flipper
+    debugImplementation 'com.facebook.flipper:flipper:0.80.0'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
+    debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.80.0'
 }

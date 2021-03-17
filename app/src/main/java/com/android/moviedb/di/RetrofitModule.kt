@@ -3,6 +3,9 @@ package com.android.moviedb.di
 import android.content.Context
 import com.android.moviedb.BuildConfig
 import com.android.moviedb.MovieDbApp
+import com.facebook.flipper.android.AndroidFlipperClient
+import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
+import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -83,7 +86,8 @@ class RetrofitModule {
     fun provideOkHttpAuth(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @Named("AuthInterceptor") authInterceptor: Interceptor,
-        stethoInterceptor: StethoInterceptor
+        stethoInterceptor: StethoInterceptor,
+        @ApplicationContext appContext: Context
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
@@ -91,6 +95,9 @@ class RetrofitModule {
             .readTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(authInterceptor)
+            .addNetworkInterceptor(
+                FlipperOkhttpInterceptor(AndroidFlipperClient.getInstance(appContext).getPlugin(NetworkFlipperPlugin.ID)
+            ))
             .addNetworkInterceptor(stethoInterceptor)
             .retryOnConnectionFailure(true)
             .build()
