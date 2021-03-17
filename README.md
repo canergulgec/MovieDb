@@ -62,6 +62,7 @@ Modules are the collection of source files and build settings that allow you to 
 - [Mockito](https://site.mockito.org)
 - [Kakao](https://github.com/agoda-com/Kakao)
 - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
+- [Flipper](https://github.com/facebook/flipper)
 
 ### Architecture
 
