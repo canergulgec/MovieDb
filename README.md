@@ -60,6 +60,7 @@ Modules are the collection of source files and build settings that allow you to 
 - [Coil](https://github.com/coil-kt/coil)
 - [FlexBox](https://github.com/google/flexbox-layout)
 - [Mockito](https://site.mockito.org)
+- [MockK](https://github.com/mockk/mockk)
 - [Kakao](https://github.com/agoda-com/Kakao)
 - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 - [Flipper](https://github.com/facebook/flipper)
