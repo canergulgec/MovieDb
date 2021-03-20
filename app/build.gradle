@@ -131,8 +131,8 @@ dependencies {
     implementation "com.google.android:flexbox:$flexBox"
 
     // Hilt WorkManager
-    implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    implementation "androidx.hilt:hilt-work:$hilt_workmanager"
+    kapt "androidx.hilt:hilt-compiler:$hilt_workmanager"
 
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStore"
@@ -163,8 +163,7 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$arch"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin2"
     testImplementation "app.cash.turbine:turbine:$turbine"
-
-    testImplementation "io.mockk:mockk:1.10.6"
+    testImplementation "io.mockk:mockk:$mockk"
     //
 
     //Flipper
