@@ -42,6 +42,10 @@ kapt {
 }
 
 dependencies {
+
+    //Material design
+    implementation "com.google.android.material:material:${materialDesign}"
+
     //Coil
     implementation "io.coil-kt:coil:${coil}"
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ProgressDialogStyle" parent="Theme.AppCompat.Dialog">
+    <style name="ProgressDialogStyle" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
@@ -18,33 +18,23 @@
         <item name="android:padding">@dimen/spacing_normal</item>
     </style>
 
-    <style name="App.CardView">
-        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
-        <item name="cardPreventCornerOverlap">false</item>
-    </style>
-
-    <style name="App.CardView.Restaurants">
-        <item name="android:background">@android:color/white</item>
-        <item name="cardCornerRadius">10dp</item>
-    </style>
-
     <style name="App.Title">
         <item name="android:textSize">@dimen/title_size</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/title_color</item>
         <item name="android:fontFamily">@font/montserratmedium</item>
     </style>
 
     <style name="App.Subtitle">
-        <item name="android:textSize">@dimen/text_size_large</item>
-        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/subtitle_color</item>
         <item name="android:fontFamily">@font/montserratmedium</item>
+        <item name="android:lineSpacingExtra">3dp</item>
     </style>
 
     <style name="App.Text">
-        <item name="android:textColor">@color/darker_gray</item>
+        <item name="android:textColor">@color/title_color</item>
         <item name="android:fontFamily">@font/montserratregular</item>
     </style>
-
 
     <style name="App.Text.Small">
         <item name="android:textSize">@dimen/text_size_small</item>
@@ -52,6 +42,7 @@
 
     <style name="App.Text.Small.White">
         <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/montserratmedium</item>
     </style>
 
     <style name="App.Text.Medium">
@@ -59,8 +50,13 @@
     </style>
 
     <style name="App.Text.Medium.Bold">
-        <item name="android:textColor">@color/light_black</item>
         <item name="android:fontFamily">@font/montserratmedium</item>
+    </style>
+
+    <style name="App.Text.Search">
+        <item name="android:textColor">@color/darker_gray</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
 </resources>

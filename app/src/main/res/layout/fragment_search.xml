@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/searchEt"
-        style="@style/App.Text.Medium"
+        style="@style/App.Text.Search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -1,7 +1,9 @@
 package com.android.moviedb.ui.main
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -25,10 +27,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         setupViews()
+
+        binding.dayNightBtn.setOnClickListener {
+            setDayAndNight()
+        }
     }
 
     private fun setupViews() {
         binding.bottomNavigation.setupWithNavController(navController)
+    }
+
+    private fun setDayAndNight() {
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES ->
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            Configuration.UI_MODE_NIGHT_NO ->
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
     override fun onResume() {

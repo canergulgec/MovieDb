@@ -13,8 +13,8 @@
     <color name="darker_gray">#454545</color>
     <color name="dark_gray">#b4b4b4</color>
 
-    <color name="title_color">#161616</color>
-    <color name="subtitle_color">#a0a0a0</color>
-    <color name="status_bar_color">#e5e5e5</color>
+    <color name="title_color">#e5e5e5</color>
+    <color name="subtitle_color">#cecece</color>
+    <color name="status_bar_color">#191919</color>
     <color name="star_color">#86fcbb</color>
 </resources>

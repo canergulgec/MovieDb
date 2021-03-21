@@ -28,8 +28,7 @@
             app:path='@{movie.poster.medium ?? ""}'
             app:radius="@{12f}"
             tools:ignore="ContentDescription"
-            tools:srcCompat="@color/colorPrimary" />
-
+            tools:srcCompat="@color/purple_500" />
 
         <TextView
             android:id="@+id/movieName"

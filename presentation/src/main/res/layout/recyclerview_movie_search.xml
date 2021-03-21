@@ -30,7 +30,7 @@
             app:path='@{item.backdrop.original ?? ""}'
             app:radius="@{8f}"
             tools:ignore="ContentDescription"
-            tools:srcCompat="@color/colorPrimary" />
+            tools:srcCompat="@color/purple_500" />
 
         <TextView
             style="@style/App.Text.Small.White"
