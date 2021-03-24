@@ -11,6 +11,5 @@ object Constants {
     const val MOVIE_TITLE = "MOVIE_TITLE"
     const val MOVIE_OVERVIEW = "MOVIE_OVERVIEW"
     const val CHANNEL_ID = "NotificationChannelId"
-    const val PREFERENCE_NAME = "profile"
-    val ACCESS_TOKEN_DATA_STORE = stringPreferencesKey("access_token")
+    const val NIGHT_MODE = "NIGHT_MODE"
 }

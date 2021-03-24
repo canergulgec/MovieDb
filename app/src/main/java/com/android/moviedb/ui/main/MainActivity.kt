@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.android.base.BaseActivity
 import com.android.moviedb.R
 import com.android.moviedb.databinding.ActivityMainBinding
+import com.caner.common.Constants
 import com.caner.common.ext.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,8 +27,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        setupViews()
+        if (savedInstanceState != null) {
+            AppCompatDelegate.setDefaultNightMode(savedInstanceState.getInt(Constants.NIGHT_MODE))
+        }
 
+        setupViews()
         binding.dayNightBtn.setOnClickListener {
             setDayAndNight()
         }
@@ -44,6 +48,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             Configuration.UI_MODE_NIGHT_NO ->
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val nightMode = AppCompatDelegate.getDefaultNightMode()
+        outState.putInt(Constants.NIGHT_MODE, nightMode)
     }
 
     override fun onResume() {

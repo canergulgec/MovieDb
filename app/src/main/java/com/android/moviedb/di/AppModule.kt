@@ -3,6 +3,7 @@ package com.android.moviedb.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.caner.common.Constants
+import com.caner.common.utils.PrefStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,5 +19,11 @@ class AppModule {
     @Provides
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences(Constants.SHARED_PREF_KEY, Context.MODE_PRIVATE)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDataStore(@ApplicationContext context: Context): PrefStore {
+        return PrefStore(context)
     }
 }
