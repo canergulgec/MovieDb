@@ -82,4 +82,4 @@ To maintain the style and quality of the code
 
 ### Screenshots
 
-<img src="/art/home_screen.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_search.png" width="300" />
+<img src="/art/home_light.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/detail_light.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_light.png" width="300" /> <img src="/art/home_dark.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/detail_dark.png" width="300" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_dark.png" width="300" />
