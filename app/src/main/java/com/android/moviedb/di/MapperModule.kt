@@ -1,12 +1,12 @@
 package com.android.moviedb.di
 
 import com.android.data.mapper.MovieDetailMapper
-import com.caner.common.Mapper
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieDetailResponse
 import com.android.data.model.remote.MoviesResponse
+import com.caner.common.Mapper
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -3,13 +3,13 @@ package com.android.test.vm
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
-import com.caner.common.utils.PrefStore
-import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.caner.common.ApiError
 import com.caner.common.Resource
+import com.caner.common.utils.PrefStore
+import com.caner.common.utils.SharedPreferencesUtils
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -50,7 +50,7 @@ class TokenViewModelTest2 {
     @MockK
     private lateinit var newSessionObserver: Observer<Resource<TokenResponse>>
 
-    //create list to store values
+    // create list to store values
     private val list = arrayListOf<Resource<TokenResponse>>()
 
     @Before
@@ -59,7 +59,7 @@ class TokenViewModelTest2 {
 
     @Test
     fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlockingTest {
-        //Given
+        // Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading(true))
@@ -67,7 +67,7 @@ class TokenViewModelTest2 {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         val tokenSlot = slot<Resource<TokenResponse>>()
         coEvery { useCase.execute() } returns flow
 
@@ -76,7 +76,7 @@ class TokenViewModelTest2 {
             list.add(tokenSlot.captured)
         }
 
-        //Then
+        // Then
         viewModel.getNewToken()
 
         list.forEachIndexed { index, resource ->
@@ -88,7 +88,6 @@ class TokenViewModelTest2 {
                 )
             }
             if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
-
         }
 
         coVerify { useCase.execute() }
@@ -96,7 +95,7 @@ class TokenViewModelTest2 {
 
     @Test
     fun newTokenFlowEmitsError() = coroutineScope.runBlockingTest {
-        //Given
+        // Given
         val error = ApiError(code = 404)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -104,7 +103,7 @@ class TokenViewModelTest2 {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         val tokenSlot = slot<Resource<TokenResponse>>()
         coEvery { useCase.execute() } returns flow
 
@@ -113,14 +112,13 @@ class TokenViewModelTest2 {
             list.add(tokenSlot.captured)
         }
 
-        //Then
+        // Then
         viewModel.getNewToken()
 
         list.forEachIndexed { index, resource ->
             if (index == 0) assertEquals(true, (resource as Resource.Loading).status)
             if (index == 1) assertEquals(error.code, (resource as Resource.Error).apiError.code)
             if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
-
         }
 
         coVerify { useCase.execute() }

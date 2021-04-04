@@ -3,8 +3,8 @@ package com.android.moviedb.di
 import com.android.domain.api.MovieDetailApi
 import com.android.domain.api.NewTokenApi
 import com.android.domain.api.NowPlayingMoviesApi
-import com.android.domain.api.UpcomingMoviesApi
 import com.android.domain.api.SearchApi
+import com.android.domain.api.UpcomingMoviesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

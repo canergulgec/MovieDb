@@ -17,14 +17,18 @@ fun dispatcherWithCustomBody() = object : Dispatcher() {
         with(request.path) {
             val response = MockResponse().setResponseCode(200)
             return when {
-                this?.contains("/images") == true -> response
-                    .setBody(FileReader.readTestResourceFile("movie_images_response.json"))
-                this?.contains("/videos") == true -> response
-                    .setBody(FileReader.readTestResourceFile("movie_videos_response.json"))
-                this?.contains("/now_playing") == true || this?.contains("/upcoming") == true -> response
-                    .setBody(FileReader.readTestResourceFile("movie_response.json"))
-                else -> response
-                    .setBody(FileReader.readTestResourceFile("movie_detail_response.json"))
+                this?.contains("/images") == true ->
+                    response
+                        .setBody(FileReader.readTestResourceFile("movie_images_response.json"))
+                this?.contains("/videos") == true ->
+                    response
+                        .setBody(FileReader.readTestResourceFile("movie_videos_response.json"))
+                this?.contains("/now_playing") == true || this?.contains("/upcoming") == true ->
+                    response
+                        .setBody(FileReader.readTestResourceFile("movie_response.json"))
+                else ->
+                    response
+                        .setBody(FileReader.readTestResourceFile("movie_detail_response.json"))
             }
         }
     }

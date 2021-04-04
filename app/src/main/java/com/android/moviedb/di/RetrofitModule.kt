@@ -13,10 +13,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.HttpUrl
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -99,8 +99,10 @@ class RetrofitModule {
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(authInterceptor)
             .addNetworkInterceptor(
-                FlipperOkhttpInterceptor(AndroidFlipperClient.getInstance(appContext).getPlugin(NetworkFlipperPlugin.ID)
-            ))
+                FlipperOkhttpInterceptor(
+                    AndroidFlipperClient.getInstance(appContext).getPlugin(NetworkFlipperPlugin.ID)
+                )
+            )
             .addNetworkInterceptor(stethoInterceptor)
             .retryOnConnectionFailure(true)
             .build()

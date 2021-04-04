@@ -6,8 +6,8 @@ import androidx.test.filters.LargeTest
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.ui.main.MainActivity
 import com.android.test.MovieTestApp.Companion.port
-import com.android.test.utils.OkHttpProvider
 import com.android.test.screen.MovieScreen
+import com.android.test.utils.OkHttpProvider
 import com.android.test.utils.dispatcher
 import com.android.test.utils.dispatcherWithCustomBody
 import com.jakewharton.espresso.OkHttp3IdlingResource

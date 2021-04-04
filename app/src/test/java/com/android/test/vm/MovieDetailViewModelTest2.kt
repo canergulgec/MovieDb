@@ -18,8 +18,8 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import kotlin.time.ExperimentalTime
 import org.mockito.ArgumentMatchers.any
+import kotlin.time.ExperimentalTime
 
 /**
  * This test is written with mockK
@@ -44,7 +44,7 @@ class MovieDetailViewModelTest2 {
 
     @Test
     fun movieDetailFlowMustReturnSuccess() = runBlockingTest {
-        //Given
+        // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -52,10 +52,10 @@ class MovieDetailViewModelTest2 {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         coEvery { detailUseCase.execute(any()) } returns flow
 
-        //Then
+        // Then
         val job = launch {
             viewModel.movieDetailState.collectIndexed { index, value ->
                 when (index) {
@@ -75,7 +75,7 @@ class MovieDetailViewModelTest2 {
 
     @Test
     fun movieDetailFlowMustReturnSuccessWithTurbine() = runBlockingTest {
-        //Given
+        // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -83,8 +83,8 @@ class MovieDetailViewModelTest2 {
             emit(Resource.Loading(false))
         }
 
-        //When
-        coEvery{detailUseCase.execute(any())} returns flow
+        // When
+        coEvery { detailUseCase.execute(any()) } returns flow
 
         viewModel.movieDetailState.test {
             viewModel.getMovieDetail(any())

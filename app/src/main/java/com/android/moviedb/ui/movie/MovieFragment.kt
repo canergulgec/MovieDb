@@ -11,17 +11,17 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.android.base.BaseFragment
-import com.caner.common.Constants
 import com.android.data.model.Movie
-import com.android.presentation.adapter.paging.MoviesPagingAdapter
-import com.caner.common.utils.VerticalSpaceItemDecoration
-import com.android.presentation.vm.MovieViewModel
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentMoviesBinding
 import com.android.presentation.adapter.paging.MovieLoadStateAdapter
+import com.android.presentation.adapter.paging.MoviesPagingAdapter
+import com.android.presentation.vm.MovieViewModel
 import com.android.presentation.worker.NotificationWorker
+import com.caner.common.Constants
 import com.caner.common.ext.dp2px
 import com.caner.common.ext.withLoadStateAll
+import com.caner.common.utils.VerticalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

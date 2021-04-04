@@ -27,7 +27,7 @@ class TokenRepositoryTest2 {
 
     @Test
     fun `new token flow emits successfully`() = runBlocking {
-        //Given
+        // Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading(true))
@@ -35,12 +35,11 @@ class TokenRepositoryTest2 {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         coEvery { repository.getNewToken() } returns flow
         val getNewToken = repository.getNewToken()
 
-
-        //Then
+        // Then
         coVerify { repository.getNewToken() }
 
         getNewToken.collectIndexed { index, value ->

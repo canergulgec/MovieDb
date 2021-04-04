@@ -1,8 +1,8 @@
 package com.android.test.repository
 
-import com.caner.common.Resource
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
+import com.caner.common.Resource
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.flow.collectIndexed
@@ -16,7 +16,7 @@ class TokenRepositoryTest {
 
     @Test
     fun `new token flow emits successfully`() = runBlocking {
-        //Given
+        // Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading(true))
@@ -24,10 +24,10 @@ class TokenRepositoryTest {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         whenever(repository.getNewToken()).thenReturn(flow)
 
-        //Then
+        // Then
         val getNewToken = repository.getNewToken()
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)

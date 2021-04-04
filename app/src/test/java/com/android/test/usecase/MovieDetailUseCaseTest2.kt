@@ -41,17 +41,17 @@ class MovieDetailUseCaseTest2 {
 
     @Test
     fun movieDetailFlowMustReturnSuccess() = coroutineScope.runBlockingTest {
-        //Given
+        // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Success(detailModel))
         }
 
-        //When
-        coEvery {detailRepository.getMovieDetail(any())} returns flow
+        // When
+        coEvery { detailRepository.getMovieDetail(any()) } returns flow
         val getNewToken = detailUseCase.execute(any())
 
-        //Then
+        // Then
         coVerify { detailRepository.getMovieDetail(any()) }
 
         getNewToken.collectIndexed { index, value ->
@@ -68,17 +68,17 @@ class MovieDetailUseCaseTest2 {
 
     @Test
     fun movieDetailFlowErrorCase() = coroutineScope.runBlockingTest {
-        //Given
+        // Given
         val error = ApiError(code = 1)
         val flow = flow {
             emit(Resource.Error(error))
         }
 
-        //When
-        coEvery{detailRepository.getMovieDetail(any())} returns flow
+        // When
+        coEvery { detailRepository.getMovieDetail(any()) } returns flow
         val getNewToken = detailUseCase.execute(any())
 
-        //Then
+        // Then
         coVerify { detailRepository.getMovieDetail(any()) }
 
         getNewToken.collectIndexed { index, value ->

@@ -3,13 +3,13 @@ package com.android.test.vm
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
-import com.caner.common.utils.PrefStore
-import com.caner.common.utils.SharedPreferencesUtils
 import com.android.domain.usecase.NewTokenUseCase
 import com.android.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.caner.common.ApiError
 import com.caner.common.Resource
+import com.caner.common.utils.PrefStore
+import com.caner.common.utils.SharedPreferencesUtils
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
@@ -43,7 +43,7 @@ class TokenViewModelTest {
 
     @Test
     fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlockingTest {
-        //Given
+        // Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
             emit(Resource.Loading(true))
@@ -51,12 +51,12 @@ class TokenViewModelTest {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         whenever(useCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<Resource<TokenResponse>>()
-        viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
+        viewModel.newSessionLiveData.observeForever(newSessionObserver) // viewModel.newSessionLiveData.getOrAwaitValue()
 
-        //Then
+        // Then
         viewModel.getNewToken()
 
         verify(newSessionObserver, times(3)).onChanged(captor.capture())
@@ -71,7 +71,7 @@ class TokenViewModelTest {
 
     @Test
     fun newTokenFlowEmitsError() = coroutineScope.runBlockingTest {
-        //Given
+        // Given
         val error = ApiError(code = 404)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -79,12 +79,12 @@ class TokenViewModelTest {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         whenever(useCase.execute()).thenReturn(flow)
         val captor = argumentCaptor<Resource<TokenResponse>>()
-        viewModel.newSessionLiveData.observeForever(newSessionObserver) //viewModel.newSessionLiveData.getOrAwaitValue()
+        viewModel.newSessionLiveData.observeForever(newSessionObserver) // viewModel.newSessionLiveData.getOrAwaitValue()
 
-        //Then
+        // Then
         viewModel.getNewToken()
 
         verify(newSessionObserver, times(3)).onChanged(captor.capture())

@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.android.base.BaseFragment
-import com.caner.common.ext.observeWith
-import com.caner.common.utils.PrefStore
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import com.caner.common.PrefKeys
 import com.caner.common.Resource
+import com.caner.common.ext.observeWith
 import com.caner.common.ext.toast
+import com.caner.common.utils.PrefStore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

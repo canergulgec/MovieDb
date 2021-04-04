@@ -33,7 +33,7 @@ class MovieDetailViewModelTest {
 
     @Test
     fun movieDetailFlowMustReturnSuccess() = runBlockingTest {
-        //Given
+        // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -41,7 +41,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         whenever(detailUseCase.execute(any())).thenReturn(flow)
 
         val job = launch {
@@ -61,7 +61,7 @@ class MovieDetailViewModelTest {
 
     @Test
     fun movieDetailFlowMustReturnSuccessWithTurbine() = runBlockingTest {
-        //Given
+        // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
             emit(Resource.Loading(true))
@@ -69,7 +69,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Loading(false))
         }
 
-        //When
+        // When
         whenever(detailUseCase.execute(any())).thenReturn(flow)
 
         viewModel.movieDetailState.test {
