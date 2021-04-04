@@ -15,7 +15,11 @@ import com.android.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.android.presentation.vm.SearchViewModel
 import com.caner.common.Constants
 import com.caner.common.Resource
-import com.caner.common.ext.*
+import com.caner.common.ext.afterTextChanged
+import com.caner.common.ext.init
+import com.caner.common.ext.toast
+import com.caner.common.ext.visible
+import com.caner.common.ext.dp2px
 import com.caner.common.utils.VerticalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi

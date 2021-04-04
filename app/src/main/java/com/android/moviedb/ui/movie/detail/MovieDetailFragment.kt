@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.android.base.BaseFragment
-import com.caner.common.ext.*
 import com.caner.common.Constants
 import com.caner.common.utils.HorizontalSpaceItemDecoration
 import com.caner.common.utils.VerticalSpaceItemDecoration
@@ -14,6 +13,9 @@ import com.android.presentation.vm.MovieDetailViewModel
 import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.android.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.common.Resource
+import com.caner.common.ext.dp2px
+import com.caner.common.ext.init
+import com.caner.common.ext.toast
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap

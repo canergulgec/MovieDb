@@ -1,6 +1,15 @@
 package com.android.moviedb.di
 
-import com.android.domain.repository.*
+import com.android.domain.repository.NowPlayingMoviesRepository
+import com.android.domain.repository.NowPlayingMoviesRepositoryImp
+import com.android.domain.repository.UpcomingMoviesRepository
+import com.android.domain.repository.UpcomingMoviesRepositoryImp
+import com.android.domain.repository.NewTokenRepositoryImp
+import com.android.domain.repository.NewTokenRepository
+import com.android.domain.repository.MovieDetailRepositoryImp
+import com.android.domain.repository.MovieDetailRepository
+import com.android.domain.repository.SearchRepositoryImp
+import com.android.domain.repository.SearchRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
