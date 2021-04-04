@@ -14,9 +14,11 @@ class MovieViewModel @Inject constructor(
     private val pagingSource: MoviesPagingSource
 ) : ViewModel() {
 
-    val moviePagingFlow = Pager(config = PagingConfig(
-        pageSize = 20
-    ), pagingSourceFactory = { pagingSource }
+    val moviePagingFlow = Pager(
+        config = PagingConfig(
+            pageSize = 20
+        ),
+        pagingSourceFactory = { pagingSource }
     ).flow.cachedIn(viewModelScope)
 
     fun setMovieType(movieType: Int) {
