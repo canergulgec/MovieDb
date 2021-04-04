@@ -1,7 +1,7 @@
 package com.android.data.model
 
 import com.android.data.model.remote.MovieGenre
-import java.util.*
+import java.util.Date
 
 data class MovieDetailModel(
     val movieId: Int,

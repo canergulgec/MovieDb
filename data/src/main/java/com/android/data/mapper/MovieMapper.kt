@@ -1,11 +1,13 @@
 package com.android.data.mapper
 
-import com.caner.common.Mapper
-import com.android.data.model.*
+import com.android.data.model.Image
+import com.android.data.model.Movie
+import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieResponseItem
 import com.android.data.model.remote.MoviesResponse
+import com.caner.common.Mapper
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
@@ -32,7 +34,6 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
                             SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).format(
                                 date
                             )
-
                         }
                     )
                 }

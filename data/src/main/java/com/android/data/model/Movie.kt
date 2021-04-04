@@ -1,6 +1,6 @@
 package com.android.data.model
 
-import java.util.*
+import java.util.Date
 
 data class Movie(
     val movieId: Int,

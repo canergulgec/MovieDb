@@ -1,11 +1,11 @@
 package com.android.data.mapper
 
-import com.caner.common.Mapper
 import com.android.data.model.Image
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
+import com.caner.common.Mapper
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 class MovieDetailMapper @Inject constructor() :
@@ -29,8 +29,8 @@ class MovieDetailMapper @Inject constructor() :
                 voteCount,
                 releaseDate?.let { date ->
                     SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).format(date)
-                })
-
+                }
+            )
         }
     }
 
@@ -58,7 +58,8 @@ class MovieDetailMapper @Inject constructor() :
                     } else {
                         null
                     }
-                })
+                }
+            )
         }
     }
 }
