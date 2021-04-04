@@ -1,7 +1,7 @@
 The goal of this project is showing a modern approach with using the latest technology stack of Android
 
 :dizzy: Powered by [TheMovieDb](https://www.themoviedb.org)
- 
+
 ![alt text](https://cdn-images-1.medium.com/max/1200/1*vIR7iO-1GnY2xYxL6NiYkw.png)
 
 ### Configuration
@@ -28,7 +28,7 @@ Modules are the collection of source files and build settings that allow you to 
   `:common` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains code and resources which are shared between other modules
 
 - **Data Module**
-  
+
   `:data` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains models and utility classes such as [DiffUtil](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil)
 
 - **Domain Module**
@@ -75,7 +75,7 @@ Modules are the collection of source files and build settings that allow you to 
 
 To maintain the style and quality of the code
 
-| Tool                                                   |    Check command          |     Fix command               
+| Tool                                                   |    Check command          |     Fix command
 |--------------------------------------------------------|---------------------------|--------------------------- |
 | [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
 | [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintApply`    |
