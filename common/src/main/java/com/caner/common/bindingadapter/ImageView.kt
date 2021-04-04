@@ -3,7 +3,6 @@ package com.caner.common.bindingadapter
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
-import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
 import com.caner.common.R
 

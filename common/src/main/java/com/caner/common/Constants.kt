@@ -1,7 +1,5 @@
 package com.caner.common
 
-import androidx.datastore.preferences.core.stringPreferencesKey
-
 object Constants {
     const val SHARED_PREF_KEY = "SHARED_PREF_KEY"
     const val MOVIE_ID = "MOVIE_ID"

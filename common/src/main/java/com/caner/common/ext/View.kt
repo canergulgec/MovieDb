@@ -26,7 +26,7 @@ inline var View.isInvisible: Boolean
     }
 
 fun View.visible(isShowing: Boolean) {
-    visibility = when(isShowing){
+    visibility = when (isShowing) {
         true -> VISIBLE
         false -> GONE
     }
