@@ -171,3 +171,5 @@ dependencies {
     debugImplementation 'com.facebook.soloader:soloader:0.10.1'
     debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.80.0'
 }
+
+apply from: "$rootDir/spotless.gradle"
