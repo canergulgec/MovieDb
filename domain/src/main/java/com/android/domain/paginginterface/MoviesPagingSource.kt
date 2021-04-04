@@ -3,10 +3,10 @@ package com.android.domain.paginginterface
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.android.data.mapper.MovieMapper
-import com.caner.common.Constants
 import com.android.data.model.Movie
 import com.android.domain.repository.NowPlayingMoviesRepository
 import com.android.domain.repository.UpcomingMoviesRepository
+import com.caner.common.Constants
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(

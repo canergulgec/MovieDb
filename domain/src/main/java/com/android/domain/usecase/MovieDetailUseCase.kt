@@ -6,8 +6,10 @@ import com.android.domain.qualifier.IoDispatcher
 import com.android.domain.repository.MovieDetailRepository
 import com.caner.common.Resource
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class MovieDetailUseCase @Inject constructor(

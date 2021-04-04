@@ -66,3 +66,5 @@ dependencies {
     //Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }
+
+apply from: "$rootDir/spotless.gradle"
