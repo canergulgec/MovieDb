@@ -4,14 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.Movie
-import com.android.domain.repository.NowPlayingMoviesRepository
-import com.android.domain.repository.UpcomingMoviesRepository
+import com.android.domain.repository.MovieRepository
 import com.caner.common.Constants
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
-    private val nowPlayingMoviesRepository: NowPlayingMoviesRepository,
-    private val upcomingMoviesRepository: UpcomingMoviesRepository,
+    private val movieRepository: MovieRepository,
     private val movieMapper: MovieMapper,
 ) : PagingSource<Int, Movie>() {
 
@@ -20,14 +18,14 @@ class MoviesPagingSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: 1
 
-        val repository = if (movieType == Constants.NOW_PLAYING_MOVIES) {
-            nowPlayingMoviesRepository
+        val apiRequest = if (movieType == Constants.NOW_PLAYING_MOVIES) {
+            movieRepository.getNowPlayingMovies(getParams(page))
         } else {
-            upcomingMoviesRepository
+            movieRepository.getUpcomingMovies(getParams(page))
         }
 
         return try {
-            repository.getMovies(getParams(page)).run {
+            apiRequest.run {
                 val data = movieMapper.to(this)
                 LoadResult.Page(
                     data = data.movies,

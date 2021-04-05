@@ -1,15 +1,6 @@
 package com.android.moviedb.di
 
-import com.android.domain.repository.MovieDetailRepository
-import com.android.domain.repository.MovieDetailRepositoryImp
-import com.android.domain.repository.NewTokenRepository
-import com.android.domain.repository.NewTokenRepositoryImp
-import com.android.domain.repository.NowPlayingMoviesRepository
-import com.android.domain.repository.NowPlayingMoviesRepositoryImp
-import com.android.domain.repository.SearchRepository
-import com.android.domain.repository.SearchRepositoryImp
-import com.android.domain.repository.UpcomingMoviesRepository
-import com.android.domain.repository.UpcomingMoviesRepositoryImp
+import com.android.domain.repository.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,10 +11,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun provideNowPlayingMoviesRepositoryImp(repositoryImp: NowPlayingMoviesRepositoryImp): NowPlayingMoviesRepository
-
-    @Binds
-    abstract fun provideUpcomingMoviesRepositoryImp(repositoryImp: UpcomingMoviesRepositoryImp): UpcomingMoviesRepository
+    abstract fun provideMoviesRepositoryImp(repositoryImp: MovieRepositoryImp): MovieRepository
 
     @Binds
     abstract fun provideNewTokenRepositoryImp(repositoryImp: NewTokenRepositoryImp): NewTokenRepository
