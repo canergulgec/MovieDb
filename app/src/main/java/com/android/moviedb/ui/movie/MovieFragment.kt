@@ -51,7 +51,10 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         val movieType = arguments?.getInt(MOVIE_TYPE, 1) ?: 1
         viewModel.setMovieType(movieType)
-        initPagingFlow()
+
+        if(movieAdapter.itemCount == 0) {
+            initPagingFlow()
+        }
 
         /**
          * Span count should be 1 when loader state is visible //TODO
