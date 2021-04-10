@@ -1,12 +1,19 @@
 package com.android.moviedb.di
 
-import com.android.domain.repository.*
+import com.android.domain.repository.MovieDetailRepository
+import com.android.domain.repository.MovieDetailRepositoryImp
+import com.android.domain.repository.MovieRepository
+import com.android.domain.repository.MovieRepositoryImp
+import com.android.domain.repository.NewTokenRepository
+import com.android.domain.repository.NewTokenRepositoryImp
+import com.android.domain.repository.SearchRepository
+import com.android.domain.repository.SearchRepositoryImp
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 @Module
 abstract class RepositoryModule {
 

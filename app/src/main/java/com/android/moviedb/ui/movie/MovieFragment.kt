@@ -52,7 +52,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         val movieType = arguments?.getInt(MOVIE_TYPE, 1) ?: 1
         viewModel.setMovieType(movieType)
 
-        if(movieAdapter.itemCount == 0) {
+        if (movieAdapter.itemCount == 0) {
             initPagingFlow()
         }
 
