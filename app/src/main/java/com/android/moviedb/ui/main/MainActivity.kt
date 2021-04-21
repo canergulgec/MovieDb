@@ -17,9 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-
-
-
     private val navController by lazy { findNavController(R.id.mainNavHostFragment) }
 
     private val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
