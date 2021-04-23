@@ -39,4 +39,7 @@ ext {
     espresso = "3.3.0"
     turbine = "0.4.1"
     mockk = "1.10.6"
+    navComponentVersion = "2.3.5"
+    truth = "1.1.2"
+    workerTesting = "2.5.0"
 }

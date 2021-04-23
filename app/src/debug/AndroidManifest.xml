@@ -6,6 +6,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
+        <activity android:name="com.android.moviedb.HiltTestActivity"
+            android:exported="false"/>
+
         <activity android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
             android:exported="true"/>
 
