@@ -3,7 +3,7 @@ apply from: 'dependencies.gradle'
 apply from: 'spotless.gradle'
 buildscript {
     ext.kotlin_version = '1.4.30'
-    ext.hilt_version = '2.33-beta'
+    ext.hilt_version = '2.35'
     repositories {
         google()
         jcenter()
@@ -39,6 +39,13 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
 }
+
+task installGitHook(type: Copy) {
+    from new File(rootProject.rootDir, "scripts/pre-commit")
+    into { new File(rootProject.rootDir, '.git/hooks') }
+    fileMode 0775
+}
+
+tasks.getByPath(':app:preBuild').dependsOn installGitHook
