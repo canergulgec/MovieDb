@@ -62,11 +62,7 @@ dependencies {
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-
-    // Hilt ViewModel extension
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:$retrofit"

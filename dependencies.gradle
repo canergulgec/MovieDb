@@ -15,7 +15,7 @@ ext {
     recyclerview = '1.2.0'
     coil = '1.1.0'
     timber = '4.7.1'
-    hilt_jetpack_version = '1.0.0-alpha03'
+    hilt_jetpack_version = '1.0.0-beta01'
     hilt_workmanager = '1.0.0-beta01'
     viewpager2 = '1.0.0'
     paging_version = '3.0.0-beta03'
