@@ -30,7 +30,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 @MediumTest
 @HiltAndroidTest
-class MovieFragmentFakeRepoTest {
+class MovieFragmentTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
