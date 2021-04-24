@@ -17,6 +17,7 @@ import com.android.test.screen.MovieScreen
 import com.android.test.utils.OkHttpProvider
 import com.android.test.utils.dispatcherWithCustomBody
 import com.android.test.utils.launchFragmentInHiltContainer
+import com.google.common.truth.Truth
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -98,6 +99,7 @@ class MovieFragmentTest {
                 scrollTo(9)
                 childAt<MovieScreen.Item>(9) {
                     click()
+                    Truth.assertThat(navController.currentDestination?.id).isEqualTo(R.id.movieDetailFragment)
                 }
             }
         }
