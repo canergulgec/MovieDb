@@ -8,9 +8,9 @@ object FileReader {
     fun readTestResourceFile(fileName: String): String {
         try {
             val inputStream = (
-                    InstrumentationRegistry.getInstrumentation().targetContext
-                        .applicationContext
-                    ).assets.open(fileName)
+                InstrumentationRegistry.getInstrumentation().targetContext
+                    .applicationContext
+                ).assets.open(fileName)
             val builder = StringBuilder()
             val reader = InputStreamReader(inputStream, "UTF-8")
             reader.readLines().forEach {
