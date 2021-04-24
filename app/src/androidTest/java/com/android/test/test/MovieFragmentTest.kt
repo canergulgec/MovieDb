@@ -92,11 +92,11 @@ class MovieFragmentTest {
     }
 
     @Test
-    fun recyclerview_should_scroll_to_fifth_item_then_click_on_it() {
+    fun recyclerview_should_scroll_to_ninth_item_then_click_on_it() {
         onScreen<MovieScreen> {
             recycler {
-                scrollTo(5)
-                childAt<MovieScreen.Item>(5) {
+                scrollTo(9)
+                childAt<MovieScreen.Item>(9) {
                     click()
                 }
             }
