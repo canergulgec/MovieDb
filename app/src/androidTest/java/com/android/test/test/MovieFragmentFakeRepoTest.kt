@@ -4,20 +4,25 @@ import android.util.Log
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.filters.MediumTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import androidx.work.Configuration
 import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
-import com.agoda.kakao.screen.Screen
+import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.R
 import com.android.moviedb.ui.movie.MovieFragment
 import com.android.test.screen.MovieScreen
+import com.android.test.utils.OkHttpProvider
+import com.android.test.utils.dispatcherWithCustomBody
 import com.android.test.utils.launchFragmentInHiltContainer
-import com.google.common.truth.Truth
+import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import okhttp3.mockwebserver.MockWebServer
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -30,11 +35,22 @@ class MovieFragmentFakeRepoTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
+    private val mockWebServer = MockWebServer()
+
     private lateinit var navController: TestNavHostController
 
     @Before
     fun setUp() {
         hiltRule.inject()
+
+        mockWebServer.start(8080)
+        IdlingRegistry.getInstance().register(
+            OkHttp3IdlingResource.create(
+                "okhttp",
+                OkHttpProvider.getOkHttpClient()
+            )
+        )
+        mockWebServer.dispatcher = dispatcherWithCustomBody()
 
         // Create a TestNavHostController
         navController = TestNavHostController(
@@ -64,20 +80,31 @@ class MovieFragmentFakeRepoTest {
         }
     }
 
-    /**
-     * Test navigation with MockK
-     */
     @Test
-    fun test_recycler_view_item_click() {
-        Screen.onScreen<MovieScreen> {
+    fun recyclerview_second_item_should_be_visible() {
+        onScreen<MovieScreen> {
             recycler {
-                childAt<MovieScreen.Item>(0) {
+                childAt<MovieScreen.Item>(2) {
                     name { isVisible() }
+                }
+            }
+        }
+    }
+
+    @Test
+    fun recyclerview_should_scroll_to_fifth_item_then_click_on_it() {
+        onScreen<MovieScreen> {
+            recycler {
+                scrollTo(5)
+                childAt<MovieScreen.Item>(5) {
                     click()
                 }
             }
         }
+    }
 
-        Truth.assertThat(navController.currentDestination?.id).isEqualTo(R.id.movieDetailFragment)
+    @After
+    fun cleanup() {
+        mockWebServer.close()
     }
 }
