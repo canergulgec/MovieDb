@@ -59,11 +59,14 @@ Modules are the collection of source files and build settings that allow you to 
 - [Retrofit](https://square.github.io/retrofit/)
 - [Coil](https://github.com/coil-kt/coil)
 - [FlexBox](https://github.com/google/flexbox-layout)
-- [Mockito-Kotlin](https://github.com/mockito/mockito-kotlin)
-- [MockK](https://github.com/mockk/mockk)
-- [Kakao](https://github.com/agoda-com/Kakao)
-- [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 - [Flipper](https://github.com/facebook/flipper)
+- Testing
+  - [MockK](https://github.com/mockk/mockk)
+  - [Mockito-Kotlin](https://github.com/mockito/mockito-kotlin)
+  - [Kakao](https://github.com/agoda-com/Kakao)
+  - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
+  - [Turbine](https://github.com/cashapp/turbine)
+  - [Dagger Hilt Testing](https://developer.android.com/training/dependency-injection/hilt-testing)
 
 ### Architecture
 
