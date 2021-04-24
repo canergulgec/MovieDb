@@ -2,7 +2,6 @@ package com.android.moviedb.di
 
 import android.content.Context
 import com.android.moviedb.BuildConfig
-import com.android.moviedb.MovieDbApp
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
@@ -30,15 +29,9 @@ class RetrofitModule {
 
     @Provides
     @Named("BASE_URL")
-    fun provideBaseUrl(@ApplicationContext appContext: Context): String {
-        return (appContext as MovieDbApp).getBaseUrl()
-    }
-
-/*    @Provides
-    @Named("BASE_URL")
     fun provideBaseUrl(): String {
         return BuildConfig.BASE_URL
-    }*/
+    }
 
     @Provides
     fun provideGsonBuilder(): GsonBuilder {

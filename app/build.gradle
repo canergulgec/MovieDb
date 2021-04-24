@@ -155,6 +155,12 @@ dependencies {
 
     // WorkManager Test
     androidTestImplementation "androidx.work:work-testing:$workerTesting"
+
+    //MockServer
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockServer"
+
+    //OkHttp Idling Resource
+    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$idling"
     //
 
     //Unit Test

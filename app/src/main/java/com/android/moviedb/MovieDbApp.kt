@@ -51,6 +51,4 @@ open class MovieDbApp : Application(), Configuration.Provider {
         Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
-
-    open fun getBaseUrl() = BuildConfig.BASE_URL
 }
