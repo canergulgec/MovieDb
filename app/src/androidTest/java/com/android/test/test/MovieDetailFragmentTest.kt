@@ -90,7 +90,7 @@ class MovieDetailFragmentTest {
             }
 
             movieTitle {
-               hasAnyText()
+                hasAnyText()
             }
 
             genresRv {

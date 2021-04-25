@@ -17,8 +17,8 @@ class MovieDetailScreen : Screen<MovieDetailScreen>() {
         }
     )
 
-    val moviePoster = KImageView{withId(R.id.moviePosterIv)}
-    val movieTitle = KTextView{withId(R.id.movieTitleTv)}
+    val moviePoster = KImageView { withId(R.id.moviePosterIv) }
+    val movieTitle = KTextView { withId(R.id.movieTitleTv) }
 
     class Item(parent: Matcher<View>) : KRecyclerItem<Item>(parent) {
         val genreName: KTextView = KTextView(parent) { withId(R.id.genreNameTv) }
