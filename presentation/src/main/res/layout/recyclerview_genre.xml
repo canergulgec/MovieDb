@@ -16,6 +16,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/genreNameTv"
             style="@style/App.Text.Small.White"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

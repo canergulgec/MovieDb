@@ -1,93 +1,37 @@
 {
   "adult": false,
-  "backdrop_path": "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
+  "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
   "belongs_to_collection": {
-    "id": 468552,
-    "name": "Wonder Woman Collection",
-    "poster_path": "/8AQRfTuTHeFTddZN4IUAqprN8Od.jpg",
-    "backdrop_path": "/n9KlvCOBFDmSyw3BgNrkUkxMFva.jpg"
+    "id": 535313,
+    "name": "Godzilla Collection",
+    "poster_path": "/inNN466SKHNjbGmpfhfsaPQNleS.jpg",
+    "backdrop_path": "/oboBn4VYB79uDxnyIri0Nt3U3N2.jpg"
   },
   "budget": 200000000,
   "genres": [
-    {
-      "id": 14,
-      "name": "Fantasy"
-    },
     {
       "id": 28,
       "name": "Action"
     },
     {
-      "id": 12,
-      "name": "Adventure"
+      "id": 878,
+      "name": "Science Fiction"
     }
   ],
-  "homepage": "https://www.warnerbros.com/movies/wonder-woman-1984",
-  "id": 464052,
-  "imdb_id": "tt7126948",
+  "homepage": "https://www.godzillavskong.net/",
+  "id": 399566,
+  "imdb_id": "tt5034838",
   "original_language": "en",
-  "original_title": "Wonder Woman 1984",
-  "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
-  "popularity": 3460.857,
-  "poster_path": "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-  "production_companies": [
-    {
-      "id": 9993,
-      "logo_path": "/2Tc1P3Ac8M479naPp1kYT3izLS5.png",
-      "name": "DC Entertainment",
-      "origin_country": "US"
-    },
-    {
-      "id": 174,
-      "logo_path": "/ky0xOc5OrhzkZ1N6KyUxacfQsCk.png",
-      "name": "Warner Bros. Pictures",
-      "origin_country": "US"
-    },
-    {
-      "id": 114152,
-      "logo_path": null,
-      "name": "The Stone Quarry",
-      "origin_country": "US"
-    },
-    {
-      "id": 128064,
-      "logo_path": "/13F3Jf7EFAcREU0xzZqJnVnyGXu.png",
-      "name": "DC Films",
-      "origin_country": "US"
-    },
-    {
-      "id": 507,
-      "logo_path": "/z7H707qUWigbjHnJDMfj6QITEpb.png",
-      "name": "Atlas Entertainment",
-      "origin_country": "US"
-    },
-    {
-      "id": 429,
-      "logo_path": "/2Tc1P3Ac8M479naPp1kYT3izLS5.png",
-      "name": "DC Comics",
-      "origin_country": "US"
-    }
-  ],
-  "production_countries": [
-    {
-      "iso_3166_1": "US",
-      "name": "United States of America"
-    }
-  ],
-  "release_date": "2020-12-16",
-  "revenue": 131400000,
-  "runtime": 151,
-  "spoken_languages": [
-    {
-      "english_name": "English",
-      "iso_639_1": "en",
-      "name": "English"
-    }
-  ],
+  "original_title": "Godzilla vs. Kong",
+  "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
+  "popularity": 4459.297,
+  "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
+  "release_date": "2021-03-24",
+  "revenue": 390623624,
+  "runtime": 113,
   "status": "Released",
-  "tagline": "A new era of wonder begins.",
-  "title": "Wonder Woman 1984",
+  "title": "Godzilla vs. Kong",
   "video": false,
-  "vote_average": 7.1,
-  "vote_count": 2829
+  "vote_average": 8.2,
+  "vote_count": 4868
 }

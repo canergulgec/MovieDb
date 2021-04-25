@@ -31,7 +31,7 @@
             tools:srcCompat="@color/purple_500" />
 
         <TextView
-            android:id="@+id/movieName"
+            android:id="@+id/movieNameTv"
             style="@style/App.Text.Medium.Bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

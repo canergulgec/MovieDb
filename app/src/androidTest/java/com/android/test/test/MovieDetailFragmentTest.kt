@@ -1,6 +1,7 @@
 package com.android.test.test
 
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
@@ -12,12 +13,12 @@ import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.R
-import com.android.moviedb.ui.movie.MovieFragment
-import com.android.test.screen.MovieScreen
+import com.android.moviedb.ui.movie.detail.MovieDetailFragment
+import com.android.test.screen.MovieDetailScreen
 import com.android.test.utils.OkHttpProvider
-import com.android.test.utils.dispatcherWithCustomBody
+import com.android.test.utils.detailDispatcher
 import com.android.test.utils.launchFragmentInHiltContainer
-import com.google.common.truth.Truth
+import com.caner.common.Constants
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -31,7 +32,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 @MediumTest
 @HiltAndroidTest
-class MovieFragmentTest {
+class MovieDetailFragmentTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -51,7 +52,7 @@ class MovieFragmentTest {
                 OkHttpProvider.getOkHttpClient()
             )
         )
-        mockWebServer.dispatcher = dispatcherWithCustomBody()
+        mockWebServer.dispatcher = detailDispatcher()
 
         // Create a TestNavHostController
         navController = TestNavHostController(
@@ -63,7 +64,7 @@ class MovieFragmentTest {
             navController.setGraph(R.navigation.nav_graph)
         }
 
-        launchFragmentInHiltContainer<MovieFragment> {
+        launchFragmentInHiltContainer<MovieDetailFragment>(fragmentArgs = bundleOf(Constants.MOVIE_ID to 399566)) {
             this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
                 if (viewLifecycleOwner != null) {
                     Navigation.setViewNavController(this.requireView(), navController)
@@ -82,28 +83,22 @@ class MovieFragmentTest {
     }
 
     @Test
-    fun recyclerview_second_item_should_be_visible() {
-        onScreen<MovieScreen> {
-            moviesRv {
-                childAt<MovieScreen.Item>(2) {
-                    movieName {
+    fun movie_detail_should_be_visible() {
+        onScreen<MovieDetailScreen> {
+            moviePoster {
+                isVisible()
+            }
+
+            movieTitle {
+               hasAnyText()
+            }
+
+            genresRv {
+                childAt<MovieDetailScreen.Item>(0) {
+                    genreName {
                         isVisible()
                         hasAnyText()
                     }
-                    moviePoster { isVisible() }
-                }
-            }
-        }
-    }
-
-    @Test
-    fun recyclerview_should_scroll_to_ninth_item_then_click_on_it() {
-        onScreen<MovieScreen> {
-            moviesRv {
-                scrollTo(9)
-                childAt<MovieScreen.Item>(9) {
-                    click()
-                    Truth.assertThat(navController.currentDestination?.id).isEqualTo(R.id.movieDetailFragment)
                 }
             }
         }
