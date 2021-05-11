@@ -79,7 +79,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private fun movieClicked(movie: Movie?) {
         val bundle = bundleOf(Constants.MOVIE_ID to (movie?.movieId ?: 0))
-        findNavController().navigate(R.id.navigate_to_movieDetailFragment, bundle)
+        findNavController().navigate(R.id.action_movieFragment_to_movieDetailFragment, bundle)
         startWorker(movie?.title, movie?.overview)
     }
 

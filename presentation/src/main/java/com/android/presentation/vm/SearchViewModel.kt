@@ -7,7 +7,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
@@ -23,7 +22,6 @@ class SearchViewModel @Inject constructor(
     @ExperimentalCoroutinesApi
     val searchFlow = searchQuery
         .debounce(400)
-        .distinctUntilChanged()
         .filter { query ->
             return@filter query.length > 2
         }

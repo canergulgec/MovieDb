@@ -41,10 +41,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.movieSearchRv.init(searchAdapter, listOf(VerticalSpaceItemDecoration(16.dp2px())))
-        initObservers()
-
         binding.searchEt.afterTextChanged {
             viewModel.searchQuery.value = it
+        }
+
+        if (viewModel.searchQuery.subscriptionCount.value == 0) {
+            initObservers()
         }
     }
 
@@ -63,7 +65,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun movieClicked(movieId: Int?) {
         val bundle = bundleOf(Constants.MOVIE_ID to (movieId ?: 0))
-        findNavController().navigate(R.id.movieDetailFragment, bundle)
+        findNavController().navigate(R.id.action_searchFragment_to_movieDetailFragment, bundle)
     }
 
     private fun setList(showEmptyView: Boolean, list: List<Movie>) {
