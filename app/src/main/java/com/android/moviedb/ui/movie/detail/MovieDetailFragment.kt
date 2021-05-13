@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.android.base.BaseFragment
-import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.android.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.android.presentation.vm.MovieDetailViewModel
