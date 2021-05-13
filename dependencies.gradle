@@ -1,4 +1,8 @@
 ext {
+    compileSdk = 30
+    minSdk = 23
+    targetSdk = 30
+
     appcompat = "1.2.0"
     constraintlayout = "2.0.4"
     lifecycle_livedata = '2.3.1'
