@@ -39,6 +39,7 @@
             android:background="@drawable/rounded_corner_background"
             android:backgroundTint="@color/red"
             android:gravity="center"
+            android:padding="8dp"
             android:text="@{Double.toString(item.voteAverage)}"
             app:layout_constraintEnd_toStartOf="@+id/movieBackdropIv"
             app:layout_constraintStart_toStartOf="@+id/movieBackdropIv"

@@ -3,6 +3,7 @@ package com.caner.common.ext
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import androidx.appcompat.widget.SearchView
 
 inline fun EditText.afterTextChanged(crossinline afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -14,6 +15,19 @@ inline fun EditText.afterTextChanged(crossinline afterTextChanged: (String) -> U
 
         override fun afterTextChanged(editable: Editable?) {
             afterTextChanged(editable.toString())
+        }
+    })
+}
+
+inline fun SearchView.afterTextChanged(crossinline afterTextChanged: (String) -> Unit) {
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return false
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+            afterTextChanged(newText!!)
+            return false
         }
     })
 }
