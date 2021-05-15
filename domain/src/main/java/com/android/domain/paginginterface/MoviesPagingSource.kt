@@ -13,7 +13,9 @@ class MoviesPagingSource @Inject constructor(
     private val movieMapper: MovieMapper,
 ) : PagingSource<Int, Movie>() {
 
-    private var movieType = Constants.NOW_PLAYING_MOVIES
+    companion object {
+        var movieType = Constants.NOW_PLAYING_MOVIES
+    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: 1
@@ -36,10 +38,6 @@ class MoviesPagingSource @Inject constructor(
         } catch (e: Exception) {
             return LoadResult.Error(e)
         }
-    }
-
-    fun setCurrentMovieType(movieType: Int) {
-        this.movieType = movieType
     }
 
     private fun getParams(page: Int): HashMap<String, Any> {

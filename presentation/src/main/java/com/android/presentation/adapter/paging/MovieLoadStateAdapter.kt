@@ -30,6 +30,8 @@ class MovieLoadStateAdapter(
         }
 
         btnRetry.setOnClickListener {
+            txtErrorMessage.isVisible = false
+            btnRetry.isVisible = false
             retry.invoke()
         }
     }
