@@ -7,6 +7,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.base.BaseFragment
 import com.android.data.model.Movie
 import com.android.moviedb.R
@@ -40,7 +42,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        binding.movieSearchRv.init(searchAdapter, listOf(VerticalSpaceItemDecoration(16.dp2px())))
+        binding.movieSearchRv.init(
+            searchAdapter, listOf(
+                VerticalSpaceItemDecoration(16.dp2px()),
+                DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            )
+        )
         binding.searchEt.afterTextChanged {
             viewModel.searchQuery.value = it
         }
@@ -70,7 +77,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun setList(showEmptyView: Boolean, list: List<Movie>) {
         binding.emptyViewTv.visible(showEmptyView)
-        searchAdapter.submitList(list.sortedByDescending { it.voteAverage })
+        searchAdapter.submitList(list.sortedByDescending { it.popularity })
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding

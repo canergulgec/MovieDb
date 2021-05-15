@@ -7,7 +7,7 @@ import com.android.data.model.remote.MovieResponseItem
 import com.android.data.model.remote.MoviesResponse
 import com.caner.common.Mapper
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
 import javax.inject.Inject
 
 class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
@@ -61,9 +61,11 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
                         it.overview,
                         it.releaseDate?.let { date ->
                             if (date.isNotEmpty()) {
-                                SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(
-                                    date
-                                )
+                                val parsedDate =
+                                    SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(
+                                        date
+                                    )?: Date()
+                                SimpleDateFormat("yyyy", Locale.getDefault()).format(parsedDate)
                             } else {
                                 null
                             }

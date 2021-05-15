@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="item"
             type="com.android.data.model.Movie" />
@@ -18,45 +20,47 @@
 
         <ImageView
             android:id="@+id/movieBackdropIv"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:path='@{item.backdrop.original ?? ""}'
+            app:path='@{item.poster.original ?? ""}'
             app:radius="@{8f}"
             tools:ignore="ContentDescription"
             tools:srcCompat="@color/purple_500" />
 
         <TextView
-            style="@style/App.Text.Small.White"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner_background"
-            android:backgroundTint="@color/red"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="@{Double.toString(item.voteAverage)}"
-            app:layout_constraintEnd_toStartOf="@+id/movieBackdropIv"
-            app:layout_constraintStart_toStartOf="@+id/movieBackdropIv"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="8.8" />
-
-        <TextView
-            style="@style/App.Text.Medium"
+            android:id="@+id/movieTitleTv"
+            style="@style/App.Text.Medium.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="@{item.title}"
-            app:layout_constraintEnd_toEndOf="@+id/movieBackdropIv"
+            app:layout_constraintBottom_toBottomOf="@+id/movieBackdropIv"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/movieBackdropIv"
-            app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
+            app:layout_constraintStart_toEndOf="@+id/movieBackdropIv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.40"
             tools:text="Pokemon" />
+
+        <TextView
+            android:id="@+id/movieReleaseDateTv"
+            style="@style/App.Text.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{item.releaseDate}"
+            app:layout_constraintStart_toEndOf="@+id/movieBackdropIv"
+            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
+            tools:text="2021" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

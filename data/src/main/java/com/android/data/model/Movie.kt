@@ -1,7 +1,5 @@
 package com.android.data.model
 
-import java.util.Date
-
 data class Movie(
     val movieId: Int,
     val popularity: Double,
@@ -14,5 +12,5 @@ data class Movie(
     val title: String,
     val voteAverage: Double,
     val overview: String,
-    val releaseDate: Date?
+    val releaseDate: String?
 )
