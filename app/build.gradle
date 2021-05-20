@@ -120,7 +120,7 @@ dependencies {
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
     //FlexBox
-    implementation "com.google.android:flexbox:$flexBox"
+    implementation "com.google.android.flexbox:flexbox:$flexBox"
 
     // Hilt WorkManager
     implementation "androidx.hilt:hilt-work:$hilt_workmanager"

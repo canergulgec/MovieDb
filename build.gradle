@@ -5,14 +5,14 @@ buildscript {
     ext.kotlin_version = '1.4.32'
     ext.hilt_version = '2.35'
     repositories {
-        jcenter() // remove this after google-flexbox is suitable to use without it
         google()
+        mavenCentral()
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -38,7 +38,7 @@ subprojects {
 allprojects {
     repositories {
         google()
-        jcenter() // remove this after google-flexbox is suitable to use without it; add mavenCentral()
+        mavenCentral()
     }
 }
 
