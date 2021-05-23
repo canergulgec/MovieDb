@@ -37,21 +37,16 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     companion object {
-        const val MOVIE_TYPE = "MOVIE_TYPE"
-
         fun newInstance(movieType: Int): MovieFragment {
             return MovieFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(MOVIE_TYPE, movieType)
+                    putInt(Constants.MOVIE_TYPE, movieType)
                 }
             }
         }
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        val movieType = arguments?.getInt(MOVIE_TYPE, 1) ?: 1
-        viewModel.setMovieType(movieType)
-
         if (movieAdapter.itemCount == 0) {
             initPagingFlow()
         }

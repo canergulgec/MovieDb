@@ -43,7 +43,7 @@ class MoviesPagingSource @Inject constructor(
     private fun getParams(page: Int): HashMap<String, Any> {
         return object : LinkedHashMap<String, Any>() {
             init {
-                put(Constants.page, page)
+                put(Constants.PAGE, page)
             }
         }
     }
