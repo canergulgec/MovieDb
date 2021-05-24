@@ -5,6 +5,7 @@ import com.android.data.model.MovieDetailModel
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.presentation.vm.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
+import com.caner.common.ApiError
 import com.caner.common.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -99,5 +100,30 @@ class MovieDetailViewModelTest2 {
         }
 
         coVerify { detailUseCase.execute(any()) }
+    }
+
+    @Test
+    fun movieDetailFlowMustReturnErrorWithTurbine() = runBlockingTest {
+        // Given
+        val flow = flow {
+            emit(Resource.Loading(true))
+            emit(Resource.Error(ApiError(1,"Unknown error")))
+            emit(Resource.Loading(false))
+        }
+
+        // When
+        coEvery { detailUseCase.execute(any()) } returns flow
+
+        viewModel.movieDetailState.test {
+            viewModel.getMovieDetail(any())
+
+            assert(expectItem() is Resource.Empty)
+            assert(expectItem() is Resource.Loading)
+            assert(expectItem() is Resource.Error)
+            assert(expectItem() is Resource.Loading)
+
+            // Cancel and ignore remaining
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 }
