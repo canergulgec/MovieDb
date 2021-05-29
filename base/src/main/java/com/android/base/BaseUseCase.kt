@@ -15,7 +15,7 @@ abstract class BaseUseCase<M, Params> {
     abstract fun buildRequest(params: Params?): Flow<Resource<M>>
 
     fun execute(params: Params? = null) =
-        buildRequest(params).catch {
-            emit(Resource.Error(ApiError(4)))
+        buildRequest(params).catch { error ->
+            emit(Resource.Error(ApiError(4, error.message)))
         }
 }
