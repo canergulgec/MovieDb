@@ -52,10 +52,10 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompat"
 
-    //ConstraintLayout
+    // ConstraintLayout
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
 
-    //Lifecycle
+    // Lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
@@ -68,10 +68,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
 
-    //Paging 3
+    // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
-    //Viewpager 2
+    // Viewpager 2
     implementation "androidx.viewpager2:viewpager2:$viewpager2"
 
     // Hilt WorkManager
@@ -80,6 +80,12 @@ dependencies {
 
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStore"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber"
+
+    // App Startup
+    implementation "androidx.startup:startup-runtime:$startup"
 }
 
 apply from: "$rootDir/spotless.gradle"

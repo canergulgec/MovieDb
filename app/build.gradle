@@ -71,15 +71,15 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompat"
 
-    //Lifecycle
+    // Lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
-    //ConstraintLayout
+    // ConstraintLayout
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
 
-    //Material design
+    // Material design
     implementation "com.google.android.material:material:${materialDesign}"
 
     // Multi Dex
@@ -105,21 +105,21 @@ dependencies {
     // Material Dialog
     implementation "com.afollestad.material-dialogs:core:$materialDialog"
 
-    //Navigation Component
+    // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navGraph"
     implementation "androidx.navigation:navigation-ui-ktx:$navGraph"
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber"
 
-    //Paging 3
+    // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
-    //FlexBox
+    // FlexBox
     implementation "com.google.android.flexbox:flexbox:$flexBox"
 
     // Hilt WorkManager
@@ -129,7 +129,7 @@ dependencies {
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStore"
 
-    //UI Test
+    // UI Test
     androidTestImplementation "androidx.test:core-ktx:$test_core"
     androidTestImplementation "androidx.test.ext:junit-ktx:$test_ext"
     androidTestImplementation "androidx.test:rules:$test_rules"
@@ -137,7 +137,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
 
-    //Kakao
+    // Kakao
     androidTestImplementation "com.agoda.kakao:kakao:$kakao"
 
     // Navigation Test
@@ -148,10 +148,10 @@ dependencies {
     // WorkManager Test
     androidTestImplementation "androidx.work:work-testing:$workerTesting"
 
-    //MockServer
+    // MockServer
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockServer"
 
-    //OkHttp Idling Resource
+    // OkHttp Idling Resource
     androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$idling"
 
     // Hilt testing dependencies
@@ -161,7 +161,7 @@ dependencies {
     debugImplementation "androidx.fragment:fragment-testing:$fragmentTesting" // Create debug source set
     //
 
-    //Unit Test
+    // Unit Test
     testImplementation "junit:junit:$junit"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
     testImplementation "org.mockito:mockito-inline:$mockito"
@@ -172,10 +172,13 @@ dependencies {
     testImplementation "io.mockk:mockk:$mockk"
     //
 
-    //Flipper
+    // Flipper
     debugImplementation 'com.facebook.flipper:flipper:0.80.0'
     debugImplementation 'com.facebook.soloader:soloader:0.10.1'
     debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.80.0'
+
+    // App Startup
+    implementation "androidx.startup:startup-runtime:$startup"
 }
 
 apply from: "$rootDir/spotless.gradle"

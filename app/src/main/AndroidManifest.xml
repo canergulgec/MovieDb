@@ -32,6 +32,18 @@
             android:authorities="${applicationId}.workmanager-init"
             tools:node="remove"
             android:exported="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="com.android.presentation.startup.TimberInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
     </application>
 
 </manifest>

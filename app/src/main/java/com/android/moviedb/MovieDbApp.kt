@@ -10,7 +10,6 @@ import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
 import com.facebook.stetho.Stetho
 import dagger.hilt.android.HiltAndroidApp
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -23,7 +22,6 @@ open class MovieDbApp : Application(), Configuration.Provider {
         super.onCreate()
 
         initStetho()
-        initTimber()
         initFlipper()
     }
 
@@ -34,12 +32,6 @@ open class MovieDbApp : Application(), Configuration.Provider {
             addPlugin(NetworkFlipperPlugin())
             addPlugin(InspectorFlipperPlugin(this@MovieDbApp, DescriptorMapping.withDefaults()))
             start()
-        }
-    }
-
-    private fun initTimber() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
         }
     }
 

@@ -46,4 +46,5 @@ ext {
     truth = "1.1.2"
     workerTesting = "2.5.0"
     fragmentTesting = "1.3.4"
+    startup = "1.0.0"
 }
