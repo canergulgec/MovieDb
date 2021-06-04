@@ -2,8 +2,8 @@
 apply from: 'dependencies.gradle'
 apply from: 'spotless.gradle'
 buildscript {
-    ext.kotlin_version = '1.4.32'
-    ext.hilt_version = '2.35'
+    ext.kotlin_version = '1.5.10'
+    ext.hilt_version = '2.35.1'
     repositories {
         google()
         mavenCentral()
