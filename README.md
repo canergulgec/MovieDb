@@ -52,6 +52,7 @@ Modules are the collection of source files and build settings that allow you to 
     * [View Binding](https://developer.android.com/topic/libraries/view-binding)
     * [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
     * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
+    * [App Startup](https://developer.android.com/topic/libraries/app-startup)
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
   - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
 - [Dagger Hilt](https://dagger.dev/hilt/)
