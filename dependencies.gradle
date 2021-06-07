@@ -15,7 +15,6 @@ ext {
     gsonConverter = '2.9.0'
     okhttp = '4.9.1'
     materialDialog = '3.3.0'
-    navGraph = '2.3.5'
     recyclerview = '1.2.0'
     coil = '1.1.0'
     timber = '4.7.1'
@@ -42,7 +41,7 @@ ext {
     espresso = "3.3.0"
     turbine = "0.5.1"
     mockk = "1.11.0"
-    navComponentVersion = "2.3.5"
+    navComponentVersion = "2.4.0-alpha02"
     truth = "1.1.2"
     workerTesting = "2.5.0"
     fragmentTesting = "1.3.4"

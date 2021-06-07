@@ -106,8 +106,8 @@ dependencies {
     implementation "com.afollestad.material-dialogs:core:$materialDialog"
 
     // Navigation Component
-    implementation "androidx.navigation:navigation-fragment-ktx:$navGraph"
-    implementation "androidx.navigation:navigation-ui-ktx:$navGraph"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navComponentVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navComponentVersion"
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber"
