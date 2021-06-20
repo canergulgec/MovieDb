@@ -11,7 +11,6 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import com.android.moviedb.HiltTestActivity
 import com.android.moviedb.R
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * FragmentScenario.EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY not resolve
@@ -21,7 +20,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 const val THEME_EXTRAS_BUNDLE_KEY =
     "androidx.fragment.app.testing.FragmentScenario.EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY"
 
-@ExperimentalCoroutinesApi
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,
     @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,

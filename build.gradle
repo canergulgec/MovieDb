@@ -3,7 +3,7 @@ apply from: 'dependencies.gradle'
 apply from: 'spotless.gradle'
 buildscript {
     ext.kotlin_version = '1.5.10'
-    ext.hilt_version = '2.35.1'
+    ext.hilt_version = '2.37'
     repositories {
         google()
         mavenCentral()
