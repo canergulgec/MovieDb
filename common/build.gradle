@@ -43,19 +43,19 @@ kapt {
 
 dependencies {
 
-    //Material design
-    implementation "com.google.android.material:material:${materialDesign}"
+    // Material design
+    implementation "com.google.android.material:material:$materialDesign"
 
-    //Coil
-    implementation "io.coil-kt:coil:${coil}"
+    // Coil
+    implementation "io.coil-kt:coil:$coil"
 
-    //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
 
-    //Recyclerview
+    // Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
 
-    //Paging 3
+    // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Hilt dependencies

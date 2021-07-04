@@ -36,17 +36,13 @@ android {
     }
 }
 
-kapt {
-    generateStubs = true
-}
-
 dependencies {
     implementation project(":common")
 
     implementation "androidx.appcompat:appcompat:$appcompat"
 
-    //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 
@@ -58,10 +54,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android"
 
-    //CardView
+    // CardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    //Paging 3
+    // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 }
 

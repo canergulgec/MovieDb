@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,8 +28,8 @@ import com.caner.common.utils.VerticalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -49,25 +51,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             )
         )
         binding.searchEt.afterTextChanged {
-            viewModel.searchQuery.value = it
+            lifecycleScope.launch {
+                viewModel.searchQuery.emit(it)
+            }
         }
 
-        if (viewModel.searchQuery.subscriptionCount.value == 0) {
-            initObservers()
-        }
+        initObservers()
     }
 
     private fun initObservers() {
-        lifecycleScope.launchWhenResumed {
-            viewModel.searchFlow.onEach { resource ->
-                when (resource) {
-                    is Resource.Loading -> showLoading(resource.status)
-                    is Resource.Success -> setList(false, resource.data.movies)
-                    is Resource.Empty -> setList(true, emptyList())
-                    is Resource.Error -> toast(resource.apiError.message)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.searchFlow.collect { resource ->
+                    when (resource) {
+                        is Resource.Loading -> showLoading(resource.status)
+                        is Resource.Success -> setList(false, resource.data.movies)
+                        is Resource.Empty -> setList(true, emptyList())
+                        is Resource.Error -> toast(resource.apiError.message)
+                    }
                 }
-            }.launchIn(this)
+            }
         }
+
     }
 
     private fun movieClicked(movieId: Int?) {

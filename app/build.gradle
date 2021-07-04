@@ -58,7 +58,6 @@ android {
 }
 
 kapt {
-    generateStubs = true
     correctErrorTypes true
 }
 
@@ -70,17 +69,16 @@ dependencies {
     implementation project(":presentation")
 
     implementation "androidx.appcompat:appcompat:$appcompat"
-
-    // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
-
-    // ConstraintLayout
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
 
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
     // Material design
-    implementation "com.google.android.material:material:${materialDesign}"
+    implementation "com.google.android.material:material:$materialDesign"
 
     // Multi Dex
     implementation "com.android.support:multidex:$multiDex"
@@ -91,10 +89,6 @@ dependencies {
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
-
-    // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android"
 
     // Service Manager
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"

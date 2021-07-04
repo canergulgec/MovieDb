@@ -56,7 +56,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
 
     // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
     implementation "androidx.core:core-ktx:$core_ktx"
 

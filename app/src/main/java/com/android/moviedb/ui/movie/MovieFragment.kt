@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
@@ -24,6 +26,7 @@ import com.caner.common.ext.withLoadStateAll
 import com.caner.common.utils.VerticalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
@@ -65,9 +68,11 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     private fun initPagingFlow() {
-        lifecycleScope.launchWhenResumed {
-            viewModel.moviePagingFlow.collectLatest { pagingData ->
-                movieAdapter.submitData(lifecycle, pagingData)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.moviePagingFlow.collectLatest { pagingData ->
+                    movieAdapter.submitData(lifecycle, pagingData)
+                }
             }
         }
     }

@@ -52,9 +52,9 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Service Manager
-    implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
+    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
 
-    //Recyclerview
+    // Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
 
     // Preferences DataStore
