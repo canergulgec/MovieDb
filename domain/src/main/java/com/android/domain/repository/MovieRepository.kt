@@ -1,9 +1,9 @@
 package com.android.domain.repository
 
-import com.android.data.model.remote.MoviesResponse
+import androidx.paging.PagingData
+import com.android.data.model.Movie
+import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    suspend fun getNowPlayingMovies(params: HashMap<String, Any>?): MoviesResponse
-
-    suspend fun getUpcomingMovies(params: HashMap<String, Any>?): MoviesResponse
+    fun getMovies(): Flow<PagingData<Movie>>
 }

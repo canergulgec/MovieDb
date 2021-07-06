@@ -1,20 +1,20 @@
 package com.android.domain.repository
 
-import com.android.data.model.remote.MoviesResponse
-import com.android.domain.api.NowPlayingMoviesApi
-import com.android.domain.api.UpcomingMoviesApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.android.data.mapper.MovieMapper
+import com.android.domain.api.MovieApi
+import com.android.domain.paginginterface.MoviesPagingSource
 import javax.inject.Inject
 
 class MovieRepositoryImp @Inject constructor(
-    private val nowPlayingMoviesApi: NowPlayingMoviesApi,
-    private val upcomingMoviesApi: UpcomingMoviesApi,
+    private val movieApi: MovieApi,
+    private val movieMapper: MovieMapper
 ) : MovieRepository {
 
-    override suspend fun getNowPlayingMovies(params: HashMap<String, Any>?): MoviesResponse {
-        return nowPlayingMoviesApi.getNowPlayingMovies(params)
-    }
-
-    override suspend fun getUpcomingMovies(params: HashMap<String, Any>?): MoviesResponse {
-        return upcomingMoviesApi.getUpcomingMovies(params)
-    }
+    override fun getMovies() =
+        Pager(config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = { MoviesPagingSource(movieApi, movieMapper) }
+        ).flow
 }
+

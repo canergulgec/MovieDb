@@ -1,10 +1,9 @@
 package com.android.moviedb.di
 
-import com.android.domain.api.MovieDetailApi
 import com.android.domain.api.NewTokenApi
-import com.android.domain.api.NowPlayingMoviesApi
 import com.android.domain.api.SearchApi
-import com.android.domain.api.UpcomingMoviesApi
+import com.android.domain.api.MovieApi
+import com.android.domain.api.MovieDetailApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +15,8 @@ import retrofit2.Retrofit
 class ApiModule {
 
     @Provides
-    fun provideNowPlayingMoviesApiService(retrofit: Retrofit): NowPlayingMoviesApi {
-        return retrofit.create(NowPlayingMoviesApi::class.java)
-    }
-
-    @Provides
-    fun provideUpcomingMoviesApiService(retrofit: Retrofit): UpcomingMoviesApi {
-        return retrofit.create(UpcomingMoviesApi::class.java)
+    fun provideMovieApiService(retrofit: Retrofit): MovieApi {
+        return retrofit.create(MovieApi::class.java)
     }
 
     @Provides
