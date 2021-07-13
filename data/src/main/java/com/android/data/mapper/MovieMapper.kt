@@ -1,20 +1,20 @@
 package com.android.data.mapper
 
-import com.android.data.model.Image
+import com.android.data.model.MovieImage
 import com.android.data.model.Movie
 import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieResponseItem
-import com.android.data.model.remote.MoviesResponse
+import com.android.data.model.remote.MovieResponse
 import com.caner.common.Mapper
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
+class MovieMapper @Inject constructor() : Mapper<MovieResponse, MovieModel> {
 
-    override fun from(e: MovieModel): MoviesResponse {
+    override fun from(e: MovieModel): MovieResponse {
         return with(e) {
-            MoviesResponse(
+            MovieResponse(
                 total = total,
                 page = page,
                 results = e.movies.map {
@@ -41,7 +41,7 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
         }
     }
 
-    override fun to(t: MoviesResponse): MovieModel {
+    override fun to(t: MovieResponse): MovieModel {
         return with(t) {
             MovieModel(
                 total = total,
@@ -51,9 +51,9 @@ class MovieMapper @Inject constructor() : Mapper<MoviesResponse, MovieModel> {
                         it.id,
                         it.popularity,
                         it.video,
-                        it.posterPath?.let { path -> Image(path) },
+                        it.posterPath?.let { path -> MovieImage(path) },
                         it.adult,
-                        it.backdropPath?.let { path -> Image(path) },
+                        it.backdropPath?.let { path -> MovieImage(path) },
                         it.originalLanguage,
                         it.originalTitle,
                         it.title,

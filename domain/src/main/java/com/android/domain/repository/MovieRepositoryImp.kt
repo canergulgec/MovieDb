@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.android.data.mapper.MovieMapper
 import com.android.domain.api.MovieApi
-import com.android.domain.paginginterface.MoviesPagingSource
+import com.android.domain.pagingsource.MoviesPagingSource
 import javax.inject.Inject
 
 class MovieRepositoryImp @Inject constructor(

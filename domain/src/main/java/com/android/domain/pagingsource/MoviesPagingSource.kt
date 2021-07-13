@@ -1,11 +1,10 @@
-package com.android.domain.paginginterface
+package com.android.domain.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.Movie
 import com.android.domain.api.MovieApi
-import com.android.domain.repository.MovieRepository
 import com.caner.common.Constants
 import javax.inject.Inject
 

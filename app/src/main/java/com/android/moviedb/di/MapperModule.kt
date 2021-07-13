@@ -5,7 +5,7 @@ import com.android.data.mapper.MovieMapper
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieDetailResponse
-import com.android.data.model.remote.MoviesResponse
+import com.android.data.model.remote.MovieResponse
 import com.caner.common.Mapper
 import dagger.Binds
 import dagger.Module
@@ -17,7 +17,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class MapperModule {
 
     @Binds
-    abstract fun bindsMovieMapper(mapper: MovieMapper): Mapper<MoviesResponse, MovieModel>
+    abstract fun bindsMovieMapper(mapper: MovieMapper): Mapper<MovieResponse, MovieModel>
 
     @Binds
     abstract fun bindsMovieDetailMapper(mapper: MovieDetailMapper): Mapper<MovieDetailResponse, MovieDetailModel>

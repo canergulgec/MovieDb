@@ -5,7 +5,7 @@ import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Image(val url: String?) : Parcelable {
+data class MovieImage(val url: String?) : Parcelable {
     companion object {
         private const val PATH = "https://image.tmdb.org/t/p"
     }

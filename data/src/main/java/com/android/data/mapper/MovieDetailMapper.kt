@@ -1,6 +1,6 @@
 package com.android.data.mapper
 
-import com.android.data.model.Image
+import com.android.data.model.MovieImage
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
 import com.caner.common.Mapper
@@ -41,8 +41,8 @@ class MovieDetailMapper @Inject constructor() :
                 popularity,
                 video,
                 adult,
-                poster_path?.let { path -> Image(path) },
-                backdrop_path?.let { path -> Image(path) },
+                poster_path?.let { path -> MovieImage(path) },
+                backdrop_path?.let { path -> MovieImage(path) },
                 genres,
                 title,
                 overview,
