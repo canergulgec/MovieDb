@@ -12,9 +12,9 @@ class MovieRepositoryImp @Inject constructor(
     private val movieMapper: MovieMapper
 ) : MovieRepository {
 
-    override fun getMovies() =
+    override fun getMovies(movieType: Int) =
         Pager(config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { MoviesPagingSource(movieApi, movieMapper) }
+            pagingSourceFactory = { MoviesPagingSource(movieApi, movieMapper, movieType) }
         ).flow
 }
 

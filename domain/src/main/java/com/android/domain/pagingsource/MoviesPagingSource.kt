@@ -11,15 +11,11 @@ import javax.inject.Inject
 class MoviesPagingSource @Inject constructor(
     private val movieApi: MovieApi,
     private val movieMapper: MovieMapper,
+    private val movieType: Int
 ) : PagingSource<Int, Movie>() {
-
-    companion object {
-        var movieType = Constants.NOW_PLAYING_MOVIES
-    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: 1
-
         val apiRequest = if (movieType == Constants.NOW_PLAYING_MOVIES) {
             movieApi.getNowPlayingMovies(getParams(page))
         } else {
