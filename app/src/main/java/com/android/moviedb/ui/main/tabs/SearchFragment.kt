@@ -51,9 +51,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             )
         )
         binding.searchEt.afterTextChanged {
-            lifecycleScope.launch {
-                viewModel.searchQuery.emit(it)
-            }
+            viewModel.searchQuery.value = it
         }
 
         initObservers()

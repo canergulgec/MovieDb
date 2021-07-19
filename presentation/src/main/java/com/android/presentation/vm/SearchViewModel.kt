@@ -1,14 +1,12 @@
 package com.android.presentation.vm
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.android.domain.usecase.SearchMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @FlowPreview
@@ -17,7 +15,7 @@ class SearchViewModel @Inject constructor(
     private val searchUseCase: SearchMovieUseCase
 ) : ViewModel() {
 
-    val searchQuery = MutableSharedFlow<String>(replay = 0)
+    val searchQuery = MutableStateFlow("")
 
     @ExperimentalCoroutinesApi
     val searchFlow = searchQuery
@@ -27,5 +25,5 @@ class SearchViewModel @Inject constructor(
         }
         .flatMapLatest {
             searchUseCase.execute(it)
-        }
+        }.shareIn(viewModelScope, SharingStarted.Lazily, 1)
 }
