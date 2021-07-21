@@ -25,5 +25,5 @@ class SearchViewModel @Inject constructor(
         }
         .flatMapLatest {
             searchUseCase.execute(it)
-        }.shareIn(viewModelScope, SharingStarted.Lazily, 1)
+        }.shareIn(viewModelScope, SharingStarted.Lazily, 2)
 }

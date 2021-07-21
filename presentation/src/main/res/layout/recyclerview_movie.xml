@@ -14,40 +14,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/movieIv"
-            android:layout_width="150dp"
-            android:layout_height="210dp"
-            android:adjustViewBounds="false"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:path='@{movie.poster.medium ?? ""}'
-            app:radius="@{12f}"
-            tools:ignore="ContentDescription"
-            tools:srcCompat="@color/purple_500" />
-
-        <TextView
-            android:id="@+id/movieNameTv"
-            style="@style/App.Text.Medium.Bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            android:lines="1"
-            android:text="@{movie.title}"
-            tools:text="Spiderman" />
-
-        <RatingBar
-            android:id="@+id/movieRatingBar"
-            style="?android:attr/ratingBarStyleSmall"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rating="@{Float.parseFloat(String.valueOf(movie.voteAverage/2))}" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/movieIv"
+                    android:layout_width="160dp"
+                    android:layout_height="210dp"
+                    android:scaleType="centerCrop"
+                    app:path='@{movie.poster.original ?? ""}'
+                    app:radius="@{8f}"
+                    tools:ignore="ContentDescription"
+                    tools:srcCompat="@color/purple_200" />
+
+                <TextView
+                    android:id="@+id/movieNameTv"
+                    style="@style/App.Text.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:lines="1"
+                    android:text="@{movie.title}"
+                    tools:text="Spiderman" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/App.Text.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(movie.voteAverage)}"
+                    app:drawableStartCompat="@drawable/ic_star_filled"
+                    app:drawableTint="@color/star_color"
+                    tools:text="8.1" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

@@ -9,7 +9,7 @@
         android:id="@+id/moviesRv"
         style="@style/App.RecyclerView.Movies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:itemCount="4"
         tools:listitem="@layout/recyclerview_movie" />
 

@@ -17,10 +17,10 @@
 
         <TextView
             android:id="@+id/genreNameTv"
-            style="@style/App.Text.Small.White"
+            style="@style/App.Text.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gray_radius_background"
+            android:background="@drawable/transparent_background"
             android:padding="4dp"
             android:text="@{genre.name}"
             app:layout_constraintStart_toStartOf="parent"

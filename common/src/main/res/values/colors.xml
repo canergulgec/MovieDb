@@ -16,5 +16,5 @@
     <color name="title_color">#161616</color>
     <color name="subtitle_color">#a0a0a0</color>
     <color name="status_bar_color">#e5e5e5</color>
-    <color name="star_color">#86fcbb</color>
+    <color name="star_color">#ffd700</color>
 </resources>
