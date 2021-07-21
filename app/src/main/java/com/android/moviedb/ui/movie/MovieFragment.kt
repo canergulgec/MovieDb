@@ -21,9 +21,7 @@ import com.android.presentation.adapter.paging.MoviesPagingAdapter
 import com.android.presentation.vm.MovieViewModel
 import com.android.presentation.worker.NotificationWorker
 import com.caner.common.Constants
-import com.caner.common.ext.dp2px
 import com.caner.common.ext.withLoadStateAll
-import com.caner.common.utils.VerticalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -58,7 +56,6 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
          * Span count should be 1 when loader state is visible //TODO
          */
         binding.moviesRv.apply {
-            addItemDecoration(VerticalSpaceItemDecoration(8.dp2px()))
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),

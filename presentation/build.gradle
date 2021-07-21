@@ -86,6 +86,9 @@ dependencies {
 
     // App Startup
     implementation "androidx.startup:startup-runtime:$startup"
+
+    // CardView
+    implementation 'com.google.android.material:material:1.4.0'
 }
 
 apply from: "$rootDir/spotless.gradle"
