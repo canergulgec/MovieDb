@@ -86,4 +86,4 @@ To maintain the style and quality of the code
 
 ### Screenshots
 
-<img src="/art/home_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_light.png" width="250" /> <img src="/art/home_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_dark.png" width="250" />
+<img src="/art/movie_list_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_light.png" width="250" /> <img src="/art/movie_list_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_dark.png" width="250" />
