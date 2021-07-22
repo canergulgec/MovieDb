@@ -16,13 +16,13 @@ class MoviesPagingSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: 1
-        val apiRequest = if (movieType == Constants.NOW_PLAYING_MOVIES) {
-            movieApi.getNowPlayingMovies(getParams(page))
-        } else {
-            movieApi.getUpcomingMovies(getParams(page))
-        }
 
         return try {
+            val apiRequest = if (movieType == Constants.NOW_PLAYING_MOVIES) {
+                movieApi.getNowPlayingMovies(getParams(page))
+            } else {
+                movieApi.getUpcomingMovies(getParams(page))
+            }
             apiRequest.run {
                 val data = movieMapper.to(this)
                 LoadResult.Page(
