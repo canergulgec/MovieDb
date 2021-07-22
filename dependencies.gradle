@@ -4,7 +4,7 @@ ext {
     targetSdk = 30
 
     // Core
-    appcompat = '1.3.0'
+    appcompat = '1.3.1'
     constraintlayout = '2.0.4'
     core_ktx = '1.6.0'
     materialDesign = '1.4.0'
@@ -12,12 +12,12 @@ ext {
 
     // Lifecycle
     lifecycle_version = '2.4.0-alpha02'
-    fragment_ktx = '1.3.5'
+    fragment_ktx = '1.3.6'
     navComponentVersion = "2.3.5"
 
     // Jetpack
-    paging_version = '3.0.0'
-    dataStore = '1.0.0-beta01'
+    paging_version = '3.0.1'
+    dataStore = '1.0.0-rc01'
     recyclerview = '1.2.1'
     viewpager2 = '1.0.0'
     vectorDrawable = '1.2.0-alpha02'
@@ -49,15 +49,15 @@ ext {
     fragmentTesting = "1.3.5"
 
     // Unit Test
-    turbine = "0.5.1"
-    mockk = "1.11.0"
+    turbine = "0.5.2"
+    mockk = "1.12.0"
     mockito_kotlin2 = '2.2.0'
     mockito = '3.6.28'
     arch = '2.1.0'
     junit = '4.13.2'
 
     materialDialog = '3.3.0'
-    coil = '1.2.1'
+    coil = '1.2.2'
     timber = '4.7.1'
     stethoVersion = '1.5.1'
     flexBox = '3.0.0'
