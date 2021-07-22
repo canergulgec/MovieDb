@@ -9,6 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
@@ -23,7 +25,9 @@ import com.android.presentation.worker.NotificationWorker
 import com.caner.common.Constants
 import com.caner.common.ext.withLoadStateAll
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -52,10 +56,8 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
             initPagingFlow()
         }
 
-        /**
-         * Span count should be 1 when loader state is visible //TODO
-         */
         binding.moviesRv.apply {
+            layoutManager = GridLayoutManager(context, 2)
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),
@@ -70,6 +72,21 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
                 viewModel.moviePagingFlow.collectLatest { pagingData ->
                     movieAdapter.submitData(lifecycle, pagingData)
                 }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                movieAdapter.loadStateFlow
+                    // Only emit when REFRESH LoadState for RemoteMediator changes.
+                    .distinctUntilChangedBy { it.refresh }
+                    .collect {
+                        if (it.refresh is LoadState.Loading) {
+                            (binding.moviesRv.layoutManager as GridLayoutManager).spanCount = 1
+                        } else {
+                            (binding.moviesRv.layoutManager as GridLayoutManager).spanCount = 2
+                        }
+                    }
             }
         }
     }
