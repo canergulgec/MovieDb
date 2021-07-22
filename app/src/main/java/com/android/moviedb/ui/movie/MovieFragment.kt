@@ -57,7 +57,6 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         }
 
         binding.moviesRv.apply {
-            layoutManager = GridLayoutManager(context, 2)
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),
