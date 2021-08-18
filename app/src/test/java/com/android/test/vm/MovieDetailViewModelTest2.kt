@@ -60,7 +60,7 @@ class MovieDetailViewModelTest2 {
         val job = launch {
             viewModel.movieDetailState.collectIndexed { index, value ->
                 when (index) {
-                    0 -> assert(value is Resource.Empty)
+                    0 -> assert(value is Resource.Initial)
                     1 -> assert(value is Resource.Loading)
                     2 -> assert(value is Resource.Success)
                     3 -> assert(value is Resource.Loading)
@@ -90,7 +90,7 @@ class MovieDetailViewModelTest2 {
         viewModel.movieDetailState.test {
             viewModel.getMovieDetail(any())
 
-            assert(expectItem() is Resource.Empty)
+            assert(expectItem() is Resource.Initial)
             assert(expectItem() is Resource.Loading)
             assert(expectItem() is Resource.Success)
             assert(expectItem() is Resource.Loading)
@@ -117,7 +117,7 @@ class MovieDetailViewModelTest2 {
         viewModel.movieDetailState.test {
             viewModel.getMovieDetail(any())
 
-            assert(expectItem() is Resource.Empty)
+            assert(expectItem() is Resource.Initial)
             assert(expectItem() is Resource.Loading)
             assert(expectItem() is Resource.Error)
             assert(expectItem() is Resource.Loading)

@@ -48,7 +48,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     is Resource.Loading -> showLoading(resource.status)
                     is Resource.Success -> prefStore.saveData(PrefKeys.ACCESS_TOKEN_DATA_STORE, resource.data.requestToken)
                     is Resource.Error -> toast(resource.apiError.message)
-                    is Resource.Empty -> Timber.v("Initial Empty state")
+                    else -> Timber.v("Initial state")
                 }
             }
         }
