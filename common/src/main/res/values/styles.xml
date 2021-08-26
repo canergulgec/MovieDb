@@ -49,6 +49,11 @@
         <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
+    <style name="App.Text.Large">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:fontFamily">@font/montserratmedium</item>
+    </style>
+
     <style name="App.Text.Medium.Bold">
         <item name="android:fontFamily">@font/montserratmedium</item>
     </style>

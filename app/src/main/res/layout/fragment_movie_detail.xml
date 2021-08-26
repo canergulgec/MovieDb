@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/movieTitleTv"
-            style="@style/App.Title"
+            style="@style/App.Text.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -70,17 +70,33 @@
             app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
             tools:text="Movie Title" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="?android:attr/ratingBarStyleSmall"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            style="@style/App.Text.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:rating="@{Float.parseFloat(String.valueOf(item.voteAverage/2))}"
-            android:visibility="@{item.voteAverage != null ? View.VISIBLE : View.GONE}"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.voteAverage)}"
+            android:visibility="@{item.voteAverage > 0 ? View.VISIBLE : View.GONE}"
+            app:drawableStartCompat="@drawable/ic_star_filled"
+            app:drawableTint="@color/star_color"
             app:layout_constraintStart_toStartOf="@+id/movieTitleTv"
             app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
-            tools:rating="4" />
+            tools:text="8.1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/App.Text.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/movie_runtime(item.runtime)}"
+            android:visibility="@{item.runtime > 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
+            tools:text="132 min" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieGenresRv"

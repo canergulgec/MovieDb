@@ -4,4 +4,5 @@
     <string name="best_rated">En İyiler</string>
     <string name="search">Search something..</string>
     <string name="empty_view">Empty View</string>
+    <string name="movie_runtime">%s min</string>
 </resources>
