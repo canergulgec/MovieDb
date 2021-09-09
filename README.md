@@ -63,7 +63,6 @@ Modules are the collection of source files and build settings that allow you to 
 - [Flipper](https://github.com/facebook/flipper)
 - [Testing](https://developer.android.com/training/testing/fundamentals)
   - [MockK](https://github.com/mockk/mockk)
-  - [Mockito-Kotlin](https://github.com/mockito/mockito-kotlin)
   - [Kakao](https://github.com/agoda-com/Kakao)
   - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
   - [Turbine](https://github.com/cashapp/turbine)
