@@ -3,16 +3,23 @@ package com.android.test.repository
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.repository.NewTokenRepository
 import com.caner.common.Resource
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import org.junit.Before
 import org.junit.Test
 
 class TokenRepositoryTest {
 
-    private val repository: NewTokenRepository = mock()
+    @MockK
+    private lateinit var repository: NewTokenRepository
+
+    @Before
+    fun setUp() = MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
 
     @Test
     fun `new token flow emits successfully`() = runBlocking {
@@ -25,10 +32,12 @@ class TokenRepositoryTest {
         }
 
         // When
-        whenever(repository.getNewToken()).thenReturn(flow)
+        coEvery { repository.getNewToken() } returns flow
+        val getNewToken = repository.getNewToken()
 
         // Then
-        val getNewToken = repository.getNewToken()
+        coVerify { repository.getNewToken() }
+
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
             if (index == 1) {

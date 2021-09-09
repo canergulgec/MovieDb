@@ -10,17 +10,22 @@ import com.caner.common.ApiError
 import com.caner.common.Resource
 import com.caner.common.utils.PrefStore
 import com.caner.common.utils.SharedPreferencesUtils
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
+import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.verify
+
+/**
+ * This test is written with mockK
+ */
 
 @ExperimentalCoroutinesApi
 class TokenViewModelTest {
@@ -31,15 +36,26 @@ class TokenViewModelTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    private val sharedPref: SharedPreferencesUtils = mock()
+    @MockK
+    private lateinit var sharedPref: SharedPreferencesUtils
 
-    private val prefStore: PrefStore = mock()
+    @MockK
+    private lateinit var prefStore: PrefStore
 
-    private val useCase: NewTokenUseCase = mock()
+    @MockK
+    private lateinit var useCase: NewTokenUseCase
 
     private val viewModel by lazy { ProfileViewModel(useCase, sharedPref, prefStore) }
 
-    private val newSessionObserver: Observer<Resource<TokenResponse>> = mock()
+    @MockK
+    private lateinit var newSessionObserver: Observer<Resource<TokenResponse>>
+
+    // create list to store values
+    private val list = arrayListOf<Resource<TokenResponse>>()
+
+    @Before
+    fun setUp() =
+        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
 
     @Test
     fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlockingTest {
@@ -52,21 +68,29 @@ class TokenViewModelTest {
         }
 
         // When
-        whenever(useCase.execute()).thenReturn(flow)
-        val captor = argumentCaptor<Resource<TokenResponse>>()
-        viewModel.newSessionLiveData.observeForever(newSessionObserver) // viewModel.newSessionLiveData.getOrAwaitValue()
+        val tokenSlot = slot<Resource<TokenResponse>>()
+        coEvery { useCase.execute() } returns flow
+
+        viewModel.newSessionLiveData.observeForever(newSessionObserver)
+        coEvery { newSessionObserver.onChanged(capture(tokenSlot)) } answers {
+            list.add(tokenSlot.captured)
+        }
 
         // Then
         viewModel.getNewToken()
 
-        verify(newSessionObserver, times(3)).onChanged(captor.capture())
+        list.forEachIndexed { index, resource ->
+            if (index == 0) assertEquals(true, (resource as Resource.Loading).status)
+            if (index == 1) {
+                assertEquals(
+                    userDetails.requestToken,
+                    (resource as Resource.Success).data.requestToken
+                )
+            }
+            if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
+        }
 
-        assertEquals(true, (captor.firstValue as Resource.Loading).status)
-        assertEquals(
-            userDetails.requestToken,
-            (captor.secondValue as Resource.Success).data.requestToken
-        )
-        assertEquals(false, (captor.thirdValue as Resource.Loading).status)
+        coVerify { useCase.execute() }
     }
 
     @Test
@@ -80,17 +104,23 @@ class TokenViewModelTest {
         }
 
         // When
-        whenever(useCase.execute()).thenReturn(flow)
-        val captor = argumentCaptor<Resource<TokenResponse>>()
-        viewModel.newSessionLiveData.observeForever(newSessionObserver) // viewModel.newSessionLiveData.getOrAwaitValue()
+        val tokenSlot = slot<Resource<TokenResponse>>()
+        coEvery { useCase.execute() } returns flow
+
+        viewModel.newSessionLiveData.observeForever(newSessionObserver)
+        coEvery { newSessionObserver.onChanged(capture(tokenSlot)) } answers {
+            list.add(tokenSlot.captured)
+        }
 
         // Then
         viewModel.getNewToken()
 
-        verify(newSessionObserver, times(3)).onChanged(captor.capture())
+        list.forEachIndexed { index, resource ->
+            if (index == 0) assertEquals(true, (resource as Resource.Loading).status)
+            if (index == 1) assertEquals(error.code, (resource as Resource.Error).apiError.code)
+            if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
+        }
 
-        assertEquals(true, (captor.firstValue as Resource.Loading).status)
-        assertEquals(error.code, (captor.secondValue as Resource.Error).apiError.code)
-        assertEquals(false, (captor.thirdValue as Resource.Loading).status)
+        coVerify { useCase.execute() }
     }
 }

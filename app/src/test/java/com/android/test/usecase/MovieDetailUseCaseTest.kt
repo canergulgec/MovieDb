@@ -6,15 +6,22 @@ import com.android.domain.usecase.MovieDetailUseCase
 import com.android.test.utils.MainCoroutineScopeRule
 import com.caner.common.ApiError
 import com.caner.common.Resource
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.ArgumentMatchers.any
+
+/**
+ * This test is written with mockK
+ */
 
 @ExperimentalCoroutinesApi
 class MovieDetailUseCaseTest {
@@ -22,11 +29,15 @@ class MovieDetailUseCaseTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    private val detailRepository: MovieDetailRepository = mock()
+    @MockK
+    private lateinit var detailRepository: MovieDetailRepository
 
     private val detailUseCase by lazy {
         MovieDetailUseCase(detailRepository, coroutineScope.dispatcher)
     }
+
+    @Before
+    fun setUp() = MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
 
     @Test
     fun movieDetailFlowMustReturnSuccess() = coroutineScope.runBlockingTest {
@@ -37,10 +48,12 @@ class MovieDetailUseCaseTest {
         }
 
         // When
-        whenever(detailRepository.getMovieDetail(any())).thenReturn(flow)
+        coEvery { detailRepository.getMovieDetail(any()) } returns flow
+        val getNewToken = detailUseCase.execute(any())
 
         // Then
-        val getNewToken = detailUseCase.execute(any())
+        coVerify { detailRepository.getMovieDetail(any()) }
+
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
             if (index == 1) {
@@ -62,10 +75,12 @@ class MovieDetailUseCaseTest {
         }
 
         // When
-        whenever(detailRepository.getMovieDetail(any())).thenReturn(flow)
+        coEvery { detailRepository.getMovieDetail(any()) } returns flow
+        val getNewToken = detailUseCase.execute(any())
 
         // Then
-        val getNewToken = detailUseCase.execute(any())
+        coVerify { detailRepository.getMovieDetail(any()) }
+
         getNewToken.collectIndexed { index, value ->
             if (index == 0) assert(value is Resource.Loading)
             if (index == 1) {

@@ -21,6 +21,5 @@ class MovieScreen : Screen<MovieScreen>() {
     class Item(parent: Matcher<View>) : KRecyclerItem<Item>(parent) {
         val moviePoster: KImageView = KImageView(parent) { withId(R.id.movieIv) }
         val movieName: KTextView = KTextView(parent) { withId(R.id.movieNameTv) }
-        val movieRating: KRatingBar = KRatingBar(parent) { withId(R.id.movieRatingBar) }
     }
 }
