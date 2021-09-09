@@ -17,13 +17,13 @@ ext {
 
     // Jetpack
     paging_version = '3.0.1'
-    dataStore = '1.0.0-rc01'
+    dataStore = '1.0.0'
     recyclerview = '1.2.1'
     viewpager2 = '1.0.0'
     vectorDrawable = '1.2.0-alpha02'
     multiDex = '1.0.3'
     hilt_workmanager = '1.0.0'
-    startup = "1.0.0"
+    startup = "1.1.0"
 
     // Retrofit
     retrofit = '2.9.0'
