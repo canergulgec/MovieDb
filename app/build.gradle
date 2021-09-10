@@ -61,6 +61,12 @@ kapt {
     correctErrorTypes true
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.test:monitor:1.4.0'
+    }
+}
+
 dependencies {
     implementation project(":base")
     implementation project(":common")
@@ -84,17 +90,17 @@ dependencies {
     implementation "com.android.support:multidex:$multiDex"
 
     //Vector Drawable
-    implementation "androidx.vectordrawable:vectordrawable:${vectorDrawable}"
+    implementation "androidx.vectordrawable:vectordrawable:$vectorDrawable"
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Service Manager
-    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${gsonConverter}"
-    implementation "com.squareup.okhttp3:okhttp:${okhttp}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${okhttp}"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
 
     // Material Dialog
     implementation "com.afollestad.material-dialogs:core:$materialDialog"
@@ -124,20 +130,14 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:$dataStore"
 
     // UI Test
-    androidTestImplementation "androidx.test:core-ktx:$test_core"
-    androidTestImplementation "androidx.test.ext:junit-ktx:$test_ext"
-    androidTestImplementation "androidx.test:rules:$test_rules"
-    androidTestImplementation "androidx.test:runner:$test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
 
     // Kakao
-    androidTestImplementation "com.agoda.kakao:kakao:$kakao"
+    androidTestImplementation "io.github.kakaocup:kakao:$kakao"
 
     // Navigation Test
     androidTestImplementation "androidx.navigation:navigation-testing:$navComponentVersion"
-    // Truth
-    androidTestImplementation "com.google.truth:truth:$truth"
 
     // WorkManager Test
     androidTestImplementation "androidx.work:work-testing:$workerTesting"

@@ -10,17 +10,17 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import androidx.work.Configuration
 import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
-import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.android.moviedb.R
 import com.android.moviedb.ui.movie.MovieFragment
 import com.android.test.screen.MovieScreen
 import com.android.test.utils.OkHttpProvider
 import com.android.test.utils.dispatcherWithCustomBody
 import com.android.test.utils.launchFragmentInHiltContainer
-import com.google.common.truth.Truth
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
+import org.junit.Assert.assertEquals
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
@@ -101,7 +101,11 @@ class MovieFragmentTest {
                 scrollTo(9)
                 childAt<MovieScreen.Item>(9) {
                     click()
-                    Truth.assertThat(navController.currentDestination?.id).isEqualTo(R.id.movieDetailFragment)
+                    assertEquals(
+                        "current destination is :",
+                        navController.currentDestination?.id,
+                        R.id.movieDetailFragment
+                    )
                 }
             }
         }
