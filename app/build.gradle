@@ -145,9 +145,6 @@ dependencies {
     // MockServer
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockServer"
 
-    // OkHttp Idling Resource
-    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:$idling"
-
     // Hilt testing dependencies
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
