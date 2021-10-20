@@ -4,14 +4,22 @@ The goal of this project is showing a modern approach with using the latest tech
 
 ![alt text](https://cdn-images-1.medium.com/max/1200/1*vIR7iO-1GnY2xYxL6NiYkw.png)
 
-### Configuration
+## ⚙️ Configuration
 
 In order to use MovieDB:
 - You need to get API KEY from TMDb. You can do that by clicking [here](https://www.themoviedb.org/signup).
 - Once you obtain key, create `secure.properties` which should be on the same level with build.gradle(Project:MovieDb)
 - Add your key into secure.properties `MOVIE_API_KEY = "xxx" `
 
-### Modules
+## 🌞 Day Mode
+
+<img src="/art/movie_list_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_light.png" width="250" />
+
+## 🌚 Dark Mode
+
+<img src="/art/movie_list_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_dark.png" width="250" />
+
+## 📦 Modules
 
 Modules are the collection of source files and build settings that allow you to divide your project into discrete units of functionality.
 
@@ -39,7 +47,7 @@ Modules are the collection of source files and build settings that allow you to 
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
 
-### 🛠 Built With
+## 🛠 Built With
 
 - [Kotlin](https://kotlinlang.org)
 - [Jetpack](https://developer.android.com/jetpack?gclid=CjwKCAiA25v_BRBNEiwAZb4-ZRLrSzIFlpm0NDTFGSuapyosjuVKi0AVLXGgVqSwqe46gejCg31LvRoCAwIQAvD_BwE&gclsrc=aw.ds)
@@ -68,13 +76,13 @@ Modules are the collection of source files and build settings that allow you to 
   - [Turbine](https://github.com/cashapp/turbine)
   - [Dagger Hilt Testing](https://developer.android.com/training/dependency-injection/hilt-testing)
 
-### Architecture
+## 🗼 Architecture
 
 - [Model-View-ViewModel](https://en.wikipedia.org/wiki/Model–view–viewmodel)(MVVM) pattern helps to completely separate the business and presentation logic from the UI
 - `Modular app architecture` enables separate functionality into independent, interchangeable modules
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles intended to make software designs more understandable, flexible, and maintainable
 
-### Code style
+## 💎 Code style
 
 To maintain the style and quality of the code
 
@@ -83,10 +91,6 @@ To maintain the style and quality of the code
 | [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
 | [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintFormat`   |
 
-### Version Control
+## ✅ Version Control
 
 [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) for checking all dependencies for their current versions.
-
-### Screenshots
-
-<img src="/art/movie_list_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_light.png" width="250" /> <img src="/art/movie_list_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_dark.png" width="250" />
