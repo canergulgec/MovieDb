@@ -81,7 +81,7 @@ To maintain the style and quality of the code
 | Tool                                                   |    Check command          |     Fix command
 |--------------------------------------------------------|---------------------------|--------------------------- |
 | [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
-| [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintApply`    |
+| [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintFormat`   |
 
 ### Version Control
 
