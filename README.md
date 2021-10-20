@@ -39,7 +39,7 @@ Modules are the collection of source files and build settings that allow you to 
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
 
-### Dependencies
+### 🛠 Built With
 
 - [Kotlin](https://kotlinlang.org)
 - [Jetpack](https://developer.android.com/jetpack?gclid=CjwKCAiA25v_BRBNEiwAZb4-ZRLrSzIFlpm0NDTFGSuapyosjuVKi0AVLXGgVqSwqe46gejCg31LvRoCAwIQAvD_BwE&gclsrc=aw.ds)
