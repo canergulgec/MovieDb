@@ -83,6 +83,10 @@ To maintain the style and quality of the code
 | [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
 | [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintApply`    |
 
+### Version Control
+
+[Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) for checking all dependencies for their current versions.
+
 ### Screenshots
 
 <img src="/art/movie_list_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_light.png" width="250" /> <img src="/art/movie_list_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_dark.png" width="250" />
