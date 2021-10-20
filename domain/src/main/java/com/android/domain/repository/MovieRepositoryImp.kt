@@ -13,8 +13,8 @@ class MovieRepositoryImp @Inject constructor(
 ) : MovieRepository {
 
     override fun getMovies(movieType: Int) =
-        Pager(config = PagingConfig(pageSize = 20),
+        Pager(
+            config = PagingConfig(pageSize = 20),
             pagingSourceFactory = { MoviesPagingSource(movieApi, movieMapper, movieType) }
         ).flow
 }
-

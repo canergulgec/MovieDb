@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdk
+    compileSdkVersion rootProject.ext.sdk.compileSdk
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.targetSdk
+        minSdkVersion rootProject.ext.sdk.minSdk
+        targetSdkVersion rootProject.ext.sdk.targetSdk
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -42,21 +42,20 @@ dependencies {
     implementation project(":base")
     implementation project(":common")
 
-    implementation "androidx.appcompat:appcompat:$appcompat"
-    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.versions.appcompat"
+    implementation "androidx.core:core-ktx:$rootProject.ext.versions.core_ktx"
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Service Manager
-    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.versions.gsonConverter"
 
     // Recyclerview
-    implementation "androidx.recyclerview:recyclerview:$recyclerview"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.versions.recyclerview"
 
     // Preferences DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStore"
+    implementation "androidx.datastore:datastore-preferences:$rootProject.ext.versions.dataStore"
 }
 
-apply from: "$rootDir/spotless.gradle"

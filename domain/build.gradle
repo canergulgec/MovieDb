@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdk
+    compileSdkVersion rootProject.ext.sdk.compileSdk
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.targetSdk
+        minSdkVersion rootProject.ext.sdk.minSdk
+        targetSdkVersion rootProject.ext.sdk.targetSdk
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -37,32 +37,31 @@ dependencies {
     implementation project(":base")
     implementation project(":common")
 
-    implementation "androidx.appcompat:appcompat:$appcompat"
-    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.versions.appcompat"
+    implementation "androidx.core:core-ktx:$rootProject.ext.versions.core_ktx"
 
     // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.versions.lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ext.versions.fragment_ktx"
 
     // Service Manager
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.versions.gsonConverter"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.versions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.versions.okhttp"
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Stetho
-    implementation "com.facebook.stetho:stetho:$stethoVersion"
-    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    implementation "com.facebook.stetho:stetho:$rootProject.ext.versions.stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.versions.stethoVersion"
 
     // Preferences DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStore"
+    implementation "androidx.datastore:datastore-preferences:$rootProject.ext.versions.dataStore"
 
     // Paging 3
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.ext.versions.paging_version"
 }
 
-apply from: "$rootDir/spotless.gradle"

@@ -45,7 +45,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.movieSearchRv.init(
-            searchAdapter, listOf(
+            searchAdapter,
+            listOf(
                 VerticalSpaceItemDecoration(16.dp2px()),
                 DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             )
@@ -70,7 +71,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 }
             }
         }
-
     }
 
     private fun movieClicked(movieId: Int?) {

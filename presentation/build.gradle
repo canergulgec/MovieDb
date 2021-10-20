@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdk
+    compileSdkVersion rootProject.ext.sdk.compileSdk
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.targetSdk
+        minSdkVersion rootProject.ext.sdk.minSdk
+        targetSdkVersion rootProject.ext.sdk.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -48,45 +48,41 @@ dependencies {
     implementation project(":base")
     implementation project(":common")
 
-    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.versions.appcompat"
+    implementation "com.google.android.material:material:$rootProject.ext.versions.materialDesign"
 
     // ConstraintLayout
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.versions.constraintlayout"
 
     // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
-    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.versions.lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ext.versions.fragment_ktx"
+    implementation "androidx.core:core-ktx:$rootProject.ext.versions.core_ktx"
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Service Manager
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.versions.gsonConverter"
 
     // Paging 3
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.ext.versions.paging_version"
 
     // Viewpager 2
-    implementation "androidx.viewpager2:viewpager2:$viewpager2"
+    implementation "androidx.viewpager2:viewpager2:$rootProject.ext.versions.viewpager2"
 
     // Hilt WorkManager
-    implementation "androidx.hilt:hilt-work:$hilt_workmanager"
-    kapt "androidx.hilt:hilt-compiler:$hilt_workmanager"
+    implementation "androidx.hilt:hilt-work:$rootProject.ext.versions.hilt_workmanager"
+    kapt "androidx.hilt:hilt-compiler:$rootProject.ext.versions.hilt_workmanager"
 
     // Preferences DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStore"
+    implementation "androidx.datastore:datastore-preferences:$rootProject.ext.versions.dataStore"
 
     // Timber
-    implementation "com.jakewharton.timber:timber:$timber"
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.versions.timber"
 
     // App Startup
-    implementation "androidx.startup:startup-runtime:$startup"
-
-    // CardView
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation "androidx.startup:startup-runtime:$rootProject.ext.versions.startup"
 }
-
-apply from: "$rootDir/spotless.gradle"

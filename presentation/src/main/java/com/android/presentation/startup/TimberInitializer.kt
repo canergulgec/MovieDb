@@ -5,7 +5,6 @@ import androidx.startup.Initializer
 import com.android.presentation.BuildConfig
 import timber.log.Timber
 
-
 class TimberInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {

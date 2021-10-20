@@ -107,7 +107,7 @@ class MovieDetailViewModelTest {
         // Given
         val flow = flow {
             emit(Resource.Loading(true))
-            emit(Resource.Error(ApiError(1,"Unknown error")))
+            emit(Resource.Error(ApiError(1, "Unknown error")))
             emit(Resource.Loading(false))
         }
 

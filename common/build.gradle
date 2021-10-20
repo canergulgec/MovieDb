@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdk
+    compileSdkVersion rootProject.ext.sdk.compileSdk
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.targetSdk
+        minSdkVersion rootProject.ext.sdk.minSdk
+        targetSdkVersion rootProject.ext.sdk.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,26 +42,25 @@ kapt {
 dependencies {
 
     // Material design
-    implementation "com.google.android.material:material:$materialDesign"
+    implementation "com.google.android.material:material:$rootProject.ext.versions.materialDesign"
 
     // Coil
-    implementation "io.coil-kt:coil:$coil"
+    implementation "io.coil-kt:coil:$rootProject.ext.versions.coil"
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.versions.retrofit"
 
     // Recyclerview
-    implementation "androidx.recyclerview:recyclerview:$recyclerview"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.versions.recyclerview"
 
     // Paging 3
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.ext.versions.paging_version"
 
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Preferences DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStore"
+    implementation "androidx.datastore:datastore-preferences:$rootProject.ext.versions.dataStore"
 }
 
-apply from: "$rootDir/spotless.gradle"

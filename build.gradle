@@ -1,9 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: 'dependencies.gradle'
-apply from: 'spotless.gradle'
 buildscript {
     ext.kotlin_version = '1.5.30'
-    ext.hilt_version = '2.38.1'
+    ext.hilt_version = '2.39.1'
+    ext.versionsPluginVersion = "0.29.0"
+    ext.ktlintPluginVersion = "10.0.0"
+    ext.spotlessPluginVersion = "5.11.1"
+
     repositories {
         google()
         mavenCentral()
@@ -18,20 +20,9 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-        classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.11.1'
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
-    }
-}
-
-subprojects {
-    apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
-
-    // Optionally configure plugin
-    ktlint {
-        debug = true
-        enableExperimentalRules = true
-        outputToConsole = true
-        disabledRules = ["import-ordering", "comment-spacing", "final-newline", "no-wildcard-imports"]
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:$spotlessPluginVersion"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion"
+        classpath "com.github.ben-manes:gradle-versions-plugin:$versionsPluginVersion"
     }
 }
 
@@ -42,10 +33,14 @@ allprojects {
     }
 }
 
-task installGitHook(type: Copy) {
-    from new File(rootProject.rootDir, "scripts/pre-commit")
-    into { new File(rootProject.rootDir, '.git/hooks') }
-    fileMode 0775
+apply from: 'buildscripts/versions.gradle'
+
+subprojects {
+    apply from: "../buildscripts/ktlint.gradle"
+    apply from: "../buildscripts/spotless.gradle"
+    apply from: "../buildscripts/versionsplugin.gradle"
 }
 
-tasks.getByPath(':app:preBuild').dependsOn installGitHook
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

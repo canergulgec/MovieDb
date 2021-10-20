@@ -1,0 +1,60 @@
+ext {
+    sdk = [
+            compileSdk: 31,
+            minSdk    : 23,
+            targetSdk : 30,
+    ]
+
+    versions = [
+            // Core
+            appcompat          : '1.3.1',
+            constraintlayout   : '2.1.1',
+            materialDesign     : '1.4.0',
+            core_ktx           : '1.6.0',
+
+            // Lifecycle
+            lifecycle_version  : '2.4.0-rc01',
+            fragment_ktx       : '1.3.6',
+            navComponentVersion: "2.3.5",
+
+            // Jetpack
+            paging_version     : '3.0.1',
+            dataStore          : '1.0.0',
+            recyclerview       : '1.2.1',
+            viewpager2         : '1.0.0',
+            vectorDrawable     : '1.2.0-alpha02',
+            multiDex           : '1.0.3',
+            hilt_workmanager   : '1.0.0',
+            startup            : "1.1.0",
+            cardview            : "1.0.0",
+
+            // Retrofit
+            retrofit           : '2.9.0',
+            gsonConverter      : '2.9.0',
+            okhttp             : '4.9.1',
+
+            // Coroutines
+            coroutines_core    : '1.3.9',
+            coroutines_android : '1.5.0',
+
+            // UI Test
+            kakao              : "3.0.4",
+            mockServer         : '4.9.1',
+            espresso           : "3.3.0",
+            workerTesting      : "2.6.0",
+            fragmentTesting    : "1.3.6",
+
+            // Unit Test
+            turbine            : '0.5.2',
+            mockk              : '1.12.0',
+            arch               : '2.1.0',
+            junit              : '4.13.2',
+            coroutines_test    : '1.5.0',
+
+            materialDialog     : '3.3.0',
+            coil               : '1.4.0',
+            timber             : '5.0.1',
+            stethoVersion      : '1.6.0',
+            flexBox            : '3.0.0'
+    ]
+}
