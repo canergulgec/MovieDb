@@ -11,4 +11,5 @@ object Constants {
     const val MOVIE_OVERVIEW = "MOVIE_OVERVIEW"
     const val CHANNEL_ID = "NotificationChannelId"
     const val NIGHT_MODE = "NIGHT_MODE"
+    const val MOVIE_STARTING_PAGE_INDEX = 1
 }
