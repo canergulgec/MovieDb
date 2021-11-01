@@ -1,4 +1,4 @@
-package com.android.presentation.startup
+package com.caner.presentation.startup
 
 import android.content.Context
 import androidx.startup.Initializer

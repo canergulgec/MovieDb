@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.data.model.Movie
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentSearchBinding
-import com.android.presentation.adapter.recyclerview.MovieSearchAdapter
-import com.android.presentation.vm.SearchViewModel
+import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
+import com.caner.presentation.vm.SearchViewModel
 import com.android.data.Constants
 import com.android.domain.viewstate.Resource
 import com.caner.core.base.BaseFragment

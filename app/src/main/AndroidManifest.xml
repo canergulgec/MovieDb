@@ -19,7 +19,8 @@
 
         <activity
             android:name="com.android.moviedb.ui.main.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +41,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.android.presentation.startup.TimberInitializer"
+                android:name="com.caner.presentation.startup.TimberInitializer"
                 android:value="androidx.startup" />
         </provider>
 

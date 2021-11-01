@@ -1,4 +1,4 @@
-package com.android.presentation.adapter.paging
+package com.caner.presentation.adapter.paging
 
 import android.view.LayoutInflater
 import android.view.View

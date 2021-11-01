@@ -1,4 +1,4 @@
-package com.android.presentation.vm
+package com.caner.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package com.android.presentation.adapter.viewholder
+package com.caner.presentation.adapter.viewholder
 
 import com.android.data.model.remote.MovieGenre
 import com.android.presentation.databinding.RecyclerviewGenreBinding

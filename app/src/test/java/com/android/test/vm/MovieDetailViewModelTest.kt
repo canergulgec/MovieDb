@@ -3,7 +3,7 @@ package com.android.test.vm
 import app.cash.turbine.test
 import com.android.data.model.MovieDetailModel
 import com.android.domain.usecase.MovieDetailUseCase
-import com.android.presentation.vm.MovieDetailViewModel
+import com.caner.presentation.vm.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.domain.viewstate.ApiError
 import com.android.domain.viewstate.Resource

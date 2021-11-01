@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
 import com.android.domain.usecase.NewTokenUseCase
-import com.android.presentation.vm.ProfileViewModel
+import com.caner.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.domain.viewstate.ApiError
 import com.android.domain.viewstate.Resource

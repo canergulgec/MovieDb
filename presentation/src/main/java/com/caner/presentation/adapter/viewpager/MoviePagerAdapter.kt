@@ -1,4 +1,4 @@
-package com.android.presentation.adapter.viewpager
+package com.caner.presentation.adapter.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

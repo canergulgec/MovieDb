@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.android.moviedb.databinding.FragmentProfileBinding
-import com.android.presentation.vm.ProfileViewModel
+import com.caner.presentation.vm.ProfileViewModel
 import com.android.data.local.PrefKeys
 import com.android.domain.viewstate.Resource
 import com.android.data.local.PrefStore

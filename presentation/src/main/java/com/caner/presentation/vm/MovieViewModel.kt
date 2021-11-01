@@ -1,4 +1,4 @@
-package com.android.presentation.vm
+package com.caner.presentation.vm
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

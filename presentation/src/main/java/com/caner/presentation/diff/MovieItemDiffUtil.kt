@@ -1,4 +1,4 @@
-package com.android.presentation.diff
+package com.caner.presentation.diff
 
 import androidx.recyclerview.widget.DiffUtil
 import com.android.data.model.Movie

@@ -17,10 +17,10 @@ import androidx.work.WorkManager
 import com.android.data.model.Movie
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentMoviesBinding
-import com.android.presentation.adapter.paging.MovieLoadStateAdapter
-import com.android.presentation.adapter.paging.MoviesPagingAdapter
-import com.android.presentation.vm.MovieViewModel
-import com.android.presentation.worker.NotificationWorker
+import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
+import com.caner.presentation.adapter.paging.MoviesPagingAdapter
+import com.caner.presentation.vm.MovieViewModel
+import com.caner.presentation.worker.NotificationWorker
 import com.android.data.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.withLoadStateAll
