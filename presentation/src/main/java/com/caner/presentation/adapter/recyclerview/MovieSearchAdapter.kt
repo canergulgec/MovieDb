@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.data.model.Movie
 import com.caner.presentation.adapter.viewholder.MovieSearchViewHolder
-import com.android.presentation.databinding.RecyclerviewMovieSearchBinding
 import com.caner.presentation.diff.MovieItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
+import com.caner.presentation.databinding.RecyclerviewMovieSearchBinding
 
 class MovieSearchAdapter(private val clickFunc: (Movie?) -> Unit) :
     BaseRecyclerAdapter<Movie, RecyclerviewMovieSearchBinding, MovieSearchViewHolder>(

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.data.model.remote.MovieGenre
 import com.caner.presentation.adapter.viewholder.MovieGenresViewHolder
-import com.android.presentation.databinding.RecyclerviewGenreBinding
 import com.caner.presentation.diff.MovieGenreItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
+import com.caner.presentation.databinding.RecyclerviewGenreBinding
 
 class MovieGenresAdapter :
     BaseRecyclerAdapter<MovieGenre, RecyclerviewGenreBinding, MovieGenresViewHolder>(

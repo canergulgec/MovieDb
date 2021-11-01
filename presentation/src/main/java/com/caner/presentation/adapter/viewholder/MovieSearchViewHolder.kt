@@ -1,9 +1,9 @@
 package com.caner.presentation.adapter.viewholder
 
 import com.android.data.model.Movie
-import com.android.presentation.databinding.RecyclerviewMovieSearchBinding
 import com.caner.core.base.BaseViewHolder
 import com.caner.core.extension.use
+import com.caner.presentation.databinding.RecyclerviewMovieSearchBinding
 
 class MovieSearchViewHolder constructor(
     private val searchBinding: RecyclerviewMovieSearchBinding,

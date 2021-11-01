@@ -12,7 +12,7 @@ import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.presentation.vm.MovieDetailViewModel
 import com.android.data.Constants
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.HorizontalSpaceItemDecoration
 import com.caner.core.decoration.VerticalSpaceItemDecoration

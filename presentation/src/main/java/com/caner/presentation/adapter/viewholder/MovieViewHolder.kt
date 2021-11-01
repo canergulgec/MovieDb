@@ -1,9 +1,9 @@
 package com.caner.presentation.adapter.viewholder
 
 import com.android.data.model.Movie
-import com.android.presentation.databinding.RecyclerviewMovieBinding
 import com.caner.core.base.BaseViewHolder
 import com.caner.core.extension.use
+import com.caner.presentation.databinding.RecyclerviewMovieBinding
 
 class MovieViewHolder constructor(
     private val movieBinding: RecyclerviewMovieBinding,

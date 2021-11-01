@@ -3,11 +3,11 @@ package com.android.test.vm
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.android.data.model.remote.TokenResponse
-import com.android.domain.usecase.NewTokenUseCase
+import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
-import com.android.domain.viewstate.ApiError
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.ApiError
+import com.caner.domain.viewstate.Resource
 import com.android.data.local.PrefStore
 import com.android.data.local.SharedPreferencesUtils
 import io.mockk.MockKAnnotations

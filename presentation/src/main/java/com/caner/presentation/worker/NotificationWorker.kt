@@ -11,7 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.android.presentation.R
+import com.caner.presentation.R
 import com.android.data.Constants
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject

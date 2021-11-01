@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.android.presentation.R
+import com.caner.presentation.R
 
 class MovieLoadStateAdapter(
     private val retry: () -> Unit

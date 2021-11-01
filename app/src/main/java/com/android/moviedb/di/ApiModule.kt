@@ -1,9 +1,9 @@
 package com.android.moviedb.di
 
-import com.android.domain.api.NewTokenApi
-import com.android.domain.api.SearchApi
-import com.android.domain.api.MovieApi
-import com.android.domain.api.MovieDetailApi
+import com.caner.domain.api.NewTokenApi
+import com.caner.domain.api.SearchApi
+import com.caner.domain.api.MovieApi
+import com.caner.domain.api.MovieDetailApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

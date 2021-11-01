@@ -2,7 +2,7 @@ package com.caner.presentation.startup
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.android.presentation.BuildConfig
+import com.caner.presentation.BuildConfig
 import timber.log.Timber
 
 class TimberInitializer : Initializer<Unit> {

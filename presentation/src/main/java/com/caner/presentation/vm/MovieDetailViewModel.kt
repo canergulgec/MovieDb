@@ -3,8 +3,8 @@ package com.caner.presentation.vm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.data.model.MovieDetailModel
-import com.android.domain.usecase.MovieDetailUseCase
-import com.android.domain.viewstate.Resource
+import com.caner.domain.usecase.MovieDetailUseCase
+import com.caner.domain.viewstate.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

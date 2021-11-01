@@ -1,11 +1,11 @@
 package com.android.test.usecase
 
 import com.android.data.model.MovieDetailModel
-import com.android.domain.repository.MovieDetailRepository
-import com.android.domain.usecase.MovieDetailUseCase
+import com.caner.domain.repository.MovieDetailRepository
+import com.caner.domain.usecase.MovieDetailUseCase
 import com.android.test.utils.MainCoroutineScopeRule
-import com.android.domain.viewstate.ApiError
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.ApiError
+import com.caner.domain.viewstate.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

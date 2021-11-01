@@ -1,8 +1,8 @@
 package com.android.moviedb.di
 
-import com.android.domain.qualifier.DefaultDispatcher
-import com.android.domain.qualifier.IoDispatcher
-import com.android.domain.qualifier.MainDispatcher
+import com.caner.domain.qualifier.DefaultDispatcher
+import com.caner.domain.qualifier.IoDispatcher
+import com.caner.domain.qualifier.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

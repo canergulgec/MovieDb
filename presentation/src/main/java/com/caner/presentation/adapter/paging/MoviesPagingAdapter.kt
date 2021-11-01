@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.android.data.model.Movie
 import com.caner.presentation.adapter.viewholder.MovieViewHolder
-import com.android.presentation.databinding.RecyclerviewMovieBinding
 import com.caner.presentation.diff.MovieItemDiffUtil
 import com.caner.core.base.BasePagingAdapter
+import com.caner.presentation.databinding.RecyclerviewMovieBinding
 
 class MoviesPagingAdapter(private val clickFunc: (Movie?) -> Unit) :
     BasePagingAdapter<Movie, RecyclerviewMovieBinding, MovieViewHolder>(

@@ -8,10 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.caner.presentation.vm.ProfileViewModel
 import com.android.data.local.PrefKeys
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.Resource
 import com.android.data.local.PrefStore
 import com.caner.core.base.BaseFragment
-import com.caner.core.extension.observeWith
 import com.caner.core.extension.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -42,7 +41,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun initObservers() {
-        viewModel.newSessionLiveData.observeWith(viewLifecycleOwner) { resource ->
+        viewModel.newSessionLiveData.observe(viewLifecycleOwner) { resource ->
             lifecycleScope.launch {
                 when (resource) {
                     is Resource.Loading -> showLoading(resource.status)

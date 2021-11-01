@@ -17,7 +17,7 @@ import com.android.moviedb.databinding.FragmentSearchBinding
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.vm.SearchViewModel
 import com.android.data.Constants
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.*

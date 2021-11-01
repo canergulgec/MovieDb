@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.data.model.remote.TokenResponse
-import com.android.domain.usecase.NewTokenUseCase
+import com.caner.domain.usecase.NewTokenUseCase
 import com.android.data.local.PrefKeys
-import com.android.domain.viewstate.Resource
+import com.caner.domain.viewstate.Resource
 import com.android.data.local.PrefStore
 import com.android.data.local.SharedPreferencesUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
