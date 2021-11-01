@@ -18,7 +18,7 @@ import com.android.moviedb.databinding.FragmentSearchBinding
 import com.android.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.android.presentation.vm.SearchViewModel
 import com.android.data.Constants
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
 import com.caner.common.extension.afterTextChanged
 import com.caner.common.extension.dp2px
 import com.caner.common.extension.init

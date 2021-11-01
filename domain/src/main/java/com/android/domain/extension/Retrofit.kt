@@ -1,8 +1,8 @@
 package com.android.domain.extension
 
-import com.caner.common.ApiError
+import com.android.domain.viewstate.ApiError
 import com.android.data.mapper.Mapper
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
 import retrofit2.Response
 
 fun <M : Any> Response<M>.filterResponse(): Resource<M> {

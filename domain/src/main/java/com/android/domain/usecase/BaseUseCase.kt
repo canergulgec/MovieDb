@@ -1,7 +1,7 @@
-package com.android.base
+package com.android.domain.usecase
 
-import com.caner.common.ApiError
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
+import com.android.domain.viewstate.ApiError
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 

@@ -4,8 +4,8 @@ import com.android.data.model.MovieDetailModel
 import com.android.domain.repository.MovieDetailRepository
 import com.android.domain.usecase.MovieDetailUseCase
 import com.android.test.utils.MainCoroutineScopeRule
-import com.caner.common.ApiError
-import com.caner.common.Resource
+import com.android.domain.viewstate.ApiError
+import com.android.domain.viewstate.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

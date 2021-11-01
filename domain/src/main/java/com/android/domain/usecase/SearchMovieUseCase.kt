@@ -1,10 +1,9 @@
 package com.android.domain.usecase
 
-import com.android.base.BaseUseCase
 import com.android.data.model.MovieModel
 import com.android.domain.qualifier.IoDispatcher
 import com.android.domain.repository.SearchRepository
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow

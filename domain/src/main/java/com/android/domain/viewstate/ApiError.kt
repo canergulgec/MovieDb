@@ -1,4 +1,4 @@
-package com.caner.common
+package com.android.domain.viewstate
 
 data class ApiError(
     val code: Int = -1,

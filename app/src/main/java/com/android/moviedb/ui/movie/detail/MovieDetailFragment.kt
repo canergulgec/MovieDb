@@ -13,7 +13,7 @@ import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.android.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.android.presentation.vm.MovieDetailViewModel
 import com.android.data.Constants
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
 import com.caner.common.extension.dp2px
 import com.caner.common.extension.init
 import com.caner.common.extension.toast

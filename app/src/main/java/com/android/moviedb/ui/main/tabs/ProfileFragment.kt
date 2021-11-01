@@ -9,7 +9,7 @@ import com.android.base.BaseFragment
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import com.android.data.local.PrefKeys
-import com.caner.common.Resource
+import com.android.domain.viewstate.Resource
 import com.caner.common.extension.observeWith
 import com.caner.common.extension.toast
 import com.android.data.local.PrefStore
