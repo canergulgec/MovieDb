@@ -8,8 +8,8 @@ import com.android.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.caner.common.ApiError
 import com.caner.common.Resource
-import com.caner.common.utils.PrefStore
-import com.caner.common.utils.SharedPreferencesUtils
+import com.android.data.local.PrefStore
+import com.android.data.local.SharedPreferencesUtils
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

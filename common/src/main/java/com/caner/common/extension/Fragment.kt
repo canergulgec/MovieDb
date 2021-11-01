@@ -1,4 +1,4 @@
-package com.caner.common.ext
+package com.caner.common.extension
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment

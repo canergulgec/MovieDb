@@ -22,8 +22,8 @@ import com.android.presentation.adapter.paging.MovieLoadStateAdapter
 import com.android.presentation.adapter.paging.MoviesPagingAdapter
 import com.android.presentation.vm.MovieViewModel
 import com.android.presentation.worker.NotificationWorker
-import com.caner.common.Constants
-import com.caner.common.ext.withLoadStateAll
+import com.android.data.Constants
+import com.caner.common.extension.withLoadStateAll
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest

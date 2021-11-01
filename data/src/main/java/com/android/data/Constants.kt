@@ -1,4 +1,4 @@
-package com.caner.common
+package com.android.data
 
 object Constants {
     const val SHARED_PREF_KEY = "SHARED_PREF_KEY"

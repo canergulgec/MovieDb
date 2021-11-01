@@ -1,4 +1,4 @@
-package com.caner.common.ext
+package com.caner.common.extension
 
 import android.text.Editable
 import android.text.TextWatcher

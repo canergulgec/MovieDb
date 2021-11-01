@@ -6,7 +6,7 @@ import com.android.data.model.MovieDetailModel
 import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieDetailResponse
 import com.android.data.model.remote.MovieResponse
-import com.caner.common.Mapper
+import com.android.data.mapper.Mapper
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

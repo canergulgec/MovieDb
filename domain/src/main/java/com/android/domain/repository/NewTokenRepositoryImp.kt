@@ -1,7 +1,7 @@
 package com.android.domain.repository
 
 import com.android.domain.api.NewTokenApi
-import com.caner.common.ext.filterResponse
+import com.android.domain.extension.filterResponse
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

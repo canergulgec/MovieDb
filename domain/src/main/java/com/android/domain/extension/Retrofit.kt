@@ -1,7 +1,7 @@
-package com.caner.common.ext
+package com.android.domain.extension
 
 import com.caner.common.ApiError
-import com.caner.common.Mapper
+import com.android.data.mapper.Mapper
 import com.caner.common.Resource
 import retrofit2.Response
 

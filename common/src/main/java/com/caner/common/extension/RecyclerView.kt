@@ -1,4 +1,4 @@
-package com.caner.common.ext
+package com.caner.common.extension
 
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView

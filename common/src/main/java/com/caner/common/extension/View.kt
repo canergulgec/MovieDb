@@ -1,4 +1,4 @@
-package com.caner.common.ext
+package com.caner.common.extension
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.View

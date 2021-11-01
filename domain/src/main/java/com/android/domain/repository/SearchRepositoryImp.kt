@@ -2,7 +2,7 @@ package com.android.domain.repository
 
 import com.android.data.mapper.MovieMapper
 import com.android.domain.api.SearchApi
-import com.caner.common.ext.filterMapperResponse
+import com.android.domain.extension.filterMapperResponse
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

@@ -10,8 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.android.base.BaseActivity
 import com.android.moviedb.R
 import com.android.moviedb.databinding.ActivityMainBinding
-import com.caner.common.Constants
-import com.caner.common.ext.visible
+import com.android.data.Constants
+import com.caner.common.extension.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

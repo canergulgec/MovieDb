@@ -3,7 +3,7 @@ package com.android.presentation.adapter.viewholder
 import com.android.base.BaseViewHolder
 import com.android.data.model.Movie
 import com.android.presentation.databinding.RecyclerviewMovieSearchBinding
-import com.caner.common.ext.use
+import com.caner.common.extension.use
 
 class MovieSearchViewHolder constructor(
     private val searchBinding: RecyclerviewMovieSearchBinding,

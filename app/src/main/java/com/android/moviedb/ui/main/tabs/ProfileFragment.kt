@@ -8,11 +8,11 @@ import androidx.lifecycle.lifecycleScope
 import com.android.base.BaseFragment
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
-import com.caner.common.PrefKeys
+import com.android.data.local.PrefKeys
 import com.caner.common.Resource
-import com.caner.common.ext.observeWith
-import com.caner.common.ext.toast
-import com.caner.common.utils.PrefStore
+import com.caner.common.extension.observeWith
+import com.caner.common.extension.toast
+import com.android.data.local.PrefStore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

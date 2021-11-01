@@ -3,7 +3,6 @@ package com.android.data.mapper
 import com.android.data.model.MovieImage
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
-import com.caner.common.Mapper
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject

@@ -5,7 +5,6 @@ import com.android.data.model.Movie
 import com.android.data.model.MovieModel
 import com.android.data.model.remote.MovieResponseItem
 import com.android.data.model.remote.MovieResponse
-import com.caner.common.Mapper
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.Date

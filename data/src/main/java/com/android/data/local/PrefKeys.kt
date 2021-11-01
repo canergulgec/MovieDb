@@ -1,4 +1,4 @@
-package com.caner.common
+package com.android.data.local
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 

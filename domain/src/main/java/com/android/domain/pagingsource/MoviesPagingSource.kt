@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.android.data.mapper.MovieMapper
 import com.android.data.model.Movie
 import com.android.domain.api.MovieApi
-import com.caner.common.Constants
+import com.android.data.Constants
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(

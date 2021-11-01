@@ -8,7 +8,7 @@ import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentHomeBinding
 import com.android.moviedb.ui.movie.MovieFragment
 import com.android.presentation.adapter.viewpager.MoviePagerAdapter
-import com.caner.common.Constants
+import com.android.data.Constants
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 

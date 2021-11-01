@@ -3,8 +3,8 @@ package com.android.domain.repository
 import com.android.data.model.MovieDetailModel
 import com.android.data.model.remote.MovieDetailResponse
 import com.android.domain.api.MovieDetailApi
-import com.caner.common.Mapper
-import com.caner.common.ext.filterMapperResponse
+import com.android.data.mapper.Mapper
+import com.android.domain.extension.filterMapperResponse
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
