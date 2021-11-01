@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.android.base.BaseActivity
 import com.android.moviedb.R
 import com.android.moviedb.databinding.ActivityMainBinding
 import com.android.data.Constants
-import com.caner.common.extension.visible
+import com.caner.core.base.BaseActivity
+import com.caner.core.extension.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

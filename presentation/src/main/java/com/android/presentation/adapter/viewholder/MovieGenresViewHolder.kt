@@ -1,9 +1,9 @@
 package com.android.presentation.adapter.viewholder
 
-import com.android.base.BaseViewHolder
 import com.android.data.model.remote.MovieGenre
 import com.android.presentation.databinding.RecyclerviewGenreBinding
-import com.caner.common.extension.use
+import com.caner.core.base.BaseViewHolder
+import com.caner.core.extension.use
 
 class MovieGenresViewHolder constructor(
     private val genreBinding: RecyclerviewGenreBinding

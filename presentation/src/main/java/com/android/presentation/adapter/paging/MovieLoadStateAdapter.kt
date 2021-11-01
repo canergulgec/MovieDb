@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.presentation.R
-import com.caner.common.extension.isVisible
 
 class MovieLoadStateAdapter(
     private val retry: () -> Unit

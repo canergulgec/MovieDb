@@ -68,8 +68,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation project(":base")
-    implementation project(":common")
+    implementation project(':core')
     implementation project(":data")
     implementation project(":domain")
     implementation project(":presentation")

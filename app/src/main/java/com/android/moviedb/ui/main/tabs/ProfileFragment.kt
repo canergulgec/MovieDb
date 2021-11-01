@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.android.base.BaseFragment
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.android.presentation.vm.ProfileViewModel
 import com.android.data.local.PrefKeys
 import com.android.domain.viewstate.Resource
-import com.caner.common.extension.observeWith
-import com.caner.common.extension.toast
 import com.android.data.local.PrefStore
+import com.caner.core.base.BaseFragment
+import com.caner.core.extension.observeWith
+import com.caner.core.extension.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -46,7 +46,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             lifecycleScope.launch {
                 when (resource) {
                     is Resource.Loading -> showLoading(resource.status)
-                    is Resource.Success -> prefStore.saveData(PrefKeys.ACCESS_TOKEN_DATA_STORE, resource.data.requestToken)
+                    is Resource.Success -> prefStore.saveData(
+                        PrefKeys.ACCESS_TOKEN_DATA_STORE,
+                        resource.data.requestToken
+                    )
                     is Resource.Error -> toast(resource.apiError.message)
                     else -> Timber.v("Initial state")
                 }

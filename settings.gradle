@@ -1,7 +1,6 @@
-include ':common'
 include ':presentation'
 rootProject.name='MovieDb'
 include ':app'
-include ':base'
 include ':data'
 include ':domain'
+include ':core'

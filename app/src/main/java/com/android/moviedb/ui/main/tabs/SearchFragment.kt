@@ -11,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.base.BaseFragment
 import com.android.data.model.Movie
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentSearchBinding
@@ -19,17 +18,15 @@ import com.android.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.android.presentation.vm.SearchViewModel
 import com.android.data.Constants
 import com.android.domain.viewstate.Resource
-import com.caner.common.extension.afterTextChanged
-import com.caner.common.extension.dp2px
-import com.caner.common.extension.init
-import com.caner.common.extension.toast
-import com.caner.common.extension.visible
-import com.caner.common.decoration.VerticalSpaceItemDecoration
+import com.caner.core.base.BaseFragment
+import com.caner.core.decoration.VerticalSpaceItemDecoration
+import com.caner.core.extension.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -67,6 +64,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                         is Resource.Success -> setList(false, resource.data.movies)
                         is Resource.Empty -> setList(true, emptyList())
                         is Resource.Error -> toast(resource.apiError.message)
+                        else -> Timber.v("Initial state")
                     }
                 }
             }

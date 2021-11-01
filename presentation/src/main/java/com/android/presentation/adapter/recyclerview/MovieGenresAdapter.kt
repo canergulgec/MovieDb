@@ -2,11 +2,11 @@ package com.android.presentation.adapter.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.android.base.BaseRecyclerAdapter
 import com.android.data.model.remote.MovieGenre
 import com.android.presentation.adapter.viewholder.MovieGenresViewHolder
 import com.android.presentation.databinding.RecyclerviewGenreBinding
 import com.android.presentation.diff.MovieGenreItemDiffUtil
+import com.caner.core.base.BaseRecyclerAdapter
 
 class MovieGenresAdapter :
     BaseRecyclerAdapter<MovieGenre, RecyclerviewGenreBinding, MovieGenresViewHolder>(
