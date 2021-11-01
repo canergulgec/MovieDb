@@ -27,13 +27,9 @@ Modules are the collection of source files and build settings that allow you to 
 
   `:app` module is an [com.android.application](https://developer.android.com/studio/projects/android-library), which is needed to create the app bundle. It presents data to a screen and handle user interactions.
 
-- **Base Module**
+- **Core Module**
 
-  `:base` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains only base classes that is used in other modules
-
-- **Common Module**
-
-  `:common` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains code and resources which are shared between other modules
+  `:base` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains base classes and resources which are shared between other modules
 
 - **Data Module**
 
