@@ -29,7 +29,7 @@ Modules are the collection of source files and build settings that allow you to 
 
 - **Core Module**
 
-  `:base` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains base classes and resources which are shared between other modules
+  `:core` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains base classes and resources which are shared between other modules
 
 - **Data Module**
 
