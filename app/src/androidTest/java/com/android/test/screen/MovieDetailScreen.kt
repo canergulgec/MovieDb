@@ -1,7 +1,7 @@
 package com.android.test.screen
 
 import android.view.View
-import com.android.moviedb.R
+import com.caner.moviedb.R
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView

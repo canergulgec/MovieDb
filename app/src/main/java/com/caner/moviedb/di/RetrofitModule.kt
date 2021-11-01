@@ -1,7 +1,7 @@
-package com.android.moviedb.di
+package com.caner.moviedb.di
 
 import android.content.Context
-import com.android.moviedb.BuildConfig
+import com.caner.moviedb.BuildConfig
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin

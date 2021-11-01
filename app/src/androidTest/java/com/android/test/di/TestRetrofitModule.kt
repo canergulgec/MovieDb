@@ -1,7 +1,7 @@
 package com.android.test.di
 
-import com.android.moviedb.BuildConfig
-import com.android.moviedb.di.RetrofitModule
+import com.caner.moviedb.BuildConfig
+import com.caner.moviedb.di.RetrofitModule
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

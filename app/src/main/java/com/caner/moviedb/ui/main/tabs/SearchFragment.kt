@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.main.tabs
+package com.caner.moviedb.ui.main.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caner.data.model.Movie
-import com.android.moviedb.R
-import com.android.moviedb.databinding.FragmentSearchBinding
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.vm.SearchViewModel
 import com.caner.data.Constants
@@ -21,6 +19,8 @@ import com.caner.domain.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.*
+import com.caner.moviedb.R
+import com.caner.moviedb.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

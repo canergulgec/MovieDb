@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
-import com.android.moviedb.HiltTestActivity
-import com.android.moviedb.R
+import com.caner.moviedb.HiltTestActivity
+import com.caner.moviedb.R
 
 /**
  * FragmentScenario.EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY not resolve

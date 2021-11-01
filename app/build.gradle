@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.android.moviedb"
+        applicationId "com.caner.moviedb"
         minSdkVersion rootProject.ext.sdk.minSdk
         targetSdkVersion rootProject.ext.sdk.targetSdk
         multiDexEnabled true

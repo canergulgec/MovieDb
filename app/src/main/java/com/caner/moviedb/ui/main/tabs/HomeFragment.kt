@@ -1,14 +1,14 @@
-package com.android.moviedb.ui.main.tabs
+package com.caner.moviedb.ui.main.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.android.moviedb.R
-import com.android.moviedb.databinding.FragmentHomeBinding
-import com.android.moviedb.ui.movie.MovieFragment
+import com.caner.moviedb.ui.movie.MovieFragment
 import com.caner.presentation.adapter.viewpager.MoviePagerAdapter
 import com.caner.data.Constants
 import com.caner.core.base.BaseFragment
+import com.caner.moviedb.R
+import com.caner.moviedb.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 

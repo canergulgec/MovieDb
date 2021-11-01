@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.android.moviedb"
+    package="com.caner.moviedb"
     tools:ignore="LockedOrientationActivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.android.moviedb.MovieDbApp"
+        android:name="com.caner.moviedb.MovieDbApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name="com.android.moviedb.ui.main.MainActivity"
+            android:name="com.caner.moviedb.ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

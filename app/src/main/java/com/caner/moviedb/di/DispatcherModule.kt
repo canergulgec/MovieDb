@@ -1,4 +1,4 @@
-package com.android.moviedb.di
+package com.caner.moviedb.di
 
 import com.caner.domain.qualifier.DefaultDispatcher
 import com.caner.domain.qualifier.IoDispatcher

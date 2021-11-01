@@ -10,8 +10,8 @@ import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import androidx.work.Configuration
 import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
-import com.android.moviedb.R
-import com.android.moviedb.ui.movie.detail.MovieDetailFragment
+import com.caner.moviedb.R
+import com.caner.moviedb.ui.movie.detail.MovieDetailFragment
 import com.android.test.screen.MovieDetailScreen
 import com.android.test.utils.detailDispatcher
 import com.android.test.utils.launchFragmentInHiltContainer

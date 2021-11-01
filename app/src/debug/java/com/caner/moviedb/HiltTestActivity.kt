@@ -1,4 +1,4 @@
-package com.android.moviedb
+package com.caner.moviedb
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint

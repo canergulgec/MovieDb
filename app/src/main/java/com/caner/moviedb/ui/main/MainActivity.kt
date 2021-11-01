@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.main
+package com.caner.moviedb.ui.main
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.android.moviedb.R
-import com.android.moviedb.databinding.ActivityMainBinding
 import com.caner.data.Constants
 import com.caner.core.base.BaseActivity
 import com.caner.core.extension.visible
+import com.caner.moviedb.R
+import com.caner.moviedb.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

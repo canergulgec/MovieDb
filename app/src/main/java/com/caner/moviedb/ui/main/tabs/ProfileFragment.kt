@@ -1,17 +1,17 @@
-package com.android.moviedb.ui.main.tabs
+package com.caner.moviedb.ui.main.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.android.moviedb.databinding.FragmentProfileBinding
 import com.caner.presentation.vm.ProfileViewModel
 import com.caner.data.local.PrefKeys
 import com.caner.domain.viewstate.Resource
 import com.caner.data.local.PrefStore
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.toast
+import com.caner.moviedb.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.movie.detail
+package com.caner.moviedb.ui.movie.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.android.moviedb.databinding.FragmentMovieDetailBinding
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.presentation.vm.MovieDetailViewModel
 import com.caner.data.Constants
@@ -19,6 +18,7 @@ import com.caner.core.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.dp2px
 import com.caner.core.extension.init
 import com.caner.core.extension.toast
+import com.caner.moviedb.databinding.FragmentMovieDetailBinding
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap

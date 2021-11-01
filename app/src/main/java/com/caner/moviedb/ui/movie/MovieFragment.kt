@@ -1,4 +1,4 @@
-package com.android.moviedb.ui.movie
+package com.caner.moviedb.ui.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,8 +15,6 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.caner.data.model.Movie
-import com.android.moviedb.R
-import com.android.moviedb.databinding.FragmentMoviesBinding
 import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
 import com.caner.presentation.adapter.paging.MoviesPagingAdapter
 import com.caner.presentation.vm.MovieViewModel
@@ -24,6 +22,8 @@ import com.caner.presentation.worker.NotificationWorker
 import com.caner.data.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.withLoadStateAll
+import com.caner.moviedb.R
+import com.caner.moviedb.databinding.FragmentMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest

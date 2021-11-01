@@ -1,4 +1,4 @@
-package com.android.moviedb
+package com.caner.moviedb
 
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory

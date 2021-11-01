@@ -1,4 +1,4 @@
-package com.android.moviedb.di
+package com.caner.moviedb.di
 
 import com.caner.domain.api.NewTokenApi
 import com.caner.domain.api.SearchApi

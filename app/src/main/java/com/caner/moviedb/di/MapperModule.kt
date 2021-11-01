@@ -1,4 +1,4 @@
-package com.android.moviedb.di
+package com.caner.moviedb.di
 
 import com.caner.data.mapper.MovieDetailMapper
 import com.caner.data.mapper.MovieMapper

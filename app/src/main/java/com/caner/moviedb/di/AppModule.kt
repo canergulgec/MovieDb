@@ -1,4 +1,4 @@
-package com.android.moviedb.di
+package com.caner.moviedb.di
 
 import android.content.Context
 import android.content.SharedPreferences
