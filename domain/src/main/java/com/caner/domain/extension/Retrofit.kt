@@ -1,7 +1,7 @@
 package com.caner.domain.extension
 
 import com.caner.domain.viewstate.ApiError
-import com.android.data.mapper.Mapper
+import com.caner.data.mapper.Mapper
 import com.caner.domain.viewstate.Resource
 import retrofit2.Response
 

@@ -1,4 +1,4 @@
-package com.android.data.model
+package com.caner.data.model
 
 data class Movie(
     val movieId: Int,

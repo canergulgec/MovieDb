@@ -1,6 +1,6 @@
-package com.android.data.model
+package com.caner.data.model
 
-import com.android.data.model.remote.MovieGenre
+import com.caner.data.model.remote.MovieGenre
 import java.util.Date
 
 data class MovieDetailModel(

@@ -1,9 +1,9 @@
 package com.caner.domain.repository
 
-import com.android.data.model.MovieDetailModel
-import com.android.data.model.remote.MovieDetailResponse
+import com.caner.data.model.MovieDetailModel
+import com.caner.data.model.remote.MovieDetailResponse
 import com.caner.domain.api.MovieDetailApi
-import com.android.data.mapper.Mapper
+import com.caner.data.mapper.Mapper
 import com.caner.domain.extension.filterMapperResponse
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

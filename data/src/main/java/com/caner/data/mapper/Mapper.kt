@@ -1,4 +1,4 @@
-package com.android.data.mapper
+package com.caner.data.mapper
 
 interface Mapper<T, E> {
 

@@ -1,4 +1,4 @@
-package com.android.data.model
+package com.caner.data.model
 
 data class MovieModel(
     val total: Int = 0,

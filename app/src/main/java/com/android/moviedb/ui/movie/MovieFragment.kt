@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.android.data.model.Movie
+import com.caner.data.model.Movie
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentMoviesBinding
 import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
 import com.caner.presentation.adapter.paging.MoviesPagingAdapter
 import com.caner.presentation.vm.MovieViewModel
 import com.caner.presentation.worker.NotificationWorker
-import com.android.data.Constants
+import com.caner.data.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.withLoadStateAll
 import dagger.hilt.android.AndroidEntryPoint

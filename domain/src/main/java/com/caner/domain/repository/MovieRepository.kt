@@ -1,7 +1,7 @@
 package com.caner.domain.repository
 
 import androidx.paging.PagingData
-import com.android.data.model.Movie
+import com.caner.data.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

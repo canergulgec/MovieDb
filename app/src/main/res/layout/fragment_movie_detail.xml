@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="com.android.data.model.MovieDetailModel" />
+            type="com.caner.data.model.MovieDetailModel" />
 
     </data>
 

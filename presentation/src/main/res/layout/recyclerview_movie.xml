@@ -8,7 +8,7 @@
 
         <variable
             name="movie"
-            type="com.android.data.model.Movie" />
+            type="com.caner.data.model.Movie" />
     </data>
 
     <LinearLayout

@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="com.android.data.model.Movie" />
+            type="com.caner.data.model.Movie" />
 
     </data>
 

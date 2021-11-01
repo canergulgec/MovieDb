@@ -1,6 +1,6 @@
 package com.caner.domain.api
 
-import com.android.data.model.remote.MovieResponse
+import com.caner.data.model.remote.MovieResponse
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 

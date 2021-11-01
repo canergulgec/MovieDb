@@ -2,10 +2,10 @@ package com.caner.domain.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.android.data.mapper.MovieMapper
-import com.android.data.model.Movie
+import com.caner.data.mapper.MovieMapper
+import com.caner.data.model.Movie
 import com.caner.domain.api.MovieApi
-import com.android.data.Constants
+import com.caner.data.Constants
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(

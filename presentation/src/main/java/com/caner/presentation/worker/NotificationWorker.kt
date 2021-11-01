@@ -12,7 +12,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.caner.presentation.R
-import com.android.data.Constants
+import com.caner.data.Constants
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 

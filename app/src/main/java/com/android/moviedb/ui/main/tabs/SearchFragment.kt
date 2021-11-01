@@ -11,12 +11,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.data.model.Movie
+import com.caner.data.model.Movie
 import com.android.moviedb.R
 import com.android.moviedb.databinding.FragmentSearchBinding
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.vm.SearchViewModel
-import com.android.data.Constants
+import com.caner.data.Constants
 import com.caner.domain.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration

@@ -1,4 +1,4 @@
-package com.android.data.local
+package com.caner.data.local
 
 import android.content.Context
 import androidx.datastore.core.DataStore

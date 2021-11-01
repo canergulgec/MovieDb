@@ -2,7 +2,7 @@ package com.caner.presentation.adapter.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.android.data.model.Movie
+import com.caner.data.model.Movie
 import com.caner.presentation.adapter.viewholder.MovieViewHolder
 import com.caner.presentation.diff.MovieItemDiffUtil
 import com.caner.core.base.BasePagingAdapter

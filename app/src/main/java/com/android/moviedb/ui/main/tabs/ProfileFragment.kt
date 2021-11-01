@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.android.moviedb.databinding.FragmentProfileBinding
 import com.caner.presentation.vm.ProfileViewModel
-import com.android.data.local.PrefKeys
+import com.caner.data.local.PrefKeys
 import com.caner.domain.viewstate.Resource
-import com.android.data.local.PrefStore
+import com.caner.data.local.PrefStore
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.toast
 import dagger.hilt.android.AndroidEntryPoint

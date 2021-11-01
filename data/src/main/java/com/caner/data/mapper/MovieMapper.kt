@@ -1,10 +1,10 @@
-package com.android.data.mapper
+package com.caner.data.mapper
 
-import com.android.data.model.MovieImage
-import com.android.data.model.Movie
-import com.android.data.model.MovieModel
-import com.android.data.model.remote.MovieResponseItem
-import com.android.data.model.remote.MovieResponse
+import com.caner.data.model.MovieImage
+import com.caner.data.model.Movie
+import com.caner.data.model.MovieModel
+import com.caner.data.model.remote.MovieResponseItem
+import com.caner.data.model.remote.MovieResponse
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.Date

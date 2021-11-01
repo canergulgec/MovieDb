@@ -1,7 +1,7 @@
 package com.android.test.vm
 
 import app.cash.turbine.test
-import com.android.data.model.MovieDetailModel
+import com.caner.data.model.MovieDetailModel
 import com.caner.domain.usecase.MovieDetailUseCase
 import com.caner.presentation.vm.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule

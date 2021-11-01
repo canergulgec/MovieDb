@@ -2,7 +2,7 @@ package com.caner.domain.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.android.data.mapper.MovieMapper
+import com.caner.data.mapper.MovieMapper
 import com.caner.domain.api.MovieApi
 import com.caner.domain.pagingsource.MoviesPagingSource
 import javax.inject.Inject

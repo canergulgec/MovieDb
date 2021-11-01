@@ -1,6 +1,6 @@
 package com.caner.domain.repository
 
-import com.android.data.model.MovieModel
+import com.caner.data.model.MovieModel
 import com.caner.domain.viewstate.Resource
 import kotlinx.coroutines.flow.Flow
 

@@ -2,7 +2,7 @@ package com.caner.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.data.model.MovieDetailModel
+import com.caner.data.model.MovieDetailModel
 import com.caner.domain.usecase.MovieDetailUseCase
 import com.caner.domain.viewstate.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

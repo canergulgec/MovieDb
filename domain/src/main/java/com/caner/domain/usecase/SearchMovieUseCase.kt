@@ -1,6 +1,6 @@
 package com.caner.domain.usecase
 
-import com.android.data.model.MovieModel
+import com.caner.data.model.MovieModel
 import com.caner.domain.qualifier.IoDispatcher
 import com.caner.domain.repository.SearchRepository
 import com.caner.domain.viewstate.Resource

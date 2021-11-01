@@ -1,4 +1,4 @@
-package com.android.data.model.remote
+package com.caner.data.model.remote
 
 data class MovieGenre(
     val id: Int,

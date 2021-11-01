@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.android.moviedb.R
 import com.android.moviedb.databinding.ActivityMainBinding
-import com.android.data.Constants
+import com.caner.data.Constants
 import com.caner.core.base.BaseActivity
 import com.caner.core.extension.visible
 import dagger.hilt.android.AndroidEntryPoint

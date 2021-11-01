@@ -1,6 +1,6 @@
 package com.caner.domain.repository
 
-import com.android.data.mapper.MovieMapper
+import com.caner.data.mapper.MovieMapper
 import com.caner.domain.api.SearchApi
 import com.caner.domain.extension.filterMapperResponse
 import kotlinx.coroutines.flow.flow

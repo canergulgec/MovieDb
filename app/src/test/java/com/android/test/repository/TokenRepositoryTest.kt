@@ -1,6 +1,6 @@
 package com.android.test.repository
 
-import com.android.data.model.remote.TokenResponse
+import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.repository.NewTokenRepository
 import com.caner.domain.viewstate.Resource
 import io.mockk.MockKAnnotations
