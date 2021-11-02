@@ -1,4 +1,4 @@
-package com.caner.domain.viewstate
+package com.caner.data.viewstate
 
 sealed class Resource<out T> {
     class Success<T>(val data: T) : Resource<T>()

@@ -1,7 +1,7 @@
 package com.caner.domain.repository
 
 import com.caner.data.model.MovieDetailModel
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface MovieDetailRepository {

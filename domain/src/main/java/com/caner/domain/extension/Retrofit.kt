@@ -1,8 +1,8 @@
 package com.caner.domain.extension
 
-import com.caner.domain.viewstate.ApiError
+import com.caner.data.viewstate.ApiError
 import com.caner.data.mapper.Mapper
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.Resource
 import retrofit2.Response
 
 fun <M : Any> Response<M>.filterResponse(): Resource<M> {

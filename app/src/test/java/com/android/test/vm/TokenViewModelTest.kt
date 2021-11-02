@@ -6,8 +6,8 @@ import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.presentation.vm.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
-import com.caner.domain.viewstate.ApiError
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.ApiError
+import com.caner.data.viewstate.Resource
 import com.caner.data.local.PrefStore
 import com.caner.data.local.SharedPreferencesUtils
 import io.mockk.MockKAnnotations

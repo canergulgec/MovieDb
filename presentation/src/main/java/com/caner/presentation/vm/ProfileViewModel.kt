@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.data.local.PrefKeys
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.Resource
 import com.caner.data.local.PrefStore
 import com.caner.data.local.SharedPreferencesUtils
 import dagger.hilt.android.lifecycle.HiltViewModel

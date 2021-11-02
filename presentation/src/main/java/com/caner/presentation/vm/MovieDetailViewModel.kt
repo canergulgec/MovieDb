@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.caner.data.model.MovieDetailModel
 import com.caner.domain.usecase.MovieDetailUseCase
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

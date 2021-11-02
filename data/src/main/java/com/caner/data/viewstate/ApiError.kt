@@ -1,4 +1,4 @@
-package com.caner.domain.viewstate
+package com.caner.data.viewstate
 
 data class ApiError(
     val code: Int = -1,

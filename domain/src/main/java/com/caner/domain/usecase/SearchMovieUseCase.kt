@@ -3,7 +3,7 @@ package com.caner.domain.usecase
 import com.caner.data.model.MovieModel
 import com.caner.domain.qualifier.IoDispatcher
 import com.caner.domain.repository.SearchRepository
-import com.caner.domain.viewstate.Resource
+import com.caner.data.viewstate.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
