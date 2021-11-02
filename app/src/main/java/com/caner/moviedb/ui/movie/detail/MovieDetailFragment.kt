@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
-import com.caner.presentation.vm.MovieDetailViewModel
+import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.caner.data.Constants
 import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment

@@ -1,4 +1,4 @@
-package com.caner.presentation.vm
+package com.caner.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

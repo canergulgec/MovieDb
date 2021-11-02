@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.caner.presentation.vm.ProfileViewModel
+import com.caner.presentation.viewmodel.ProfileViewModel
 import com.caner.data.local.PrefKeys
 import com.caner.data.viewstate.Resource
 import com.caner.data.local.PrefStore

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caner.data.model.Movie
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
-import com.caner.presentation.vm.SearchViewModel
+import com.caner.presentation.viewmodel.SearchViewModel
 import com.caner.data.Constants
 import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment

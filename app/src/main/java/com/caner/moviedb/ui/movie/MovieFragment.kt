@@ -17,7 +17,7 @@ import androidx.work.WorkManager
 import com.caner.data.model.Movie
 import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
 import com.caner.presentation.adapter.paging.MoviesPagingAdapter
-import com.caner.presentation.vm.MovieViewModel
+import com.caner.presentation.viewmodel.MovieViewModel
 import com.caner.presentation.worker.NotificationWorker
 import com.caner.data.Constants
 import com.caner.core.base.BaseFragment
