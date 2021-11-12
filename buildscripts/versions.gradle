@@ -26,7 +26,6 @@ ext {
             hilt_workmanager   : '1.0.0',
             startup            : "1.1.0",
             cardview            : "1.0.0",
-            navComponentVersion: "2.4.0-beta02",
 
             // Retrofit
             retrofit           : '2.9.0',

@@ -3,7 +3,6 @@ package com.caner.moviedb.ui.main.tabs
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,12 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.caner.data.model.Movie
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.viewmodel.SearchViewModel
-import com.caner.data.Constants
 import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.*
-import com.caner.moviedb.R
 import com.caner.moviedb.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -72,8 +69,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     private fun movieClicked(movieId: Int?) {
-        val bundle = bundleOf(Constants.MOVIE_ID to (movieId ?: 0))
-        findNavController().navigate(R.id.action_searchFragment_to_movieDetailFragment, bundle)
+        val detailAction = SearchFragmentDirections.movieDetailAction(movieId ?: 0)
+        findNavController().navigate(detailAction)
     }
 
     private fun setList(showEmptyView: Boolean, list: List<Movie>) {

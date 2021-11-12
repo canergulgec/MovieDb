@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -105,8 +106,9 @@ dependencies {
     implementation "com.afollestad.material-dialogs:core:$rootProject.ext.versions.materialDialog"
 
     // Navigation Component
-    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.ext.versions.navComponentVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.ext.versions.navComponentVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
     // Timber
     implementation "com.jakewharton.timber:timber:$rootProject.ext.versions.timber"
@@ -134,9 +136,6 @@ dependencies {
 
     // Kakao
     androidTestImplementation "io.github.kakaocup:kakao:$rootProject.ext.versions.kakao"
-
-    // Navigation Test
-    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.ext.versions.navComponentVersion"
 
     // WorkManager Test
     androidTestImplementation "androidx.work:work-testing:$rootProject.ext.versions.workerTesting"

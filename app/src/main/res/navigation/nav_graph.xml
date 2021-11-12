@@ -12,7 +12,7 @@
         android:label="fragment_explore"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_movieFragment_to_movieDetailFragment"
+            android:id="@+id/movieDetailAction"
             app:destination="@id/movieDetailFragment" />
     </fragment>
 
@@ -22,7 +22,7 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_movieDetailFragment"
+            android:id="@+id/movieDetailAction"
             app:destination="@id/movieDetailFragment" />
     </fragment>
 
@@ -30,6 +30,13 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.caner.moviedb.ui.movie.detail.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail" >
+
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
 
 </navigation>

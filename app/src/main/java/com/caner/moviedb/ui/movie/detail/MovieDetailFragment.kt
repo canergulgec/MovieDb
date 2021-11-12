@@ -8,9 +8,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.presentation.viewmodel.MovieDetailViewModel
-import com.caner.data.Constants
 import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.HorizontalSpaceItemDecoration
@@ -32,6 +32,7 @@ import timber.log.Timber
 class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
 
     private val viewModel: MovieDetailViewModel by viewModels()
+    private val movieDetailArgs: MovieDetailFragmentArgs by navArgs()
 
     private val movieGenresAdapter by lazy {
         MovieGenresAdapter()
@@ -41,9 +42,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         initObservers()
         setMovieGenres()
 
-        val movieId = arguments?.getInt(Constants.MOVIE_ID)
-        viewModel.getMovieDetail(movieId)
-
+        viewModel.getMovieDetail(movieDetailArgs.movieId)
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }

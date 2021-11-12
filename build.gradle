@@ -5,6 +5,7 @@ buildscript {
     ext.versionsPluginVersion = "0.29.0"
     ext.ktlintPluginVersion = "10.0.0"
     ext.spotlessPluginVersion = "5.11.1"
+    ext.nav_version = "2.4.0-beta02"
 
     repositories {
         google()
@@ -23,6 +24,7 @@ buildscript {
         classpath "com.diffplug.spotless:spotless-plugin-gradle:$spotlessPluginVersion"
         classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion"
         classpath "com.github.ben-manes:gradle-versions-plugin:$versionsPluginVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }
 

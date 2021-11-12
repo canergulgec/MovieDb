@@ -3,7 +3,6 @@ package com.caner.moviedb.ui.movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -22,8 +21,8 @@ import com.caner.presentation.worker.NotificationWorker
 import com.caner.data.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.withLoadStateAll
-import com.caner.moviedb.R
 import com.caner.moviedb.databinding.FragmentMoviesBinding
+import com.caner.moviedb.ui.main.tabs.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
@@ -91,8 +90,8 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     private fun movieClicked(movie: Movie?) {
-        val bundle = bundleOf(Constants.MOVIE_ID to (movie?.movieId ?: 0))
-        findNavController().navigate(R.id.action_movieFragment_to_movieDetailFragment, bundle)
+        val detailAction = HomeFragmentDirections.movieDetailAction(movie?.movieId ?: 0)
+        findNavController().navigate(detailAction)
         startWorker(movie?.title, movie?.overview)
     }
 
