@@ -10,6 +10,7 @@ In order to use MovieDB:
 - You need to get API KEY from TMDb. You can do that by clicking [here](https://www.themoviedb.org/signup).
 - Once you obtain key, create `secure.properties` which should be on the same level with build.gradle(Project:MovieDb)
 - Add your key into secure.properties `MOVIE_API_KEY = "xxx" `
+- Use JDK 11 to build this project.
 
 ## 🌞 Day Mode
 
@@ -52,6 +53,7 @@ Modules are the collection of source files and build settings that allow you to 
       - [Binding Adapter](https://developer.android.com/topic/libraries/data-binding/binding-adapters)
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
     * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
+      - [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data)
     * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
     * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
     * [View Binding](https://developer.android.com/topic/libraries/view-binding)
