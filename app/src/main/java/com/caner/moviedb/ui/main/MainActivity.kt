@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.caner.data.Constants
 import com.caner.core.base.BaseActivity
@@ -17,7 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val navController by lazy { findNavController(R.id.mainNavHostFragment) }
+    private lateinit var navHostFragment: NavHostFragment
+    private val navController by lazy { navHostFragment.navController }
 
     private val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
         when (destination.id) {
@@ -27,6 +28,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.mainNavHostFragment) as NavHostFragment
+
         if (savedInstanceState != null) {
             AppCompatDelegate.setDefaultNightMode(savedInstanceState.getInt(Constants.NIGHT_MODE))
         }
