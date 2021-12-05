@@ -1,31 +1,30 @@
 import java.io.File
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
-    compileSdkVersion(31)
-    buildToolsVersion("30.0.3")
+    compileSdk = Configs.compileSdkVersion
+    buildToolsVersion = Configs.buildToolsVersion
 
     defaultConfig {
-        applicationId = "com.caner.moviedb"
-        minSdk = 23
-        targetSdk = 30
+        applicationId = Configs.applicationId
+        minSdk = Configs.minSdkVersion
+        targetSdk = Configs.targetSdkVersion
         multiDexEnabled = true
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = Configs.versionCode
+        versionName = Configs.versionName
         vectorDrawables {
             useSupportLibrary = true
         }
-        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
+        testInstrumentationRunner = Configs.testInstrumentationRunner
 
         val secureProps = Properties().apply {
             load(FileInputStream(File(rootProject.rootDir, "secure.properties")))
@@ -37,7 +36,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -85,79 +84,40 @@ dependencies {
     implementation(Dependencies.appCompat)
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.constraintLayoutVersion)
-
-    // Lifecycle
     implementation(Dependencies.lifecycleLiveData)
     implementation(Dependencies.lifecycleRuntime)
     implementation(Dependencies.fragmentKtx)
-
-    // Material design
     implementation(Dependencies.material)
-
-    // Multi Dex
     implementation(Dependencies.multiDex)
-
-    //Vector Drawable
     implementation(Dependencies.vectorDrawable)
-
-    // Hilt dependencies
     implementation(Dependencies.daggerHilt)
-    kapt(Dependencies.daggerHiltCompiler)
-
-    // Service Manager
     implementation(Dependencies.retrofit)
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.okHttp)
     implementation(Dependencies.okHttpInterceptor)
-
-    // Material Dialog
     implementation(Dependencies.materialDialog)
-
-    // Navigation Component
     implementation(Dependencies.navigationFragmentKtx)
     implementation(Dependencies.navigationUiKtx)
-    androidTestImplementation(Dependencies.navigationTesting)
-
-    // Timber
     implementation(Dependencies.timber)
-
-    // Paging 3
     implementation(Dependencies.paging)
-
-    // Stetho
     implementation(Dependencies.stetho)
     implementation(Dependencies.stethoOkHttp)
-
-    // FlexBox
     implementation(Dependencies.flexBox)
-
-    // Hilt WorkManager
     implementation(Dependencies.hiltWorkManager)
-    kapt(Dependencies.hiltCompiler)
-
-    // Preferences DataStore
     implementation(Dependencies.dataStore)
+    implementation(Dependencies.startup)
+
+    kapt(Dependencies.daggerHiltCompiler)
 
     // UI Test
     androidTestImplementation(Dependencies.espressoCore)
     androidTestImplementation(Dependencies.espressoContrib)
-
-    // Kakao
     androidTestImplementation(Dependencies.kakao)
-
-    // WorkManager Test
     androidTestImplementation(Dependencies.workManagerTesting)
-
-    // MockServer
     androidTestImplementation(Dependencies.mockWebServer)
-
-    // Hilt testing dependencies
+    androidTestImplementation(Dependencies.navigationTesting)
     androidTestImplementation(Dependencies.daggerHiltTesting)
     kaptAndroidTest(Dependencies.daggerHiltCompiler)
-
-    debugImplementation(Dependencies.fragmentTesting)
-    // Create debug source set
-    //
 
     // Unit Test
     testImplementation(Dependencies.junit4)
@@ -165,14 +125,10 @@ dependencies {
     testImplementation(Dependencies.archTesting)
     testImplementation(Dependencies.turbine)
     testImplementation(Dependencies.mockK)
-    //
 
-    // Flipper
     debugImplementation(Dependencies.flipper)
     debugImplementation(Dependencies.flipperSoloader)
     debugImplementation(Dependencies.flipperNetworkPlugin)
-
-    // App Startup
-    implementation(Dependencies.startup)
+    debugImplementation(Dependencies.fragmentTesting)
 }
 

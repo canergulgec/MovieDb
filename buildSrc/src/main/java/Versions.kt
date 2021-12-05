@@ -1,7 +1,4 @@
-@file:Suppress("PackageDirectoryMismatch")
-
 object Versions {
-
     const val gradleVersion = "7.0.3"
     const val kotlinVersion = "1.5.31"
     const val coreKtxVersion = "1.7.0"
