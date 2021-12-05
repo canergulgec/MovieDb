@@ -29,9 +29,9 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "../buildscripts/ktlint.gradle")
+   /* apply(plugin = "../buildscripts/ktlint.gradle")
     apply(plugin = "../buildscripts/spotless.gradle")
-    apply(plugin = "../buildscripts/versionsplugin.gradle")
+    apply(plugin = "../buildscripts/versionsplugin.gradle")*/
 }
 
 tasks.register("clean", Delete::class.java) {

@@ -1,5 +1,6 @@
-import java.util.Properties
+import java.io.File
 import java.io.FileInputStream
+import java.util.*
 
 plugins {
     id("com.android.application")
@@ -26,14 +27,13 @@ android {
         // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
 
-    /*    val secureProps = Properties ()
-        if (file("../secure.properties").exists()) {
-            file("../secure.properties")?.withInputStream { secureProps.load(it) }
+        val secureProps = Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "secure.properties")))
         }
-*/
+
         buildConfigField("Integer", "TIMEOUT", "60")
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField("String", "API_KEY",  "")
+        buildConfigField("String", "API_KEY", (secureProps.getProperty("MOVIE_API_KEY") ?: ""))
     }
 
     buildTypes {
