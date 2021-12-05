@@ -16,8 +16,8 @@ android {
 
     defaultConfig {
         applicationId = "com.caner.moviedb"
-        minSdkVersion(23)
-        targetSdkVersion(30)
+        minSdk = 23
+        targetSdk = 30
         multiDexEnabled = true
         versionCode = 1
         versionName = "1.0"
@@ -82,97 +82,97 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.constraintLayoutVersion)
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation(Dependencies.lifecycleLiveData)
+    implementation(Dependencies.lifecycleRuntime)
+    implementation(Dependencies.fragmentKtx)
 
     // Material design
-    implementation("com.google.android.material:material:1.4.0")
+    implementation(Dependencies.material)
 
     // Multi Dex
-    implementation("com.android.support:multidex:1.0.3")
+    implementation(Dependencies.multiDex)
 
     //Vector Drawable
-    implementation("androidx.vectordrawable:vectordrawable:1.2.0-alpha02")
+    implementation(Dependencies.vectorDrawable)
 
     // Hilt dependencies
-    implementation("com.google.dagger:hilt-android:2.39.1")
-    kapt("com.google.dagger:hilt-compiler:2.39.1")
+    implementation(Dependencies.daggerHilt)
+    kapt(Dependencies.daggerHiltCompiler)
 
     // Service Manager
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.gsonConverter)
+    implementation(Dependencies.okHttp)
+    implementation(Dependencies.okHttpInterceptor)
 
     // Material Dialog
-    implementation("com.afollestad.material-dialogs:core:3.3.0")
+    implementation(Dependencies.materialDialog)
 
     // Navigation Component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0-beta02")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.0-beta02")
-    androidTestImplementation("androidx.navigation:navigation-testing:2.4.0-beta02")
+    implementation(Dependencies.navigationFragmentKtx)
+    implementation(Dependencies.navigationUiKtx)
+    androidTestImplementation(Dependencies.navigationTesting)
 
     // Timber
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(Dependencies.timber)
 
     // Paging 3
-    implementation("androidx.paging:paging-runtime-ktx:3.0.1")
+    implementation(Dependencies.paging)
 
     // Stetho
-    implementation("com.facebook.stetho:stetho:1.6.0")
-    implementation("com.facebook.stetho:stetho-okhttp3:1.6.0")
+    implementation(Dependencies.stetho)
+    implementation(Dependencies.stethoOkHttp)
 
     // FlexBox
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation(Dependencies.flexBox)
 
     // Hilt WorkManager
-    implementation("androidx.hilt:hilt-work:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation(Dependencies.hiltWorkManager)
+    kapt(Dependencies.hiltCompiler)
 
     // Preferences DataStore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation(Dependencies.dataStore)
 
     // UI Test
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0")
+    androidTestImplementation(Dependencies.espressoCore)
+    androidTestImplementation(Dependencies.espressoContrib)
 
     // Kakao
-    androidTestImplementation("io.github.kakaocup:kakao:3.0.4")
+    androidTestImplementation(Dependencies.kakao)
 
     // WorkManager Test
-    androidTestImplementation("androidx.work:work-testing:2.6.0")
+    androidTestImplementation(Dependencies.workManagerTesting)
 
     // MockServer
-    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
+    androidTestImplementation(Dependencies.mockWebServer)
 
     // Hilt testing dependencies
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39.1")
-    kaptAndroidTest("com.google.dagger:hilt-compiler:2.39.1")
+    androidTestImplementation(Dependencies.daggerHiltTesting)
+    kaptAndroidTest(Dependencies.daggerHiltCompiler)
 
-    debugImplementation("androidx.fragment:fragment-testing:1.3.6")
+    debugImplementation(Dependencies.fragmentTesting)
     // Create debug source set
     //
 
     // Unit Test
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    testImplementation("app.cash.turbine:turbine:0.5.2")
-    testImplementation("io.mockk:mockk:1.12.0")
+    testImplementation(Dependencies.junit4)
+    testImplementation(Dependencies.coroutinesTest)
+    testImplementation(Dependencies.archTesting)
+    testImplementation(Dependencies.turbine)
+    testImplementation(Dependencies.mockK)
     //
 
     // Flipper
-    debugImplementation("com.facebook.flipper:flipper:0.80.0")
-    debugImplementation("com.facebook.soloader:soloader:0.10.1")
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:0.80.0")
+    debugImplementation(Dependencies.flipper)
+    debugImplementation(Dependencies.flipperSoloader)
+    debugImplementation(Dependencies.flipperNetworkPlugin)
 
     // App Startup
-    implementation("androidx.startup:startup-runtime:1.1.0")
+    implementation(Dependencies.startup)
 }
 
