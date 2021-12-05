@@ -8,16 +8,13 @@ buildscript {
         }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.3")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.39.1")
-        classpath("com.diffplug.spotless:spotless-plugin-gradle:5.11.1")
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
-        classpath("com.github.ben-manes:gradle-versions-plugin:0.29.0")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0-beta02")
+        classpath(ClassPaths.gradle)
+        classpath(ClassPaths.kotlinGradlePlugin)
+        classpath(ClassPaths.daggerHiltGradlePlugin)
+        classpath(ClassPaths.safeArgsGradlePlugin)
+        /*   classpath("com.diffplug.spotless:spotless-plugin-gradle:5.11.1")
+           classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
+           classpath("com.github.ben-manes:gradle-versions-plugin:0.29.0")*/
     }
 }
 
@@ -29,9 +26,9 @@ allprojects {
 }
 
 subprojects {
-   /* apply(plugin = "../buildscripts/ktlint.gradle")
-    apply(plugin = "../buildscripts/spotless.gradle")
-    apply(plugin = "../buildscripts/versionsplugin.gradle")*/
+    /* apply(plugin = "../buildscripts/ktlint.gradle")
+     apply(plugin = "../buildscripts/spotless.gradle")
+     apply(plugin = "../buildscripts/versionsplugin.gradle")*/
 }
 
 tasks.register("clean", Delete::class.java) {
