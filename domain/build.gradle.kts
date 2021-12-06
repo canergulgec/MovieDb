@@ -1,5 +1,5 @@
-import dependency.Dependencies
-import dependency.ModuleDependencies
+import dependencies.Dependencies
+import dependencies.ModuleDependencies
 import extension.implement
 
 plugins {

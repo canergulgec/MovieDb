@@ -1,9 +1,9 @@
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
-import dependency.Dependencies
-import dependency.TestDependencies
-import dependency.ModuleDependencies
+import dependencies.Dependencies
+import dependencies.TestDependencies
+import dependencies.ModuleDependencies
 import extension.androidTestImplement
 import extension.debugImplement
 import extension.testImplement

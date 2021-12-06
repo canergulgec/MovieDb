@@ -1,4 +1,4 @@
-package dependency
+package dependencies
 
 import Versions
 

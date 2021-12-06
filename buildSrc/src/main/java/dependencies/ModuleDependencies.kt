@@ -1,4 +1,4 @@
-package dependency
+package dependencies
 
 object ModuleDependencies {
     val coreModuleLibraries = arrayListOf<String>().apply {

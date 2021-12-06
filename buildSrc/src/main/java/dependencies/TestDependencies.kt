@@ -1,4 +1,4 @@
-package dependency
+package dependencies
 
 object TestDependencies {
     val uiTestLibraries = arrayListOf<String>().apply {
