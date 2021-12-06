@@ -11,7 +11,6 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val multiDex = "com.android.support:multidex:${Versions.multiDexVersion}"
-    const val ktlint = "com.pinterest:ktlint:${Versions.ktlintVersion}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerViewVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
     const val vectorDrawable =

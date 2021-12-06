@@ -40,4 +40,3 @@ dependencies {
     implement(ModuleDependencies.dataModuleLibraries)
     kapt(Dependencies.daggerHiltCompiler)
 }
-
