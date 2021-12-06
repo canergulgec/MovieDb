@@ -35,6 +35,7 @@ object Versions {
     const val flexBoxVersion = "3.0.0"
     const val flipperVersion = "0.80.0"
     const val flipperSoloaderVersion = "0.10.1"
+    const val ktlintVersion = "0.40.0"
 
     const val mockkVersion = "1.12.0"
     const val junit4Version = "4.13.2"

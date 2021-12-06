@@ -13,7 +13,6 @@ buildscript {
         classpath(ClassPaths.daggerHiltGradlePlugin)
         classpath(ClassPaths.safeArgsGradlePlugin)
         /*   classpath("com.diffplug.spotless:spotless-plugin-gradle:5.11.1")
-           classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
            classpath("com.github.ben-manes:gradle-versions-plugin:0.29.0")*/
     }
 }
@@ -29,6 +28,7 @@ subprojects {
     /* apply(plugin = "../buildscripts/ktlint.gradle")
      apply(plugin = "../buildscripts/spotless.gradle")
      apply(plugin = "../buildscripts/versionsplugin.gradle")*/
+    apply(from = "$rootDir/ktlint.gradle.kts")
 }
 
 tasks.register("clean", Delete::class.java) {
