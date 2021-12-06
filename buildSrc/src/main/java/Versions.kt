@@ -2,6 +2,7 @@ object Versions {
     const val gradleVersion = "7.0.3"
     const val kotlinVersion = "1.5.31"
     const val spotlessVersion = "5.11.1"
+    const val updateDependenciesVersion = "0.39.0"
 
     const val appCompatVersion = "1.4.0"
     const val materialVersion = "1.4.0"
