@@ -1,8 +1,12 @@
+import dependency.Dependencies
+import dependency.ModuleDependencies
+import extension.implement
+
 plugins {
     id("com.android.library")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -34,6 +38,6 @@ kapt {
 }
 
 dependencies {
-    implementation(ModuleDependencies.coreModuleLibraries)
+    implement(ModuleDependencies.coreModuleLibraries)
     kapt(Dependencies.daggerHiltCompiler)
 }

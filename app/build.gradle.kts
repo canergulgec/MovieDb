@@ -1,6 +1,12 @@
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
+import dependency.Dependencies
+import dependency.TestDependencies
+import dependency.ModuleDependencies
+import extension.androidTestImplement
+import extension.debugImplement
+import extension.testImplement
 
 plugins {
     id("com.android.application")
@@ -109,15 +115,12 @@ dependencies {
 
     kapt(Dependencies.daggerHiltCompiler)
 
-    androidTestImplementation(TestDependencies.uiTestLibraries)
+    androidTestImplement(TestDependencies.uiTestLibraries)
     kaptAndroidTest(Dependencies.daggerHiltCompiler)
 
-    testImplementation(TestDependencies.unitTestLibraries)
+    testImplement(TestDependencies.unitTestLibraries)
 
-    debugImplementation(Dependencies.flipper)
-    debugImplementation(Dependencies.flipperSoloader)
-    debugImplementation(Dependencies.flipperNetworkPlugin)
-    debugImplementation(Dependencies.fragmentTesting)
+    debugImplement(ModuleDependencies.debugImplementLibraries)
 }
 
 

@@ -1,4 +1,4 @@
-@file:Suppress("PackageDirectoryMismatch")
+package dependency
 
 object TestDependencies {
     val uiTestLibraries = arrayListOf<String>().apply {

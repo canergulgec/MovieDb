@@ -1,4 +1,6 @@
-@file:Suppress("PackageDirectoryMismatch")
+package dependency
+
+import Versions
 
 object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"

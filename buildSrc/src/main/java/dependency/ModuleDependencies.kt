@@ -1,4 +1,4 @@
-@file:Suppress("PackageDirectoryMismatch")
+package dependency
 
 object ModuleDependencies {
     val coreModuleLibraries = arrayListOf<String>().apply {
@@ -51,5 +51,12 @@ object ModuleDependencies {
         add(Dependencies.dataStore)
         add(Dependencies.timber)
         add(Dependencies.startup)
+    }
+
+    val debugImplementLibraries = arrayListOf<String>().apply {
+        add(Dependencies.flipper)
+        add(Dependencies.flipperSoloader)
+        add(Dependencies.flipperNetworkPlugin)
+        add(Dependencies.fragmentTesting)
     }
 }

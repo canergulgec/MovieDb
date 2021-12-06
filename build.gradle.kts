@@ -1,9 +1,3 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-
-plugins {
-    id("com.github.ben-manes.versions") version Versions.updateDependenciesVersion
-}
-
 buildscript {
     repositories {
         google()
@@ -17,7 +11,6 @@ buildscript {
         classpath(ClassPaths.kotlinGradlePlugin)
         classpath(ClassPaths.daggerHiltGradlePlugin)
         classpath(ClassPaths.safeArgsGradlePlugin)
-        /*   classpath("com.diffplug.spotless:spotless-plugin-gradle:5.11.1")*/
     }
 }
 
@@ -29,7 +22,6 @@ allprojects {
 }
 
 subprojects {
-    apply(from = "$rootDir/ktlint.gradle.kts")
 }
 
 tasks.register("clean", Delete::class.java) {
@@ -41,12 +33,4 @@ fun isNonStable(version: String): Boolean {
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
-}
-
-tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
-    rejectVersionIf {
-        isNonStable(candidate.version)
-    }
-    reportfileName = "dependency-report"
-    outputDir = "${project.buildDir}/reports/dependencyUpdates"
 }
