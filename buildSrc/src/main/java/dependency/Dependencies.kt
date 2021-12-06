@@ -1,3 +1,5 @@
+@file:Suppress("PackageDirectoryMismatch")
+
 object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
@@ -7,10 +9,11 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val multiDex = "com.android.support:multidex:${Versions.multiDexVersion}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerViewVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
     const val vectorDrawable =
         "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawableVersion}"
-    const val constraintLayoutVersion =
+    const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHiltVersion}"
     const val daggerHiltCompiler =
@@ -30,19 +33,20 @@ object Dependencies {
     const val navigationTesting =
         "androidx.navigation:navigation-testing:${Versions.navigationVersion}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
+    const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
     const val paging = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
+    const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPagerVersion}"
     const val stetho = "com.facebook.stetho:stetho:${Versions.stethoVersion}"
     const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stethoVersion}"
     const val flexBox = "com.google.android.flexbox:flexbox:${Versions.flexBoxVersion}"
     const val hiltWorkManager = "androidx.hilt:hilt-work:${Versions.hiltWorkManagerVersion}"
-    const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltWorkManagerVersion}"
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.dataStoreVersion}"
     const val startup = "androidx.startup:startup-runtime:${Versions.startupVersion}"
+    const val cardView = "androidx.cardview:cardview:${Versions.cardViewVersion}"
     const val flipper = "com.facebook.flipper:flipper:${Versions.flipperVersion}"
     const val flipperSoloader = "com.facebook.soloader:soloader:${Versions.flipperSoloaderVersion}"
     const val flipperNetworkPlugin =
         "com.facebook.flipper:flipper-network-plugin:${Versions.flipperVersion}"
-
     const val junit4 = "junit:junit:${Versions.junit4Version}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCoreVersion}"
     const val espressoContrib =

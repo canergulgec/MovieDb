@@ -6,5 +6,6 @@ object Configs {
     const val targetSdkVersion = 30
     const val versionCode = 1
     const val versionName = "1.0.0"
-    const val testInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
+    const val hiltTestInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
+    const val androidInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }

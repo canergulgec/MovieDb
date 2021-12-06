@@ -24,7 +24,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        testInstrumentationRunner = Configs.testInstrumentationRunner
+        testInstrumentationRunner = Configs.hiltTestInstrumentationRunner
 
         val secureProps = Properties().apply {
             load(FileInputStream(File(rootProject.rootDir, "secure.properties")))
@@ -83,7 +83,7 @@ dependencies {
 
     implementation(Dependencies.appCompat)
     implementation(Dependencies.coreKtx)
-    implementation(Dependencies.constraintLayoutVersion)
+    implementation(Dependencies.constraintLayout)
     implementation(Dependencies.lifecycleLiveData)
     implementation(Dependencies.lifecycleRuntime)
     implementation(Dependencies.fragmentKtx)
@@ -109,26 +109,15 @@ dependencies {
 
     kapt(Dependencies.daggerHiltCompiler)
 
-    // UI Test
-    androidTestImplementation(Dependencies.espressoCore)
-    androidTestImplementation(Dependencies.espressoContrib)
-    androidTestImplementation(Dependencies.kakao)
-    androidTestImplementation(Dependencies.workManagerTesting)
-    androidTestImplementation(Dependencies.mockWebServer)
-    androidTestImplementation(Dependencies.navigationTesting)
-    androidTestImplementation(Dependencies.daggerHiltTesting)
+    androidTestImplementation(TestDependencies.uiTestLibraries)
     kaptAndroidTest(Dependencies.daggerHiltCompiler)
 
-    // Unit Test
-    testImplementation(Dependencies.junit4)
-    testImplementation(Dependencies.coroutinesTest)
-    testImplementation(Dependencies.archTesting)
-    testImplementation(Dependencies.turbine)
-    testImplementation(Dependencies.mockK)
+    testImplementation(TestDependencies.unitTestLibraries)
 
     debugImplementation(Dependencies.flipper)
     debugImplementation(Dependencies.flipperSoloader)
     debugImplementation(Dependencies.flipperNetworkPlugin)
     debugImplementation(Dependencies.fragmentTesting)
 }
+
 
