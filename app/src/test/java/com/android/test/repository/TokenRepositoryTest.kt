@@ -19,7 +19,8 @@ class TokenRepositoryTest {
     private lateinit var repository: NewTokenRepository
 
     @Before
-    fun setUp() = MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
+    fun setUp() =
+        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
 
     @Test
     fun `new token flow emits successfully`() = runBlocking {

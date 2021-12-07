@@ -40,4 +40,3 @@ dependencies {
     implement(ModuleDependencies.domainModuleLibraries)
     kapt(Dependencies.daggerHiltCompiler)
 }
-

@@ -1,3 +1,5 @@
+import plugins.BuildPlugins
+
 buildscript {
     repositories {
         google()
@@ -14,7 +16,8 @@ buildscript {
     }
 }
 
-plugins.apply("plugins.update-dependencies")
+plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
+plugins.apply(BuildPlugins.KTLINT)
 
 allprojects {
     repositories {
@@ -24,7 +27,7 @@ allprojects {
 }
 
 subprojects {
-    plugins.apply("plugins.ktlint")
+    plugins.apply(BuildPlugins.KTLINT)
 }
 
 tasks.register("clean", Delete::class.java) {
