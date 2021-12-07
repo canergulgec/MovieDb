@@ -84,11 +84,12 @@ Modules are the collection of source files and build settings that allow you to 
 
 To maintain the style and quality of the code
 
-| Tool                                                   |    Check command          |     Fix command
-|--------------------------------------------------------|---------------------------|--------------------------- |
-| [spotless](https://github.com/diffplug/spotless)       | `./gradlew spotlessCheck` | `./gradlew spotlessApply`  |
-| [ktlint](https://github.com/pinterest/ktlint)          | `./gradlew ktlintCheck`   | `./gradlew ktlintFormat`   |
+| Tool                                               |    Check command          |     Fix command
+|----------------------------------------------------|---------------------------|---------------------------|
+| [ktlint](https://github.com/diffplug/spotless)     | `./gradlew ktlintCheck`   | `./gradlew ktlintFormat`  |
 
 ## ✅ Version Control
 
 [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) for checking all dependencies for their current versions.
+
+Run the `./gradlew dependencyUpdates` task. The plugin will create a file named `dependency_report.json` under `build/reports/dependencyUpdates` directory after completed successfully.
