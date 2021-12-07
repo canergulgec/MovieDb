@@ -43,6 +43,10 @@ Modules are the collection of source files and build settings that allow you to 
 - **Presentation Module**
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
+  
+- **buildSrc**
+
+  `:buildSrc` is a directory at the project root level which contains build info. It is used for dependency management for better reusability and easy maintenance
 
 ## 🛠 Built With
 
