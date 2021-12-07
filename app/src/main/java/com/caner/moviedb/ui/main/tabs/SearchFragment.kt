@@ -16,7 +16,11 @@ import com.caner.presentation.viewmodel.SearchViewModel
 import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration
-import com.caner.core.extension.*
+import com.caner.core.extension.init
+import com.caner.core.extension.dp2px
+import com.caner.core.extension.afterTextChanged
+import com.caner.core.extension.toast
+import com.caner.core.extension.visible
 import com.caner.moviedb.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi

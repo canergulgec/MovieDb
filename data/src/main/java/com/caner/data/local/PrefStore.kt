@@ -12,7 +12,9 @@ import javax.inject.Inject
 
 class PrefStore @Inject constructor(@ApplicationContext val context: Context) {
 
-    private val Context.prefStore: DataStore<Preferences> by preferencesDataStore(name = PrefKeys.PREFERENCE_NAME)
+    private val Context.prefStore: DataStore<Preferences> by preferencesDataStore(
+        name = PrefKeys.PREFERENCE_NAME
+    )
 
     suspend fun <T> saveData(prefKey: Preferences.Key<T>, data: T) {
         context.prefStore.edit { preferences ->

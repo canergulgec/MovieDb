@@ -60,7 +60,9 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
                                 movieGenresAdapter.submitList(genres)
                             }
                         }
-                        is Resource.Error -> toast("error happened ${resource.apiError.code} ${resource.apiError.message}")
+                        is Resource.Error -> toast(
+                            "error happened ${resource.apiError.code} ${resource.apiError.message}"
+                        )
                         else -> Timber.v("Initial Empty state")
                     }
                 }
@@ -85,5 +87,6 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         )
     }
 
-    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMovieDetailBinding get() = FragmentMovieDetailBinding::inflate
+    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMovieDetailBinding
+        get() = FragmentMovieDetailBinding::inflate
 }

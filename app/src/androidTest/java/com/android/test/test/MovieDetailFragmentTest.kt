@@ -53,7 +53,9 @@ class MovieDetailFragmentTest {
             navController.setGraph(R.navigation.nav_graph)
         }
 
-        launchFragmentInHiltContainer<MovieDetailFragment>(fragmentArgs = bundleOf(Constants.MOVIE_ID to 399566)) {
+        launchFragmentInHiltContainer<MovieDetailFragment>(
+            fragmentArgs = bundleOf(Constants.MOVIE_ID to 399566)
+        ) {
             this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
                 if (viewLifecycleOwner != null) {
                     Navigation.setViewNavController(this.requireView(), navController)
@@ -64,7 +66,8 @@ class MovieDetailFragmentTest {
                         .setExecutor(SynchronousExecutor())
                         .build()
                     WorkManagerTestInitHelper.initializeTestWorkManager(
-                        requireContext(), config
+                        requireContext(),
+                        config
                     )
                 }
             }

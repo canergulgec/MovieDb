@@ -37,7 +37,8 @@ class MovieDetailUseCaseTest {
     }
 
     @Before
-    fun setUp() = MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
+    fun setUp() =
+        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
 
     @Test
     fun movieDetailFlowMustReturnSuccess() = coroutineScope.runBlockingTest {

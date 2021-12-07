@@ -63,7 +63,8 @@ class MovieFragmentTest {
                         .setExecutor(SynchronousExecutor())
                         .build()
                     WorkManagerTestInitHelper.initializeTestWorkManager(
-                        requireContext(), config
+                        requireContext(),
+                        config
                     )
                 }
             }
