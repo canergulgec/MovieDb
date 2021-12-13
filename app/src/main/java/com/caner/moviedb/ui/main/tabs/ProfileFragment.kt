@@ -14,7 +14,6 @@ import com.caner.core.extension.toast
 import com.caner.moviedb.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -32,10 +31,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         initObservers()
 
         lifecycleScope.launch {
-            prefStore.getData(PrefKeys.ACCESS_TOKEN_DATA_STORE).collect { sessionId ->
-                if (sessionId == null) {
-                    viewModel.getNewTokenWithDataStore()
-                }
+            val sessionId = prefStore.getData(PrefKeys.ACCESS_TOKEN_DATA_STORE)
+            if (sessionId == null) {
+                viewModel.getNewToken()
             }
         }
     }
@@ -46,8 +44,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 when (resource) {
                     is Resource.Loading -> showLoading(resource.status)
                     is Resource.Success -> prefStore.saveData(
-                        PrefKeys.ACCESS_TOKEN_DATA_STORE,
-                        resource.data.requestToken
+                            PrefKeys.ACCESS_TOKEN_DATA_STORE,
+                            resource.data.requestToken
                     )
                     is Resource.Error -> toast(resource.apiError.message)
                     else -> Timber.v("Initial state")

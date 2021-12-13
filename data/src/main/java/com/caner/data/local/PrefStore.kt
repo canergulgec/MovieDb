@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -22,9 +23,9 @@ class PrefStore @Inject constructor(@ApplicationContext val context: Context) {
         }
     }
 
-    fun <T> getData(prefKey: Preferences.Key<T>): Flow<T?> {
+    suspend fun <T> getData(prefKey: Preferences.Key<T>): T? {
         return context.prefStore.data.map { preferences ->
             preferences[prefKey]
-        }
+        }.firstOrNull()
     }
 }
