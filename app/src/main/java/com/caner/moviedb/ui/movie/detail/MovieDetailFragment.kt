@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.presentation.viewmodel.MovieDetailViewModel
-import com.caner.data.viewstate.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.HorizontalSpaceItemDecoration
 import com.caner.core.decoration.VerticalSpaceItemDecoration
@@ -24,9 +23,8 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
@@ -49,21 +47,20 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
+        lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.movieDetailState.collect { resource ->
-                    when (resource) {
-                        is Resource.Loading -> showLoading(resource.status)
-                        is Resource.Success -> {
-                            resource.data.apply {
-                                binding.item = this
-                                movieGenresAdapter.submitList(genres)
-                            }
-                        }
-                        is Resource.Error -> toast(
-                            "error happened ${resource.apiError.code} ${resource.apiError.message}"
-                        )
-                        else -> Timber.v("Initial Empty state")
+                viewModel.uiState.collect { uiState ->
+                    // Loading state
+                    showLoading(uiState.isFetchingMovieDetail)
+
+                    uiState.movieDetailModel?.takeIf { !uiState.isFetchingMovieDetail }?.let {
+                        binding.item = it
+                        movieGenresAdapter.submitList(it.genres)
+                    }
+
+                    uiState.userMessages.firstOrNull()?.let { userMessage ->
+                        toast("error happened: ${userMessage.message}")
+                        viewModel.userMessageShown(userMessage.id)
                     }
                 }
             }
@@ -78,12 +75,12 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         }
 
         binding.movieGenresRv.init(
-            movieGenresAdapter,
-            listOf(
-                HorizontalSpaceItemDecoration(4.dp2px()),
-                VerticalSpaceItemDecoration(4.dp2px())
-            ),
-            flexBoxLayoutManager
+                movieGenresAdapter,
+                listOf(
+                        HorizontalSpaceItemDecoration(4.dp2px()),
+                        VerticalSpaceItemDecoration(4.dp2px())
+                ),
+                flexBoxLayoutManager
         )
     }
 
