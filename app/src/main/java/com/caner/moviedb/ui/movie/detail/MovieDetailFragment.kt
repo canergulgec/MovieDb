@@ -53,7 +53,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
                     // Loading state
                     showLoading(uiState.isFetchingMovieDetail)
 
-                    uiState.movieDetailModel?.takeIf { !uiState.isFetchingMovieDetail }?.let {
+                    uiState.movieDetailModel?.let {
                         binding.item = it
                         movieGenresAdapter.submitList(it.genres)
                     }

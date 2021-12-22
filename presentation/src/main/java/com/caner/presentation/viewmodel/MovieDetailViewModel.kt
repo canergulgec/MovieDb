@@ -2,9 +2,9 @@ package com.caner.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.caner.domain.usecase.MovieDetailUseCase
 import com.caner.data.viewstate.Resource
 import com.caner.data.viewstate.UserMessage
+import com.caner.domain.repository.MovieDetailRepository
 import com.caner.presentation.state.MovieDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -15,25 +15,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-        private val movieDetailUseCase: MovieDetailUseCase
+        private val movieDetailRepository: MovieDetailRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(MovieDetailUiState())
+    private val _uiState = MutableStateFlow(MovieDetailUiState(isFetchingMovieDetail = true))
     val uiState: StateFlow<MovieDetailUiState> = _uiState.asStateFlow()
 
     fun getMovieDetail(movieId: Int?) {
         viewModelScope.launch {
-            movieDetailUseCase.execute(movieId)
+            movieDetailRepository.getMovieDetail(movieId)
                     .collect { resource ->
                         when (resource) {
                             is Resource.Success -> {
-                                _uiState.update { state ->
-                                    state.copy(movieDetailModel = resource.data,
-                                            genres = resource.data.genres)
-                                }
-                            }
-                            is Resource.Loading -> {
-                                _uiState.update { state ->
-                                    state.copy(isFetchingMovieDetail = resource.status)
+                                _uiState.update {
+                                    it.copy(movieDetailModel = resource.data, isFetchingMovieDetail = false)
                                 }
                             }
                             is Resource.Error -> {
@@ -42,10 +36,10 @@ class MovieDetailViewModel @Inject constructor(
                                             id = UUID.randomUUID().mostSignificantBits,
                                             message = resource.apiError.message
                                     )
-                                    state.copy(userMessages = messages)
+                                    state.copy(userMessages = messages, isFetchingMovieDetail = false)
                                 }
                             }
-                            else -> Timber.e("")
+                            else -> Timber.e("Invalid state")
                         }
                     }
         }

@@ -6,7 +6,6 @@ import com.caner.data.viewstate.UserMessage
 
 data class MovieDetailUiState(
         val movieDetailModel: MovieDetailModel? = null,
-        val genres: List<MovieGenre>? = emptyList(),
         val isFetchingMovieDetail: Boolean = false,
         val userMessages: List<UserMessage> = emptyList()
 )
