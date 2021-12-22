@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-        private val movieDetailRepository: MovieDetailRepository
+    private val movieDetailRepository: MovieDetailRepository
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(MovieDetailUiState(isFetchingMovieDetail = true))
     val uiState: StateFlow<MovieDetailUiState> = _uiState.asStateFlow()
@@ -23,25 +23,28 @@ class MovieDetailViewModel @Inject constructor(
     fun getMovieDetail(movieId: Int?) {
         viewModelScope.launch {
             movieDetailRepository.getMovieDetail(movieId)
-                    .collect { resource ->
-                        when (resource) {
-                            is Resource.Success -> {
-                                _uiState.update {
-                                    it.copy(movieDetailModel = resource.data, isFetchingMovieDetail = false)
-                                }
+                .collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> {
+                            _uiState.update {
+                                it.copy(
+                                    movieDetailModel = resource.data,
+                                    isFetchingMovieDetail = false
+                                )
                             }
-                            is Resource.Error -> {
-                                _uiState.update { state ->
-                                    val messages = state.userMessages + UserMessage(
-                                            id = UUID.randomUUID().mostSignificantBits,
-                                            message = resource.apiError.message
-                                    )
-                                    state.copy(userMessages = messages, isFetchingMovieDetail = false)
-                                }
-                            }
-                            else -> Timber.e("Invalid state")
                         }
+                        is Resource.Error -> {
+                            _uiState.update { state ->
+                                val messages = state.userMessages + UserMessage(
+                                    id = UUID.randomUUID().mostSignificantBits,
+                                    message = resource.apiError.message
+                                )
+                                state.copy(userMessages = messages, isFetchingMovieDetail = false)
+                            }
+                        }
+                        else -> Timber.e("Invalid state")
                     }
+                }
         }
     }
 
