@@ -37,15 +37,9 @@ class TokenViewModelTest {
     val coroutineScope = MainCoroutineScopeRule()
 
     @MockK
-    private lateinit var sharedPref: SharedPreferencesUtils
-
-    @MockK
-    private lateinit var prefStore: PrefStore
-
-    @MockK
     private lateinit var useCase: NewTokenUseCase
 
-    private val viewModel by lazy { ProfileViewModel(useCase, sharedPref, prefStore) }
+    private val viewModel by lazy { ProfileViewModel(useCase) }
 
     @MockK
     private lateinit var newSessionObserver: Observer<Resource<TokenResponse>>
