@@ -27,7 +27,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -52,7 +51,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         binding.searchEt.afterTextChanged {
             viewModel.searchQuery.value = it
         }
-
         initObservers()
     }
 
@@ -65,7 +63,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                         is Resource.Success -> setList(false, resource.data.movies)
                         is Resource.Empty -> setList(true, emptyList())
                         is Resource.Error -> toast(resource.apiError.message)
-                        else -> Timber.v("Initial state")
                     }
                 }
             }
