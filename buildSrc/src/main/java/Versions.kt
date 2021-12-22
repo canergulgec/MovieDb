@@ -46,7 +46,7 @@ object Versions {
     const val mockkVersion = "1.12.0"
     const val junit4Version = "4.13.2"
     const val archTestingVersion = "2.1.0"
-    const val turbineVersion = "0.5.2"
+    const val turbineVersion = "0.7.0"
 
     // UI Test
     const val espressoCoreVersion = "3.3.0"
