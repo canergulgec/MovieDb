@@ -112,6 +112,7 @@ dependencies {
     implementation(Dependencies.hiltWorkManager)
     implementation(Dependencies.dataStore)
     implementation(Dependencies.startup)
+    implementation(Dependencies.splashScreen)
 
     kapt(Dependencies.daggerHiltCompiler)
 

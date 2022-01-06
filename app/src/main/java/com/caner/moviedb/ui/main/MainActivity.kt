@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -72,5 +73,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override val bindLayout: (LayoutInflater) -> ActivityMainBinding
-        get() = ActivityMainBinding::inflate
+        get() = {
+            installSplashScreen()
+            ActivityMainBinding.inflate(it)
+        }
 }

@@ -2,14 +2,14 @@ object Versions {
     const val gradleVersion = "7.0.3"
     const val kotlinVersion = "1.5.31"
 
+    // Jetpack
     const val appCompatVersion = "1.4.0"
     const val materialVersion = "1.4.0"
     const val coreKtxVersion = "1.7.0"
     const val fragmentKtxVersion = "1.4.0"
     const val lifecycleVersion = "2.4.0"
     const val constraintLayoutVersion = "2.1.2"
-
-    const val multiDexVersion = "1.0.3"
+    const val multiDexVersion = "2.0.1"
     const val recyclerViewVersion = "1.2.1"
     const val cardViewVersion = "1.0.0"
     const val vectorDrawableVersion = "1.2.0-alpha02"
@@ -19,27 +19,33 @@ object Versions {
     const val pagingVersion = "3.1.0"
     const val viewPagerVersion = "1.0.0"
 
+    // Dagger Hilt
     const val daggerHiltVersion = "2.39.1"
     const val hiltWorkManagerVersion = "1.0.0"
 
+    // Coroutines
     const val coroutinesVersion = "1.5.2"
-    const val materialDialogVersion = "3.3.0"
-    const val timberVersion = "5.0.1"
-    const val coilVersion = "1.4.0"
 
     // Network
     const val retrofitVersion = "2.9.0"
     const val gsonVersion = "2.9.0"
     const val okHttpVersion = "4.9.1"
+
+    // App debugging
     const val stethoVersion = "1.6.0"
     const val flexBoxVersion = "3.0.0"
     const val flipperVersion = "0.80.0"
     const val flipperSoloaderVersion = "0.10.1"
 
+    // Other 3rd party libraries
+    const val materialDialogVersion = "3.3.0"
+    const val timberVersion = "5.0.1"
+    const val coilVersion = "1.4.0"
+    const val splashScreenVersion = "1.0.0-alpha02"
+
     // Plugins
     const val ktlint = "10.2.0"
     const val ktlintInternal = "0.42.1"
-    const val spotlessVersion = "5.11.1"
     const val updateDependenciesVersion = "0.39.0"
 
     // Unit Test
