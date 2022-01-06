@@ -67,6 +67,7 @@ Modules are the collection of source files and build settings that allow you to 
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
   - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
 - [Dagger Hilt](https://dagger.dev/hilt/)
+- [Splash Screen API](https://developer.android.com/guide/topics/ui/splash-screen/migrate)
 - [Retrofit](https://square.github.io/retrofit/)
 - [Coil](https://github.com/coil-kt/coil)
 - [FlexBox](https://github.com/google/flexbox-layout)
