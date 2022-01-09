@@ -4,6 +4,8 @@ import app.cash.turbine.test
 import com.caner.data.model.MovieDetailModel
 import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
+import com.android.test.utils.`should be`
+import com.android.test.utils.`should not be`
 import com.caner.data.viewstate.ApiError
 import com.caner.data.viewstate.Resource
 import com.caner.domain.repository.MovieDetailRepository
@@ -63,9 +65,9 @@ class MovieDetailViewModelTest {
                 when (index) {
                     0 -> assert(value.isFetchingMovieDetail)
                     1 -> {
-                        assert(value.movieDetailModel != null)
-                        assert(value.movieDetailModel?.movieId == detailModel.movieId)
-                        assert(!value.isFetchingMovieDetail)
+                        value.movieDetailModel `should not be` null
+                        value.movieDetailModel?.movieId `should be` detailModel.movieId
+                        value.isFetchingMovieDetail `should be` false
                     }
                 }
             }
@@ -93,11 +95,11 @@ class MovieDetailViewModelTest {
         viewModel.uiState.test {
             viewModel.getMovieDetail(any())
 
-            assert(awaitItem().isFetchingMovieDetail)
+            awaitItem().isFetchingMovieDetail `should be` true
 
             val state = awaitItem()
-            assert(state.movieDetailModel != null)
-            assert(state.movieDetailModel?.movieId == detailModel.movieId)
+            state.movieDetailModel `should not be` null
+            state.movieDetailModel?.movieId `should be` detailModel.movieId
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()
@@ -121,8 +123,8 @@ class MovieDetailViewModelTest {
         viewModel.uiState.test {
             viewModel.getMovieDetail(any())
 
-            assert(awaitItem().isFetchingMovieDetail)
-            assert(awaitItem().userMessages.isNotEmpty())
+            awaitItem().isFetchingMovieDetail `should be` true
+            awaitItem().userMessages.isNotEmpty() `should be` true
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()

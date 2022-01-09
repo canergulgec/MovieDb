@@ -80,6 +80,7 @@ object Dependencies {
     const val archTesting = "androidx.arch.core:core-testing:${Versions.archTestingVersion}"
     const val turbine = "app.cash.turbine:turbine:${Versions.turbineVersion}"
     const val mockK = "io.mockk:mockk:${Versions.mockkVersion}"
+    const val truth = "com.google.truth:truth:${Versions.truthVersion}"
     const val navigationTesting =
         "androidx.navigation:navigation-testing:${Versions.navigationVersion}"
 }

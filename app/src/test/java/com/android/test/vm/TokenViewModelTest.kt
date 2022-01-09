@@ -6,6 +6,7 @@ import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.presentation.viewmodel.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
+import com.android.test.utils.`should be`
 import com.caner.data.viewstate.ApiError
 import com.caner.data.viewstate.Resource
 import io.mockk.MockKAnnotations
@@ -16,7 +17,6 @@ import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -72,14 +72,15 @@ class TokenViewModelTest {
         viewModel.getNewToken()
 
         list.forEachIndexed { index, resource ->
-            if (index == 0) assertEquals(true, (resource as Resource.Loading).status)
-            if (index == 1) {
-                assertEquals(
-                    userDetails.requestToken,
-                    (resource as Resource.Success).data.requestToken
-                )
+            if (index == 0 && resource is Resource.Loading) {
+                resource.status `should be` true
             }
-            if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
+            if (index == 1 && resource is Resource.Success) {
+                resource.data.requestToken `should be` userDetails.requestToken
+            }
+            if (index == 2 && resource is Resource.Loading) {
+                resource.status `should be` false
+            }
         }
 
         coVerify { useCase.execute() }
@@ -108,9 +109,15 @@ class TokenViewModelTest {
         viewModel.getNewToken()
 
         list.forEachIndexed { index, resource ->
-            if (index == 0) assertEquals(true, (resource as Resource.Loading).status)
-            if (index == 1) assertEquals(error.code, (resource as Resource.Error).apiError.code)
-            if (index == 2) assertEquals(false, (resource as Resource.Loading).status)
+            if (index == 0 && resource is Resource.Loading) {
+                resource.status `should be` true
+            }
+            if (index == 1 && resource is Resource.Error) {
+                resource.apiError.code `should be` error.code
+            }
+            if (index == 2 && resource is Resource.Loading) {
+                resource.status `should be` false
+            }
         }
 
         coVerify { useCase.execute() }

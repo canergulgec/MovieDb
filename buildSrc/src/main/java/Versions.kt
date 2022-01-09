@@ -53,6 +53,7 @@ object Versions {
     const val junit4Version = "4.13.2"
     const val archTestingVersion = "2.1.0"
     const val turbineVersion = "0.7.0"
+    const val truthVersion = "1.1.3"
 
     // UI Test
     const val espressoCoreVersion = "3.3.0"

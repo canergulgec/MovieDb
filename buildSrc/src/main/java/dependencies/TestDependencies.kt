@@ -18,5 +18,6 @@ object TestDependencies {
         add(Dependencies.turbine)
         add(Dependencies.archTesting)
         add(Dependencies.coroutinesTest)
+        add(Dependencies.truth)
     }
 }

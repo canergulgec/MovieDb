@@ -1,5 +1,6 @@
 package com.android.test.repository
 
+import com.android.test.utils.`should be`
 import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.repository.NewTokenRepository
 import com.caner.data.viewstate.Resource
@@ -44,8 +45,8 @@ class TokenRepositoryTest {
             if (index == 1) {
                 assert(value is Resource.Success)
                 if (value is Resource.Success) {
-                    assert(value.data == userDetails)
-                    assert(value.data.requestToken == userDetails.requestToken)
+                    value.data `should be` userDetails
+                    value.data.requestToken `should be` userDetails.requestToken
                 }
             }
             if (index == 2) assert(value is Resource.Loading)
