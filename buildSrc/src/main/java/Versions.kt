@@ -3,8 +3,8 @@ object Versions {
     const val kotlinVersion = "1.5.31"
 
     // Jetpack
-    const val appCompatVersion = "1.4.0"
-    const val materialVersion = "1.4.0"
+    const val appCompatVersion = "1.4.1"
+    const val materialVersion = "1.5.0"
     const val coreKtxVersion = "1.7.0"
     const val fragmentKtxVersion = "1.4.0"
     const val lifecycleVersion = "2.4.0"
