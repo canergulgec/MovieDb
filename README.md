@@ -77,6 +77,7 @@ Modules are the collection of source files and build settings that allow you to 
   - [Kakao](https://github.com/KakaoCup/Kakao)
   - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
   - [Turbine](https://github.com/cashapp/turbine)
+  - [Truth](https://github.com/google/truth)
   - [Dagger Hilt Testing](https://developer.android.com/training/dependency-injection/hilt-testing)
 
 ## 🗼 Architecture
