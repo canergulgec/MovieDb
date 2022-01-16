@@ -7,7 +7,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 apply<KtlintPlugin>()
 
 configure<KtlintExtension> {
-    version.set(Versions.ktlintInternal)
+    version.set(Versions.Plugins.ktlintInternal)
     android.set(true)
     outputToConsole.set(true)
     outputColorName.set("RED")

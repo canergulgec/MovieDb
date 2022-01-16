@@ -1,5 +1,5 @@
 import dependencies.Dependencies
-import dependencies.ModuleDependencies
+import extension.domainModuleLibraries
 import extension.implement
 
 plugins {
@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    compileSdk = Configs.compileSdkVersion
+    compileSdk = Versions.App.compileSdkVersion
 
     defaultConfig {
-        minSdk = Configs.minSdkVersion
-        targetSdk = Configs.targetSdkVersion
+        minSdk = Versions.App.minSdkVersion
+        targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
 
@@ -37,6 +37,6 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":core"))
 
-    implement(ModuleDependencies.domainModuleLibraries)
-    kapt(Dependencies.daggerHiltCompiler)
+    implement(domainModuleLibraries)
+    kapt(Dependencies.Dagger.daggerHiltCompiler)
 }

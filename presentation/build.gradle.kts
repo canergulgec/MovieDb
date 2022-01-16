@@ -1,20 +1,20 @@
 import dependencies.Dependencies
-import dependencies.ModuleDependencies
 import extension.implement
+import extension.presentationModuleLibraries
 
 plugins {
-    id("com.android.library")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
+    id(Configs.androidLibrary)
+    id(Configs.daggerHilt)
+    kotlin(Configs.kotlinAndroid)
+    kotlin(Configs.kotlinKapt)
 }
 
 android {
-    compileSdk = Configs.compileSdkVersion
+    compileSdk = Versions.App.compileSdkVersion
 
     defaultConfig {
-        minSdk = Configs.minSdkVersion
-        targetSdk = Configs.targetSdkVersion
+        minSdk = Versions.App.minSdkVersion
+        targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
 
@@ -42,6 +42,6 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":core"))
 
-    implement(ModuleDependencies.presentationModuleLibraries)
-    kapt(Dependencies.daggerHiltCompiler)
+    implement(presentationModuleLibraries)
+    kapt(Dependencies.Dagger.daggerHiltCompiler)
 }

@@ -3,7 +3,7 @@ object ClassPaths {
     const val kotlinGradlePlugin =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val daggerHiltGradlePlugin =
-        "com.google.dagger:hilt-android-gradle-plugin:${Versions.daggerHiltVersion}"
+        "com.google.dagger:hilt-android-gradle-plugin:${Versions.Dagger.daggerHiltVersion}"
     const val safeArgsGradlePlugin =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.navigationVersion}"
 }

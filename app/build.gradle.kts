@@ -2,31 +2,27 @@ import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
 import dependencies.Dependencies
-import dependencies.TestDependencies
-import dependencies.ModuleDependencies
-import extension.androidTestImplement
-import extension.debugImplement
-import extension.testImplement
+import extension.*
 
 plugins {
-    id("com.android.application")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
-    id("androidx.navigation.safeargs.kotlin")
+    id(Configs.androidApplication)
+    id(Configs.daggerHilt)
+    kotlin(Configs.kotlinAndroid)
+    kotlin(Configs.kotlinKapt)
+    id(Configs.safeArgs)
 }
 
 android {
-    compileSdk = Configs.compileSdkVersion
+    compileSdk = Versions.App.compileSdkVersion
     buildToolsVersion = Configs.buildToolsVersion
 
     defaultConfig {
         applicationId = Configs.applicationId
-        minSdk = Configs.minSdkVersion
-        targetSdk = Configs.targetSdkVersion
+        minSdk = Versions.App.minSdkVersion
+        targetSdk = Versions.App.targetSdkVersion
         multiDexEnabled = true
-        versionCode = Configs.versionCode
-        versionName = Configs.versionName
+        versionCode = Versions.App.versionCode
+        versionName = Versions.App.versionName
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -87,39 +83,37 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.constraintLayout)
-    implementation(Dependencies.lifecycleLiveData)
-    implementation(Dependencies.lifecycleRuntime)
-    implementation(Dependencies.fragmentKtx)
-    implementation(Dependencies.material)
-    implementation(Dependencies.multiDex)
-    implementation(Dependencies.vectorDrawable)
-    implementation(Dependencies.daggerHilt)
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.gsonConverter)
-    implementation(Dependencies.okHttp)
-    implementation(Dependencies.okHttpInterceptor)
+    integrationTest()
+    unitTest()
+    appDebugger()
+
+    implementation(Dependencies.AndroidX.appCompat)
+    implementation(Dependencies.AndroidX.coreKtx)
+    implementation(Dependencies.AndroidX.constraintLayout)
+    implementation(Dependencies.AndroidX.lifecycleLiveData)
+    implementation(Dependencies.AndroidX.lifecycleRuntime)
+    implementation(Dependencies.AndroidX.fragmentKtx)
+    implementation(Dependencies.AndroidX.multiDex)
+    implementation(Dependencies.AndroidX.vectorDrawable)
+    implementation(Dependencies.AndroidX.navigationFragmentKtx)
+    implementation(Dependencies.AndroidX.navigationUiKtx)
+    implementation(Dependencies.AndroidX.paging)
+    implementation(Dependencies.AndroidX.dataStore)
+    implementation(Dependencies.AndroidX.startup)
+    implementation(Dependencies.AndroidX.splashScreen)
+    implementation(Dependencies.Dagger.daggerHilt)
+    implementation(Dependencies.Dagger.hiltWorkManager)
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.gsonConverter)
+    implementation(Dependencies.Network.okHttp)
+    implementation(Dependencies.Network.okHttpInterceptor)
+    implementation(Dependencies.Google.material)
+    implementation(Dependencies.Google.flexBox)
+    implementation(Dependencies.Debugging.timber)
+    implementation(Dependencies.Debugging.stetho)
+    implementation(Dependencies.Debugging.stethoOkHttp)
     implementation(Dependencies.materialDialog)
-    implementation(Dependencies.navigationFragmentKtx)
-    implementation(Dependencies.navigationUiKtx)
-    implementation(Dependencies.timber)
-    implementation(Dependencies.paging)
-    implementation(Dependencies.stetho)
-    implementation(Dependencies.stethoOkHttp)
-    implementation(Dependencies.flexBox)
-    implementation(Dependencies.hiltWorkManager)
-    implementation(Dependencies.dataStore)
-    implementation(Dependencies.startup)
-    implementation(Dependencies.splashScreen)
 
-    kapt(Dependencies.daggerHiltCompiler)
-
-    androidTestImplement(TestDependencies.uiTestLibraries)
-    kaptAndroidTest(Dependencies.daggerHiltCompiler)
-
-    testImplement(TestDependencies.unitTestLibraries)
-
-    debugImplement(ModuleDependencies.debugImplementLibraries)
+    kapt(Dependencies.Dagger.daggerHiltCompiler)
+    kaptAndroidTest(Dependencies.Dagger.daggerHiltCompiler)
 }
