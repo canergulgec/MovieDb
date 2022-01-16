@@ -1,5 +1,5 @@
-import extension.coreModuleLibraries
-import extension.implement
+import extension.appCompat
+import extension.daggerHilt
 
 plugins {
     id(Configs.androidLibrary)
@@ -27,6 +27,13 @@ kapt {
 }
 
 dependencies {
-    implement(coreModuleLibraries)
-    kapt(Dependencies.Dagger.daggerHiltCompiler)
+    appCompat()
+    daggerHilt()
+
+    implementation(Dependencies.Coroutines.coroutinesCore)
+    implementation(Dependencies.AndroidX.lifecycleLiveData)
+    implementation(Dependencies.AndroidX.fragmentKtx)
+    implementation(Dependencies.AndroidX.cardView)
+    implementation(Dependencies.AndroidX.paging)
+    implementation(Dependencies.ImageLoader.coil)
 }

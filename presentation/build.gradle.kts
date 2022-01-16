@@ -1,5 +1,5 @@
-import extension.implement
-import extension.presentationModuleLibraries
+import extension.appCompat
+import extension.daggerHilt
 
 plugins {
     id(Configs.androidLibrary)
@@ -31,6 +31,16 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.core))
 
-    implement(presentationModuleLibraries)
-    kapt(Dependencies.Dagger.daggerHiltCompiler)
+    appCompat()
+    daggerHilt()
+
+    implementation(Dependencies.AndroidX.constraintLayout)
+    implementation(Dependencies.AndroidX.lifecycleLiveData)
+    implementation(Dependencies.AndroidX.paging)
+    implementation(Dependencies.AndroidX.viewPager)
+    implementation(Dependencies.AndroidX.dataStore)
+    implementation(Dependencies.AndroidX.startup)
+    implementation(Dependencies.Google.material)
+    implementation(Dependencies.Dagger.hiltWorkManager)
+    implementation(Dependencies.Debugging.timber)
 }

@@ -1,5 +1,6 @@
-import extension.domainModuleLibraries
-import extension.implement
+import extension.appCompat
+import extension.daggerHilt
+import extension.retrofit
 
 plugins {
     id(Configs.androidLibrary)
@@ -26,6 +27,12 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.core))
 
-    implement(domainModuleLibraries)
-    kapt(Dependencies.Dagger.daggerHiltCompiler)
+    appCompat()
+    daggerHilt()
+    retrofit()
+
+    implementation(Dependencies.AndroidX.lifecycleLiveData)
+    implementation(Dependencies.AndroidX.fragmentKtx)
+    implementation(Dependencies.AndroidX.dataStore)
+    implementation(Dependencies.AndroidX.paging)
 }

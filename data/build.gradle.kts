@@ -1,5 +1,5 @@
-import extension.dataModuleLibraries
-import extension.implement
+import extension.appCompat
+import extension.daggerHilt
 
 plugins {
     id(Configs.androidLibrary)
@@ -26,6 +26,10 @@ kapt {
 dependencies {
     implementation(project(Modules.core))
 
-    implement(dataModuleLibraries)
-    kapt(Dependencies.Dagger.daggerHiltCompiler)
+    appCompat()
+    daggerHilt()
+
+    implementation(Dependencies.AndroidX.recyclerView)
+    implementation(Dependencies.AndroidX.dataStore)
+    implementation(Dependencies.Network.gsonConverter)
 }
