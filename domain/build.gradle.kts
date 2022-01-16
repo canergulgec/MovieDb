@@ -1,12 +1,11 @@
-import dependencies.Dependencies
 import extension.domainModuleLibraries
 import extension.implement
 
 plugins {
-    id("com.android.library")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
+    id(Configs.androidLibrary)
+    id(Configs.daggerHilt)
+    kotlin(Configs.kotlinAndroid)
+    kotlin(Configs.kotlinKapt)
 }
 
 android {
@@ -17,16 +16,6 @@ android {
         targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
 }
 
 kapt {
@@ -34,8 +23,8 @@ kapt {
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":core"))
+    implementation(project(Modules.data))
+    implementation(project(Modules.core))
 
     implement(domainModuleLibraries)
     kapt(Dependencies.Dagger.daggerHiltCompiler)

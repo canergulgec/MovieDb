@@ -1,7 +1,3 @@
-package dependencies
-
-import Versions
-
 object Dependencies {
 
     object AndroidX {

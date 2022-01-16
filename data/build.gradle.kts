@@ -1,13 +1,12 @@
-import dependencies.Dependencies
 import extension.dataModuleLibraries
 import extension.implement
 
 plugins {
-    id("com.android.library")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
-    id("kotlin-parcelize")
+    id(Configs.androidLibrary)
+    id(Configs.daggerHilt)
+    kotlin(Configs.kotlinAndroid)
+    kotlin(Configs.kotlinKapt)
+    id(Configs.kotlinParcelize)
 }
 
 android {
@@ -18,16 +17,6 @@ android {
         targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
 }
 
 kapt {
@@ -35,7 +24,7 @@ kapt {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(Modules.core))
 
     implement(dataModuleLibraries)
     kapt(Dependencies.Dagger.daggerHiltCompiler)

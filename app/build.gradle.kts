@@ -1,7 +1,6 @@
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
-import dependencies.Dependencies
 import extension.*
 
 plugins {
@@ -78,10 +77,10 @@ configurations.all {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":presentation"))
+    implementation(project(Modules.core))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.presentation))
 
     integrationTest()
     unitTest()
