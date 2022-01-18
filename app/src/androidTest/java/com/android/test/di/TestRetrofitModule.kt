@@ -1,7 +1,7 @@
 package com.android.test.di
 
 import com.caner.moviedb.BuildConfig
-import com.caner.moviedb.di.RetrofitModule
+import com.caner.moviedb.di.NetworkModule
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,7 @@ import javax.inject.Named
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [RetrofitModule::class]
+    replaces = [NetworkModule::class]
 )
 class TestRetrofitModule {
 

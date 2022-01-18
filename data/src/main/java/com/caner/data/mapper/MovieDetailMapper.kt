@@ -40,16 +40,16 @@ class MovieDetailMapper @Inject constructor() :
                 popularity,
                 video,
                 adult,
-                poster_path?.let { path -> MovieImage(path) },
-                backdrop_path?.let { path -> MovieImage(path) },
+                posterPath?.let { path -> MovieImage(path) },
+                backdropPath?.let { path -> MovieImage(path) },
                 genres,
                 title,
                 overview,
-                imdb_id,
+                imdbId,
                 runtime,
-                vote_average,
-                vote_count,
-                release_date?.let { date ->
+                voteAverage,
+                voteCount,
+                releaseDate?.let { date ->
                     if (date.isNotEmpty()) {
                         SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).parse(
                             date
