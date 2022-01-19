@@ -56,6 +56,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         }
 
         binding.moviesRv.apply {
+            setHasFixedSize(true)
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),

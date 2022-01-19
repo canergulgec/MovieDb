@@ -42,11 +42,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.movieSearchRv.init(
-            searchAdapter,
-            listOf(
+            adapter = searchAdapter,
+            itemDecoration = listOf(
                 VerticalSpaceItemDecoration(16.dp2px()),
                 DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-            )
+            ),
+            hasFixedSize = true
         )
         binding.searchEt.afterTextChanged {
             viewModel.searchQuery.value = it
