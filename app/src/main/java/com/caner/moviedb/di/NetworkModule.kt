@@ -25,7 +25,7 @@ import javax.inject.Named
 
 @InstallIn(SingletonComponent::class)
 @Module
-class RetrofitModule {
+class NetworkModule {
 
     @Provides
     @Named("BASE_URL")
