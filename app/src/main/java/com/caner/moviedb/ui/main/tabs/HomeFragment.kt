@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.caner.moviedb.ui.movie.MovieFragment
 import com.caner.presentation.adapter.viewpager.MoviePagerAdapter
-import com.caner.data.Constants
+import com.caner.core.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.moviedb.R
 import com.caner.moviedb.databinding.FragmentHomeBinding

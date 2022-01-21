@@ -1,5 +1,6 @@
 package com.caner.data.mapper
 
+import com.caner.core.base.Mapper
 import com.caner.data.model.MovieImage
 import com.caner.data.model.MovieDetailModel
 import com.caner.data.model.remote.MovieDetailResponse

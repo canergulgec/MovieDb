@@ -1,7 +1,7 @@
 package com.caner.domain.usecase
 
-import com.caner.data.viewstate.Resource
-import com.caner.data.viewstate.ApiError
+import com.caner.core.network.Resource
+import com.caner.core.network.ApiError
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 

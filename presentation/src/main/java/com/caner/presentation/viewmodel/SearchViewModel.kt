@@ -17,7 +17,7 @@ import javax.inject.Inject
 @FlowPreview
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val searchUseCase: SearchMovieUseCase
+    private val useCase: SearchMovieUseCase
 ) : ViewModel() {
 
     val searchQuery = MutableStateFlow("")
@@ -29,6 +29,6 @@ class SearchViewModel @Inject constructor(
             return@filter query.length > 2
         }
         .flatMapLatest {
-            searchUseCase.execute(it)
+            useCase.execute(it)
         }.shareIn(viewModelScope, SharingStarted.Lazily, 2)
 }

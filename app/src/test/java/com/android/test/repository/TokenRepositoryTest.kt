@@ -1,15 +1,14 @@
 package com.android.test.repository
 
 import com.android.test.utils.`should be`
+import com.caner.core.network.ApiError
 import com.caner.data.model.remote.TokenResponse
 import com.caner.domain.repository.NewTokenRepository
-import com.caner.data.viewstate.Resource
+import com.caner.core.network.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
-import kotlinx.coroutines.flow.collectIndexed
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -27,29 +26,37 @@ class TokenRepositoryTest {
     fun `new token flow emits successfully`() = runBlocking {
         // Given
         val userDetails = TokenResponse(true, "1234567")
-        val flow = flow {
-            emit(Resource.Loading(true))
-            emit(Resource.Success(userDetails))
-            emit(Resource.Loading(false))
-        }
 
         // When
-        coEvery { repository.getNewToken() } returns flow
-        val getNewToken = repository.getNewToken()
+        coEvery { repository.getNewToken() } returns Resource.Success(userDetails)
+        val response = repository.getNewToken()
 
         // Then
         coVerify { repository.getNewToken() }
 
-        getNewToken.collectIndexed { index, value ->
-            if (index == 0) assert(value is Resource.Loading)
-            if (index == 1) {
-                assert(value is Resource.Success)
-                if (value is Resource.Success) {
-                    value.data `should be` userDetails
-                    value.data.requestToken `should be` userDetails.requestToken
-                }
-            }
-            if (index == 2) assert(value is Resource.Loading)
+        response `should be` Resource.Success(userDetails)
+        if (response is Resource.Success) {
+            response.data.success `should be` userDetails.success
+            response.data.requestToken `should be` userDetails.requestToken
+        }
+    }
+
+    @Test
+    fun `new token flow emits error`() = runBlocking {
+        // Given
+        val error = ApiError(1, "Error happened")
+
+        // When
+        coEvery { repository.getNewToken() } returns Resource.Error(error)
+        val response = repository.getNewToken()
+
+        // Then
+        coVerify { repository.getNewToken() }
+
+        response `should be` Resource.Error(error)
+        if (response is Resource.Error) {
+            response.error.code `should be` error.code
+            response.error.message `should be` error.message
         }
     }
 }

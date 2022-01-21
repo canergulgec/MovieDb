@@ -7,8 +7,8 @@ import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.presentation.viewmodel.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
-import com.caner.data.viewstate.ApiError
-import com.caner.data.viewstate.Resource
+import com.caner.core.network.ApiError
+import com.caner.core.network.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -20,10 +20,6 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-
-/**
- * This test is written with mockK
- */
 
 @ExperimentalCoroutinesApi
 class TokenViewModelTest {
@@ -113,7 +109,7 @@ class TokenViewModelTest {
                 resource.status `should be` true
             }
             if (index == 1 && resource is Resource.Error) {
-                resource.apiError.code `should be` error.code
+                resource.error.code `should be` error.code
             }
             if (index == 2 && resource is Resource.Loading) {
                 resource.status `should be` false

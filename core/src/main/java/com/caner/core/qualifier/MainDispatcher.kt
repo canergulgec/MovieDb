@@ -1,4 +1,4 @@
-package com.caner.domain.qualifier
+package com.caner.core.qualifier
 
 import javax.inject.Qualifier
 

@@ -1,4 +1,4 @@
-package com.caner.data.mapper
+package com.caner.core.base
 
 interface Mapper<T, E> {
 

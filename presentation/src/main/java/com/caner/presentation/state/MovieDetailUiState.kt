@@ -1,8 +1,7 @@
 package com.caner.presentation.state
 
 import com.caner.data.model.MovieDetailModel
-import com.caner.data.model.remote.MovieGenre
-import com.caner.data.viewstate.UserMessage
+import com.caner.core.network.UserMessage
 
 data class MovieDetailUiState(
         val movieDetailModel: MovieDetailModel? = null,

@@ -1,18 +1,17 @@
 package com.caner.domain.repository
 
+import com.caner.core.extension.toResource
+import com.caner.data.model.remote.MovieDetailResponse
+import com.caner.core.network.Resource
 import com.caner.domain.api.MovieDetailApi
-import com.caner.data.mapper.MovieDetailMapper
-import com.caner.domain.extension.filterMapperResponse
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MovieDetailRepositoryImp @Inject constructor(
-    private val apiService: MovieDetailApi,
-    private val movieDetailMapper: MovieDetailMapper,
+    private val apiService: MovieDetailApi
 ) : MovieDetailRepository {
 
-    override fun getMovieDetail(movieId: Int?) = flow {
+    override suspend fun getMovieDetail(movieId: Int?): Resource<MovieDetailResponse> {
         val data = apiService.getMovieDetail(movieId)
-        emit(data.filterMapperResponse(movieDetailMapper))
+        return data.toResource()
     }
 }

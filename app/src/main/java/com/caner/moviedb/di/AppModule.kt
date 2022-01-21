@@ -2,7 +2,7 @@ package com.caner.moviedb.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.caner.data.Constants
+import com.caner.core.Constants
 import com.caner.data.local.PrefStore
 import dagger.Module
 import dagger.Provides

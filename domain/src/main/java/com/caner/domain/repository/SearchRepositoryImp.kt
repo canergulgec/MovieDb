@@ -1,18 +1,17 @@
 package com.caner.domain.repository
 
-import com.caner.data.mapper.MovieMapper
+import com.caner.core.extension.toResource
+import com.caner.core.network.Resource
+import com.caner.data.model.remote.MovieResponse
 import com.caner.domain.api.SearchApi
-import com.caner.domain.extension.filterMapperResponse
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class SearchRepositoryImp @Inject constructor(
-    private val apiService: SearchApi,
-    private val movieMapper: MovieMapper
+    private val apiService: SearchApi
 ) : SearchRepository {
 
-    override fun searchMovie(query: String?) = flow {
+    override suspend fun searchMovie(query: String?): Resource<MovieResponse> {
         val data = apiService.searchMovie(query)
-        emit(data.filterMapperResponse(movieMapper))
+        return data.toResource()
     }
 }

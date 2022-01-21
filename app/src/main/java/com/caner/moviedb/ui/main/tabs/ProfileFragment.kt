@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.caner.presentation.viewmodel.ProfileViewModel
 import com.caner.data.local.PrefKeys
-import com.caner.data.viewstate.Resource
+import com.caner.core.network.Resource
 import com.caner.data.local.PrefStore
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.toast
@@ -47,7 +47,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                             PrefKeys.ACCESS_TOKEN_DATA_STORE,
                             resource.data.requestToken
                     )
-                    is Resource.Error -> toast(resource.apiError.message)
+                    is Resource.Error -> toast(resource.error.message)
                     else -> Timber.v("Initial state")
                 }
             }

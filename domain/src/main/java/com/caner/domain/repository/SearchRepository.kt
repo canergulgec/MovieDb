@@ -1,9 +1,8 @@
 package com.caner.domain.repository
 
-import com.caner.data.model.MovieModel
-import com.caner.data.viewstate.Resource
-import kotlinx.coroutines.flow.Flow
+import com.caner.core.network.Resource
+import com.caner.data.model.remote.MovieResponse
 
 interface SearchRepository {
-    fun searchMovie(query: String?): Flow<Resource<MovieModel>>
+    suspend fun searchMovie(query: String?): Resource<MovieResponse>
 }

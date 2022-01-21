@@ -1,9 +1,8 @@
 package com.caner.domain.repository
 
 import com.caner.data.model.remote.TokenResponse
-import com.caner.data.viewstate.Resource
-import kotlinx.coroutines.flow.Flow
+import com.caner.core.network.Resource
 
 interface NewTokenRepository {
-    fun getNewToken(): Flow<Resource<TokenResponse>>
+    suspend fun getNewToken(): Resource<TokenResponse>
 }

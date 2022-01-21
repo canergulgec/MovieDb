@@ -1,8 +1,8 @@
 package com.caner.moviedb.di
 
-import com.caner.domain.qualifier.DefaultDispatcher
-import com.caner.domain.qualifier.IoDispatcher
-import com.caner.domain.qualifier.MainDispatcher
+import com.caner.core.qualifier.DefaultDispatcher
+import com.caner.core.qualifier.IoDispatcher
+import com.caner.core.qualifier.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

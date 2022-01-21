@@ -6,9 +6,9 @@ import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
 import com.android.test.utils.`should not be`
-import com.caner.data.viewstate.ApiError
-import com.caner.data.viewstate.Resource
-import com.caner.domain.repository.MovieDetailRepository
+import com.caner.core.network.ApiError
+import com.caner.core.network.Resource
+import com.caner.domain.usecase.MovieDetailUseCase
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -24,10 +24,6 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.any
 import kotlin.time.ExperimentalTime
 
-/**
- * This test is written with mockK
- */
-
 @ExperimentalTime
 @ExperimentalCoroutinesApi
 class MovieDetailViewModelTest {
@@ -36,10 +32,10 @@ class MovieDetailViewModelTest {
     val coroutineScope = MainCoroutineScopeRule()
 
     @MockK
-    private lateinit var repository: MovieDetailRepository
+    private lateinit var useCase: MovieDetailUseCase
 
     private val viewModel by lazy {
-        MovieDetailViewModel(repository)
+        MovieDetailViewModel(useCase)
     }
 
     @Before
@@ -57,7 +53,7 @@ class MovieDetailViewModelTest {
         }
 
         // When
-        coEvery { repository.getMovieDetail(any()) } returns flow
+        coEvery { useCase.execute(any()) } returns flow
 
         // Then
         val job = launch {
@@ -74,7 +70,7 @@ class MovieDetailViewModelTest {
         }
 
         viewModel.getMovieDetail(any())
-        coVerify { repository.getMovieDetail(any()) }
+        coVerify { useCase.execute(any()) }
 
         job.cancel()
     }
@@ -90,7 +86,7 @@ class MovieDetailViewModelTest {
         }
 
         // When
-        coEvery { repository.getMovieDetail(any()) } returns flow
+        coEvery { useCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
             viewModel.getMovieDetail(any())
@@ -105,7 +101,7 @@ class MovieDetailViewModelTest {
             cancelAndIgnoreRemainingEvents()
         }
 
-        coVerify { repository.getMovieDetail(any()) }
+        coVerify { useCase.execute(any()) }
     }
 
     @Test
@@ -118,7 +114,7 @@ class MovieDetailViewModelTest {
         }
 
         // When
-        coEvery { repository.getMovieDetail(any()) } returns flow
+        coEvery { useCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
             viewModel.getMovieDetail(any())

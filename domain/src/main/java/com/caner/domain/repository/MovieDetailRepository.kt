@@ -1,9 +1,8 @@
 package com.caner.domain.repository
 
-import com.caner.data.model.MovieDetailModel
-import com.caner.data.viewstate.Resource
-import kotlinx.coroutines.flow.Flow
+import com.caner.data.model.remote.MovieDetailResponse
+import com.caner.core.network.Resource
 
 interface MovieDetailRepository {
-    fun getMovieDetail(movieId: Int?): Flow<Resource<MovieDetailModel>>
+    suspend fun getMovieDetail(movieId: Int?): Resource<MovieDetailResponse>
 }

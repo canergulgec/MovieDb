@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.caner.data.model.Movie
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.viewmodel.SearchViewModel
-import com.caner.data.viewstate.Resource
+import com.caner.core.network.Resource
 import com.caner.core.base.BaseFragment
 import com.caner.core.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.init
@@ -61,9 +61,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 viewModel.searchFlow.collect { resource ->
                     when (resource) {
                         is Resource.Loading -> showLoading(resource.status)
-                        is Resource.Success -> setList(false, resource.data.movies)
-                        is Resource.Empty -> setList(true, emptyList())
-                        is Resource.Error -> toast(resource.apiError.message)
+                        is Resource.Success -> setList(resource.data.movies)
+                        is Resource.Error -> toast(resource.error.message)
                     }
                 }
             }
@@ -75,9 +74,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         findNavController().navigate(detailAction)
     }
 
-    private fun setList(showEmptyView: Boolean, list: List<Movie>) {
-        binding.emptyViewTv.visible(showEmptyView)
-        searchAdapter.submitList(list.sortedByDescending { it.popularity })
+    private fun setList(movies: List<Movie>) {
+        binding.emptyViewTv.visible(movies.isNullOrEmpty())
+        searchAdapter.submitList(movies)
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding
