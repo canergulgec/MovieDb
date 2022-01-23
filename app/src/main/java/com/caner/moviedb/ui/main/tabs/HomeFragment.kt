@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.caner.moviedb.ui.movie.MovieFragment
 import com.caner.presentation.adapter.viewpager.MoviePagerAdapter
-import com.caner.core.Constants
 import com.caner.core.base.BaseFragment
+import com.caner.core.network.HttpParams
 import com.caner.moviedb.R
 import com.caner.moviedb.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -19,8 +19,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.moviePager.apply {
             adapter = MoviePagerAdapter(
                 this@HomeFragment,
-                MovieFragment.newInstance(Constants.NOW_PLAYING_MOVIES),
-                MovieFragment.newInstance(Constants.UPCOMING_MOVIES)
+                MovieFragment.newInstance(HttpParams.NOW_PLAYING_MOVIES),
+                MovieFragment.newInstance(HttpParams.UPCOMING_MOVIES)
             )
             TabLayoutMediator(binding.movieTabLayout, this) { tab, position ->
                 val tabTitleArray =

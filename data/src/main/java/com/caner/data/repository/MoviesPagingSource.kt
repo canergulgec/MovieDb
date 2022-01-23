@@ -4,27 +4,23 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.caner.data.api.MovieApi
 import com.caner.core.Constants
+import com.caner.core.network.HttpParams
 import com.caner.data.model.remote.MovieResponseItem
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
     private val service: MovieApi,
-    private val type: Int
+    private val path: String
 ) : PagingSource<Int, MovieResponseItem>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponseItem> {
-        val page = params.key ?: Constants.MOVIE_STARTING_PAGE_INDEX
+        val page = params.key ?: HttpParams.MOVIE_STARTING_PAGE_INDEX
 
         return try {
-            val apiRequest = if (type == Constants.NOW_PLAYING_MOVIES) {
-                service.getNowPlayingMovies(getParams(page))
-            } else {
-                service.getUpcomingMovies(getParams(page))
-            }
-            apiRequest.run {
+            service.getMovies(path, getParams(page)).run {
                 LoadResult.Page(
                     data = this.results,
-                    prevKey = if (page == Constants.MOVIE_STARTING_PAGE_INDEX) null else page - 1,
+                    prevKey = if (page == HttpParams.MOVIE_STARTING_PAGE_INDEX) null else page - 1,
                     nextKey = if (page == this.total) null else page + 1
                 )
             }

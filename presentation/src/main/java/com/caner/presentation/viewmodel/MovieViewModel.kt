@@ -7,6 +7,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.caner.data.repository.MovieRepository
 import com.caner.core.Constants
+import com.caner.core.network.HttpParams
 import com.caner.domain.mapper.MovieMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
@@ -19,14 +20,14 @@ class MovieViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private var movieType: Int = Constants.NOW_PLAYING_MOVIES
+    private var moviePath: String = HttpParams.NOW_PLAYING_MOVIES
 
     init {
-        movieType =
-            savedStateHandle.get<Int>(Constants.MOVIE_TYPE) ?: Constants.NOW_PLAYING_MOVIES
+        moviePath =
+            savedStateHandle.get<String>(Constants.MOVIE_PATH) ?: HttpParams.NOW_PLAYING_MOVIES
     }
 
-    val moviePagingFlow = repository.getMovies(movieType)
+    val moviePagingFlow = repository.getMovies(moviePath)
         .map { pagingData ->
             pagingData.map {
                 mapper.toMovie(it)

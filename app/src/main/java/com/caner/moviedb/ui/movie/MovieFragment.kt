@@ -41,10 +41,10 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     companion object {
-        fun newInstance(movieType: Int): MovieFragment {
+        fun newInstance(moviePath: String): MovieFragment {
             return MovieFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(Constants.MOVIE_TYPE, movieType)
+                    putString(Constants.MOVIE_PATH, moviePath)
                 }
             }
         }
