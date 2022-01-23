@@ -3,7 +3,7 @@ package com.android.test.repository
 import com.android.test.utils.`should be`
 import com.caner.core.network.ApiError
 import com.caner.data.model.remote.TokenResponse
-import com.caner.domain.repository.NewTokenRepository
+import com.caner.data.repository.NewTokenRepository
 import com.caner.core.network.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery

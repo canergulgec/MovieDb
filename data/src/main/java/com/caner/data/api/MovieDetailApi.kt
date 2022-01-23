@@ -1,4 +1,4 @@
-package com.caner.domain.api
+package com.caner.data.api
 
 import com.caner.data.model.remote.MovieDetailResponse
 import retrofit2.Response

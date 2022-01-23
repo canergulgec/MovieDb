@@ -1,9 +1,9 @@
-package com.caner.domain.repository
+package com.caner.data.repository
 
 import com.caner.core.extension.toResource
 import com.caner.core.network.Resource
+import com.caner.data.api.NewTokenApi
 import com.caner.data.model.remote.TokenResponse
-import com.caner.domain.api.NewTokenApi
 import javax.inject.Inject
 
 class NewTokenRepositoryImp @Inject constructor(

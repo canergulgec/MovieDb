@@ -1,9 +1,9 @@
-package com.caner.domain.repository
+package com.caner.data.repository
 
 import com.caner.core.extension.toResource
 import com.caner.core.network.Resource
+import com.caner.data.api.SearchApi
 import com.caner.data.model.remote.MovieResponse
-import com.caner.domain.api.SearchApi
 import javax.inject.Inject
 
 class SearchRepositoryImp @Inject constructor(

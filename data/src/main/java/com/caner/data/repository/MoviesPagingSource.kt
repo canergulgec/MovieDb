@@ -1,32 +1,29 @@
-package com.caner.domain.pagingsource
+package com.caner.data.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.caner.data.mapper.MovieMapper
-import com.caner.data.model.Movie
-import com.caner.domain.api.MovieApi
+import com.caner.data.api.MovieApi
 import com.caner.core.Constants
+import com.caner.data.model.remote.MovieResponseItem
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
-    private val movieApi: MovieApi,
-    private val movieMapper: MovieMapper,
-    private val movieType: Int
-) : PagingSource<Int, Movie>() {
+    private val service: MovieApi,
+    private val type: Int
+) : PagingSource<Int, MovieResponseItem>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponseItem> {
         val page = params.key ?: Constants.MOVIE_STARTING_PAGE_INDEX
 
         return try {
-            val apiRequest = if (movieType == Constants.NOW_PLAYING_MOVIES) {
-                movieApi.getNowPlayingMovies(getParams(page))
+            val apiRequest = if (type == Constants.NOW_PLAYING_MOVIES) {
+                service.getNowPlayingMovies(getParams(page))
             } else {
-                movieApi.getUpcomingMovies(getParams(page))
+                service.getUpcomingMovies(getParams(page))
             }
             apiRequest.run {
-                val data = movieMapper.to(this)
                 LoadResult.Page(
-                    data = data.movies,
+                    data = this.results,
                     prevKey = if (page == Constants.MOVIE_STARTING_PAGE_INDEX) null else page - 1,
                     nextKey = if (page == this.total) null else page + 1
                 )
@@ -44,7 +41,7 @@ class MoviesPagingSource @Inject constructor(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, MovieResponseItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)

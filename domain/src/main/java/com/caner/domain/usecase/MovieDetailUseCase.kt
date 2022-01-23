@@ -1,11 +1,11 @@
 package com.caner.domain.usecase
 
-import com.caner.core.extension.toModel
 import com.caner.data.model.MovieDetailModel
 import com.caner.core.network.Resource
-import com.caner.data.mapper.MovieDetailMapper
+import com.caner.domain.mapper.MovieDetailMapper
 import com.caner.core.qualifier.IoDispatcher
-import com.caner.domain.repository.MovieDetailRepository
+import com.caner.data.repository.MovieDetailRepository
+import com.caner.domain.mapper.mapTo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -19,7 +19,7 @@ class MovieDetailUseCase @Inject constructor(
 
     override fun buildRequest(params: Int?) = flow {
         when (val response = repository.getMovieDetail(params)) {
-            is Resource.Success -> emit(response.data.toModel(mapper))
+            is Resource.Success -> emit(response.data.mapTo(mapper))
             is Resource.Loading -> emit(Resource.Loading(response.status))
             is Resource.Error -> emit(Resource.Error(response.error))
         }

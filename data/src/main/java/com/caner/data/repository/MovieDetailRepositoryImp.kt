@@ -1,9 +1,9 @@
-package com.caner.domain.repository
+package com.caner.data.repository
 
 import com.caner.core.extension.toResource
 import com.caner.data.model.remote.MovieDetailResponse
 import com.caner.core.network.Resource
-import com.caner.domain.api.MovieDetailApi
+import com.caner.data.api.MovieDetailApi
 import javax.inject.Inject
 
 class MovieDetailRepositoryImp @Inject constructor(

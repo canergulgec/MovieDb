@@ -1,11 +1,11 @@
 package com.caner.domain.usecase
 
-import com.caner.core.extension.toModel
 import com.caner.data.model.MovieModel
 import com.caner.core.qualifier.IoDispatcher
 import com.caner.core.network.Resource
-import com.caner.data.mapper.MovieMapper
-import com.caner.domain.repository.SearchRepository
+import com.caner.domain.mapper.MovieMapper
+import com.caner.data.repository.SearchRepository
+import com.caner.domain.mapper.mapTo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -25,7 +25,7 @@ class SearchMovieUseCase @Inject constructor(
                 response.data.apply {
                     val sortedList = results.sortedByDescending { it.popularity }
                     results = sortedList
-                    emit(this.toModel(mapper))
+                    emit(this.mapTo(mapper))
                 }
             }
             is Resource.Loading -> emit(Resource.Loading(response.status))

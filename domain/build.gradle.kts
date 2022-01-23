@@ -34,5 +34,4 @@ dependencies {
     implementation(Dependencies.AndroidX.lifecycleLiveData)
     implementation(Dependencies.AndroidX.fragmentKtx)
     implementation(Dependencies.AndroidX.dataStore)
-    implementation(Dependencies.AndroidX.paging)
 }

@@ -1,12 +1,12 @@
 package com.caner.moviedb.di
 
-import com.caner.data.mapper.MovieDetailMapper
-import com.caner.data.mapper.MovieMapper
+import com.caner.domain.mapper.MovieDetailMapper
+import com.caner.domain.mapper.MovieMapper
 import com.caner.data.model.MovieDetailModel
 import com.caner.data.model.MovieModel
 import com.caner.data.model.remote.MovieDetailResponse
 import com.caner.data.model.remote.MovieResponse
-import com.caner.core.base.Mapper
+import com.caner.domain.mapper.Mapper
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

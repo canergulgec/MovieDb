@@ -3,7 +3,7 @@ package com.caner.domain.usecase
 import com.caner.data.model.remote.TokenResponse
 import com.caner.core.qualifier.IoDispatcher
 import com.caner.core.network.Resource
-import com.caner.domain.repository.NewTokenRepository
+import com.caner.data.repository.NewTokenRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject

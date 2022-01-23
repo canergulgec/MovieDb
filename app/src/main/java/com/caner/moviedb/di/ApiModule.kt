@@ -1,9 +1,9 @@
 package com.caner.moviedb.di
 
-import com.caner.domain.api.NewTokenApi
-import com.caner.domain.api.SearchApi
-import com.caner.domain.api.MovieApi
-import com.caner.domain.api.MovieDetailApi
+import com.caner.data.api.NewTokenApi
+import com.caner.data.api.SearchApi
+import com.caner.data.api.MovieApi
+import com.caner.data.api.MovieDetailApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

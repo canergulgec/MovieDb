@@ -1,6 +1,5 @@
-package com.caner.data.mapper
+package com.caner.domain.mapper
 
-import com.caner.core.base.Mapper
 import com.caner.data.model.MovieImage
 import com.caner.data.model.MovieDetailModel
 import com.caner.data.model.remote.MovieDetailResponse
@@ -10,29 +9,6 @@ import javax.inject.Inject
 
 class MovieDetailMapper @Inject constructor() :
     Mapper<MovieDetailResponse, MovieDetailModel> {
-
-    override fun from(e: MovieDetailModel): MovieDetailResponse {
-        return with(e) {
-            MovieDetailResponse(
-                movieId,
-                popularity,
-                video,
-                adult,
-                backdrop?.original,
-                poster?.original,
-                genres,
-                title,
-                overview,
-                imdbId,
-                runtime,
-                voteAverage,
-                voteCount,
-                releaseDate?.let { date ->
-                    SimpleDateFormat("yyyy-mm-dd", Locale.getDefault()).format(date)
-                }
-            )
-        }
-    }
 
     override fun to(t: MovieDetailResponse): MovieDetailModel {
         return with(t) {

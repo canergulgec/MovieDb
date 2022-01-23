@@ -12,4 +12,5 @@ object Constants {
     const val CHANNEL_ID = "NotificationChannelId"
     const val NIGHT_MODE = "NIGHT_MODE"
     const val MOVIE_STARTING_PAGE_INDEX = 1
+    const val NETWORK_PAGE_SIZE = 20
 }
