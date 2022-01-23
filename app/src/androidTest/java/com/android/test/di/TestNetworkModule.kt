@@ -19,7 +19,7 @@ import javax.inject.Named
     components = [SingletonComponent::class],
     replaces = [NetworkModule::class]
 )
-class TestRetrofitModule {
+class TestNetworkModule {
 
     @Provides
     @Named("BASE_URL")

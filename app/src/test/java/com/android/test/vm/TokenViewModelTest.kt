@@ -54,8 +54,6 @@ class TokenViewModelTest {
             emit(Resource.Success(userDetails))
             emit(Resource.Loading(false))
         }
-
-        // When
         val tokenSlot = slot<Resource<TokenResponse>>()
         coEvery { useCase.execute() } returns flow
 
@@ -64,9 +62,10 @@ class TokenViewModelTest {
             list.add(tokenSlot.captured)
         }
 
-        // Then
+        // When
         viewModel.getNewToken()
 
+        // Then
         list.forEachIndexed { index, resource ->
             if (index == 0 && resource is Resource.Loading) {
                 resource.status `should be` true
@@ -91,8 +90,6 @@ class TokenViewModelTest {
             emit(Resource.Error(error))
             emit(Resource.Loading(false))
         }
-
-        // When
         val tokenSlot = slot<Resource<TokenResponse>>()
         coEvery { useCase.execute() } returns flow
 
@@ -101,9 +98,10 @@ class TokenViewModelTest {
             list.add(tokenSlot.captured)
         }
 
-        // Then
+        // When
         viewModel.getNewToken()
 
+        // Then
         list.forEachIndexed { index, resource ->
             if (index == 0 && resource is Resource.Loading) {
                 resource.status `should be` true

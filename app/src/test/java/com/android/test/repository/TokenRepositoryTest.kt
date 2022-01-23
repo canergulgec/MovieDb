@@ -26,14 +26,13 @@ class TokenRepositoryTest {
     fun `new token flow emits successfully`() = runBlocking {
         // Given
         val userDetails = TokenResponse(true, "1234567")
+        coEvery { repository.getNewToken() } returns Resource.Success(userDetails)
 
         // When
-        coEvery { repository.getNewToken() } returns Resource.Success(userDetails)
         val response = repository.getNewToken()
 
         // Then
         coVerify { repository.getNewToken() }
-
         response `should be` Resource.Success(userDetails)
         if (response is Resource.Success) {
             response.data.success `should be` userDetails.success
@@ -45,14 +44,13 @@ class TokenRepositoryTest {
     fun `new token flow emits error`() = runBlocking {
         // Given
         val error = ApiError(1, "Error happened")
+        coEvery { repository.getNewToken() } returns Resource.Error(error)
 
         // When
-        coEvery { repository.getNewToken() } returns Resource.Error(error)
         val response = repository.getNewToken()
 
         // Then
         coVerify { repository.getNewToken() }
-
         response `should be` Resource.Error(error)
         if (response is Resource.Error) {
             response.error.code `should be` error.code

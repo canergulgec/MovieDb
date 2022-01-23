@@ -44,8 +44,6 @@ class MovieDetailUseCaseTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-
-        // When
         coEvery { useCase.execute(any()) } returns flow
 
         // Then
@@ -59,6 +57,7 @@ class MovieDetailUseCaseTest {
             }
         }
 
+        // When
         useCase.execute(any())
         coVerify { useCase.execute(any()) }
 
@@ -74,8 +73,6 @@ class MovieDetailUseCaseTest {
             emit(Resource.Error(error))
             emit(Resource.Loading(false))
         }
-
-        // When
         coEvery { useCase.execute(any()) } returns flow
 
         // Then
@@ -89,6 +86,7 @@ class MovieDetailUseCaseTest {
             }
         }
 
+        // When
         useCase.execute(any())
         coVerify { useCase.execute(any()) }
 

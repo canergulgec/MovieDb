@@ -51,8 +51,6 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-
-        // When
         coEvery { useCase.execute(any()) } returns flow
 
         // Then
@@ -69,6 +67,7 @@ class MovieDetailViewModelTest {
             }
         }
 
+        // When
         viewModel.getMovieDetail(any())
         coVerify { useCase.execute(any()) }
 
@@ -84,15 +83,14 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-
-        // When
         coEvery { useCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
+            // When
             viewModel.getMovieDetail(any())
 
+            // Then
             awaitItem().isFetchingMovieDetail `should be` true
-
             val state = awaitItem()
             state.movieDetailModel `should not be` null
             state.movieDetailModel?.movieId `should be` detailModel.movieId
@@ -112,13 +110,13 @@ class MovieDetailViewModelTest {
             emit(Resource.Error(ApiError(1, "Unknown error")))
             emit(Resource.Loading(false))
         }
-
-        // When
         coEvery { useCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
+            // When
             viewModel.getMovieDetail(any())
 
+            // Then
             awaitItem().isFetchingMovieDetail `should be` true
             awaitItem().userMessages.isNotEmpty() `should be` true
 
