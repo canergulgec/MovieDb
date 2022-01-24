@@ -1,5 +1,6 @@
 package com.caner.domain.usecase
 
+import com.caner.core.base.BaseUseCase
 import com.caner.data.model.MovieDetailModel
 import com.caner.core.network.Resource
 import com.caner.domain.mapper.MovieDetailMapper

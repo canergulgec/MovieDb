@@ -1,5 +1,6 @@
 package com.caner.domain.usecase
 
+import com.caner.core.base.BaseUseCase
 import com.caner.data.model.MovieModel
 import com.caner.core.qualifier.IoDispatcher
 import com.caner.core.network.Resource

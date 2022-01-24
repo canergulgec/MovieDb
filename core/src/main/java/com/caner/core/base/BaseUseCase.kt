@@ -1,4 +1,4 @@
-package com.caner.domain.usecase
+package com.caner.core.base
 
 import com.caner.core.network.Resource
 import com.caner.core.network.ApiError
