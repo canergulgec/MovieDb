@@ -29,7 +29,6 @@ dependencies {
     appCompat()
     daggerHilt()
 
-    implementation(Dependencies.AndroidX.recyclerView)
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.Network.gsonConverter)
     implementation(Dependencies.Network.retrofit)

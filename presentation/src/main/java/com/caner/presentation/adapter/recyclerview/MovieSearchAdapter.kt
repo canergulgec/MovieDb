@@ -6,16 +6,16 @@ import com.caner.data.model.Movie
 import com.caner.presentation.adapter.viewholder.MovieSearchViewHolder
 import com.caner.presentation.diff.MovieItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
-import com.caner.presentation.databinding.RecyclerviewMovieSearchBinding
+import com.caner.presentation.databinding.ItemMovieSearchBinding
 
 class MovieSearchAdapter(private val clickFunc: (Movie?) -> Unit) :
-    BaseRecyclerAdapter<Movie, RecyclerviewMovieSearchBinding, MovieSearchViewHolder>(
+    BaseRecyclerAdapter<Movie, ItemMovieSearchBinding, MovieSearchViewHolder>(
         MovieItemDiffUtil()
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSearchViewHolder {
         val view =
-            RecyclerviewMovieSearchBinding.inflate(
+            ItemMovieSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

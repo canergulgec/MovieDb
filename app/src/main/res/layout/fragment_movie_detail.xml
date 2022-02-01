@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/red" />
+            tools:background="@tools:sample/backgrounds/scenic" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/backIv"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
             tools:ignore="ContentDescription"
-            tools:srcCompat="@color/teal_200" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/movieTitleTv"
@@ -108,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moviePosterIv"
-            tools:listitem="@layout/recyclerview_genre" />
+            tools:listitem="@layout/item_genre" />
 
         <TextView
             android:id="@+id/movieDetailTv"

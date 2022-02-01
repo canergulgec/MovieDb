@@ -3,12 +3,12 @@ package com.caner.presentation.adapter.viewholder
 import com.caner.data.model.Movie
 import com.caner.core.base.BaseViewHolder
 import com.caner.core.extension.use
-import com.caner.presentation.databinding.RecyclerviewMovieBinding
+import com.caner.presentation.databinding.ItemMovieBinding
 
 class MovieViewHolder constructor(
-    private val movieBinding: RecyclerviewMovieBinding,
+    private val movieBinding: ItemMovieBinding,
     clickFunc: (Movie?) -> Unit
-) : BaseViewHolder<Movie, RecyclerviewMovieBinding>(movieBinding) {
+) : BaseViewHolder<Movie, ItemMovieBinding>(movieBinding) {
 
     init {
         itemView.setOnClickListener {

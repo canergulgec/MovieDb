@@ -3,11 +3,11 @@ package com.caner.presentation.adapter.viewholder
 import com.caner.data.model.remote.MovieGenre
 import com.caner.core.base.BaseViewHolder
 import com.caner.core.extension.use
-import com.caner.presentation.databinding.RecyclerviewGenreBinding
+import com.caner.presentation.databinding.ItemGenreBinding
 
 class MovieGenresViewHolder constructor(
-    private val genreBinding: RecyclerviewGenreBinding
-) : BaseViewHolder<MovieGenre, RecyclerviewGenreBinding>(genreBinding) {
+    private val genreBinding: ItemGenreBinding
+) : BaseViewHolder<MovieGenre, ItemGenreBinding>(genreBinding) {
 
     override fun bind() {
         getRowItem()?.apply {

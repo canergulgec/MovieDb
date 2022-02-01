@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchEt"
-        tools:listitem="@layout/recyclerview_movie_search" />
+        tools:listitem="@layout/item_movie_search" />
 
     <TextView
         android:id="@+id/emptyViewTv"

@@ -15,17 +15,12 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected val binding: VB
         get() = _binding as VB
 
-    private lateinit var progressDialog: CustomProgressDialog
+    private val progressDialog by lazy { CustomProgressDialog(this, R.style.ProgressDialogStyle) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = bindLayout.invoke(layoutInflater)
         setContentView(requireNotNull(_binding).root)
-        progressDialog = CustomProgressDialog(
-            this,
-            R.style.ProgressDialogStyle
-        )
-
         initView(savedInstanceState)
     }
 

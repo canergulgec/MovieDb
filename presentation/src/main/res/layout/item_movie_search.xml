@@ -30,7 +30,7 @@
             app:path='@{item.poster.original ?? ""}'
             app:radius="@{8f}"
             tools:ignore="ContentDescription"
-            tools:srcCompat="@color/purple_500" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/movieTitleTv"

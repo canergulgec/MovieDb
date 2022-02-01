@@ -6,16 +6,16 @@ import com.caner.data.model.remote.MovieGenre
 import com.caner.presentation.adapter.viewholder.MovieGenresViewHolder
 import com.caner.presentation.diff.MovieGenreItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
-import com.caner.presentation.databinding.RecyclerviewGenreBinding
+import com.caner.presentation.databinding.ItemGenreBinding
 
 class MovieGenresAdapter :
-    BaseRecyclerAdapter<MovieGenre, RecyclerviewGenreBinding, MovieGenresViewHolder>(
+    BaseRecyclerAdapter<MovieGenre, ItemGenreBinding, MovieGenresViewHolder>(
         MovieGenreItemDiffUtil()
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieGenresViewHolder {
         val view =
-            RecyclerviewGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieGenresViewHolder(view)
     }
 }

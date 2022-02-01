@@ -31,7 +31,5 @@ dependencies {
     daggerHilt()
     retrofit()
 
-    implementation(Dependencies.AndroidX.lifecycleLiveData)
-    implementation(Dependencies.AndroidX.fragmentKtx)
     implementation(Dependencies.AndroidX.dataStore)
 }
