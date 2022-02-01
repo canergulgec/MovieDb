@@ -43,4 +43,5 @@ dependencies {
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Dagger.hiltWorkManager)
     implementation(Dependencies.Debugging.timber)
+    implementation(Dependencies.ImageLoader.coil)
 }

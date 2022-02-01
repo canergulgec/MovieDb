@@ -1,4 +1,4 @@
-package com.caner.core.bindingadapter
+package com.caner.presentation.adapter.bindingadapter
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

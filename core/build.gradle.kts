@@ -35,6 +35,5 @@ dependencies {
     implementation(Dependencies.AndroidX.fragmentKtx)
     implementation(Dependencies.AndroidX.cardView)
     implementation(Dependencies.AndroidX.paging)
-    implementation(Dependencies.ImageLoader.coil)
     implementation(Dependencies.Network.retrofit)
 }

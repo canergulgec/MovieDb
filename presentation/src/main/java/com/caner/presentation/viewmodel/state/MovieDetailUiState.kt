@@ -1,4 +1,4 @@
-package com.caner.presentation.state
+package com.caner.presentation.viewmodel.state
 
 import com.caner.data.model.MovieDetailModel
 import com.caner.core.network.UserMessage

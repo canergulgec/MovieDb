@@ -1,4 +1,4 @@
-package com.caner.core.decoration
+package com.caner.presentation.adapter.decoration
 
 import android.graphics.Rect
 import android.view.View

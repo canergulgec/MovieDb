@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.caner.data.model.remote.MovieGenre
 import com.caner.presentation.adapter.viewholder.MovieGenresViewHolder
-import com.caner.presentation.diff.MovieGenreItemDiffUtil
+import com.caner.presentation.adapter.diff.MovieGenreItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
 import com.caner.presentation.databinding.ItemGenreBinding
 

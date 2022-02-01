@@ -12,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
 import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.caner.core.base.BaseFragment
-import com.caner.core.decoration.HorizontalSpaceItemDecoration
-import com.caner.core.decoration.VerticalSpaceItemDecoration
+import com.caner.presentation.adapter.decoration.HorizontalSpaceItemDecoration
+import com.caner.presentation.adapter.decoration.VerticalSpaceItemDecoration
 import com.caner.core.extension.dp2px
 import com.caner.core.extension.init
 import com.caner.core.extension.toast

@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/movieIv"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="240dp"
                 android:scaleType="centerCrop"
                 app:path='@{movie.poster.original ?? ""}'
                 app:radius="@{8f}"
