@@ -20,7 +20,7 @@ tasks {
         checkForGradleUpdate = true
         outputFormatter = "json"
         reportfileName = "dependency-report"
-        outputDir = "${project.buildDir}/reports/dependencyUpdates"
+        outputDir = "${projectDir}/reports/dependencyUpdates"
     }
 }
 
