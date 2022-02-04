@@ -9,10 +9,9 @@ import com.android.test.utils.`should not be`
 import com.caner.core.network.ApiError
 import com.caner.core.network.Resource
 import com.caner.domain.usecase.MovieDetailUseCase
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
@@ -31,19 +30,17 @@ class MovieDetailViewModelTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    @MockK
-    private lateinit var useCase: MovieDetailUseCase
+    private val mockUseCas = mockk<MovieDetailUseCase>()
 
-    private val viewModel by lazy {
-        MovieDetailViewModel(useCase)
-    }
+    private lateinit var viewModel: MovieDetailViewModel
 
     @Before
-    fun setUp() =
-        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
+    fun setUpViewModel() {
+        viewModel = MovieDetailViewModel(mockUseCas)
+    }
 
     @Test
-    fun movieDetailFlowMustReturnSuccess() = runBlockingTest {
+    fun `Get movie detail from viewModel should return success case`() = runBlockingTest {
         // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
@@ -51,7 +48,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { useCase.execute(any()) } returns flow
+        coEvery { mockUseCas.execute(any()) } returns flow
 
         // Then
         val job = launch {
@@ -69,13 +66,13 @@ class MovieDetailViewModelTest {
 
         // When
         viewModel.getMovieDetail(any())
-        coVerify { useCase.execute(any()) }
+        coVerify { mockUseCas.execute(any()) }
 
         job.cancel()
     }
 
     @Test
-    fun movieDetailFlowMustReturnSuccessWithTurbine() = runBlockingTest {
+    fun `Get movie detail from viewModel should return success case 2`() = runBlockingTest {
         // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
@@ -83,7 +80,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { useCase.execute(any()) } returns flow
+        coEvery { mockUseCas.execute(any()) } returns flow
 
         viewModel.uiState.test {
             // When
@@ -99,18 +96,18 @@ class MovieDetailViewModelTest {
             cancelAndIgnoreRemainingEvents()
         }
 
-        coVerify { useCase.execute(any()) }
+        coVerify { mockUseCas.execute(any()) }
     }
 
     @Test
-    fun movieDetailFlowMustReturnErrorWithTurbine() = runBlockingTest {
+    fun `Get movie detail from viewModel should return error case`() = runBlockingTest {
         // Given
         val flow = flow {
             emit(Resource.Loading(true))
             emit(Resource.Error(ApiError(1, "Unknown error")))
             emit(Resource.Loading(false))
         }
-        coEvery { useCase.execute(any()) } returns flow
+        coEvery { mockUseCas.execute(any()) } returns flow
 
         viewModel.uiState.test {
             // When

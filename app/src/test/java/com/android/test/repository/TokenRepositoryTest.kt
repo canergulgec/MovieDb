@@ -5,34 +5,27 @@ import com.caner.core.network.ApiError
 import com.caner.data.model.remote.TokenResponse
 import com.caner.data.repository.NewTokenRepository
 import com.caner.core.network.Resource
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Test
 
 class TokenRepositoryTest {
 
-    @MockK
-    private lateinit var repository: NewTokenRepository
-
-    @Before
-    fun setUp() =
-        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
+    private val mockRepository = mockk<NewTokenRepository>()
 
     @Test
     fun `new token flow emits successfully`() = runBlocking {
         // Given
         val userDetails = TokenResponse(true, "1234567")
-        coEvery { repository.getNewToken() } returns Resource.Success(userDetails)
+        coEvery { mockRepository.getNewToken() } returns Resource.Success(userDetails)
 
         // When
-        val response = repository.getNewToken()
+        val response = mockRepository.getNewToken()
 
         // Then
-        coVerify { repository.getNewToken() }
+        coVerify { mockRepository.getNewToken() }
         response `should be` Resource.Success(userDetails)
         if (response is Resource.Success) {
             response.data.success `should be` userDetails.success
@@ -44,13 +37,13 @@ class TokenRepositoryTest {
     fun `new token flow emits error`() = runBlocking {
         // Given
         val error = ApiError(1, "Error happened")
-        coEvery { repository.getNewToken() } returns Resource.Error(error)
+        coEvery { mockRepository.getNewToken() } returns Resource.Error(error)
 
         // When
-        val response = repository.getNewToken()
+        val response = mockRepository.getNewToken()
 
         // Then
-        coVerify { repository.getNewToken() }
+        coVerify { mockRepository.getNewToken() }
         response `should be` Resource.Error(error)
         if (response is Resource.Error) {
             response.error.code `should be` error.code

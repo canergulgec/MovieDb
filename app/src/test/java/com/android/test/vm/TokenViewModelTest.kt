@@ -9,11 +9,7 @@ import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
 import com.caner.core.network.ApiError
 import com.caner.core.network.Resource
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.impl.annotations.MockK
-import io.mockk.slot
+import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
@@ -30,23 +26,22 @@ class TokenViewModelTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    @MockK
-    private lateinit var useCase: NewTokenUseCase
+    private val mockUseCase = mockk<NewTokenUseCase>()
 
-    private val viewModel by lazy { ProfileViewModel(useCase) }
+    private lateinit var viewModel: ProfileViewModel
 
-    @MockK
-    private lateinit var newSessionObserver: Observer<Resource<TokenResponse>>
+    private val newSessionObserver = mockk<Observer<Resource<TokenResponse>>>()
 
     // create list to store values
     private val list = arrayListOf<Resource<TokenResponse>>()
 
     @Before
-    fun setUp() =
-        MockKAnnotations.init(this, relaxUnitFun = true) // turn relaxUnitFun on for all mocks
+    fun setUpViewModel() {
+        viewModel = ProfileViewModel(mockUseCase)
+    }
 
     @Test
-    fun newTokenFlowEmitsSuccessfullyWithArgumentCaptor() = runBlockingTest {
+    fun `Get token from viewModel should return success case`() = runBlockingTest {
         // Given
         val userDetails = TokenResponse(true, "1234567")
         val flow = flow {
@@ -55,7 +50,7 @@ class TokenViewModelTest {
             emit(Resource.Loading(false))
         }
         val tokenSlot = slot<Resource<TokenResponse>>()
-        coEvery { useCase.execute() } returns flow
+        coEvery { mockUseCase.execute() } returns flow
 
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
         coEvery { newSessionObserver.onChanged(capture(tokenSlot)) } answers {
@@ -78,11 +73,11 @@ class TokenViewModelTest {
             }
         }
 
-        coVerify { useCase.execute() }
+        coVerify { mockUseCase.execute() }
     }
 
     @Test
-    fun newTokenFlowEmitsError() = coroutineScope.runBlockingTest {
+    fun `Get token from viewModel should return error case`() = runBlockingTest {
         // Given
         val error = ApiError(code = 404)
         val flow = flow {
@@ -91,7 +86,7 @@ class TokenViewModelTest {
             emit(Resource.Loading(false))
         }
         val tokenSlot = slot<Resource<TokenResponse>>()
-        coEvery { useCase.execute() } returns flow
+        coEvery { mockUseCase.execute() } returns flow
 
         viewModel.newSessionLiveData.observeForever(newSessionObserver)
         coEvery { newSessionObserver.onChanged(capture(tokenSlot)) } answers {
@@ -114,6 +109,6 @@ class TokenViewModelTest {
             }
         }
 
-        coVerify { useCase.execute() }
+        coVerify { mockUseCase.execute() }
     }
 }
