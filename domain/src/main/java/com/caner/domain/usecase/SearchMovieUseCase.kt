@@ -2,22 +2,18 @@ package com.caner.domain.usecase
 
 import com.caner.core.base.BaseUseCase
 import com.caner.data.model.MovieModel
-import com.caner.core.qualifier.IoDispatcher
 import com.caner.core.network.Resource
 import com.caner.domain.mapper.MovieMapper
 import com.caner.data.repository.SearchRepository
 import com.caner.domain.mapper.mapTo
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class SearchMovieUseCase @Inject constructor(
     private val repository: SearchRepository,
-    private val mapper: MovieMapper,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    private val mapper: MovieMapper
 ) : BaseUseCase<MovieModel, String?>() {
 
     override fun buildRequest(params: String?) = flow {
@@ -35,5 +31,4 @@ class SearchMovieUseCase @Inject constructor(
     }
         .onStart { emit(Resource.Loading(true)) }
         .onCompletion { emit(Resource.Loading(false)) }
-        .flowOn(dispatcher)
 }

@@ -4,18 +4,14 @@ import com.caner.core.base.BaseUseCase
 import com.caner.data.model.MovieDetailModel
 import com.caner.core.network.Resource
 import com.caner.domain.mapper.MovieDetailMapper
-import com.caner.core.qualifier.IoDispatcher
 import com.caner.data.repository.MovieDetailRepository
 import com.caner.domain.mapper.mapTo
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class MovieDetailUseCase @Inject constructor(
     private val repository: MovieDetailRepository,
-    private val mapper: MovieDetailMapper,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    private val mapper: MovieDetailMapper
 ) : BaseUseCase<MovieDetailModel, Int?>() {
 
     override fun buildRequest(params: Int?) = flow {
@@ -25,5 +21,4 @@ class MovieDetailUseCase @Inject constructor(
             is Resource.Error -> emit(Resource.Error(response.error))
         }
     }
-        .flowOn(dispatcher)
 }

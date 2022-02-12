@@ -2,8 +2,10 @@ package com.caner.core.base
 
 import com.caner.core.network.Resource
 import com.caner.core.network.ApiError
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 
 /**
  * Base UseCase class
@@ -18,4 +20,5 @@ abstract class BaseUseCase<M, Params> {
         buildRequest(params).catch { error ->
             emit(Resource.Error(ApiError(4, error.message)))
         }
+            .flowOn(Dispatchers.IO)
 }

@@ -12,7 +12,7 @@ object Versions {
         const val appCompatVersion = "1.4.1"
         const val coreKtxVersion = "1.7.0"
         const val fragmentKtxVersion = "1.4.0"
-        const val lifecycleVersion = "2.4.0"
+        const val lifecycleVersion = "2.5.0-alpha02"
         const val constraintLayoutVersion = "2.1.2"
         const val multiDexVersion = "2.0.1"
         const val recyclerViewVersion = "1.2.1"
