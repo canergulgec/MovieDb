@@ -7,6 +7,8 @@ import com.caner.domain.mapper.MovieDetailMapper
 import com.caner.data.repository.MovieDetailRepository
 import com.caner.domain.mapper.mapTo
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class MovieDetailUseCase @Inject constructor(
@@ -15,10 +17,11 @@ class MovieDetailUseCase @Inject constructor(
 ) : BaseUseCase<MovieDetailModel, Int?>() {
 
     override fun buildRequest(params: Int?) = flow {
-        when (val response = repository.getMovieDetail(params)) {
-            is Resource.Success -> emit(response.data.mapTo(mapper))
-            is Resource.Loading -> emit(Resource.Loading(response.status))
-            is Resource.Error -> emit(Resource.Error(response.error))
+        val response = repository.getMovieDetail(params)
+        if (response is Resource.Success) {
+            emit(response.data.mapTo(mapper))
         }
     }
+        .onStart { emit(Resource.Loading(true)) }
+        .onCompletion { emit(Resource.Loading(false)) }
 }

@@ -1,7 +1,6 @@
 package com.android.test.repository
 
 import com.android.test.utils.`should be`
-import com.caner.core.network.ApiError
 import com.caner.data.model.remote.TokenResponse
 import com.caner.data.repository.NewTokenRepository
 import com.caner.core.network.Resource
@@ -36,7 +35,7 @@ class TokenRepositoryTest {
     @Test
     fun `new token flow emits error`() = runBlocking {
         // Given
-        val error = ApiError(1, "Error happened")
+        val error = Throwable( "Test error")
         coEvery { mockRepository.getNewToken() } returns Resource.Error(error)
 
         // When
@@ -46,7 +45,6 @@ class TokenRepositoryTest {
         coVerify { mockRepository.getNewToken() }
         response `should be` Resource.Error(error)
         if (response is Resource.Error) {
-            response.error.code `should be` error.code
             response.error.message `should be` error.message
         }
     }

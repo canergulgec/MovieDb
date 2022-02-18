@@ -7,7 +7,6 @@ import com.caner.domain.usecase.NewTokenUseCase
 import com.caner.presentation.viewmodel.ProfileViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
-import com.caner.core.network.ApiError
 import com.caner.core.network.Resource
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -79,7 +78,7 @@ class TokenViewModelTest {
     @Test
     fun `Get token from viewModel should return error case`() = runBlockingTest {
         // Given
-        val error = ApiError(code = 404)
+        val error = Throwable(message = "Test error")
         val flow = flow {
             emit(Resource.Loading(true))
             emit(Resource.Error(error))
@@ -102,7 +101,7 @@ class TokenViewModelTest {
                 resource.status `should be` true
             }
             if (index == 1 && resource is Resource.Error) {
-                resource.error.code `should be` error.code
+                resource.error.message `should be` error.message
             }
             if (index == 2 && resource is Resource.Loading) {
                 resource.status `should be` false

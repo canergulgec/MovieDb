@@ -50,17 +50,15 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
-                    // Loading state
                     showLoading(uiState.isFetchingMovieDetail)
-
                     uiState.movieDetailModel?.let {
                         binding.item = it
                         movieGenresAdapter.submitList(it.genres)
                     }
 
-                    uiState.userMessages.firstOrNull()?.let { userMessage ->
+                    uiState.errorMessage?.let { userMessage ->
                         toast("error happened: ${userMessage.message}")
-                        viewModel.userMessageShown(userMessage.id)
+                        viewModel.userMessageShown()
                     }
                 }
             }

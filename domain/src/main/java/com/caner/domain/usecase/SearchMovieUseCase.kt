@@ -17,16 +17,13 @@ class SearchMovieUseCase @Inject constructor(
 ) : BaseUseCase<MovieModel, String?>() {
 
     override fun buildRequest(params: String?) = flow {
-        when (val response = repository.searchMovie(params)) {
-            is Resource.Success -> {
-                response.data.apply {
-                    val sortedList = results.sortedByDescending { it.popularity }
-                    results = sortedList
-                    emit(this.mapTo(mapper))
-                }
+        val response = repository.searchMovie(params)
+        if (response is Resource.Success) {
+            response.data.apply {
+                val sortedList = results.sortedByDescending { it.popularity }
+                results = sortedList
+                emit(this.mapTo(mapper))
             }
-            is Resource.Loading -> emit(Resource.Loading(response.status))
-            is Resource.Error -> emit(Resource.Error(response.error))
         }
     }
         .onStart { emit(Resource.Loading(true)) }

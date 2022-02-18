@@ -6,7 +6,6 @@ import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
 import com.android.test.utils.`should not be`
-import com.caner.core.network.ApiError
 import com.caner.core.network.Resource
 import com.caner.domain.usecase.MovieDetailUseCase
 import io.mockk.coEvery
@@ -30,13 +29,13 @@ class MovieDetailViewModelTest {
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
 
-    private val mockUseCas = mockk<MovieDetailUseCase>()
+    private val mockUseCase = mockk<MovieDetailUseCase>()
 
     private lateinit var viewModel: MovieDetailViewModel
 
     @Before
     fun setUpViewModel() {
-        viewModel = MovieDetailViewModel(mockUseCas)
+        viewModel = MovieDetailViewModel(mockUseCase)
     }
 
     @Test
@@ -48,25 +47,26 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCas.execute(any()) } returns flow
+        coEvery { mockUseCase.execute(any()) } returns flow
 
         // Then
         val job = launch {
             viewModel.uiState.collectIndexed { index, value ->
                 when (index) {
-                    0 -> assert(value.isFetchingMovieDetail)
-                    1 -> {
+                    0 -> value.isFetchingMovieDetail `should be` false
+                    1 -> value.isFetchingMovieDetail `should be` true
+                    2 -> {
                         value.movieDetailModel `should not be` null
                         value.movieDetailModel?.movieId `should be` detailModel.movieId
-                        value.isFetchingMovieDetail `should be` false
                     }
+                    3 -> value.isFetchingMovieDetail `should be` false
                 }
             }
         }
 
         // When
         viewModel.getMovieDetail(any())
-        coVerify { mockUseCas.execute(any()) }
+        coVerify { mockUseCase.execute(any()) }
 
         job.cancel()
     }
@@ -80,23 +80,27 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCas.execute(any()) } returns flow
+        coEvery { mockUseCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
             // When
             viewModel.getMovieDetail(any())
 
             // Then
+            awaitItem().isFetchingMovieDetail `should be` false
             awaitItem().isFetchingMovieDetail `should be` true
+
             val state = awaitItem()
             state.movieDetailModel `should not be` null
             state.movieDetailModel?.movieId `should be` detailModel.movieId
+
+            awaitItem().isFetchingMovieDetail `should be` false
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()
         }
 
-        coVerify { mockUseCas.execute(any()) }
+        coVerify { mockUseCase.execute(any()) }
     }
 
     @Test
@@ -104,18 +108,20 @@ class MovieDetailViewModelTest {
         // Given
         val flow = flow {
             emit(Resource.Loading(true))
-            emit(Resource.Error(ApiError(1, "Unknown error")))
+            emit(Resource.Error(Throwable( "Unknown error")))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCas.execute(any()) } returns flow
+        coEvery { mockUseCase.execute(any()) } returns flow
 
         viewModel.uiState.test {
             // When
             viewModel.getMovieDetail(any())
 
             // Then
+            awaitItem().isFetchingMovieDetail `should be` false
             awaitItem().isFetchingMovieDetail `should be` true
-            awaitItem().userMessages.isNotEmpty() `should be` true
+            awaitItem().errorMessage `should not be` null
+            awaitItem().isFetchingMovieDetail `should be` false
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()

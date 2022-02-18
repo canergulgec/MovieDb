@@ -1,3 +1,3 @@
 package com.caner.core.network
 
-data class UserMessage(val id: Long, val message: String?)
+data class UserMessage(val message: String?)

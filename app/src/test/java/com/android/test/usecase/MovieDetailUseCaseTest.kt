@@ -2,7 +2,6 @@ package com.android.test.usecase
 
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
-import com.caner.core.network.ApiError
 import com.caner.core.network.Resource
 import com.caner.data.model.MovieDetailModel
 import com.caner.domain.usecase.MovieDetailUseCase
@@ -60,7 +59,7 @@ class MovieDetailUseCaseTest {
     @Test
     fun `Get movie detail from useCase should return error case`() = runBlockingTest {
         // Given
-        val error = ApiError(1, "error")
+        val error = Throwable( "error")
         val flow = flow {
             emit(Resource.Loading(true))
             emit(Resource.Error(error))

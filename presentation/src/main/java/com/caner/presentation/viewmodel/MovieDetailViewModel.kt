@@ -9,14 +9,13 @@ import com.caner.presentation.viewmodel.state.MovieDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val useCase: MovieDetailUseCase
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(MovieDetailUiState(isFetchingMovieDetail = true))
+    private val _uiState = MutableStateFlow(MovieDetailUiState())
     val uiState: StateFlow<MovieDetailUiState> = _uiState.asStateFlow()
 
     fun getMovieDetail(movieId: Int?) {
@@ -24,34 +23,22 @@ class MovieDetailViewModel @Inject constructor(
             useCase.execute(movieId).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
-                        _uiState.update {
-                            it.copy(
-                                movieDetailModel = resource.data,
-                                isFetchingMovieDetail = false
-                            )
-                        }
+                        _uiState.update { it.copy(movieDetailModel = resource.data) }
                     }
                     is Resource.Error -> {
-                        _uiState.update { state ->
-                            val messages = state.userMessages + UserMessage(
-                                id = UUID.randomUUID().mostSignificantBits,
-                                message = resource.error.message
-                            )
-                            state.copy(userMessages = messages, isFetchingMovieDetail = false)
+                        _uiState.update {
+                            it.copy(errorMessage = UserMessage(resource.error.message))
                         }
                     }
                     is Resource.Loading -> {
-                        // No need to implement
+                        _uiState.update { it.copy(isFetchingMovieDetail = resource.status) }
                     }
                 }
             }
         }
     }
 
-    fun userMessageShown(messageId: Long) {
-        _uiState.update { currentUiState ->
-            val messages = currentUiState.userMessages.filterNot { it.id == messageId }
-            currentUiState.copy(userMessages = messages)
-        }
+    fun userMessageShown() {
+        _uiState.update { it.copy(errorMessage = null) }
     }
 }

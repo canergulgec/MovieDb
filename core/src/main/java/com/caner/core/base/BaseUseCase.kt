@@ -1,7 +1,6 @@
 package com.caner.core.base
 
 import com.caner.core.network.Resource
-import com.caner.core.network.ApiError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -18,7 +17,7 @@ abstract class BaseUseCase<M, Params> {
 
     fun execute(params: Params? = null) =
         buildRequest(params).catch { error ->
-            emit(Resource.Error(ApiError(4, error.message)))
+            emit(Resource.Error(Throwable(message = error.message)))
         }
             .flowOn(Dispatchers.IO)
 }
