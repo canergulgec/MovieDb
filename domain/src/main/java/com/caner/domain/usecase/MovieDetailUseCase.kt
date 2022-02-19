@@ -17,9 +17,10 @@ class MovieDetailUseCase @Inject constructor(
 ) : BaseUseCase<MovieDetailModel, Int?>() {
 
     override fun buildRequest(params: Int?) = flow {
-        val response = repository.getMovieDetail(params)
-        if (response is Resource.Success) {
-            emit(response.data.mapTo(mapper))
+        when (val response = repository.getMovieDetail(params)) {
+            is Resource.Success -> emit(response.data.mapTo(mapper))
+            is Resource.Error -> emit(Resource.Error(response.error))
+            is Resource.Loading -> emit(Resource.Loading(response.status))
         }
     }
         .onStart { emit(Resource.Loading(true)) }
