@@ -120,7 +120,7 @@ class MovieDetailViewModelTest {
             // Then
             awaitItem().isFetchingMovieDetail `should be` false
             awaitItem().isFetchingMovieDetail `should be` true
-            awaitItem().errorMessage `should not be` null
+            awaitItem().errorMessages.firstOrNull() `should not be` null
             awaitItem().isFetchingMovieDetail `should be` false
 
             // Cancel and ignore remaining

@@ -6,5 +6,5 @@ import com.caner.core.network.UserMessage
 data class MovieDetailUiState(
         val movieDetailModel: MovieDetailModel? = null,
         val isFetchingMovieDetail: Boolean = false,
-        val errorMessage: UserMessage? = null
+        val errorMessages: MutableList<UserMessage> = mutableListOf()
 )

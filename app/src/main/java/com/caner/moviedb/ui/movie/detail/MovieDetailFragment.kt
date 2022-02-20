@@ -56,8 +56,8 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
                         movieGenresAdapter.submitList(it.genres)
                     }
 
-                    uiState.errorMessage?.let { userMessage ->
-                        toast("error happened: ${userMessage.message}")
+                    uiState.errorMessages.firstOrNull()?.let {
+                        toast("error happened: ${it.message}")
                         viewModel.userMessageShown()
                     }
                 }

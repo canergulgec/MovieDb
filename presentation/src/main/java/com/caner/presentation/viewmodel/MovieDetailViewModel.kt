@@ -26,8 +26,9 @@ class MovieDetailViewModel @Inject constructor(
                         _uiState.update { it.copy(movieDetailModel = resource.data) }
                     }
                     is Resource.Error -> {
-                        _uiState.update {
-                            it.copy(errorMessage = UserMessage(resource.error.message))
+                        _uiState.update { state ->
+                            state.errorMessages.add(UserMessage(resource.error.message))
+                            state.copy(errorMessages = state.errorMessages)
                         }
                     }
                     is Resource.Loading -> {
@@ -39,6 +40,6 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun userMessageShown() {
-        _uiState.update { it.copy(errorMessage = null) }
+        _uiState.update { it.copy(errorMessages = mutableListOf()) }
     }
 }
