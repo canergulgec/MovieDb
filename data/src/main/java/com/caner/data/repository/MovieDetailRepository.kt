@@ -1,8 +1,7 @@
 package com.caner.data.repository
 
 import com.caner.data.model.remote.MovieDetailResponse
-import com.caner.core.network.Resource
 
 interface MovieDetailRepository {
-    suspend fun getMovieDetail(movieId: Int?): Resource<MovieDetailResponse>
+    suspend fun getMovieDetail(movieId: Int?): MovieDetailResponse
 }

@@ -13,11 +13,12 @@ import kotlinx.coroutines.flow.flowOn
  */
 abstract class BaseUseCase<M, Params> {
 
-    abstract fun buildRequest(params: Params?): Flow<Resource<M>>
+    abstract fun buildResponse(params: Params?): Flow<Resource<M>>
 
     fun execute(params: Params? = null) =
-        buildRequest(params).catch { error ->
+        buildResponse(params).catch { error ->
             emit(Resource.Error(Throwable(message = error.message)))
+            emit(Resource.Loading(false))
         }
             .flowOn(Dispatchers.IO)
 }

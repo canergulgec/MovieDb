@@ -1,8 +1,7 @@
 package com.caner.data.repository
 
-import com.caner.core.network.Resource
 import com.caner.data.model.remote.MovieResponse
 
 interface SearchRepository {
-    suspend fun searchMovie(query: String?): Resource<MovieResponse>
+    suspend fun searchMovie(query: String?): MovieResponse
 }
