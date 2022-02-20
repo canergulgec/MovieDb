@@ -40,7 +40,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private fun initObservers() {
         viewModel.newSessionLiveData.observe(viewLifecycleOwner) { resource ->
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 when (resource) {
                     is Resource.Loading -> showLoading(resource.status)
                     is Resource.Success -> prefStore.saveData(

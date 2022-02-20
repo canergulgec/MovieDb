@@ -57,7 +57,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.searchFlow.collect { resource ->
                     when (resource) {
                         is Resource.Loading -> showLoading(resource.status)

@@ -67,7 +67,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private fun initPagingFlow() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.moviePagingFlow.collectLatest { pagingData ->
                     movieAdapter.submitData(lifecycle, pagingData)
                 }
@@ -75,7 +75,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 movieAdapter.loadStateFlow
                     // Only emit when REFRESH LoadState for RemoteMediator changes.
                     .distinctUntilChangedBy { it.refresh }
