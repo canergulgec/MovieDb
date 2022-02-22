@@ -34,12 +34,12 @@ Modules are the collection of source files and build settings that allow you to 
 
 - **Data Module**
 
-  `:data` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains models and utility classes such as [DiffUtil](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil)
+  `:data` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains models, api services and repository classes
 
 - **Domain Module**
 
-  `:domain` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), that retrieves data from network calls and provides data source for the many features that requires it.
-
+  `:domain` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains use case and mapper classes
+  
 - **Presentation Module**
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
