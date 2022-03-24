@@ -8,7 +8,7 @@ import com.caner.presentation.adapter.diff.MovieItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter
 import com.caner.presentation.databinding.ItemMovieSearchBinding
 
-class MovieSearchAdapter(private val clickFunc: (Movie?) -> Unit) :
+class MovieSearchAdapter(private val onClick: (Movie?) -> Unit) :
     BaseRecyclerAdapter<Movie, ItemMovieSearchBinding, MovieSearchViewHolder>(
         MovieItemDiffUtil()
     ) {
@@ -20,6 +20,6 @@ class MovieSearchAdapter(private val clickFunc: (Movie?) -> Unit) :
                 parent,
                 false
             )
-        return MovieSearchViewHolder(view, clickFunc = clickFunc)
+        return MovieSearchViewHolder(view, clickFunc = onClick)
     }
 }

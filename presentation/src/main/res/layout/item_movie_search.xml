@@ -27,7 +27,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:path='@{item.poster.original ?? ""}'
+            app:path='@{item.poster.medium ?? ""}'
             app:radius="@{8f}"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />

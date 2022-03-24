@@ -20,9 +20,11 @@ import com.caner.presentation.viewmodel.MovieViewModel
 import com.caner.presentation.worker.NotificationWorker
 import com.caner.core.Constants
 import com.caner.core.base.BaseFragment
+import com.caner.core.extension.px
 import com.caner.core.extension.withLoadStateAll
 import com.caner.moviedb.databinding.FragmentMoviesBinding
 import com.caner.moviedb.ui.main.tabs.HomeFragmentDirections
+import com.caner.presentation.adapter.decoration.HorizontalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
@@ -57,6 +59,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
         binding.moviesRv.apply {
             setHasFixedSize(true)
+            addItemDecoration(HorizontalSpaceItemDecoration(12.px))
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),

@@ -23,15 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/movieIv"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                app:path='@{movie.poster.original ?? ""}'
+                app:path='@{movie.poster.medium ?? ""}'
                 app:radius="@{8f}"
                 tools:ignore="ContentDescription"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />

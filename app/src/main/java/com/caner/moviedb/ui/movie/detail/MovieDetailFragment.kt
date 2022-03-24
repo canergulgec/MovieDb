@@ -14,8 +14,8 @@ import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.caner.core.base.BaseFragment
 import com.caner.presentation.adapter.decoration.HorizontalSpaceItemDecoration
 import com.caner.presentation.adapter.decoration.VerticalSpaceItemDecoration
-import com.caner.core.extension.dp2px
 import com.caner.core.extension.init
+import com.caner.core.extension.px
 import com.caner.core.extension.toast
 import com.caner.moviedb.databinding.FragmentMovieDetailBinding
 import com.google.android.flexbox.AlignItems
@@ -75,8 +75,8 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
         binding.movieGenresRv.init(
             adapter = movieGenresAdapter,
             itemDecoration = listOf(
-                HorizontalSpaceItemDecoration(4.dp2px()),
-                VerticalSpaceItemDecoration(4.dp2px())
+                HorizontalSpaceItemDecoration(4.px),
+                VerticalSpaceItemDecoration(4.px)
             ),
             rvLayoutManager = flexBoxLayoutManager
         )

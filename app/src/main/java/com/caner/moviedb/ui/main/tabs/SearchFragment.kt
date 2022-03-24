@@ -10,18 +10,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.caner.data.model.Movie
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
 import com.caner.presentation.viewmodel.SearchViewModel
-import com.caner.core.network.Resource
 import com.caner.core.base.BaseFragment
+import com.caner.core.extension.*
 import com.caner.presentation.adapter.decoration.VerticalSpaceItemDecoration
-import com.caner.core.extension.init
-import com.caner.core.extension.dp2px
-import com.caner.core.extension.afterTextChanged
-import com.caner.core.extension.toast
-import com.caner.core.extension.visible
 import com.caner.moviedb.databinding.FragmentSearchBinding
+import com.caner.presentation.viewmodel.TextEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -35,22 +30,22 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     private val viewModel: SearchViewModel by viewModels()
     private val searchAdapter by lazy {
-        MovieSearchAdapter {
+        MovieSearchAdapter(onClick = {
             movieClicked(it?.movieId)
-        }
+        })
     }
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.movieSearchRv.init(
             adapter = searchAdapter,
             itemDecoration = listOf(
-                VerticalSpaceItemDecoration(16.dp2px()),
+                VerticalSpaceItemDecoration(16.px),
                 DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             ),
             hasFixedSize = true
         )
         binding.searchEt.afterTextChanged {
-            viewModel.searchQuery.value = it
+            viewModel.onEvent(TextEvent.OnValueChange(it))
         }
         initObservers()
     }
@@ -58,12 +53,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.searchFlow.collect { resource ->
-                    when (resource) {
-                        is Resource.Loading -> showLoading(resource.status)
-                        is Resource.Success -> setList(resource.data.movies)
-                        is Resource.Error -> toast(resource.error.message)
+                viewModel.uiState.collect { state ->
+                    showLoading(state.isFetchingMovies)
+                    state.movieList.takeIf { !it.isNullOrEmpty() }.run {
+                        searchAdapter.submitList(this)
                     }
+                    binding.emptyViewTv.visible(state.movieList.isNullOrEmpty())
                 }
             }
         }
@@ -72,11 +67,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private fun movieClicked(movieId: Int?) {
         val detailAction = SearchFragmentDirections.movieDetailAction(movieId ?: 0)
         findNavController().navigate(detailAction)
-    }
-
-    private fun setList(movies: List<Movie>) {
-        binding.emptyViewTv.visible(movies.isNullOrEmpty())
-        searchAdapter.submitList(movies)
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding
