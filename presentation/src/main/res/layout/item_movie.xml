@@ -22,8 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -32,8 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                app:path='@{movie.poster.medium ?? ""}'
-                app:radius="@{8f}"
+                app:image='@{movie.poster.medium ?? ""}'
                 tools:ignore="ContentDescription"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
