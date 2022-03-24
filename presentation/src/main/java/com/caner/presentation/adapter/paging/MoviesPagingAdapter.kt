@@ -8,7 +8,7 @@ import com.caner.presentation.adapter.diff.MovieItemDiffUtil
 import com.caner.core.base.BasePagingAdapter
 import com.caner.presentation.databinding.ItemMovieBinding
 
-class MoviesPagingAdapter(private val clickFunc: (Movie?) -> Unit) :
+class MoviesPagingAdapter(private val onClick: (Movie?) -> Unit) :
     BasePagingAdapter<Movie, ItemMovieBinding, MovieViewHolder>(
         MovieItemDiffUtil()
     ) {
@@ -16,6 +16,6 @@ class MoviesPagingAdapter(private val clickFunc: (Movie?) -> Unit) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view =
             ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MovieViewHolder(view, clickFunc = clickFunc)
+        return MovieViewHolder(view, clickFunc = onClick)
     }
 }

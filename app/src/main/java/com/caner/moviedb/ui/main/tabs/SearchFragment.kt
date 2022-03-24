@@ -27,11 +27,11 @@ import kotlinx.coroutines.launch
 @FlowPreview
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
-
     private val viewModel: SearchViewModel by viewModels()
+
     private val searchAdapter by lazy {
         MovieSearchAdapter(onClick = {
-            movieClicked(it?.movieId)
+            openMovieDetail(it?.movieId)
         })
     }
 
@@ -64,7 +64,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         }
     }
 
-    private fun movieClicked(movieId: Int?) {
+    private fun openMovieDetail(movieId: Int?) {
         val detailAction = SearchFragmentDirections.movieDetailAction(movieId ?: 0)
         findNavController().navigate(detailAction)
     }

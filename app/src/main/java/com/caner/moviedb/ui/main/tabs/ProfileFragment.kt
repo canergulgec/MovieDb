@@ -21,11 +21,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+    private val viewModel: ProfileViewModel by viewModels()
 
     @Inject
     lateinit var prefStore: PrefStore
-
-    private val viewModel: ProfileViewModel by viewModels()
 
     override fun initView(savedInstanceState: Bundle?) {
         initObservers()

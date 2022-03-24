@@ -33,13 +33,13 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
-
     private val viewModel: MovieViewModel by viewModels()
 
     private val movieAdapter by lazy {
-        MoviesPagingAdapter { movie: Movie? ->
-            movieClicked(movie)
-        }
+        MoviesPagingAdapter(onClick = { movie ->
+            openMovieDetail(movie)
+            startWorker(movie?.title, movie?.overview)
+        })
     }
 
     companion object {
@@ -71,9 +71,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     private fun initPagingFlow() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.moviePagingFlow.collectLatest { pagingData ->
-                    movieAdapter.submitData(lifecycle, pagingData)
-                }
+                viewModel.moviePagingFlow.collectLatest(movieAdapter::submitData)
             }
         }
 
@@ -83,20 +81,16 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
                     // Only emit when REFRESH LoadState for RemoteMediator changes.
                     .distinctUntilChangedBy { it.refresh }
                     .collect {
-                        if (it.refresh is LoadState.Loading) {
-                            (binding.moviesRv.layoutManager as GridLayoutManager).spanCount = 1
-                        } else {
-                            (binding.moviesRv.layoutManager as GridLayoutManager).spanCount = 2
-                        }
+                        (binding.moviesRv.layoutManager as GridLayoutManager).spanCount =
+                            if (it.refresh is LoadState.Loading) Constants.SPAN_COUNT_1 else Constants.SPAN_COUNT_2
                     }
             }
         }
     }
 
-    private fun movieClicked(movie: Movie?) {
+    private fun openMovieDetail(movie: Movie?) {
         val detailAction = HomeFragmentDirections.movieDetailAction(movie?.movieId ?: 0)
         findNavController().navigate(detailAction)
-        startWorker(movie?.title, movie?.overview)
     }
 
     private fun startWorker(title: String?, overview: String?) {
@@ -105,7 +99,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         val request = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
             .setInputData(inputs)
             .build()
-        context?.let { WorkManager.getInstance(it).enqueue(request) }
+        WorkManager.getInstance(requireContext()).enqueue(request)
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMoviesBinding

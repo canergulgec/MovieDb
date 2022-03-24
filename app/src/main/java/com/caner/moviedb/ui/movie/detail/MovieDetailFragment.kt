@@ -28,7 +28,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
-
     private val viewModel: MovieDetailViewModel by viewModels()
     private val movieDetailArgs: MovieDetailFragmentArgs by navArgs()
 
