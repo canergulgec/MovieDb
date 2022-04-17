@@ -71,7 +71,11 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     private fun initPagingFlow() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.moviePagingFlow.collectLatest(movieAdapter::submitData)
+                viewModel.movieUiState.collect { uiState ->
+                    uiState.moviesPagingFlow?.collectLatest {
+                        movieAdapter.submitData(it)
+                    }
+                }
             }
         }
 

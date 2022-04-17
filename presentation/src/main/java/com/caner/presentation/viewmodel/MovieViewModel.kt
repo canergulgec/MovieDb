@@ -9,29 +9,35 @@ import com.caner.data.repository.MovieRepository
 import com.caner.core.Constants
 import com.caner.core.network.HttpParams
 import com.caner.domain.mapper.MovieMapper
+import com.caner.presentation.viewmodel.state.MovieUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    repository: MovieRepository,
-    mapper: MovieMapper,
+    private val repository: MovieRepository,
+    private val mapper: MovieMapper,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private var moviePath: String = HttpParams.NOW_PLAYING_MOVIES
+    private val _movieUiState = MutableStateFlow(MovieUiState())
+    val movieUiState: StateFlow<MovieUiState> = _movieUiState.asStateFlow()
 
     init {
-        moviePath =
+        val moviePath =
             savedStateHandle.get<String>(Constants.MOVIE_PATH) ?: HttpParams.NOW_PLAYING_MOVIES
+        getMovies(moviePath)
     }
 
-    val moviePagingFlow = repository.getMovies(moviePath)
-        .map { pagingData ->
-            pagingData.map {
-                mapper.toMovie(it)
+    private fun getMovies(moviePath: String) {
+        val movies = repository.getMovies(moviePath)
+            .map { pagingData ->
+                pagingData.map {
+                    mapper.toMovie(it)
+                }
             }
-        }
-        .cachedIn(viewModelScope)
+            .cachedIn(viewModelScope)
+        _movieUiState.update { it.copy(moviesPagingFlow = movies) }
+    }
 }
