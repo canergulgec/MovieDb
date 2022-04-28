@@ -43,8 +43,8 @@ class SearchViewModel @Inject constructor(
                 .filter { query ->
                     return@filter query.length > 2
                 }
-                .flatMapLatest { title ->
-                    useCase.execute(title)
+                .flatMapLatest { query ->
+                    useCase.searchMovie(query)
                 }
                 .collect { resource ->
                     when (resource) {

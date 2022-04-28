@@ -47,7 +47,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCase.execute(any()) } returns flow
+        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
 
         // Then
         val job = launch {
@@ -66,7 +66,7 @@ class MovieDetailViewModelTest {
 
         // When
         viewModel.getMovieDetail(any())
-        coVerify { mockUseCase.execute(any()) }
+        coVerify { mockUseCase.getMovieDetail(any()) }
 
         job.cancel()
     }
@@ -80,7 +80,7 @@ class MovieDetailViewModelTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCase.execute(any()) } returns flow
+        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
 
         viewModel.uiState.test {
             // When
@@ -100,27 +100,28 @@ class MovieDetailViewModelTest {
             cancelAndIgnoreRemainingEvents()
         }
 
-        coVerify { mockUseCase.execute(any()) }
+        coVerify { mockUseCase.getMovieDetail(any()) }
     }
 
     @Test
     fun `Get movie detail from viewModel should return error case`() = runBlockingTest {
         // Given
+        val error = Throwable( "Unknown error")
+
         val flow = flow {
             emit(Resource.Loading(true))
-            emit(Resource.Error(Throwable( "Unknown error")))
+            emit(Resource.Error(error))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCase.execute(any()) } returns flow
+        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
 
         viewModel.uiState.test {
             // When
             viewModel.getMovieDetail(any())
 
             // Then
-            awaitItem().isFetchingMovieDetail `should be` false
-            awaitItem().isFetchingMovieDetail `should be` true
-            awaitItem().errorMessages.firstOrNull() `should not be` null
+            awaitItem().errorMessages.isEmpty() `should be` false
+            awaitItem().errorMessages.first().message `should be` error.message
             awaitItem().isFetchingMovieDetail `should be` false
 
             // Cancel and ignore remaining

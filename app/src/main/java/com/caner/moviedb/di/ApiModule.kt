@@ -1,6 +1,5 @@
 package com.caner.moviedb.di
 
-import com.caner.data.api.NewTokenApi
 import com.caner.data.api.SearchApi
 import com.caner.data.api.MovieApi
 import com.caner.data.api.MovieDetailApi
@@ -17,11 +16,6 @@ class ApiModule {
     @Provides
     fun provideMovieApiService(retrofit: Retrofit): MovieApi {
         return retrofit.create(MovieApi::class.java)
-    }
-
-    @Provides
-    fun provideNewTokenApiService(retrofit: Retrofit): NewTokenApi {
-        return retrofit.create(NewTokenApi::class.java)
     }
 
     @Provides

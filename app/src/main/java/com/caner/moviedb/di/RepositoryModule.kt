@@ -4,8 +4,6 @@ import com.caner.data.repository.MovieDetailRepository
 import com.caner.data.repository.MovieDetailRepositoryImp
 import com.caner.data.repository.MovieRepository
 import com.caner.data.repository.MovieRepositoryImp
-import com.caner.data.repository.NewTokenRepository
-import com.caner.data.repository.NewTokenRepositoryImp
 import com.caner.data.repository.SearchRepository
 import com.caner.data.repository.SearchRepositoryImp
 import dagger.Binds
@@ -19,9 +17,6 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideMoviesRepositoryImp(repositoryImp: MovieRepositoryImp): MovieRepository
-
-    @Binds
-    abstract fun provideNewTokenRepositoryImp(repositoryImp: NewTokenRepositoryImp): NewTokenRepository
 
     @Binds
     abstract fun provideMovieDetailRepositoryImp(repositoryImp: MovieDetailRepositoryImp): MovieDetailRepository

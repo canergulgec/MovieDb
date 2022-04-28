@@ -57,7 +57,6 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
 
                     uiState.errorMessages.firstOrNull()?.let {
                         toast("error happened: ${it.message}")
-                        viewModel.userMessageShown()
                     }
                 }
             }

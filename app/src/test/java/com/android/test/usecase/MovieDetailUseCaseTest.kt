@@ -36,11 +36,11 @@ class MovieDetailUseCaseTest {
             emit(Resource.Success(detailModel))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCase.execute(any()) } returns flow
+        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
 
         // Then
         val job = launch {
-            mockUseCase.execute(any()).collectIndexed { index, value ->
+            mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
                 when (index) {
                     0 -> value `should be` Resource.Loading(true)
                     1 -> value `should be` Resource.Success(detailModel)
@@ -50,8 +50,8 @@ class MovieDetailUseCaseTest {
         }
 
         // When
-        mockUseCase.execute(any())
-        coVerify { mockUseCase.execute(any()) }
+        mockUseCase.getMovieDetail(any())
+        coVerify { mockUseCase.getMovieDetail(any()) }
 
         job.cancel()
     }
@@ -65,11 +65,11 @@ class MovieDetailUseCaseTest {
             emit(Resource.Error(error))
             emit(Resource.Loading(false))
         }
-        coEvery { mockUseCase.execute(any()) } returns flow
+        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
 
         // Then
         val job = launch {
-            mockUseCase.execute(any()).collectIndexed { index, value ->
+            mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
                 when (index) {
                     0 -> value `should be` Resource.Loading(true)
                     1 -> value `should be` Resource.Error(error)
@@ -79,8 +79,8 @@ class MovieDetailUseCaseTest {
         }
 
         // When
-        mockUseCase.execute(any())
-        coVerify { mockUseCase.execute(any()) }
+        mockUseCase.getMovieDetail(any())
+        coVerify { mockUseCase.getMovieDetail(any()) }
 
         job.cancel()
     }

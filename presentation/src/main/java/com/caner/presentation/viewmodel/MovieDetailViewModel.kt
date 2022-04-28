@@ -20,7 +20,7 @@ class MovieDetailViewModel @Inject constructor(
 
     fun getMovieDetail(movieId: Int?) {
         viewModelScope.launch {
-            useCase.execute(movieId).collect { resource ->
+            useCase.getMovieDetail(movieId).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         _uiState.update { it.copy(movieDetailModel = resource.data) }
@@ -37,9 +37,5 @@ class MovieDetailViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    fun userMessageShown() {
-        _uiState.update { it.copy(errorMessages = mutableListOf()) }
     }
 }
