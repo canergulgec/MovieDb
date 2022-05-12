@@ -1,9 +1,8 @@
 package com.caner.core.extension
 
 import com.caner.core.network.Resource
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 
 fun <T> Flow<Resource<T>>.onProgress() =
     onStart {
@@ -11,3 +10,10 @@ fun <T> Flow<Resource<T>>.onProgress() =
     }.onCompletion {
         emit(Resource.Loading(false))
     }
+
+fun <T> Flow<Resource<T>>.buildNetworkRequest() =
+    catch { error ->
+        emit(Resource.Error(Throwable(message = error.message)))
+        emit(Resource.Loading(false))
+    }
+        .flowOn(Dispatchers.IO)
