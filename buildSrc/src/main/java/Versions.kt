@@ -2,8 +2,8 @@ object Versions {
 
     object App {
         const val minSdkVersion = 23
-        const val targetSdkVersion = 30
-        const val compileSdkVersion = 31
+        const val targetSdkVersion = 32
+        const val compileSdkVersion = 32
         const val versionCode = 1
         const val versionName = "1.0.0"
     }
@@ -43,7 +43,7 @@ object Versions {
     }
 
     object Coroutines {
-        const val coroutinesVersion = "1.5.2"
+        const val coroutinesVersion = "1.6.3"
     }
 
     object Debugging {
@@ -78,6 +78,6 @@ object Versions {
 
     const val materialDialogVersion = "3.3.0"
 
-    const val gradleVersion = "7.0.3"
+    const val gradleVersion = "7.0.4"
     const val kotlinVersion = "1.6.21"
 }

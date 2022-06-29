@@ -39,7 +39,7 @@ object Dependencies {
     object Dagger {
         const val daggerHilt = "com.google.dagger:hilt-android:${Versions.Dagger.daggerHiltVersion}"
         const val daggerHiltCompiler =
-            "com.google.dagger:hilt-android-compiler:${Versions.Dagger.daggerHiltVersion}"
+            "com.google.dagger:hilt-compiler:${Versions.Dagger.daggerHiltVersion}"
         const val hiltWorkManager =
             "androidx.hilt:hilt-work:${Versions.Dagger.hiltWorkManagerVersion}"
     }
