@@ -26,7 +26,6 @@ import com.caner.moviedb.databinding.FragmentMoviesBinding
 import com.caner.moviedb.ui.main.tabs.HomeFragmentDirections
 import com.caner.presentation.adapter.decoration.HorizontalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.launch

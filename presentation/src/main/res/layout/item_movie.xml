@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                app:image='@{movie.poster.medium ?? ""}'
+                app:image='@{movie.poster.original ?? ""}'
                 tools:ignore="ContentDescription"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
