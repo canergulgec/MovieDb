@@ -100,9 +100,10 @@ dependencies {
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.AndroidX.startup)
     implementation(Dependencies.AndroidX.splashScreen)
-    implementation(Dependencies.Dagger.hiltWorkManager)
+    implementation(Dependencies.AndroidX.workManager)
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Google.flexBox)
+    implementation(Dependencies.Dagger.hiltWorkManager)
     implementation(Dependencies.materialDialog)
 
     kaptAndroidTest(Dependencies.Dagger.daggerHiltCompiler)

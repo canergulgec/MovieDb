@@ -40,6 +40,7 @@ dependencies {
     implementation(Dependencies.AndroidX.viewPager)
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.AndroidX.startup)
+    implementation(Dependencies.AndroidX.workManager)
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Dagger.hiltWorkManager)
     implementation(Dependencies.Debugging.timber)

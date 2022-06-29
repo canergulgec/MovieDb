@@ -28,6 +28,7 @@ object Dependencies {
         const val viewPager = "androidx.viewpager2:viewpager2:${Versions.AndroidX.viewPagerVersion}"
         const val splashScreen =
             "androidx.core:core-splashscreen:${Versions.AndroidX.splashScreenVersion}"
+        const val workManager = "androidx.work:work-runtime-ktx:${Versions.AndroidX.workManagerVersion}"
     }
 
     object Google {

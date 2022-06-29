@@ -24,6 +24,7 @@ object Versions {
         const val pagingVersion = "3.1.0"
         const val viewPagerVersion = "1.0.0"
         const val splashScreenVersion = "1.0.0-alpha02"
+        const val workManagerVersion = "2.7.1"
     }
 
     object Google {
