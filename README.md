@@ -12,7 +12,7 @@ In order to use MovieDB:
 - Add your key into secure.properties `MOVIE_API_KEY = "xxx" `
 - Use JDK 11 to build this project.
 
-## 🌞 Day Mode
+## 🌞 Light Mode
 
 <img src="/art/movie_list_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_light.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_light.png" width="250" />
 
