@@ -84,7 +84,12 @@ class MovieDetailViewModelTest {
             // Then
             awaitItem().isFetchingMovieDetail `should be` false
             awaitItem().isFetchingMovieDetail `should be` true
-            awaitItem().errorMessages.isEmpty() `should be` false
+
+            val errorItem = awaitItem()
+            errorItem.errorMessage.isEmpty() `should be` false
+            errorItem.errorMessage.first().message `should be` error.message
+
+            awaitItem().isFetchingMovieDetail `should be` false
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()

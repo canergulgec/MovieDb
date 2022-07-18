@@ -6,5 +6,5 @@ import com.caner.data.model.Movie
 data class SearchUiState(
     val movieList: List<Movie> = listOf(),
     val isFetchingMovies: Boolean = false,
-    val errorMessages: MutableList<UserMessage> = mutableListOf()
+    val errorMessage: List<UserMessage> = listOf()
 )

@@ -26,9 +26,8 @@ class MovieDetailViewModel @Inject constructor(
                         _uiState.update { it.copy(movieDetailModel = resource.data) }
                     }
                     is Resource.Error -> {
-                        _uiState.update { state ->
-                            state.errorMessages.add(UserMessage(resource.error.message))
-                            state.copy(errorMessages = state.errorMessages)
+                        _uiState.update {
+                            it.copy(errorMessage = listOf(UserMessage(resource.error.message)))
                         }
                     }
                     is Resource.Loading -> {

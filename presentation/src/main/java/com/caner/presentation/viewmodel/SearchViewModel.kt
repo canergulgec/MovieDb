@@ -53,9 +53,8 @@ class SearchViewModel @Inject constructor(
                         }
 
                         is Resource.Error -> {
-                            _uiState.update { state ->
-                                state.errorMessages.add(UserMessage(resource.error.message))
-                                state.copy(errorMessages = state.errorMessages)
+                            _uiState.update {
+                                it.copy(errorMessage = listOf(UserMessage(resource.error.message)))
                             }
                         }
 
