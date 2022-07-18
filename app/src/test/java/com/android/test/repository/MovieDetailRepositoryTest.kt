@@ -1,22 +1,24 @@
 package com.android.test.repository
 
 import com.android.test.utils.`should be`
-import com.caner.data.model.MovieDetailModel
 import com.caner.data.model.remote.MovieDetailResponse
 import com.caner.data.repository.MovieDetailRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class MovieDetailRepositoryTest {
 
     private val mockRepository = mockk<MovieDetailRepository>()
 
     @Test
-    fun `Movie detail flow emits successfully`() = runBlocking {
+    fun `Movie detail flow emits successfully`() = runTest {
         // Given
         val movieDetail = MovieDetailResponse(id = 1)
         coEvery { mockRepository.getMovieDetail(any()) } returns movieDetail
@@ -31,7 +33,7 @@ class MovieDetailRepositoryTest {
     }
 
     @Test
-    fun `Movie detail flow emits error`() = runBlocking {
+    fun `Movie detail flow emits error`() = runTest {
         // Given
         val error = Throwable(message = "Test error")
         coEvery { mockRepository.getMovieDetail(any()) }.throws(error)

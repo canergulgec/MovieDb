@@ -1,6 +1,5 @@
 package com.android.test.usecase
 
-import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
 import com.caner.core.network.Resource
 import com.caner.data.model.MovieDetailModel
@@ -12,23 +11,17 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Rule
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.mockito.ArgumentMatchers.any
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 @ExperimentalCoroutinesApi
 class MovieDetailUseCaseTest {
-
-    @get:Rule
-    val coroutineScope = MainCoroutineScopeRule()
 
     private val mockUseCase = mockk<MovieDetailUseCase>()
 
     @Test
-    fun `Get movie detail from useCase should return success case`() = runBlockingTest {
+    fun `Get movie detail from useCase should return success case`() = runTest {
         // Given
         val detailModel = MovieDetailModel(movieId = 1)
         val flow = flow {
@@ -57,7 +50,7 @@ class MovieDetailUseCaseTest {
     }
 
     @Test
-    fun `Get movie detail from useCase should return error case`() = runBlockingTest {
+    fun `Get movie detail from useCase should return error case`() = runTest {
         // Given
         val error = Throwable( "error")
         val flow = flow {
