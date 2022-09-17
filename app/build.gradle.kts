@@ -33,13 +33,9 @@ android {
         }
         testInstrumentationRunner = Configs.hiltTestInstrumentationRunner
 
-        val secureProps = Properties().apply {
-            load(FileInputStream(File(rootProject.rootDir, "secure.properties")))
-        }
-
         buildConfigField("Integer", "TIMEOUT", "60")
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField("String", "API_KEY", (secureProps.getProperty("MOVIE_API_KEY") ?: ""))
+        buildConfigField("String", "API_KEY", getApiKey())
     }
 
     buildTypes {
@@ -113,4 +109,11 @@ dependencies {
     implementation(Dependencies.materialDialog)
 
     kaptAndroidTest(Dependencies.Dagger.daggerHiltCompiler)
+}
+
+fun getApiKey(): String {
+    val prop = Properties().apply {
+        load(FileInputStream(File(rootProject.rootDir, "./local.properties")))
+    }
+    return prop.getProperty("MOVIE_API_KEY")
 }
