@@ -8,8 +8,7 @@ The goal of this project is showing a modern approach with using the latest tech
 
 In order to use MovieDB:
 - You need to get API KEY from TMDb. You can do that by clicking [here](https://www.themoviedb.org/signup).
-- Once you obtain key, create `secure.properties` which should be on the same level with build.gradle(Project:MovieDb)
-- Add your key into secure.properties `MOVIE_API_KEY = "xxx" `
+- Once you obtain key, add your key into local.properties `MOVIE_API_KEY = "xxx" `
 - Use JDK 11 to build this project.
 
 ## 🌞 Light Mode
