@@ -18,7 +18,8 @@ object Versions {
         const val recyclerViewVersion = "1.2.1"
         const val cardViewVersion = "1.0.0"
         const val vectorDrawableVersion = "1.2.0-alpha02"
-        const val navigationVersion = "2.4.0-beta02"
+        const val navigationVersion = "2.5.2"
+        const val safeArgsVersion = "2.5.2"
         const val dataStoreVersion = "1.0.0"
         const val startupVersion = "1.1.0"
         const val pagingVersion = "3.1.0"
@@ -33,7 +34,7 @@ object Versions {
     }
 
     object Dagger {
-        const val daggerHiltVersion = "2.39.1"
+        const val daggerHiltVersion = "2.43"
         const val hiltWorkManagerVersion = "1.0.0"
     }
 
@@ -79,6 +80,6 @@ object Versions {
 
     const val materialDialogVersion = "3.3.0"
 
-    const val gradleVersion = "7.0.4"
-    const val kotlinVersion = "1.6.21"
+    const val gradleVersion = "7.2.1"
+    const val kotlinVersion = "1.7.0"
 }
