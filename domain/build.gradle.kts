@@ -4,9 +4,9 @@ import extension.retrofit
 
 plugins {
     id(Configs.androidLibrary)
+    id(Configs.kotlinAndroid)
+    id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
-    kotlin(Configs.kotlinAndroid)
-    kotlin(Configs.kotlinKapt)
 }
 
 android {

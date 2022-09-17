@@ -1,13 +1,19 @@
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
-import extension.*
+import extension.appCompat
+import extension.lifeCycle
+import extension.retrofit
+import extension.daggerHilt
+import extension.integrationTest
+import extension.unitTest
+import extension.appDebugger
 
 plugins {
     id(Configs.androidApplication)
+    id(Configs.kotlinAndroid)
+    id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
-    kotlin(Configs.kotlinAndroid)
-    kotlin(Configs.kotlinKapt)
     id(Configs.safeArgs)
 }
 
