@@ -28,7 +28,6 @@ object Dependencies {
         const val viewPager = "androidx.viewpager2:viewpager2:${Versions.AndroidX.viewPagerVersion}"
         const val splashScreen =
             "androidx.core:core-splashscreen:${Versions.AndroidX.splashScreenVersion}"
-        const val workManager = "androidx.work:work-runtime-ktx:${Versions.AndroidX.workManagerVersion}"
     }
 
     object Google {
@@ -41,8 +40,6 @@ object Dependencies {
         const val daggerHilt = "com.google.dagger:hilt-android:${Versions.Dagger.daggerHiltVersion}"
         const val daggerHiltCompiler =
             "com.google.dagger:hilt-compiler:${Versions.Dagger.daggerHiltVersion}"
-        const val hiltWorkManager =
-            "androidx.hilt:hilt-work:${Versions.Dagger.hiltWorkManagerVersion}"
     }
 
     object Network {
@@ -102,8 +99,6 @@ object Dependencies {
                 "com.squareup.okhttp3:mockwebserver:${Versions.Test.mockServerVersion}"
             const val fragmentTesting =
                 "androidx.fragment:fragment-testing:${Versions.Test.fragmentTestingVersion}"
-            const val workManagerTesting =
-                "androidx.work:work-testing:${Versions.Test.workManagerTestingVersion}"
             const val navigationTesting =
                 "androidx.navigation:navigation-testing:${Versions.AndroidX.navigationVersion}"
         }

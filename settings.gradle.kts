@@ -5,3 +5,4 @@ include(":domain")
 include(":core")
 
 rootProject.name = "MovieDb"
+include(":navigation")

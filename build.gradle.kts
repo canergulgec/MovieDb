@@ -13,6 +13,7 @@ buildscript {
         classpath(ClassPaths.kotlinGradlePlugin)
         classpath(ClassPaths.daggerHiltGradlePlugin)
         classpath(ClassPaths.safeArgsGradlePlugin)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
     }
 }
 

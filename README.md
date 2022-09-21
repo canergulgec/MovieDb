@@ -38,11 +38,11 @@ Modules are the collection of source files and build settings that allow you to 
 - **Domain Module**
 
   `:domain` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains use case and mapper classes
-  
+
 - **Presentation Module**
 
   `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
-  
+
 - **buildSrc**
 
   `:buildSrc` is a directory at the project root level which contains build info. It is used for dependency management for better reusability and easy maintenance
@@ -58,7 +58,6 @@ Modules are the collection of source files and build settings that allow you to 
     * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
       - [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data)
     * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
-    * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager)
     * [View Binding](https://developer.android.com/topic/libraries/view-binding)
     * [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
     * [Viewpager 2](https://developer.android.com/jetpack/androidx/releases/viewpager2)

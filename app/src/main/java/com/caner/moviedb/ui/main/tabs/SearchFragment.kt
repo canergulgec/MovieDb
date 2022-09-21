@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caner.presentation.adapter.recyclerview.MovieSearchAdapter
@@ -20,8 +18,8 @@ import com.caner.presentation.viewmodel.TextEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -30,8 +28,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private val viewModel: SearchViewModel by viewModels()
 
     private val searchAdapter by lazy {
-        MovieSearchAdapter(onClick = {
-            openMovieDetail(it?.movieId)
+        MovieSearchAdapter(onClick = { movieID ->
+            viewModel.navigateToMovieDetail(SearchFragmentDirections.movieDetailAction(movieID))
         })
     }
 
@@ -51,22 +49,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    showLoading(state.isFetchingMovies)
-                    state.movieList.takeIf { !it.isNullOrEmpty() }.run {
-                        searchAdapter.submitList(this)
-                    }
-                    binding.emptyViewTv.visible(state.movieList.isNullOrEmpty())
-                }
+        viewModel.uiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
+            showLoading(state.isFetchingMovies)
+            state.movieList.takeIf { it.isNotEmpty() }.run {
+                searchAdapter.submitList(this)
             }
-        }
-    }
-
-    private fun openMovieDetail(movieId: Int?) {
-        val detailAction = SearchFragmentDirections.movieDetailAction(movieId ?: 0)
-        findNavController().navigate(detailAction)
+            binding.emptyViewTv.visible(state.movieList.isEmpty())
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding

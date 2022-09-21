@@ -25,7 +25,6 @@ object Versions {
         const val pagingVersion = "3.1.0"
         const val viewPagerVersion = "1.0.0"
         const val splashScreenVersion = "1.0.0-alpha02"
-        const val workManagerVersion = "2.7.1"
     }
 
     object Google {
@@ -35,7 +34,6 @@ object Versions {
 
     object Dagger {
         const val daggerHiltVersion = "2.43"
-        const val hiltWorkManagerVersion = "1.0.0"
     }
 
     object Network {
@@ -69,7 +67,6 @@ object Versions {
         const val truthVersion = "1.1.3"
         const val espressoCoreVersion = "3.3.0"
         const val kakaoVersion = "3.0.4"
-        const val workManagerTestingVersion = "2.6.0"
         const val mockServerVersion = "4.9.1"
         const val fragmentTestingVersion = "1.3.6"
     }

@@ -22,7 +22,6 @@ fun DependencyHandlerScope.integrationTest() {
     androidTestImplementation(Dependencies.Test.Integration.daggerHiltTesting)
     androidTestImplementation(Dependencies.Test.Integration.fragmentTesting)
     androidTestImplementation(Dependencies.Test.Integration.navigationTesting)
-    androidTestImplementation(Dependencies.Test.Integration.workManagerTesting)
     androidTestImplementation(Dependencies.Test.Integration.mockWebServer)
 }
 

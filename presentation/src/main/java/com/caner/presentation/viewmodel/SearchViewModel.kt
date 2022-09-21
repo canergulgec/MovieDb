@@ -2,9 +2,11 @@ package com.caner.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDirections
 import com.caner.core.network.Resource
 import com.caner.core.network.UserMessage
 import com.caner.domain.usecase.SearchMovieUseCase
+import com.caner.navigation.NavigationDispatcher
 import com.caner.presentation.viewmodel.state.SearchUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,7 +19,8 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val useCase: SearchMovieUseCase
+    private val useCase: SearchMovieUseCase,
+    private val navigationDispatcher: NavigationDispatcher
 ) : ViewModel() {
 
     private val searchQuery = MutableStateFlow("")
@@ -63,6 +66,12 @@ class SearchViewModel @Inject constructor(
                         }
                     }
                 }
+        }
+    }
+
+    fun navigateToMovieDetail(direction: NavDirections) {
+        viewModelScope.launch {
+            navigationDispatcher.navigateTo(direction)
         }
     }
 }

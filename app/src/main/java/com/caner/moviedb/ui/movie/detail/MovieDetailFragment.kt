@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.caner.presentation.adapter.recyclerview.MovieGenresAdapter
@@ -24,7 +23,6 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
@@ -46,21 +44,18 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     }
 
     private fun initObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { uiState ->
-                    showLoading(uiState.isFetchingMovieDetail)
-                    uiState.movieDetailModel?.let {
-                        binding.item = it
-                        movieGenresAdapter.submitList(it.genres)
-                    }
-
-                    uiState.errorMessage.firstOrNull()?.let {
-                        toast("error happened: ${it.message}")
-                    }
-                }
+        viewModel.uiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
+            showLoading(state.isFetchingMovieDetail)
+            state.movieDetailModel?.let {
+                binding.item = it
+                movieGenresAdapter.submitList(it.genres)
             }
-        }
+
+            state.errorMessage.firstOrNull()?.let {
+                toast("error happened: ${it.message}")
+            }
+
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun setMovieGenres() {

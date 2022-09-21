@@ -1,14 +1,10 @@
 package com.android.test.test
 
-import android.util.Log
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.MediumTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
-import androidx.work.Configuration
-import androidx.work.testing.SynchronousExecutor
-import androidx.work.testing.WorkManagerTestInitHelper
 import com.caner.moviedb.R
 import com.caner.moviedb.ui.movie.MovieFragment
 import com.android.test.screen.MovieScreen
@@ -56,16 +52,6 @@ class MovieFragmentTest {
             this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
                 if (viewLifecycleOwner != null) {
                     Navigation.setViewNavController(this.requireView(), navController)
-
-                    // For workManager test
-                    val config = Configuration.Builder()
-                        .setMinimumLoggingLevel(Log.DEBUG)
-                        .setExecutor(SynchronousExecutor())
-                        .build()
-                    WorkManagerTestInitHelper.initializeTestWorkManager(
-                        requireContext(),
-                        config
-                    )
                 }
             }
         }

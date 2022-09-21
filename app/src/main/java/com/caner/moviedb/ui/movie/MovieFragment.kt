@@ -4,20 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
-import com.caner.data.model.Movie
 import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
 import com.caner.presentation.adapter.paging.MoviesPagingAdapter
 import com.caner.presentation.viewmodel.MovieViewModel
-import com.caner.presentation.worker.NotificationWorker
 import com.caner.core.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.px
@@ -28,7 +21,8 @@ import com.caner.presentation.adapter.decoration.HorizontalSpaceItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
@@ -36,8 +30,7 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private val movieAdapter by lazy {
         MoviesPagingAdapter(onClick = { movie ->
-            openMovieDetail(movie)
-            startWorker(movie?.title, movie?.overview)
+            viewModel.navigateToMovieDetail(HomeFragmentDirections.movieDetailAction(movie?.movieId ?: 0))
         })
     }
 
@@ -68,41 +61,19 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     private fun initPagingFlow() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.movieUiState.collect { uiState ->
-                    uiState.moviesPagingFlow?.collectLatest {
-                        movieAdapter.submitData(it)
-                    }
-                }
+        viewModel.movieUiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
+            state.moviesPagingFlow?.collectLatest {
+                movieAdapter.submitData(it)
             }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+
+        movieAdapter.loadStateFlow.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach {
+            (binding.moviesRv.layoutManager as GridLayoutManager).spanCount =
+                if (it.refresh is LoadState.Loading) Constants.SPAN_COUNT_1 else Constants.SPAN_COUNT_2
         }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                movieAdapter.loadStateFlow
-                    // Only emit when REFRESH LoadState for RemoteMediator changes.
-                    .distinctUntilChangedBy { it.refresh }
-                    .collect {
-                        (binding.moviesRv.layoutManager as GridLayoutManager).spanCount =
-                            if (it.refresh is LoadState.Loading) Constants.SPAN_COUNT_1 else Constants.SPAN_COUNT_2
-                    }
-            }
-        }
-    }
-
-    private fun openMovieDetail(movie: Movie?) {
-        val detailAction = HomeFragmentDirections.movieDetailAction(movie?.movieId ?: 0)
-        findNavController().navigate(detailAction)
-    }
-
-    private fun startWorker(title: String?, overview: String?) {
-        val inputs = Data.Builder().putString(Constants.MOVIE_TITLE, title)
-            .putString(Constants.MOVIE_OVERVIEW, overview).build()
-        val request = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-            .setInputData(inputs)
-            .build()
-        WorkManager.getInstance(requireContext()).enqueue(request)
+            .distinctUntilChangedBy { it.refresh }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMoviesBinding

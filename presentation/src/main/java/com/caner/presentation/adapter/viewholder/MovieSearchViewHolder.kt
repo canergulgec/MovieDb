@@ -7,12 +7,12 @@ import com.caner.presentation.databinding.ItemMovieSearchBinding
 
 class MovieSearchViewHolder constructor(
     private val searchBinding: ItemMovieSearchBinding,
-    clickFunc: (Movie?) -> Unit
+    clickFunc: (Int) -> Unit
 ) : BaseViewHolder<Movie, ItemMovieSearchBinding>(searchBinding) {
 
     init {
         itemView.setOnClickListener {
-            clickFunc.invoke(getRowItem())
+            clickFunc.invoke(getRowItem()?.movieId ?: 0)
         }
     }
 
