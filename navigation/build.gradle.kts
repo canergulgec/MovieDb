@@ -1,4 +1,3 @@
-import extension.appCompat
 import extension.daggerHilt
 
 plugins {
@@ -28,7 +27,6 @@ android {
 }
 
 dependencies {
-    appCompat()
     daggerHilt()
 
     implementation("androidx.navigation:navigation-runtime-ktx:2.5.2")
