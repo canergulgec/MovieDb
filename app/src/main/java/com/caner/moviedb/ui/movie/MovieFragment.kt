@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -29,8 +30,8 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     private val viewModel: MovieViewModel by viewModels()
 
     private val movieAdapter by lazy {
-        MoviesPagingAdapter(onClick = { movie ->
-            viewModel.navigateToMovieDetail(HomeFragmentDirections.movieDetailAction(movie?.movieId ?: 0))
+        MoviesPagingAdapter(onClick = { movieID ->
+            viewModel.navigateToMovieDetail(HomeFragmentDirections.movieDetailAction(movieID))
         })
     }
 
@@ -45,13 +46,12 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        if (movieAdapter.itemCount == 0) {
-            initPagingFlow()
-        }
+        initPagingFlow()
 
-        binding.moviesRv.apply {
+        binding.moviesRv.run {
             setHasFixedSize(true)
             addItemDecoration(HorizontalSpaceItemDecoration(12.px))
+
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),
                 header = MovieLoadStateAdapter(movieAdapter::retry),
@@ -61,7 +61,10 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     private fun initPagingFlow() {
-        viewModel.movieUiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
+        viewModel.movieUiState.flowWithLifecycle(
+            minActiveState = Lifecycle.State.CREATED,
+            lifecycle = viewLifecycleOwner.lifecycle
+        ).onEach { state ->
             state.moviesPagingFlow?.collectLatest {
                 movieAdapter.submitData(it)
             }

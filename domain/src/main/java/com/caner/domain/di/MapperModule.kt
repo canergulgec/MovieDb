@@ -1,4 +1,4 @@
-package com.caner.moviedb.di
+package com.caner.domain.di
 
 import com.caner.domain.mapper.MovieDetailMapper
 import com.caner.domain.mapper.MovieMapper

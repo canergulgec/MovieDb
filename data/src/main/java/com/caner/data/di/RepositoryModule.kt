@@ -1,4 +1,4 @@
-package com.caner.moviedb.di
+package com.caner.data.di
 
 import com.caner.data.repository.MovieDetailRepository
 import com.caner.data.repository.MovieDetailRepositoryImp

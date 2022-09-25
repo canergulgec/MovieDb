@@ -8,7 +8,7 @@ import com.caner.presentation.adapter.diff.MovieItemDiffUtil
 import com.caner.core.base.BasePagingAdapter
 import com.caner.presentation.databinding.ItemMovieBinding
 
-class MoviesPagingAdapter(private val onClick: (Movie?) -> Unit) :
+class MoviesPagingAdapter(private val onClick: (Int) -> Unit) :
     BasePagingAdapter<Movie, ItemMovieBinding, MovieViewHolder>(
         MovieItemDiffUtil()
     ) {

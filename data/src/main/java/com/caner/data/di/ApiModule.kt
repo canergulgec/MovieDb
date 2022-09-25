@@ -1,4 +1,4 @@
-package com.caner.moviedb.di
+package com.caner.data.di
 
 import com.caner.data.api.SearchApi
 import com.caner.data.api.MovieApi
@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 
 @InstallIn(SingletonComponent::class)
 @Module
-class ApiModule {
+object ApiModule {
 
     @Provides
     fun provideMovieApiService(retrofit: Retrofit): MovieApi {

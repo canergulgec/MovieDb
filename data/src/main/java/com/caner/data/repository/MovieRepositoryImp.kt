@@ -12,7 +12,7 @@ class MovieRepositoryImp @Inject constructor(
 
     override fun getMovies(path: String) =
         Pager(
-            config = PagingConfig(pageSize = HttpParams.NETWORK_PAGE_SIZE),
+            config = PagingConfig(pageSize = HttpParams.NETWORK_PAGE_SIZE, enablePlaceholders = false),
             pagingSourceFactory = { MoviesPagingSource(service = apiService, path) }
         ).flow
 }

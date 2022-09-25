@@ -7,12 +7,12 @@ import com.caner.presentation.databinding.ItemMovieBinding
 
 class MovieViewHolder constructor(
     private val movieBinding: ItemMovieBinding,
-    clickFunc: (Movie?) -> Unit
+    clickFunc: (Int) -> Unit
 ) : BaseViewHolder<Movie, ItemMovieBinding>(movieBinding) {
 
     init {
         itemView.setOnClickListener {
-            clickFunc.invoke(getRowItem())
+            clickFunc.invoke(getRowItem()?.movieId ?: 0)
         }
     }
 

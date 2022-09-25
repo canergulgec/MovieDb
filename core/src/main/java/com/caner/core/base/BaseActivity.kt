@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.caner.core.R
-import com.caner.core.widget.CustomProgressDialog
+import com.caner.core.widget.FullScreenProgressDialog
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     private var _binding: ViewBinding? = null
@@ -15,7 +15,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected val binding: VB
         get() = _binding as VB
 
-    private val progressDialog by lazy { CustomProgressDialog(this, R.style.ProgressDialogStyle) }
+    private val progressDialog by lazy { FullScreenProgressDialog(this, R.style.ProgressDialogStyle) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

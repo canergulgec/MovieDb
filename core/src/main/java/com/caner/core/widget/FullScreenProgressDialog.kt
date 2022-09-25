@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.Window
 import com.caner.core.R
 
-class CustomProgressDialog(context: Context, themeResId: Int) : Dialog(context, themeResId) {
+class FullScreenProgressDialog(context: Context, themeResId: Int) : Dialog(context, themeResId) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
