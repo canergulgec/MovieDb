@@ -1,7 +1,7 @@
 package com.android.test.di
 
-import com.caner.moviedb.BuildConfig
-import com.caner.moviedb.di.NetworkModule
+import com.android.data.BuildConfig
+import com.caner.data.di.NetworkModule
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

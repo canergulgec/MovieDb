@@ -1,5 +1,10 @@
 import extension.appCompat
+import extension.appDebugger
 import extension.daggerHilt
+import extension.retrofit
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id(Configs.androidLibrary)
@@ -16,6 +21,10 @@ android {
         minSdk = Versions.App.minSdkVersion
         targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
+
+        buildConfigField("Integer", "TIMEOUT", "60")
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", getApiKey())
     }
 }
 
@@ -28,9 +37,18 @@ dependencies {
 
     appCompat()
     daggerHilt()
+    retrofit()
+    appDebugger()
 
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.Network.gsonConverter)
     implementation(Dependencies.Network.retrofit)
     implementation(Dependencies.AndroidX.paging)
+}
+
+fun getApiKey(): String {
+    val prop = Properties().apply {
+        load(FileInputStream(File(rootProject.rootDir, "./local.properties")))
+    }
+    return prop.getProperty("MOVIE_API_KEY")
 }
