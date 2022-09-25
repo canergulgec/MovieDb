@@ -46,7 +46,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>() {
     private fun initObservers() {
         viewModel.uiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
             showLoading(state.isFetchingMovieDetail)
-            state.movieDetailModel?.let {
+            state.movieDetailModel?.takeIf { !state.isFetchingMovieDetail }?.let {
                 binding.item = it
                 movieGenresAdapter.submitList(it.genres)
             }
