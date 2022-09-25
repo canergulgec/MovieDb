@@ -47,7 +47,7 @@
                 android:gravity="center_horizontal"
                 android:lines="1"
                 android:text="@{movie.title}"
-                tools:text="Spiderman" />
+                tools:text="Spider-man" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/App.Text.Small"
