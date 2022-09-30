@@ -19,34 +19,6 @@ In order to use MovieDB:
 
 <img src="/art/movie_list_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/movie_detail_dark.png" width="250" /> &nbsp;&nbsp;&nbsp; <img src="/art/search_list_dark.png" width="250" />
 
-## 📦 Modules
-
-Modules are the collection of source files and build settings that allow you to divide your project into discrete units of functionality.
-
-- **App Module**
-
-  `:app` module is an [com.android.application](https://developer.android.com/studio/projects/android-library), which is needed to create the app bundle. It presents data to a screen and handle user interactions.
-
-- **Core Module**
-
-  `:core` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains base classes and resources which are shared between other modules
-
-- **Data Module**
-
-  `:data` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains models, api services and repository classes
-
-- **Domain Module**
-
-  `:domain` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains use case and mapper classes
-
-- **Presentation Module**
-
-  `:presentation` module is an [com.android.library](https://developer.android.com/studio/projects/android-library), contains business logic and adapter classes
-
-- **buildSrc**
-
-  `:buildSrc` is a directory at the project root level which contains build info. It is used for dependency management for better reusability and easy maintenance
-
 ## 🛠 Built With
 
 - [Kotlin](https://kotlinlang.org)
@@ -65,7 +37,6 @@ Modules are the collection of source files and build settings that allow you to 
 - [Coroutines Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
   - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
 - [Dagger Hilt](https://dagger.dev/hilt/)
-- [Splash Screen API](https://developer.android.com/guide/topics/ui/splash-screen/migrate)
 - [Retrofit](https://square.github.io/retrofit/)
 - [Coil](https://github.com/coil-kt/coil)
 - [FlexBox](https://github.com/google/flexbox-layout)
