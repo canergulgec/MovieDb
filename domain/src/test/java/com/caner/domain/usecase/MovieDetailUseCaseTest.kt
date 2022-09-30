@@ -1,9 +1,8 @@
-package com.android.test.usecase
+package com.caner.domain.usecase
 
-import com.android.test.utils.`should be`
 import com.caner.domain.utils.state.Resource
 import com.caner.domain.model.MovieDetailModel
-import com.caner.domain.usecase.MovieDetailUseCase
+import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -35,9 +34,9 @@ class MovieDetailUseCaseTest {
         val job = launch {
             mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
                 when (index) {
-                    0 -> value `should be` Resource.Loading(true)
-                    1 -> value `should be` Resource.Success(detailModel)
-                    2 -> value `should be` Resource.Loading(false)
+                    0 -> assertThat(value).isEqualTo(Resource.Loading(true))
+                    1 -> assertThat(value).isEqualTo(Resource.Success(detailModel))
+                    2 -> assertThat(value).isEqualTo(Resource.Loading(false))
                 }
             }
         }
@@ -52,7 +51,7 @@ class MovieDetailUseCaseTest {
     @Test
     fun `Get movie detail from useCase should return error case`() = runTest {
         // Given
-        val error = Throwable( "error")
+        val error = Throwable("error")
         val flow = flow {
             emit(Resource.Loading(true))
             emit(Resource.Error(error))
@@ -64,9 +63,9 @@ class MovieDetailUseCaseTest {
         val job = launch {
             mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
                 when (index) {
-                    0 -> value `should be` Resource.Loading(true)
-                    1 -> value `should be` Resource.Error(error)
-                    2 -> value `should be` Resource.Loading(false)
+                    0 -> assertThat(value).isEqualTo(Resource.Loading(true))
+                    1 -> assertThat(value).isEqualTo(Resource.Error(error))
+                    2 -> assertThat(value).isEqualTo(Resource.Loading(false))
                 }
             }
         }

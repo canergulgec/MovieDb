@@ -7,7 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.MediumTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.caner.moviedb.R
-import com.caner.moviedb.ui.movie.detail.MovieDetailFragment
+import com.caner.presentation.ui.detail.MovieDetailFragment
 import com.android.test.screen.MovieDetailScreen
 import com.android.test.utils.detailDispatcher
 import com.android.test.utils.launchFragmentInHiltContainer

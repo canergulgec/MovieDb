@@ -1,7 +1,6 @@
 import extension.appDebugger
 import extension.daggerHilt
 import extension.integrationTest
-import extension.unitTest
 
 plugins {
     id(Configs.androidApplication)
@@ -64,7 +63,6 @@ dependencies {
 
     daggerHilt()
     integrationTest()
-    unitTest()
     appDebugger()
 
     implementation(Dependencies.Google.material)

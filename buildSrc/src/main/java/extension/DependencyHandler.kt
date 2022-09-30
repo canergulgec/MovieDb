@@ -48,11 +48,6 @@ fun DependencyHandlerScope.appCompat() {
     implementation(Dependencies.AndroidX.coreKtx)
 }
 
-fun DependencyHandlerScope.lifeCycle() {
-    implementation(Dependencies.AndroidX.lifecycleLiveData)
-    implementation(Dependencies.AndroidX.lifecycleRuntime)
-}
-
 private fun DependencyHandler.implementation(depName: String) {
     add("implementation", depName)
 }

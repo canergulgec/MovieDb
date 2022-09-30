@@ -5,19 +5,12 @@ object Dependencies {
         const val coreKtx = "androidx.core:core-ktx:${Versions.AndroidX.coreKtxVersion}"
         const val lifecycleLiveData =
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.lifecycleVersion}"
-        const val lifecycleRuntime =
-            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.lifecycleVersion}"
         const val navigationFragmentKtx =
             "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.navigationVersion}"
         const val navigationUiKtx =
             "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.navigationVersion}"
-        const val multiDex = "androidx.multidex:multidex:${Versions.AndroidX.multiDexVersion}"
-        const val recyclerView =
-            "androidx.recyclerview:recyclerview:${Versions.AndroidX.recyclerViewVersion}"
         const val fragmentKtx =
             "androidx.fragment:fragment-ktx:${Versions.AndroidX.fragmentKtxVersion}"
-        const val vectorDrawable =
-            "androidx.vectordrawable:vectordrawable:${Versions.AndroidX.vectorDrawableVersion}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.constraintLayoutVersion}"
         const val dataStore =
@@ -69,9 +62,6 @@ object Dependencies {
     object ImageLoader {
         const val coil = "io.coil-kt:coil:${Versions.ImageLoader.coilVersion}"
     }
-
-    const val materialDialog =
-        "com.afollestad.material-dialogs:core:${Versions.materialDialogVersion}"
 
     object Test {
         object UnitTest {

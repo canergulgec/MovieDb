@@ -1,4 +1,5 @@
 import extension.daggerHilt
+import extension.unitTest
 
 plugins {
     id(Configs.androidLibrary)
@@ -26,6 +27,8 @@ dependencies {
     implementation(project(Modules.core))
 
     daggerHilt()
+    unitTest()
+
     implementation(Dependencies.Network.gsonConverter)
     implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.AndroidX.dataStore)

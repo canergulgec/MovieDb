@@ -6,10 +6,10 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.MediumTest
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.caner.moviedb.R
-import com.caner.moviedb.ui.movie.MovieFragment
 import com.android.test.screen.MovieScreen
 import com.android.test.utils.dispatcherWithCustomBody
 import com.android.test.utils.launchFragmentInHiltContainer
+import com.caner.presentation.ui.home.fragment.MovieFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen

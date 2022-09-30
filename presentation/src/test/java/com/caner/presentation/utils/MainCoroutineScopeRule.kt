@@ -1,4 +1,4 @@
-package com.android.test.utils
+package com.caner.presentation.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

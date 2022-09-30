@@ -1,13 +1,12 @@
-package com.android.test.vm
+package com.caner.presentation
 
 import app.cash.turbine.test
 import com.caner.domain.model.MovieDetailModel
-import com.caner.presentation.viewmodel.MovieDetailViewModel
-import com.android.test.utils.MainCoroutineScopeRule
-import com.android.test.utils.`should be`
-import com.android.test.utils.`should not be`
 import com.caner.domain.utils.state.Resource
 import com.caner.domain.usecase.MovieDetailUseCase
+import com.caner.presentation.ui.detail.viewmodel.MovieDetailViewModel
+import com.caner.presentation.utils.MainCoroutineScopeRule
+import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -51,14 +50,14 @@ class MovieDetailViewModelTest {
             viewModel.getMovieDetail(any())
 
             // Then
-            awaitItem().isFetchingMovieDetail `should be` false
-            awaitItem().isFetchingMovieDetail `should be` true
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(true)
 
             val state = awaitItem()
-            state.movieDetailModel `should not be` null
-            state.movieDetailModel?.movieId `should be` detailModel.movieId
+            assertThat(state.movieDetailModel).isNotEqualTo(null)
+            assertThat(state.movieDetailModel?.movieId).isEqualTo(detailModel.movieId)
 
-            awaitItem().isFetchingMovieDetail `should be` false
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()
@@ -82,14 +81,14 @@ class MovieDetailViewModelTest {
             viewModel.getMovieDetail(any())
 
             // Then
-            awaitItem().isFetchingMovieDetail `should be` false
-            awaitItem().isFetchingMovieDetail `should be` true
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(true)
 
             val errorItem = awaitItem()
-            errorItem.errorMessage.isEmpty() `should be` false
-            errorItem.errorMessage.first().message `should be` error.message
+            assertThat(errorItem.errorMessage.isEmpty()).isEqualTo(false)
+            assertThat(errorItem.errorMessage.first().message).isEqualTo(error.message)
 
-            awaitItem().isFetchingMovieDetail `should be` false
+            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()

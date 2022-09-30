@@ -1,8 +1,7 @@
-package com.android.test.repository
+package com.caner.domain.repository
 
-import com.android.test.utils.`should be`
 import com.caner.domain.model.remote.MovieDetailResponse
-import com.caner.domain.repository.MovieDetailRepository
+import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -28,8 +27,8 @@ class MovieDetailRepositoryTest {
 
         // Then
         coVerify { mockRepository.getMovieDetail(movieId = 1) }
-        response `should be` movieDetail
-        response.id `should be` movieDetail.id
+        assertThat(response).isEqualTo(movieDetail)
+        assertThat(response.id).isEqualTo(movieDetail.id)
     }
 
     @Test
@@ -46,7 +45,7 @@ class MovieDetailRepositoryTest {
         }
 
         // Then
-        exception `should be` error
-        exception.message `should be` error.message
+        assertThat(exception).isEqualTo(error)
+        assertThat(exception.message).isEqualTo(error.message)
     }
 }

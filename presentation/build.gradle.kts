@@ -1,5 +1,6 @@
 import extension.appCompat
 import extension.daggerHilt
+import extension.unitTest
 
 plugins {
     id(Configs.androidLibrary)
@@ -35,6 +36,7 @@ dependencies {
 
     appCompat()
     daggerHilt()
+    unitTest()
 
     implementation(Dependencies.AndroidX.navigationFragmentKtx)
     implementation(Dependencies.AndroidX.navigationUiKtx)
