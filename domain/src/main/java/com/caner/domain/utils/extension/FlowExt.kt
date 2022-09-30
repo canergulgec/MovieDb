@@ -1,6 +1,6 @@
-package com.caner.domain.extension
+package com.caner.domain.utils.extension
 
-import com.caner.domain.state.Resource
+import com.caner.domain.utils.state.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 

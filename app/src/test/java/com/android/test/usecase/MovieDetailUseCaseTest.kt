@@ -1,7 +1,7 @@
 package com.android.test.usecase
 
 import com.android.test.utils.`should be`
-import com.caner.domain.state.Resource
+import com.caner.domain.utils.state.Resource
 import com.caner.domain.model.MovieDetailModel
 import com.caner.domain.usecase.MovieDetailUseCase
 import io.mockk.coEvery

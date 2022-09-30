@@ -6,7 +6,7 @@ import com.caner.presentation.viewmodel.MovieDetailViewModel
 import com.android.test.utils.MainCoroutineScopeRule
 import com.android.test.utils.`should be`
 import com.android.test.utils.`should not be`
-import com.caner.domain.state.Resource
+import com.caner.domain.utils.state.Resource
 import com.caner.domain.usecase.MovieDetailUseCase
 import io.mockk.coEvery
 import io.mockk.mockk

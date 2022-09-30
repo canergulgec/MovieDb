@@ -1,6 +1,6 @@
 package com.caner.presentation.viewmodel.state
 
-import com.caner.domain.state.UserMessage
+import com.caner.domain.utils.state.UserMessage
 import com.caner.domain.model.Movie
 
 data class SearchUiState(
