@@ -1,10 +1,10 @@
 package com.caner.presentation.viewmodel.state
 
-import com.caner.data.model.MovieDetailModel
-import com.caner.core.network.UserMessage
+import com.caner.domain.model.MovieDetailModel
+import com.caner.domain.state.UserMessage
 
 data class MovieDetailUiState(
-        val movieDetailModel: MovieDetailModel? = null,
-        val isFetchingMovieDetail: Boolean = false,
-        val errorMessage: List<UserMessage> = listOf()
+    val movieDetailModel: MovieDetailModel? = null,
+    val isFetchingMovieDetail: Boolean = false,
+    val errorMessage: List<UserMessage> = listOf()
 )

@@ -1,7 +1,7 @@
-package com.caner.data.repository
+package com.caner.domain.repository
 
 import androidx.paging.PagingData
-import com.caner.data.model.remote.MovieResponseItem
+import com.caner.domain.model.remote.MovieResponseItem
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

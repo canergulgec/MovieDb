@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.caner.presentation.adapter.paging.MovieLoadStateAdapter
 import com.caner.presentation.adapter.paging.MoviesPagingAdapter
 import com.caner.presentation.viewmodel.MovieViewModel
-import com.caner.core.Constants
+import com.caner.core.constants.Constants
 import com.caner.core.base.BaseFragment
 import com.caner.core.extension.px
 import com.caner.core.extension.withLoadStateAll

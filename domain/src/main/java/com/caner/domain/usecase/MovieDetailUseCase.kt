@@ -1,10 +1,10 @@
 package com.caner.domain.usecase
 
-import com.caner.core.extension.buildNetworkRequest
-import com.caner.core.extension.onProgress
+import com.caner.domain.extension.buildNetworkRequest
+import com.caner.domain.extension.onProgress
 import com.caner.domain.mapper.MovieDetailMapper
-import com.caner.data.repository.MovieDetailRepository
-import com.caner.domain.mapper.mapTo
+import com.caner.domain.repository.MovieDetailRepository
+import com.caner.domain.extension.mapTo
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

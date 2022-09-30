@@ -1,7 +1,7 @@
 package com.caner.presentation.adapter.diff
 
 import androidx.recyclerview.widget.DiffUtil
-import com.caner.data.model.remote.MovieGenre
+import com.caner.domain.model.remote.MovieGenre
 
 class MovieGenreItemDiffUtil : DiffUtil.ItemCallback<MovieGenre>() {
     override fun areItemsTheSame(

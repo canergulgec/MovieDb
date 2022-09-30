@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="com.caner.data.model.Movie" />
+            type="com.caner.domain.model.Movie" />
 
     </data>
 

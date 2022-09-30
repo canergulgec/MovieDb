@@ -1,4 +1,4 @@
-package com.caner.data.model
+package com.caner.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.IgnoredOnParcel

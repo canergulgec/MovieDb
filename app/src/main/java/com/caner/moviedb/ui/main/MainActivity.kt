@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.caner.core.Constants
+import com.caner.core.constants.Constants
 import com.caner.core.base.BaseActivity
 import com.caner.core.extension.visible
 import com.caner.navigation.NavigationDispatcher

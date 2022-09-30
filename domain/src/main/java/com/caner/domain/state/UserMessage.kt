@@ -1,3 +1,3 @@
-package com.caner.core.network
+package com.caner.domain.state
 
 data class UserMessage(val message: String?)

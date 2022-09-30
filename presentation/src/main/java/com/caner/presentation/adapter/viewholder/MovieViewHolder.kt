@@ -1,6 +1,6 @@
 package com.caner.presentation.adapter.viewholder
 
-import com.caner.data.model.Movie
+import com.caner.domain.model.Movie
 import com.caner.core.base.BaseViewHolder
 import com.caner.core.extension.use
 import com.caner.presentation.databinding.ItemMovieBinding

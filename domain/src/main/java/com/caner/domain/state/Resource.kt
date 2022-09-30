@@ -1,4 +1,4 @@
-package com.caner.core.network
+package com.caner.domain.state
 
 sealed class Resource<out T> {
     data class Success<T>(val data: T) : Resource<T>()

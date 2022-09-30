@@ -1,4 +1,4 @@
-package com.caner.core.network
+package com.caner.core.constants
 
 object HttpParams {
     const val NOW_PLAYING_MOVIES = "now_playing"

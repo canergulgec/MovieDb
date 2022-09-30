@@ -2,7 +2,7 @@ package com.caner.presentation.adapter.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.caner.data.model.remote.MovieGenre
+import com.caner.domain.model.remote.MovieGenre
 import com.caner.presentation.adapter.viewholder.MovieGenresViewHolder
 import com.caner.presentation.adapter.diff.MovieGenreItemDiffUtil
 import com.caner.core.base.BaseRecyclerAdapter

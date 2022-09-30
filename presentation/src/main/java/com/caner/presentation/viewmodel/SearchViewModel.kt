@@ -3,8 +3,8 @@ package com.caner.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.caner.core.network.Resource
-import com.caner.core.network.UserMessage
+import com.caner.domain.state.Resource
+import com.caner.domain.state.UserMessage
 import com.caner.domain.usecase.SearchMovieUseCase
 import com.caner.navigation.NavigationDispatcher
 import com.caner.presentation.viewmodel.state.SearchUiState

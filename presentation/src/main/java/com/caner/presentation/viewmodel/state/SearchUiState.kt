@@ -1,7 +1,7 @@
 package com.caner.presentation.viewmodel.state
 
-import com.caner.core.network.UserMessage
-import com.caner.data.model.Movie
+import com.caner.domain.state.UserMessage
+import com.caner.domain.model.Movie
 
 data class SearchUiState(
     val movieList: List<Movie> = listOf(),

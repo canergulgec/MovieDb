@@ -1,6 +1,6 @@
-package com.caner.data.model
+package com.caner.domain.model
 
-import com.caner.data.model.remote.MovieGenre
+import com.caner.domain.model.remote.MovieGenre
 import java.util.Date
 
 data class MovieDetailModel(

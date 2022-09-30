@@ -11,7 +11,7 @@ import com.caner.moviedb.ui.movie.detail.MovieDetailFragment
 import com.android.test.screen.MovieDetailScreen
 import com.android.test.utils.detailDispatcher
 import com.android.test.utils.launchFragmentInHiltContainer
-import com.caner.core.Constants
+import com.caner.core.constants.Constants
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen

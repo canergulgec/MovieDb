@@ -8,7 +8,7 @@
 
         <variable
             name="genre"
-            type="com.caner.data.model.remote.MovieGenre" />
+            type="com.caner.domain.model.remote.MovieGenre" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

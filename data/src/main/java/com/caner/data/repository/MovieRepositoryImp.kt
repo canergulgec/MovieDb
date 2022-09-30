@@ -2,8 +2,10 @@ package com.caner.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.caner.core.network.HttpParams
+import com.caner.core.constants.HttpParams
 import com.caner.data.api.MovieApi
+import com.caner.data.pagingsource.MoviesPagingSource
+import com.caner.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class MovieRepositoryImp @Inject constructor(

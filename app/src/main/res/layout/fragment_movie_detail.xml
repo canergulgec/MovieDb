@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="com.caner.data.model.MovieDetailModel" />
+            type="com.caner.domain.model.MovieDetailModel" />
 
     </data>
 

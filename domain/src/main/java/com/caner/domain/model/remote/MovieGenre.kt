@@ -1,4 +1,4 @@
-package com.caner.data.model.remote
+package com.caner.domain.model.remote
 
 data class MovieGenre(
     val id: Int,

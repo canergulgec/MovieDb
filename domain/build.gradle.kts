@@ -6,6 +6,7 @@ plugins {
     id(Configs.kotlinAndroid)
     id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
+    id(Configs.kotlinParcelize)
 }
 
 android {
@@ -23,11 +24,12 @@ kapt {
 }
 
 dependencies {
-    implementation(project(Modules.data))
     implementation(project(Modules.core))
 
     daggerHilt()
     retrofit()
+
+    implementation(Dependencies.AndroidX.paging)
 
     implementation(Dependencies.AndroidX.dataStore)
 }

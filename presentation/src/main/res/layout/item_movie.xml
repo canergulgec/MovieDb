@@ -8,7 +8,7 @@
 
         <variable
             name="movie"
-            type="com.caner.data.model.Movie" />
+            type="com.caner.domain.model.Movie" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

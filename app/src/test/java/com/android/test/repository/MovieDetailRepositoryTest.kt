@@ -1,8 +1,8 @@
 package com.android.test.repository
 
 import com.android.test.utils.`should be`
-import com.caner.data.model.remote.MovieDetailResponse
-import com.caner.data.repository.MovieDetailRepository
+import com.caner.domain.model.remote.MovieDetailResponse
+import com.caner.domain.repository.MovieDetailRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

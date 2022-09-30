@@ -2,8 +2,8 @@ package com.caner.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.caner.core.network.Resource
-import com.caner.core.network.UserMessage
+import com.caner.domain.state.Resource
+import com.caner.domain.state.UserMessage
 import com.caner.domain.usecase.MovieDetailUseCase
 import com.caner.presentation.viewmodel.state.MovieDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel

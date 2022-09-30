@@ -5,12 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import androidx.paging.cachedIn
-import androidx.paging.map
-import com.caner.data.repository.MovieRepository
-import com.caner.core.Constants
+import com.caner.core.constants.Constants
 import com.caner.navigation.NavigationDispatcher
-import com.caner.core.network.HttpParams
-import com.caner.domain.mapper.MovieMapper
+import com.caner.core.constants.HttpParams
+import com.caner.domain.usecase.MovieUseCase
 import com.caner.presentation.viewmodel.state.MovieUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -19,8 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val repository: MovieRepository,
-    private val mapper: MovieMapper,
+    private val movieUseCase: MovieUseCase,
     private val navigationDispatcher: NavigationDispatcher,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -35,13 +32,7 @@ class MovieViewModel @Inject constructor(
     }
 
     private fun getMovies(moviePath: String) {
-        val movies = repository.getMovies(moviePath)
-            .map { pagingData ->
-                pagingData.map {
-                    mapper.toMovie(it)
-                }
-            }
-            .cachedIn(viewModelScope)
+        val movies = movieUseCase.getMovies(path = moviePath).cachedIn(viewModelScope)
         _movieUiState.update { it.copy(moviesPagingFlow = movies) }
     }
 

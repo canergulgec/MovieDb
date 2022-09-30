@@ -1,11 +1,10 @@
-package com.caner.data.repository
+package com.caner.data.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.caner.data.api.MovieApi
-import com.caner.core.Constants
-import com.caner.core.network.HttpParams
-import com.caner.data.model.remote.MovieResponseItem
+import com.caner.core.constants.HttpParams
+import com.caner.domain.model.remote.MovieResponseItem
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
@@ -17,7 +16,7 @@ class MoviesPagingSource @Inject constructor(
         val page = params.key ?: HttpParams.MOVIE_STARTING_PAGE_INDEX
 
         return try {
-            service.getMovies(path, getParams(page)).run {
+            service.getMovies(path = path, page = page).run {
                 LoadResult.Page(
                     data = this.results,
                     prevKey = if (page == HttpParams.MOVIE_STARTING_PAGE_INDEX) null else page - 1,
@@ -26,14 +25,6 @@ class MoviesPagingSource @Inject constructor(
             }
         } catch (e: Exception) {
             return LoadResult.Error(e)
-        }
-    }
-
-    private fun getParams(page: Int): HashMap<String, Any> {
-        return object : LinkedHashMap<String, Any>() {
-            init {
-                put(Constants.PAGE, page)
-            }
         }
     }
 

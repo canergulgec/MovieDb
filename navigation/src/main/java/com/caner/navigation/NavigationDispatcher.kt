@@ -12,12 +12,8 @@ class NavigationDispatcher @Inject constructor() {
     private val navigationEmitter = MutableSharedFlow<NavigationCommand>(replay = 0)
     val navigationCommands: SharedFlow<NavigationCommand> = navigationEmitter.asSharedFlow()
 
-    private suspend fun emit(navigationCommand: NavigationCommand) {
-        navigationEmitter.emit(navigationCommand)
-    }
-
     suspend fun navigateTo(direction: NavDirections) {
-        emit { navController ->
+        navigationEmitter.emit { navController ->
             navController.navigate(direction)
         }
     }
