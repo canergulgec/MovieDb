@@ -6,6 +6,7 @@ plugins {
     id(Configs.kotlinAndroid)
     id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
+    id(Configs.safeArgs)
 }
 
 android {
@@ -19,6 +20,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -31,12 +33,11 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.navigation))
 
+    appCompat()
+    daggerHilt()
 
     implementation(Dependencies.AndroidX.navigationFragmentKtx)
     implementation(Dependencies.AndroidX.navigationUiKtx)
-
-    appCompat()
-    daggerHilt()
 
     implementation(Dependencies.AndroidX.constraintLayout)
     implementation(Dependencies.AndroidX.lifecycleLiveData)
@@ -44,7 +45,10 @@ dependencies {
     implementation(Dependencies.AndroidX.viewPager)
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.AndroidX.startup)
+
     implementation(Dependencies.Google.material)
+    implementation(Dependencies.Google.flexBox)
+
     implementation(Dependencies.Debugging.timber)
     implementation(Dependencies.ImageLoader.coil)
 }

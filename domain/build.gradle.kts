@@ -26,6 +26,7 @@ dependencies {
     implementation(project(Modules.core))
 
     daggerHilt()
+    implementation(Dependencies.Network.gsonConverter)
     implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.AndroidX.dataStore)
 }

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">MovieDb</string>
+    <string name="nearby">Yakındakiler</string>
+    <string name="best_rated">En İyiler</string>
+    <string name="search">Search something..</string>
+    <string name="empty_view">Empty View</string>
+    <string name="movie_runtime">%s min</string>
+
     <string name="channel_name">movie_channel_name</string>
     <string name="channel_description">movie_channel_description</string>
     <string name="error_happened">Hata!</string>

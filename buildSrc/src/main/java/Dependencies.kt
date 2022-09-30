@@ -26,8 +26,6 @@ object Dependencies {
         const val cardView = "androidx.cardview:cardview:${Versions.AndroidX.cardViewVersion}"
         const val paging = "androidx.paging:paging-runtime-ktx:${Versions.AndroidX.pagingVersion}"
         const val viewPager = "androidx.viewpager2:viewpager2:${Versions.AndroidX.viewPagerVersion}"
-        const val splashScreen =
-            "androidx.core:core-splashscreen:${Versions.AndroidX.splashScreenVersion}"
     }
 
     object Google {

@@ -1,17 +1,13 @@
-import extension.appCompat
-import extension.lifeCycle
-import extension.retrofit
+import extension.appDebugger
 import extension.daggerHilt
 import extension.integrationTest
 import extension.unitTest
-import extension.appDebugger
 
 plugins {
     id(Configs.androidApplication)
     id(Configs.kotlinAndroid)
-    id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
-    id(Configs.safeArgs)
+    id(Configs.kotlinKapt)
 }
 
 android {
@@ -21,12 +17,8 @@ android {
         applicationId = Configs.applicationId
         minSdk = Versions.App.minSdkVersion
         targetSdk = Versions.App.targetSdkVersion
-        multiDexEnabled = true
         versionCode = Versions.App.versionCode
         versionName = Versions.App.versionName
-        vectorDrawables {
-            useSupportLibrary = true
-        }
         testInstrumentationRunner = Configs.hiltTestInstrumentationRunner
     }
 
@@ -53,7 +45,6 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    // Open data binding
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -68,30 +59,16 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
-    implementation(project(Modules.presentation))
     implementation(project(Modules.navigation))
+    implementation(project(Modules.presentation))
 
-    appCompat()
-    lifeCycle()
-    retrofit()
     daggerHilt()
     integrationTest()
     unitTest()
     appDebugger()
 
-    implementation(Dependencies.AndroidX.constraintLayout)
-    implementation(Dependencies.AndroidX.fragmentKtx)
-    implementation(Dependencies.AndroidX.multiDex)
-    implementation(Dependencies.AndroidX.vectorDrawable)
-    implementation(Dependencies.AndroidX.navigationFragmentKtx)
-    implementation(Dependencies.AndroidX.navigationUiKtx)
-    implementation(Dependencies.AndroidX.paging)
-    implementation(Dependencies.AndroidX.dataStore)
-    implementation(Dependencies.AndroidX.startup)
-    implementation(Dependencies.AndroidX.splashScreen)
     implementation(Dependencies.Google.material)
-    implementation(Dependencies.Google.flexBox)
-    implementation(Dependencies.materialDialog)
+    implementation(Dependencies.AndroidX.startup)
 
     kaptAndroidTest(Dependencies.Dagger.daggerHiltCompiler)
 }

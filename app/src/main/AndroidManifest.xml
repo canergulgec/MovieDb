@@ -18,9 +18,9 @@
         tools:ignore="DataExtractionRules">
 
         <activity
-            android:name="com.caner.moviedb.ui.main.MainActivity"
+            android:name="com.caner.presentation.ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.App.Starting"
+            android:theme="@style/Theme.MovieDb"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.caner.presentation.startup.TimberInitializer"
+                android:name="com.caner.moviedb.startup.TimberInitializer"
                 android:value="androidx.startup" />
         </provider>
 

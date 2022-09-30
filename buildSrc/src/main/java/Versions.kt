@@ -23,7 +23,6 @@ object Versions {
         const val startupVersion = "1.1.0"
         const val pagingVersion = "3.1.0"
         const val viewPagerVersion = "1.0.0"
-        const val splashScreenVersion = "1.0.0-alpha02"
     }
 
     object Google {
