@@ -14,10 +14,7 @@ object Versions {
         const val fragmentKtxVersion = "1.5.0"
         const val lifecycleVersion = "2.5.0"
         const val constraintLayoutVersion = "2.1.2"
-        const val multiDexVersion = "2.0.1"
-        const val recyclerViewVersion = "1.2.1"
         const val cardViewVersion = "1.0.0"
-        const val vectorDrawableVersion = "1.2.0-alpha02"
         const val navigationVersion = "2.5.2"
         const val dataStoreVersion = "1.0.0"
         const val startupVersion = "1.1.0"
@@ -72,8 +69,6 @@ object Versions {
     object ImageLoader {
         const val coilVersion = "1.4.0"
     }
-
-    const val materialDialogVersion = "3.3.0"
 
     const val gradleVersion = "7.2.1"
     const val kotlinVersion = "1.7.0"
