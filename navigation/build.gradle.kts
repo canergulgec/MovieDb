@@ -1,34 +1,24 @@
 import extension.daggerHilt
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Configs.androidLibrary)
+    id(Configs.kotlinAndroid)
     id(Configs.kotlinKapt)
     id(Configs.daggerHilt)
 }
 
 android {
-    compileSdk = 32
+    compileSdk = Versions.App.compileSdkVersion
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
+        minSdk = Versions.App.minSdkVersion
+        targetSdk = Versions.App.targetSdkVersion
+        testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
 }
 
 dependencies {
     daggerHilt()
-
     implementation("androidx.navigation:navigation-runtime-ktx:2.5.2")
 
     testImplementation("junit:junit:4.13.2")

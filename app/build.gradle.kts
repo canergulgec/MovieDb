@@ -16,7 +16,6 @@ plugins {
 
 android {
     compileSdk = Versions.App.compileSdkVersion
-    buildToolsVersion = Configs.buildToolsVersion
 
     defaultConfig {
         applicationId = Configs.applicationId

@@ -5,5 +5,5 @@ object ClassPaths {
     const val daggerHiltGradlePlugin =
         "com.google.dagger:hilt-android-gradle-plugin:${Versions.Dagger.daggerHiltVersion}"
     const val safeArgsGradlePlugin =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.safeArgsVersion}"
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.navigationVersion}"
 }

@@ -1,9 +1,8 @@
 object Configs {
-    const val buildToolsVersion = "30.0.3"
     const val applicationId = "com.caner.moviedb"
     const val hiltTestInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
     const val androidInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    const val kotlinAndroid = "kotlin-android"
+    const val kotlinAndroid = "org.jetbrains.kotlin.android"
     const val kotlinKapt = "kotlin-kapt"
     const val kotlinParcelize = "kotlin-parcelize"
     const val androidLibrary = "com.android.library"

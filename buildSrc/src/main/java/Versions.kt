@@ -19,7 +19,6 @@ object Versions {
         const val cardViewVersion = "1.0.0"
         const val vectorDrawableVersion = "1.2.0-alpha02"
         const val navigationVersion = "2.5.2"
-        const val safeArgsVersion = "2.5.2"
         const val dataStoreVersion = "1.0.0"
         const val startupVersion = "1.1.0"
         const val pagingVersion = "3.1.0"

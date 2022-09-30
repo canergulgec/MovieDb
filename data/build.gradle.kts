@@ -1,4 +1,3 @@
-import extension.appCompat
 import extension.appDebugger
 import extension.daggerHilt
 import extension.retrofit
@@ -35,7 +34,6 @@ kapt {
 dependencies {
     implementation(project(Modules.core))
 
-    appCompat()
     daggerHilt()
     retrofit()
     appDebugger()

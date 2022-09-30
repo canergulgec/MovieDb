@@ -21,8 +21,8 @@ class MovieLoadStateAdapter(
         val btnRetry: Button = holder.itemView.findViewById(R.id.loadStateRetry)
         val txtErrorMessage: TextView = holder.itemView.findViewById(R.id.loadStateErrorMessage)
 
-        btnRetry.isVisible = loadState !is LoadState.Loading
-        txtErrorMessage.isVisible = loadState !is LoadState.Loading
+        btnRetry.isVisible = loadState is LoadState.Error
+        txtErrorMessage.isVisible = loadState is LoadState.Error
         progress.isVisible = loadState is LoadState.Loading
 
         if (loadState is LoadState.Error) {

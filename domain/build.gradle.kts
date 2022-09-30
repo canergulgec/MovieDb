@@ -1,4 +1,3 @@
-import extension.appCompat
 import extension.daggerHilt
 import extension.retrofit
 
@@ -27,7 +26,6 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.core))
 
-    appCompat()
     daggerHilt()
     retrofit()
 
