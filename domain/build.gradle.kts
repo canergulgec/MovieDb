@@ -1,5 +1,4 @@
 import extension.daggerHilt
-import extension.retrofit
 
 plugins {
     id(Configs.androidLibrary)
@@ -27,9 +26,6 @@ dependencies {
     implementation(project(Modules.core))
 
     daggerHilt()
-    retrofit()
-
     implementation(Dependencies.AndroidX.paging)
-
     implementation(Dependencies.AndroidX.dataStore)
 }
