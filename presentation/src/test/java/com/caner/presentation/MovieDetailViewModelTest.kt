@@ -50,14 +50,14 @@ class MovieDetailViewModelTest {
             viewModel.getMovieDetail(any())
 
             // Then
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(true)
+            assertThat(awaitItem().isFetchingMovieDetail).isFalse()
+            assertThat(awaitItem().isFetchingMovieDetail).isTrue()
 
             val state = awaitItem()
-            assertThat(state.movieDetailModel).isNotEqualTo(null)
+            assertThat(state.movieDetailModel).isNotNull()
             assertThat(state.movieDetailModel?.movieId).isEqualTo(detailModel.movieId)
 
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
+            assertThat(awaitItem().isFetchingMovieDetail).isFalse()
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()
@@ -81,14 +81,14 @@ class MovieDetailViewModelTest {
             viewModel.getMovieDetail(any())
 
             // Then
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(true)
+            assertThat(awaitItem().isFetchingMovieDetail).isFalse()
+            assertThat(awaitItem().isFetchingMovieDetail).isTrue()
 
             val errorItem = awaitItem()
-            assertThat(errorItem.errorMessage.isEmpty()).isEqualTo(false)
+            assertThat(errorItem.errorMessage.isEmpty()).isFalse()
             assertThat(errorItem.errorMessage.first().message).isEqualTo(error.message)
 
-            assertThat(awaitItem().isFetchingMovieDetail).isEqualTo(false)
+            assertThat(awaitItem().isFetchingMovieDetail).isFalse()
 
             // Cancel and ignore remaining
             cancelAndIgnoreRemainingEvents()

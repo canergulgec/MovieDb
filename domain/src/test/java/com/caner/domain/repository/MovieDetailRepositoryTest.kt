@@ -17,7 +17,7 @@ class MovieDetailRepositoryTest {
     private val mockRepository = mockk<MovieDetailRepository>()
 
     @Test
-    fun `Movie detail flow emits successfully`() = runTest {
+    fun `Movie detail emits successfully`() = runTest {
         // Given
         val movieDetail = MovieDetailResponse(id = 1)
         coEvery { mockRepository.getMovieDetail(any()) } returns movieDetail
@@ -32,7 +32,7 @@ class MovieDetailRepositoryTest {
     }
 
     @Test
-    fun `Movie detail flow emits error`() = runTest {
+    fun `Movie detail emits error`() = runTest {
         // Given
         val error = Throwable(message = "Test error")
         coEvery { mockRepository.getMovieDetail(any()) }.throws(error)
