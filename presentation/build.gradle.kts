@@ -31,7 +31,6 @@ kapt {
 
 dependencies {
     implementation(project(Modules.domain))
-    implementation(project(Modules.core))
     implementation(project(Modules.navigation))
 
     appCompat()

@@ -24,8 +24,6 @@ kapt {
 }
 
 dependencies {
-    implementation(project(Modules.core))
-
     daggerHilt()
     unitTest()
 

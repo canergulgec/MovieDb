@@ -32,7 +32,6 @@ kapt {
 }
 
 dependencies {
-    implementation(project(Modules.core))
     implementation(project(Modules.domain))
 
     daggerHilt()

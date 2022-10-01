@@ -1,26 +1,16 @@
 package com.caner.presentation.ui.home.adapter.viewholder
 
+import androidx.recyclerview.widget.RecyclerView
 import com.caner.domain.model.Movie
-import com.caner.core.BaseViewHolder
 import com.caner.presentation.utils.extension.use
 import com.caner.presentation.databinding.ItemMovieBinding
 
-class MovieViewHolder constructor(
-    private val movieBinding: ItemMovieBinding,
-    clickFunc: (Int) -> Unit
-) : BaseViewHolder<Movie, ItemMovieBinding>(movieBinding) {
+class MovieViewHolder(private val binding: ItemMovieBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        itemView.setOnClickListener {
-            clickFunc.invoke(getRowItem()?.movieId ?: 0)
-        }
-    }
-
-    override fun bind() {
-        getRowItem()?.apply {
-            movieBinding.use {
-                movie = getRowItem()
-            }
+    fun bind(item: Movie) {
+        binding.use {
+            movie = item
         }
     }
 }

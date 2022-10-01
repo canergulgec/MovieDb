@@ -9,7 +9,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="item"
+            name="movie"
             type="com.caner.domain.model.Movie" />
 
     </data>
@@ -27,7 +27,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:path='@{item.poster.original ?? ""}'
+            app:path='@{movie.poster.original ?? ""}'
             app:radius="@{8f}"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -40,7 +40,7 @@
             android:layout_marginHorizontal="16dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{item.title}"
+            android:text="@{movie.title}"
             app:layout_constraintBottom_toBottomOf="@+id/movieBackdropIv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{item.releaseDate}"
+            android:text="@{movie.releaseDate}"
             app:layout_constraintStart_toEndOf="@+id/movieBackdropIv"
             app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
             tools:text="2021" />
