@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.caner.core.Constants
+import com.caner.presentation.utils.Constants
 import com.caner.presentation.utils.extension.visible
 import com.caner.navigation.NavigationDispatcher
 import com.caner.presentation.R

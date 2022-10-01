@@ -11,7 +11,6 @@ import com.caner.presentation.ui.detail.MovieDetailFragment
 import com.android.test.screen.MovieDetailScreen
 import com.android.test.utils.detailDispatcher
 import com.android.test.utils.launchFragmentInHiltContainer
-import com.caner.core.Constants
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
@@ -32,6 +31,10 @@ class MovieDetailFragmentTest {
 
     private lateinit var navController: TestNavHostController
 
+    companion object {
+        private const val MOVIE_ID = "movieId"
+    }
+
     @Before
     fun setUp() {
         hiltRule.inject()
@@ -50,7 +53,7 @@ class MovieDetailFragmentTest {
         }
 
         launchFragmentInHiltContainer<MovieDetailFragment>(
-            fragmentArgs = bundleOf(Constants.MOVIE_ID to 399566)
+            fragmentArgs = bundleOf(MOVIE_ID to 399566)
         ) {
             this.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
                 if (viewLifecycleOwner != null) {

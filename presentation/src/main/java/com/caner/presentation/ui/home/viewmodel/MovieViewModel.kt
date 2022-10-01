@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import androidx.paging.cachedIn
-import com.caner.core.Constants
+import com.caner.presentation.utils.Constants
 import com.caner.navigation.NavigationDispatcher
 import com.caner.domain.usecase.MovieUseCase
 import com.caner.presentation.ui.home.viewmodel.state.MovieUiState

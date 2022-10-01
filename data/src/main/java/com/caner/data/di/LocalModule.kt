@@ -2,7 +2,7 @@ package com.caner.data.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.caner.core.Constants
+import com.caner.data.local.PrefKeys
 import com.caner.data.local.PrefStore
 import dagger.Module
 import dagger.Provides
@@ -18,7 +18,7 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(Constants.SHARED_PREF_KEY, Context.MODE_PRIVATE)
+        return context.getSharedPreferences(PrefKeys.SHARED_PREF_KEY, Context.MODE_PRIVATE)
     }
 
     @Singleton

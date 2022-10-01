@@ -3,7 +3,7 @@ package com.caner.presentation.ui.search.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.caner.domain.model.Movie
-import com.caner.core.base.BaseRecyclerAdapter
+import com.caner.core.BaseRecyclerAdapter
 import com.caner.presentation.databinding.ItemMovieSearchBinding
 import com.caner.presentation.ui.search.adapter.comparator.SearchItemDiffUtil
 import com.caner.presentation.ui.search.adapter.viewholder.SearchViewHolder

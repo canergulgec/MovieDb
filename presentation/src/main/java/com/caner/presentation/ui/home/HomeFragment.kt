@@ -3,7 +3,7 @@ package com.caner.presentation.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.caner.core.Constants
+import com.caner.presentation.utils.Constants
 import com.caner.presentation.R
 import com.caner.presentation.databinding.FragmentHomeBinding
 import com.caner.presentation.ui.home.adapter.viewpager.MoviePagerAdapter

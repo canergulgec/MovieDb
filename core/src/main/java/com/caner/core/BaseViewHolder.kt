@@ -1,4 +1,4 @@
-package com.caner.core.base
+package com.caner.core
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

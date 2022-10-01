@@ -1,4 +1,4 @@
-package com.caner.core.base
+package com.caner.core
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

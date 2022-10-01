@@ -8,7 +8,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.caner.core.Constants
+import com.caner.presentation.utils.Constants
 import com.caner.presentation.utils.extension.px
 import com.caner.presentation.utils.extension.withLoadStateAll
 import com.caner.presentation.R
@@ -37,9 +37,6 @@ class MovieFragment : Fragment(R.layout.fragment_movies) {
     }
 
     companion object {
-        private const val SPAN_COUNT_1 = 1
-        private const val SPAN_COUNT_2 = 2
-
         fun newInstance(moviePath: String): MovieFragment {
             return MovieFragment().apply {
                 arguments = Bundle().apply {
@@ -79,8 +76,8 @@ class MovieFragment : Fragment(R.layout.fragment_movies) {
             .onEach {
                 (binding.moviesRv.layoutManager as GridLayoutManager).spanCount =
                     when (it.refresh) {
-                        is LoadState.Loading -> SPAN_COUNT_1
-                        else -> SPAN_COUNT_2
+                        is LoadState.Loading -> Constants.SPAN_COUNT_1
+                        else -> Constants.SPAN_COUNT_2
                     }
             }
             .distinctUntilChangedBy { it.refresh }
