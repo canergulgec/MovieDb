@@ -3,7 +3,7 @@ package com.caner.data.pagingsource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.caner.data.api.MovieApi
-import com.caner.core.constants.HttpParams
+import com.caner.domain.utils.HttpParams
 import com.caner.domain.model.remote.MovieResponseItem
 import javax.inject.Inject
 

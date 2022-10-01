@@ -2,7 +2,7 @@ package com.caner.presentation.ui.detail.adapter.viewholder
 
 import com.caner.domain.model.remote.MovieGenre
 import com.caner.core.base.BaseViewHolder
-import com.caner.core.extension.use
+import com.caner.presentation.utils.extension.use
 import com.caner.presentation.databinding.ItemGenreBinding
 
 class MovieGenresViewHolder constructor(

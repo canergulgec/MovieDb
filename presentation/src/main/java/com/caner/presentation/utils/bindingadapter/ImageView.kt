@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.caner.core.R
+import com.caner.presentation.R
 
 @BindingAdapter(value = ["bind:path", "bind:radius"])
 fun ImageView.loadRoundedCornerImage(path: String?, radius: Float) {

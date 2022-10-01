@@ -2,7 +2,7 @@ package com.caner.data.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.caner.core.constants.Constants
+import com.caner.core.Constants
 import com.caner.data.local.PrefStore
 import dagger.Module
 import dagger.Provides

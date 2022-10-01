@@ -2,7 +2,7 @@ package com.caner.presentation.ui.main
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -11,19 +11,20 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.caner.core.constants.Constants
-import com.caner.core.base.BaseActivity
-import com.caner.core.extension.visible
+import com.caner.core.Constants
+import com.caner.presentation.utils.extension.visible
 import com.caner.navigation.NavigationDispatcher
 import com.caner.presentation.R
 import com.caner.presentation.databinding.ActivityMainBinding
+import com.caner.presentation.utils.delegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : AppCompatActivity() {
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     @Inject
     lateinit var navigationDispatcher: NavigationDispatcher
@@ -38,7 +39,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.mainNavHostFragment) as NavHostFragment
 
@@ -90,8 +94,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onPause()
         navController.removeOnDestinationChangedListener(listener)
     }
-
-    override val bindLayout: (LayoutInflater) -> ActivityMainBinding
-        get() = ActivityMainBinding::inflate
-
 }

@@ -2,7 +2,7 @@ package com.caner.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.caner.core.constants.HttpParams
+import com.caner.domain.utils.HttpParams
 import com.caner.data.api.MovieApi
 import com.caner.data.pagingsource.MoviesPagingSource
 import com.caner.domain.repository.MovieRepository

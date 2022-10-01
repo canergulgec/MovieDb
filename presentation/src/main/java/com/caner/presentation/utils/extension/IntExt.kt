@@ -1,4 +1,4 @@
-package com.caner.core.extension
+package com.caner.presentation.utils.extension
 
 import android.content.res.Resources
 

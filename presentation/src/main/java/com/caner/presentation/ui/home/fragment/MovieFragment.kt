@@ -1,24 +1,24 @@
 package com.caner.presentation.ui.home.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.caner.core.constants.Constants
-import com.caner.core.base.BaseFragment
-import com.caner.core.extension.px
-import com.caner.core.extension.withLoadStateAll
+import com.caner.core.Constants
+import com.caner.presentation.utils.extension.px
+import com.caner.presentation.utils.extension.withLoadStateAll
+import com.caner.presentation.R
 import com.caner.presentation.utils.decoration.HorizontalSpaceItemDecoration
 import com.caner.presentation.databinding.FragmentMoviesBinding
 import com.caner.presentation.ui.home.HomeFragmentDirections
 import com.caner.presentation.ui.home.adapter.loadstate.MovieLoadStateAdapter
 import com.caner.presentation.ui.home.adapter.paging.MoviesPagingAdapter
 import com.caner.presentation.ui.home.viewmodel.MovieViewModel
+import com.caner.presentation.utils.delegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -26,7 +26,8 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
+class MovieFragment : Fragment(R.layout.fragment_movies) {
+    private val binding by viewBinding(FragmentMoviesBinding::bind)
     private val viewModel: MovieViewModel by viewModels()
 
     private val movieAdapter by lazy {
@@ -36,6 +37,9 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
     }
 
     companion object {
+        private const val SPAN_COUNT_1 = 1
+        private const val SPAN_COUNT_2 = 2
+
         fun newInstance(moviePath: String): MovieFragment {
             return MovieFragment().apply {
                 arguments = Bundle().apply {
@@ -45,9 +49,10 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
         }
     }
 
-    override fun initView(savedInstanceState: Bundle?) {
-        initPagingFlow()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        initPagingFlow()
         binding.moviesRv.run {
             setHasFixedSize(true)
             addItemDecoration(HorizontalSpaceItemDecoration(12.px))
@@ -58,31 +63,27 @@ class MovieFragment : BaseFragment<FragmentMoviesBinding>() {
                 footer = MovieLoadStateAdapter(movieAdapter::retry)
             )
         }
+
     }
 
     private fun initPagingFlow() {
-        viewModel.movieUiState.flowWithLifecycle(
-            minActiveState = Lifecycle.State.CREATED,
-            lifecycle = viewLifecycleOwner.lifecycle
-        ).onEach { state ->
-            state.moviesPagingFlow?.collectLatest {
-                movieAdapter.submitData(it)
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.movieUiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle)
+            .onEach { state ->
+                state.moviesPagingFlow?.collectLatest {
+                    movieAdapter.submitData(it)
+                }
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
 
 
         movieAdapter.loadStateFlow.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle)
             .onEach {
                 (binding.moviesRv.layoutManager as GridLayoutManager).spanCount =
                     when (it.refresh) {
-                        is LoadState.Loading -> Constants.SPAN_COUNT_1
-                        else -> Constants.SPAN_COUNT_2
+                        is LoadState.Loading -> SPAN_COUNT_1
+                        else -> SPAN_COUNT_2
                     }
             }
             .distinctUntilChangedBy { it.refresh }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
-
-    override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMoviesBinding
-        get() = FragmentMoviesBinding::inflate
 }
