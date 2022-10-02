@@ -1,7 +1,6 @@
-package com.caner.data
+package com.caner.domain.repository
 
 import com.caner.domain.model.remote.MovieDetailResponse
-import com.caner.domain.repository.MovieDetailRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify

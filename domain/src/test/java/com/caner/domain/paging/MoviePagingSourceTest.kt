@@ -1,10 +1,10 @@
-package com.caner.data
+package com.caner.domain.paging
 
 import androidx.paging.PagingSource
-import com.caner.data.api.MovieApi
-import com.caner.data.pagingsource.MoviesPagingSource
+import com.caner.domain.pagingsource.MoviesPagingSource
 import com.caner.domain.model.remote.MovieResponse
 import com.caner.domain.model.remote.MovieResponseItem
+import com.caner.domain.repository.MovieRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -14,9 +14,9 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class MovieRepositoryTest {
+class MoviePagingSourceTest {
 
-    private val mockApi = mockk<MovieApi>()
+    private val mockRepository = mockk<MovieRepository>()
 
     private lateinit var pagingSource: MoviesPagingSource
 
@@ -48,13 +48,13 @@ class MovieRepositoryTest {
 
     @Before
     fun setUpViewModel() {
-        pagingSource = MoviesPagingSource(service = mockApi, path = MOVIE_PATH)
+        pagingSource = MoviesPagingSource(repository = mockRepository, path = MOVIE_PATH)
     }
 
     @Test
     fun `Movie paging source Load - Refresh case`() = runTest {
         // When
-        coEvery { mockApi.getMovies(path = any(), page = any()) } returns movieResponse
+        coEvery { mockRepository.getMovies(path = any(), page = any()) } returns movieResponse
 
         val expectedResult = PagingSource.LoadResult.Page(
             data = listOf(movieItem),
@@ -77,7 +77,7 @@ class MovieRepositoryTest {
     @Test
     fun `Movie paging source Load - Error case`() = runTest {
         val error = RuntimeException("404", Throwable())
-        coEvery { mockApi.getMovies(path = any(), page = any()) } throws error
+        coEvery { mockRepository.getMovies(path = any(), page = any()) } throws error
 
         val expectedResult = PagingSource.LoadResult.Error<Int, MovieResponseItem>(error)
 
@@ -96,7 +96,7 @@ class MovieRepositoryTest {
     @Test
     fun `Movie paging source Load - Append case`() = runTest {
         // When
-        coEvery { mockApi.getMovies(path = any(), page = any()) } returns movieResponse
+        coEvery { mockRepository.getMovies(path = any(), page = any()) } returns movieResponse
 
         val expectedResult = PagingSource.LoadResult.Page(
             data = listOf(movieItem),
