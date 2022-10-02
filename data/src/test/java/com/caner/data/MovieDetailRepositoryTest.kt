@@ -36,7 +36,7 @@ class MovieDetailRepositoryTest {
     fun `Movie detail emits error`() = runTest {
         // Given
         val error = Throwable(message = "Test error")
-        coEvery { mockRepository.getMovieDetail(any()) }.throws(error)
+        coEvery { mockRepository.getMovieDetail(any()) } throws (error)
 
         // WHEN
         val exception = assertThrows(Throwable::class.java) {
