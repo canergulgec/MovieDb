@@ -41,13 +41,13 @@ class MovieRepositoryTest {
         )
 
         // When
-        coEvery { mockRepository.getMovies(any(), any()) } returns movieResponse
+        coEvery { mockRepository.getMovies(path = any(), page = any()) } returns movieResponse
 
-        val request = mockRepository.getMovies(path = "", page = 1)
+        val response = mockRepository.getMovies(path = "", page = 1)
 
         // Then
-        assertThat(request).isEqualTo(movieResponse)
-        assertThat(request.total).isEqualTo(10)
+        assertThat(response).isEqualTo(movieResponse)
+        assertThat(response.total).isEqualTo(10)
     }
 
     @Test
@@ -58,13 +58,13 @@ class MovieRepositoryTest {
         // When
         coEvery { mockRepository.getMovies(any(), any()) } throws error
 
-        val request = assertThrows(Throwable::class.java) {
+        val response = assertThrows(Throwable::class.java) {
             runBlocking {
                 mockRepository.getMovies(path = "", page = 5)
             }
         }
 
         // Then
-        assertThat(request).isEqualTo(error)
+        assertThat(response).isEqualTo(error)
     }
 }
