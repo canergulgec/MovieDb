@@ -3,8 +3,8 @@ object Dependencies {
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.AndroidX.appCompatVersion}"
         const val coreKtx = "androidx.core:core-ktx:${Versions.AndroidX.coreKtxVersion}"
-        const val lifecycleLiveData =
-            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.lifecycleVersion}"
+        const val lifecycleRuntime =
+            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.lifecycleVersion}"
         const val navigationFragmentKtx =
             "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.navigationVersion}"
         const val navigationUiKtx =
@@ -16,7 +16,6 @@ object Dependencies {
         const val dataStore =
             "androidx.datastore:datastore-preferences:${Versions.AndroidX.dataStoreVersion}"
         const val startup = "androidx.startup:startup-runtime:${Versions.AndroidX.startupVersion}"
-        const val cardView = "androidx.cardview:cardview:${Versions.AndroidX.cardViewVersion}"
         const val paging = "androidx.paging:paging-runtime-ktx:${Versions.AndroidX.pagingVersion}"
         const val viewPager = "androidx.viewpager2:viewpager2:${Versions.AndroidX.viewPagerVersion}"
     }
@@ -40,11 +39,6 @@ object Dependencies {
         const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.Network.okHttpVersion}"
         const val okHttpInterceptor =
             "com.squareup.okhttp3:logging-interceptor:${Versions.Network.okHttpVersion}"
-    }
-
-    object Coroutines {
-        const val coroutinesCore =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.coroutinesVersion}"
     }
 
     object Debugging {

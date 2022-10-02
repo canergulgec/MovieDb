@@ -52,7 +52,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private fun initObservers() {
         viewModel.uiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
-            showLoadingDialog(state.isFetchingMovieDetail)
+            setProgressVisibility(state.isFetchingMovieDetail)
             state.movieDetailModel?.takeIf { !state.isFetchingMovieDetail }?.let {
                 binding.item = it
                 movieGenresAdapter.submitList(it.genres)
@@ -79,11 +79,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         )
     }
 
-    private fun showLoadingDialog(isFetching: Boolean) {
-        if (isFetching && !progressDialog.isShowing) {
-            progressDialog.show()
-        } else {
-            progressDialog.hide()
-        }
+    private fun setProgressVisibility(isFetching: Boolean) {
+        if (isFetching) progressDialog.show() else progressDialog.hide()
     }
 }

@@ -37,15 +37,15 @@ dependencies {
     daggerHilt()
     unitTest()
 
+    implementation(Dependencies.AndroidX.fragmentKtx)
+
     implementation(Dependencies.AndroidX.navigationFragmentKtx)
     implementation(Dependencies.AndroidX.navigationUiKtx)
 
     implementation(Dependencies.AndroidX.constraintLayout)
-    implementation(Dependencies.AndroidX.lifecycleLiveData)
     implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.AndroidX.viewPager)
     implementation(Dependencies.AndroidX.dataStore)
-    implementation(Dependencies.AndroidX.startup)
 
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Google.flexBox)

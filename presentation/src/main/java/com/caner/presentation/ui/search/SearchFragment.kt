@@ -60,7 +60,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun initObservers() {
         viewModel.uiState.flowWithLifecycle(lifecycle = viewLifecycleOwner.lifecycle).onEach { state ->
-            showLoadingDialog(state.isFetchingMovies)
+            setProgressVisibility(state.isFetchingMovies)
             state.movieList.takeIf { it.isNotEmpty() }.run {
                 searchAdapter.submitList(this)
             }
@@ -68,11 +68,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun showLoadingDialog(isFetching: Boolean) {
-        if (isFetching && !progressDialog.isShowing) {
-            progressDialog.show()
-        } else {
-            progressDialog.hide()
-        }
+    private fun setProgressVisibility(isFetching: Boolean) {
+        if (isFetching) progressDialog.show() else progressDialog.hide()
     }
 }

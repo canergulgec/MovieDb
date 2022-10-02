@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.Window
 import com.caner.presentation.R
 
-class FullScreenProgressDialog(context: Context, themeResId: Int = R.style.ProgressDialogStyle) : Dialog(context, themeResId) {
+class FullScreenProgressDialog(context: Context) : Dialog(context, R.style.ProgressDialogStyle) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,5 +16,9 @@ class FullScreenProgressDialog(context: Context, themeResId: Int = R.style.Progr
         setContentView(R.layout.view_progress)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setCancelable(false)
+    }
+
+    override fun show() {
+        if (!isShowing) super.show()
     }
 }
