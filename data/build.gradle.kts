@@ -1,6 +1,7 @@
 import extension.appDebugger
 import extension.daggerHilt
 import extension.retrofit
+import extension.unitTest
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
@@ -37,6 +38,7 @@ dependencies {
     daggerHilt()
     retrofit()
     appDebugger()
+    unitTest()
 
     implementation(Dependencies.AndroidX.dataStore)
     implementation(Dependencies.Network.gsonConverter)

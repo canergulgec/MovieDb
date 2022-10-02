@@ -1,7 +1,8 @@
-package com.caner.domain.usecase
+package com.caner.domain
 
 import com.caner.domain.utils.state.Resource
 import com.caner.domain.model.MovieDetailModel
+import com.caner.domain.usecase.MovieDetailUseCase
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.coVerify
