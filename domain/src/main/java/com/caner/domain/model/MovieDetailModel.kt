@@ -15,7 +15,7 @@ data class MovieDetailModel(
     val overview: String? = null,
     val imdbId: String? = null,
     val runtime: Int? = null,
-    val voteAverage: Double? = null,
+    val voteAverage: String? = null,
     val voteCount: Int? = null,
     val releaseDate: Date? = null
 )

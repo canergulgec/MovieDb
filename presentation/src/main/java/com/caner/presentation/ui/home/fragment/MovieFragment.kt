@@ -52,7 +52,7 @@ class MovieFragment : Fragment(R.layout.fragment_movies) {
         initPagingFlow()
         binding.moviesRv.run {
             setHasFixedSize(true)
-            addItemDecoration(HorizontalSpaceItemDecoration(12.px))
+            addItemDecoration(HorizontalSpaceItemDecoration(4.px))
 
             adapter = movieAdapter.withLoadStateAll(
                 refresh = MovieLoadStateAdapter(movieAdapter::refresh),

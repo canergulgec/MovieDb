@@ -70,31 +70,42 @@
             app:layout_constraintTop_toBottomOf="@+id/movieBackdropIv"
             tools:text="Movie Title" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
-            style="@style/App.Text.Small"
+        <LinearLayout
+            android:id="@+id/ratingContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="4dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="@{String.valueOf(item.voteAverage)}"
-            android:visibility="@{item.voteAverage > 0 ? View.VISIBLE : View.GONE}"
-            app:drawableStartCompat="@drawable/ic_star_filled"
-            app:drawableTint="@color/star_color"
+            android:orientation="horizontal"
+            android:visibility="@{item.voteAverage != null ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="@+id/movieTitleTv"
-            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
-            tools:text="8.1" />
+            app:layout_constraintTop_toBottomOf="@+id/movieTitleTv">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="4dp"
+                android:tint="@color/star_color"
+                app:srcCompat="@drawable/ic_star_filled" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/App.Text.XSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.voteAverage}"
+                tools:text="8.1" />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/App.Text.Small"
+            style="@style/App.Text.XSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@{@string/movie_runtime(item.runtime)}"
             android:visibility="@{item.runtime > 0 ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+            app:layout_constraintStart_toEndOf="@+id/ratingContainer"
             app:layout_constraintTop_toBottomOf="@+id/movieTitleTv"
             tools:text="132 min" />
 

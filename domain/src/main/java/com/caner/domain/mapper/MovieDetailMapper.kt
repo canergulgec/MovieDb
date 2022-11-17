@@ -24,7 +24,9 @@ class MovieDetailMapper @Inject constructor() :
                 overview,
                 imdbId,
                 runtime,
-                voteAverage,
+                voteAverage?.let {
+                    String.format("%.1f", voteAverage)
+                },
                 voteCount,
                 releaseDate?.let { date ->
                     if (date.isNotEmpty()) {
