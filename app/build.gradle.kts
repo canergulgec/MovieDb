@@ -1,6 +1,5 @@
 import extension.appDebugger
 import extension.daggerHilt
-import extension.integrationTest
 
 plugins {
     id(Configs.androidApplication)
@@ -18,7 +17,7 @@ android {
         targetSdk = Versions.App.targetSdkVersion
         versionCode = Versions.App.versionCode
         versionName = Versions.App.versionName
-        testInstrumentationRunner = Configs.hiltTestInstrumentationRunner
+        testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
 
     buildTypes {
@@ -61,11 +60,8 @@ dependencies {
     implementation(project(Modules.presentation))
 
     daggerHilt()
-    integrationTest()
     appDebugger()
 
     implementation(Dependencies.Google.material)
     implementation(Dependencies.AndroidX.startup)
-
-    kaptAndroidTest(Dependencies.Dagger.daggerHiltCompiler)
 }

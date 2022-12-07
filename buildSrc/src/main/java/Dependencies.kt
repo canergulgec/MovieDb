@@ -3,8 +3,6 @@ object Dependencies {
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.AndroidX.appCompatVersion}"
         const val coreKtx = "androidx.core:core-ktx:${Versions.AndroidX.coreKtxVersion}"
-        const val lifecycleRuntime =
-            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidX.lifecycleVersion}"
         const val navigationFragmentKtx =
             "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.navigationVersion}"
         const val navigationUiKtx =
@@ -67,22 +65,6 @@ object Dependencies {
             const val turbine = "app.cash.turbine:turbine:${Versions.Test.turbineVersion}"
             const val archTesting =
                 "androidx.arch.core:core-testing:${Versions.Test.archTestingVersion}"
-        }
-
-        object Integration {
-            const val espressoCore =
-                "androidx.test.espresso:espresso-core:${Versions.Test.espressoCoreVersion}"
-            const val espressoContrib =
-                "androidx.test.espresso:espresso-contrib:${Versions.Test.espressoCoreVersion}"
-            const val kakao = "io.github.kakaocup:kakao:${Versions.Test.kakaoVersion}"
-            const val daggerHiltTesting =
-                "com.google.dagger:hilt-android-testing:${Versions.Dagger.daggerHiltVersion}"
-            const val mockWebServer =
-                "com.squareup.okhttp3:mockwebserver:${Versions.Test.mockServerVersion}"
-            const val fragmentTesting =
-                "androidx.fragment:fragment-testing:${Versions.Test.fragmentTestingVersion}"
-            const val navigationTesting =
-                "androidx.navigation:navigation-testing:${Versions.AndroidX.navigationVersion}"
         }
     }
 }

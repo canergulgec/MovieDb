@@ -15,16 +15,6 @@ fun DependencyHandlerScope.daggerHilt() {
     kapt(Dependencies.Dagger.daggerHiltCompiler)
 }
 
-fun DependencyHandlerScope.integrationTest() {
-    androidTestImplementation(Dependencies.Test.Integration.espressoCore)
-    androidTestImplementation(Dependencies.Test.Integration.espressoContrib)
-    androidTestImplementation(Dependencies.Test.Integration.kakao)
-    androidTestImplementation(Dependencies.Test.Integration.daggerHiltTesting)
-    androidTestImplementation(Dependencies.Test.Integration.fragmentTesting)
-    androidTestImplementation(Dependencies.Test.Integration.navigationTesting)
-    androidTestImplementation(Dependencies.Test.Integration.mockWebServer)
-}
-
 fun DependencyHandlerScope.unitTest() {
     testImplementation(Dependencies.Test.UnitTest.junit4)
     testImplementation(Dependencies.Test.UnitTest.coroutinesTest)

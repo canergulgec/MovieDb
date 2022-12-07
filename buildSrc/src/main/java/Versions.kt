@@ -12,10 +12,8 @@ object Versions {
         const val appCompatVersion = "1.4.2"
         const val coreKtxVersion = "1.8.0"
         const val fragmentKtxVersion = "1.5.0"
-        const val lifecycleVersion = "2.5.0"
         const val constraintLayoutVersion = "2.1.2"
-        const val cardViewVersion = "1.0.0"
-        const val navigationVersion = "2.5.2"
+        const val navigationVersion = "2.5.3"
         const val dataStoreVersion = "1.0.0"
         const val startupVersion = "1.1.0"
         const val pagingVersion = "3.1.0"
@@ -60,10 +58,6 @@ object Versions {
         const val archTestingVersion = "2.1.0"
         const val turbineVersion = "0.7.0"
         const val truthVersion = "1.1.3"
-        const val espressoCoreVersion = "3.3.0"
-        const val kakaoVersion = "3.0.4"
-        const val mockServerVersion = "4.9.1"
-        const val fragmentTestingVersion = "1.3.6"
     }
 
     object ImageLoader {

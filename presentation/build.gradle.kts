@@ -1,6 +1,4 @@
-import extension.appCompat
-import extension.daggerHilt
-import extension.unitTest
+import extension.*
 
 plugins {
     id(Configs.androidLibrary)
@@ -35,7 +33,10 @@ dependencies {
 
     appCompat()
     daggerHilt()
+    appDebugger()
     unitTest()
+
+    implementation(Dependencies.Network.gsonConverter)
 
     implementation(Dependencies.AndroidX.fragmentKtx)
 

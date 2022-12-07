@@ -1,6 +1,5 @@
 object Configs {
     const val applicationId = "com.caner.moviedb"
-    const val hiltTestInstrumentationRunner = "com.android.test.utils.HiltTestRunner"
     const val androidInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val kotlinAndroid = "org.jetbrains.kotlin.android"
     const val kotlinKapt = "kotlin-kapt"

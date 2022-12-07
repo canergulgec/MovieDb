@@ -23,7 +23,7 @@ class SearchViewModel @Inject constructor(
     private val navigationDispatcher: NavigationDispatcher
 ) : ViewModel() {
 
-    private val searchQuery = MutableStateFlow("")
+    val searchQuery = MutableStateFlow("")
 
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
