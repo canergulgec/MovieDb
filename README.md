@@ -43,11 +43,8 @@ In order to use MovieDB:
 - [Flipper](https://github.com/facebook/flipper)
 - [Testing](https://developer.android.com/training/testing/fundamentals)
   - [MockK](https://github.com/mockk/mockk)
-  - [Kakao](https://github.com/KakaoCup/Kakao)
-  - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
   - [Turbine](https://github.com/cashapp/turbine)
   - [Truth](https://github.com/google/truth)
-  - [Dagger Hilt Testing](https://developer.android.com/training/dependency-injection/hilt-testing)
 
 ## 🗼 Architecture
 
