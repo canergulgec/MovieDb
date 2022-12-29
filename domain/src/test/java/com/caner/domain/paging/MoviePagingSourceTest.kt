@@ -24,25 +24,11 @@ class MoviePagingSourceTest {
         const val MOVIE_PATH = "now_playing"
 
         // Given
-        private val movieItem =
-            MovieResponseItem(
-                id = 1,
-                popularity = 5.0,
-                video = false,
-                posterPath = "",
-                adult = false,
-                backdropPath = "",
-                originalLanguage = "en",
-                originalTitle = "",
-                title = "Movie",
-                voteAverage = 4.0,
-                overview = "",
-                releaseDate = ""
-            )
+        private val mockMovieResponseList = listOf(mockk<MovieResponseItem>())
         private val movieResponse = MovieResponse(
             total = 10,
             page = 1,
-            results = listOf(movieItem)
+            results = mockMovieResponseList
         )
     }
 
@@ -57,7 +43,7 @@ class MoviePagingSourceTest {
         coEvery { mockRepository.getMovies(path = any(), page = any()) } returns movieResponse
 
         val expectedResult = PagingSource.LoadResult.Page(
-            data = listOf(movieItem),
+            data = mockMovieResponseList,
             prevKey = null,
             nextKey = 2
         )
@@ -99,7 +85,7 @@ class MoviePagingSourceTest {
         coEvery { mockRepository.getMovies(path = any(), page = any()) } returns movieResponse
 
         val expectedResult = PagingSource.LoadResult.Page(
-            data = listOf(movieItem),
+            data = mockMovieResponseList,
             prevKey = 1,
             nextKey = 3
         )

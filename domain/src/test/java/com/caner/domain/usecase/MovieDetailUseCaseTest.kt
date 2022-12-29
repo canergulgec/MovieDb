@@ -1,79 +1,66 @@
 package com.caner.domain.usecase
 
+import app.cash.turbine.test
+import com.caner.domain.mapper.MovieDetailMapper
 import com.caner.domain.utils.state.Resource
 import com.caner.domain.model.MovieDetailModel
+import com.caner.domain.model.remote.MovieDetailResponse
+import com.caner.domain.repository.MovieDetailRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
-import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collectIndexed
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.any
 
 @ExperimentalCoroutinesApi
 class MovieDetailUseCaseTest {
 
-    private val mockUseCase = mockk<MovieDetailUseCase>()
+    private val mockMovieDetailRepository = mockk<MovieDetailRepository>()
+    private val mockMovieDetailMapper = mockk<MovieDetailMapper>()
 
-    @Test
-    fun `Get movie detail from useCase should return success case`() = runTest {
-        // Given
-        val detailModel = MovieDetailModel(movieId = 1)
-        val flow = flow {
-            emit(Resource.Loading(true))
-            emit(Resource.Success(detailModel))
-            emit(Resource.Loading(false))
-        }
-        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
+    private lateinit var movieDetailUseCase: MovieDetailUseCase
 
-        // Then
-        val job = launch {
-            mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
-                when (index) {
-                    0 -> assertThat(value).isEqualTo(Resource.Loading(true))
-                    1 -> assertThat(value).isEqualTo(Resource.Success(detailModel))
-                    2 -> assertThat(value).isEqualTo(Resource.Loading(false))
-                }
-            }
-        }
-
-        // When
-        mockUseCase.getMovieDetail(any())
-        coVerify { mockUseCase.getMovieDetail(any()) }
-
-        job.cancel()
+    @Before
+    fun setup() {
+        movieDetailUseCase = MovieDetailUseCase(repository = mockMovieDetailRepository, mapper = mockMovieDetailMapper)
     }
 
     @Test
-    fun `Get movie detail from useCase should return error case`() = runTest {
+    fun `Should return successful response when asked for movie detail`() = runTest {
+        // Given
+        val id = 1
+        val mockMovieDetailResponse = mockk<MovieDetailResponse>()
+        val mockMovieDetailModel = mockk<MovieDetailModel> {
+            every { movieId } returns id
+        }
+
+        coEvery { mockMovieDetailRepository.getMovieDetail(any()) } returns mockMovieDetailResponse
+        every { mockMovieDetailMapper.to(mockMovieDetailResponse) } returns mockMovieDetailModel
+
+        movieDetailUseCase.getMovieDetail(any()).test {
+            assertThat(awaitItem()).isEqualTo(Resource.Loading(true))
+            assertThat((awaitItem() as Resource.Success).data.movieId).isEqualTo(id)
+            assertThat(awaitItem()).isEqualTo(Resource.Loading(false))
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun `Should return error when asked for movie detail`() = runTest {
         // Given
         val error = Throwable("error")
-        val flow = flow {
-            emit(Resource.Loading(true))
-            emit(Resource.Error(error))
-            emit(Resource.Loading(false))
+
+        coEvery { mockMovieDetailRepository.getMovieDetail(any()) } throws error
+
+        movieDetailUseCase.getMovieDetail(any()).test {
+            assertThat(awaitItem()).isEqualTo(Resource.Loading(true))
+            assertThat((awaitItem() as Resource.Error).error.message).isEqualTo(error.message)
+            assertThat(awaitItem()).isEqualTo(Resource.Loading(false))
+            awaitComplete()
         }
-        coEvery { mockUseCase.getMovieDetail(any()) } returns flow
-
-        // Then
-        val job = launch {
-            mockUseCase.getMovieDetail(any()).collectIndexed { index, value ->
-                when (index) {
-                    0 -> assertThat(value).isEqualTo(Resource.Loading(true))
-                    1 -> assertThat(value).isEqualTo(Resource.Error(error))
-                    2 -> assertThat(value).isEqualTo(Resource.Loading(false))
-                }
-            }
-        }
-
-        // When
-        mockUseCase.getMovieDetail(any())
-        coVerify { mockUseCase.getMovieDetail(any()) }
-
-        job.cancel()
     }
 }

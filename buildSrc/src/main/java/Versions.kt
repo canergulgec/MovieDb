@@ -53,10 +53,10 @@ object Versions {
     }
 
     object Test {
-        const val mockkVersion = "1.12.0"
+        const val mockkVersion = "1.13.3"
         const val junit4Version = "4.13.2"
         const val archTestingVersion = "2.1.0"
-        const val turbineVersion = "0.7.0"
+        const val turbineVersion = "0.12.1"
         const val truthVersion = "1.1.3"
     }
 

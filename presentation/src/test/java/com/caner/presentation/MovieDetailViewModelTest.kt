@@ -8,6 +8,8 @@ import com.caner.presentation.ui.detail.viewmodel.MovieDetailViewModel
 import com.caner.presentation.utils.MainCoroutineScopeRule
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
@@ -35,12 +37,15 @@ class MovieDetailViewModelTest {
     }
 
     @Test
-    fun `Get movie detail from viewModel should return success case`() = runTest {
+    fun `Should return successful response when asked for movie detail`() = runTest {
         // Given
-        val detailModel = MovieDetailModel(movieId = 1)
+        val id = 1
+        val mockDetailModel = mockk<MovieDetailModel> {
+            every { movieId } returns id
+        }
         val flow = flow {
             emit(Resource.Loading(true))
-            emit(Resource.Success(detailModel))
+            emit(Resource.Success(mockDetailModel))
             emit(Resource.Loading(false))
         }
         coEvery { mockUseCase.getMovieDetail(any()) } returns flow
@@ -55,17 +60,17 @@ class MovieDetailViewModelTest {
 
             val state = awaitItem()
             assertThat(state.movieDetailModel).isNotNull()
-            assertThat(state.movieDetailModel?.movieId).isEqualTo(detailModel.movieId)
-
+            assertThat(state.movieDetailModel?.movieId).isEqualTo(id)
             assertThat(awaitItem().isFetchingMovieDetail).isFalse()
 
-            // Cancel and ignore remaining
-            cancelAndIgnoreRemainingEvents()
+            ensureAllEventsConsumed()
         }
+        // Verify
+        coVerify(exactly = 1) { mockUseCase.getMovieDetail(any()) }
     }
 
     @Test
-    fun `Get movie detail from viewModel should return error case`() = runTest {
+    fun `Should return error when asked for movie detail`() = runTest {
         // Given
         val error = Throwable("Unknown error")
 
@@ -87,11 +92,11 @@ class MovieDetailViewModelTest {
             val errorItem = awaitItem()
             assertThat(errorItem.errorMessage.isEmpty()).isFalse()
             assertThat(errorItem.errorMessage.first().message).isEqualTo(error.message)
-
             assertThat(awaitItem().isFetchingMovieDetail).isFalse()
 
-            // Cancel and ignore remaining
-            cancelAndIgnoreRemainingEvents()
+            ensureAllEventsConsumed()
         }
+        // Verify
+        coVerify(exactly = 1) { mockUseCase.getMovieDetail(any()) }
     }
 }
