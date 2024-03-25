@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="api_exception_unknown">Unknown error</string>
+  <string name="error_connection_copy">internet connection failure</string>
+  <string name="test_key">Good afternoon %1$s</string>
+</resources>
