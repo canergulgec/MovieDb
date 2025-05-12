@@ -10,12 +10,21 @@ plugins {
 }
 
 android {
+    namespace = "com.caner.domain"
     compileSdk = Versions.App.compileSdkVersion
 
     defaultConfig {
         minSdk = Versions.App.minSdkVersion
-        targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -27,7 +36,9 @@ dependencies {
     daggerHilt()
     unitTest()
 
-    implementation(Dependencies.Network.gsonConverter)
+    implementation(Dependencies.Network.moshi)
+    kapt(Dependencies.Network.moshiKotlinCodegen)
+
     implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.AndroidX.dataStore)
 }

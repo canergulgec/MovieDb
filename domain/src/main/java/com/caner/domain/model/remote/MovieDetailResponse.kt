@@ -1,34 +1,36 @@
 package com.caner.domain.model.remote
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class MovieDetailResponse(
-    @SerializedName("id")
+    @field:Json(name = "id")
     val id: Int,
-    @SerializedName("popularity")
+    @field:Json(name = "popularity")
     val popularity: Double? = null,
-    @SerializedName("video")
+    @field:Json(name = "video")
     val video: Boolean? = false,
-    @SerializedName("adult")
+    @field:Json(name = "adult")
     val adult: Boolean? = false,
-    @SerializedName("backdrop_path")
+    @field:Json(name = "backdrop_path")
     val backdropPath: String? = null,
-    @SerializedName("poster_path")
+    @field:Json(name = "poster_path")
     val posterPath: String? = null,
-    @SerializedName("genres")
+    @field:Json(name = "genres")
     val genres: List<MovieGenre>? = null,
-    @SerializedName("title")
+    @field:Json(name = "title")
     val title: String? = null,
-    @SerializedName("overview")
+    @field:Json(name = "overview")
     val overview: String? = null,
-    @SerializedName("imdb_id")
+    @field:Json(name = "imdb_id")
     val imdbId: String? = null,
-    @SerializedName("runtime")
+    @field:Json(name = "runtime")
     val runtime: Int? = null,
-    @SerializedName("vote_average")
+    @field:Json(name = "vote_average")
     val voteAverage: Double? = null,
-    @SerializedName("vote_count")
+    @field:Json(name = "vote_count")
     val voteCount: Int? = null,
-    @SerializedName("release_date")
+    @field:Json(name = "release_date")
     val releaseDate: String? = null,
 )

@@ -1,30 +1,32 @@
 package com.caner.domain.model.remote
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class MovieResponseItem(
-    @SerializedName("id")
+    @field:Json(name = "id")
     val id: Int,
-    @SerializedName("popularity")
+    @field:Json(name = "popularity")
     val popularity: Double,
-    @SerializedName("video")
+    @field:Json(name = "video")
     val video: Boolean,
-    @SerializedName("poster_path")
+    @field:Json(name = "poster_path")
     val posterPath: String?,
-    @SerializedName("adult")
+    @field:Json(name = "adult")
     val adult: Boolean,
-    @SerializedName("backdrop_path")
+    @field:Json(name = "backdrop_path")
     val backdropPath: String?,
-    @SerializedName("original_language")
+    @field:Json(name = "original_language")
     val originalLanguage: String,
-    @SerializedName("original_title")
+    @field:Json(name = "original_title")
     val originalTitle: String,
-    @SerializedName("title")
+    @field:Json(name = "title")
     val title: String,
-    @SerializedName("vote_average")
+    @field:Json(name = "vote_average")
     val voteAverage: Double,
-    @SerializedName("overview")
+    @field:Json(name = "overview")
     val overview: String,
-    @SerializedName("release_date")
+    @field:Json(name = "release_date")
     val releaseDate: String?
 )

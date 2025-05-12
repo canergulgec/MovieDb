@@ -1,16 +1,12 @@
 package com.caner.data.di
 
-import android.content.Context
 import com.android.data.BuildConfig
-import com.facebook.flipper.android.AndroidFlipperClient
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
-import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -19,7 +15,7 @@ import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 
@@ -34,13 +30,15 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideGsonBuilder(): GsonBuilder {
-        return GsonBuilder()
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
     }
 
     @Provides
-    fun provideConverterFactory(builder: GsonBuilder): Converter.Factory {
-        return GsonConverterFactory.create(builder.create())
+    fun provideConverterFactory(moshi: Moshi): Converter.Factory {
+        return MoshiConverterFactory.create(moshi)
     }
 
     @Provides
@@ -82,8 +80,7 @@ object NetworkModule {
     fun provideOkHttpAuth(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @Named("AuthInterceptor") authInterceptor: Interceptor,
-        stethoInterceptor: StethoInterceptor,
-        @ApplicationContext appContext: Context
+        stethoInterceptor: StethoInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
@@ -91,11 +88,6 @@ object NetworkModule {
             .readTimeout(BuildConfig.TIMEOUT.toLong(), TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(authInterceptor)
-            .addNetworkInterceptor(
-                FlipperOkhttpInterceptor(
-                    AndroidFlipperClient.getInstance(appContext).getPlugin(NetworkFlipperPlugin.ID)
-                )
-            )
             .addNetworkInterceptor(stethoInterceptor)
             .retryOnConnectionFailure(true)
             .build()
@@ -105,12 +97,12 @@ object NetworkModule {
     fun provideRetrofit(
         @Named("BASE_URL") baseUrl: String,
         okHttpClient: OkHttpClient,
-        gsonConverterFactory: Converter.Factory
+        converterFactory: Converter.Factory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .addConverterFactory(gsonConverterFactory)
+            .addConverterFactory(converterFactory)
             .build()
     }
 }

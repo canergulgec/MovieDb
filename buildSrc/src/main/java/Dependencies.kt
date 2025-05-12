@@ -32,22 +32,19 @@ object Dependencies {
 
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Network.retrofitVersion}"
-        const val gsonConverter =
-            "com.squareup.retrofit2:converter-gson:${Versions.Network.gsonVersion}"
         const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.Network.okHttpVersion}"
         const val okHttpInterceptor =
             "com.squareup.okhttp3:logging-interceptor:${Versions.Network.okHttpVersion}"
+        const val moshi = "com.squareup.moshi:moshi:${Versions.Network.moshiVersion}"
+        const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.Network.moshiVersion}"
+        const val moshiKotlinCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Network.moshiVersion}"
+        const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.Network.retrofitVersion}"
     }
 
     object Debugging {
         const val stetho = "com.facebook.stetho:stetho:${Versions.Debugging.stethoVersion}"
         const val stethoOkHttp =
             "com.facebook.stetho:stetho-okhttp3:${Versions.Debugging.stethoVersion}"
-        const val flipper = "com.facebook.flipper:flipper:${Versions.Debugging.flipperVersion}"
-        const val flipperSoloader =
-            "com.facebook.soloader:soloader:${Versions.Debugging.flipperSoloaderVersion}"
-        const val flipperNetworkPlugin =
-            "com.facebook.flipper:flipper-network-plugin:${Versions.Debugging.flipperVersion}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Debugging.timberVersion}"
     }
 

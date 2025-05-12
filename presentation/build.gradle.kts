@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
+    namespace = "com.caner.presentation"
     compileSdk = Versions.App.compileSdkVersion
 
     defaultConfig {
         minSdk = Versions.App.minSdkVersion
-        targetSdk = Versions.App.targetSdkVersion
         testInstrumentationRunner = Configs.androidInstrumentationRunner
     }
 
@@ -21,10 +21,20 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
 }
 
 kapt {
     generateStubs = true
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -35,8 +45,6 @@ dependencies {
     daggerHilt()
     appDebugger()
     unitTest()
-
-    implementation(Dependencies.Network.gsonConverter)
 
     implementation(Dependencies.AndroidX.fragmentKtx)
 

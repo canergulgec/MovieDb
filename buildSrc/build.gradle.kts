@@ -8,11 +8,15 @@ repositories {
     gradlePluginPortal()
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 object PluginVersions {
-    const val gradleVersion = "7.2.1"
-    const val kotlinVersion = "1.7.0"
-    const val updateDependenciesVersion = "0.42.0"
-    const val ktlintVersion = "11.0.0"
+    const val gradleVersion = "8.2.0"
+    const val kotlinVersion = "1.9.22"
+    const val updateDependenciesVersion = "0.51.0"
+    const val ktlintVersion = "11.6.1"
 }
 
 dependencies {

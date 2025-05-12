@@ -5,7 +5,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun DependencyHandlerScope.retrofit() {
     implementation(Dependencies.Network.retrofit)
-    implementation(Dependencies.Network.gsonConverter)
+    implementation(Dependencies.Network.moshiConverter)
     implementation(Dependencies.Network.okHttp)
     implementation(Dependencies.Network.okHttpInterceptor)
 }
@@ -26,9 +26,6 @@ fun DependencyHandlerScope.unitTest() {
 
 fun DependencyHandlerScope.appDebugger() {
     implementation(Dependencies.Debugging.timber)
-    debugImplementation(Dependencies.Debugging.flipper)
-    debugImplementation(Dependencies.Debugging.flipperNetworkPlugin)
-    debugImplementation(Dependencies.Debugging.flipperSoloader)
     debugImplementation(Dependencies.Debugging.stetho)
     debugImplementation(Dependencies.Debugging.stethoOkHttp)
 }
@@ -40,10 +37,6 @@ fun DependencyHandlerScope.appCompat() {
 
 private fun DependencyHandler.implementation(depName: String) {
     add("implementation", depName)
-}
-
-private fun DependencyHandler.androidTestImplementation(depName: String) {
-    add("androidTestImplementation", depName)
 }
 
 private fun DependencyHandler.testImplementation(depName: String) {

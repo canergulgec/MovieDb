@@ -19,13 +19,6 @@ buildscript {
 plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
 plugins.apply(BuildPlugins.KTLINT)
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
 subprojects {
     plugins.apply(BuildPlugins.KTLINT)
 }
